@@ -1,0 +1,1284 @@
+{
+  "corpus": "allDurf.txt",
+  "letters_counted": 23778977,
+  "score": 1.026386661461508,
+  "dropped_letters": [
+    "Q",
+    "Z"
+  ],
+  "layout": {
+    "H": {
+      "1": "E",
+      "D": "T",
+      "2": "A",
+      "C": "I",
+      "3": "N",
+      "B": "H",
+      "4": "G",
+      "A": "W"
+    },
+    "R": {
+      "1": "O",
+      "D": "S",
+      "2": "R",
+      "C": "L",
+      "3": "D",
+      "B": "U",
+      "4": "Y",
+      "A": "C"
+    },
+    "L": {
+      "1": "M",
+      "D": "P",
+      "2": "F",
+      "C": "B",
+      "3": "K",
+      "B": "V",
+      "4": "J",
+      "A": "X"
+    }
+  },
+  "chord_map": [
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "B",
+        "D"
+      ],
+      "letters": "EHT",
+      "output": "THE",
+      "count": 289191,
+      "total_same_keys": 305365,
+      "dominance": 0.947,
+      "value": 0.02275883
+    },
+    {
+      "room": "H",
+      "keys": [
+        "B",
+        "D"
+      ],
+      "letters": "HT",
+      "output": "TH",
+      "count": 568605,
+      "total_same_keys": 601019,
+      "dominance": 0.9461,
+      "value": 0.02234448
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "B"
+      ],
+      "letters": "EH",
+      "output": "HE",
+      "count": 409673,
+      "total_same_keys": 419165,
+      "dominance": 0.9774,
+      "value": 0.01676932
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "C"
+      ],
+      "letters": "IN",
+      "output": "IN",
+      "count": 421508,
+      "total_same_keys": 481915,
+      "dominance": 0.8747,
+      "value": 0.01480467
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "4",
+        "C"
+      ],
+      "letters": "GIN",
+      "output": "ING",
+      "count": 199669,
+      "total_same_keys": 224332,
+      "dominance": 0.8901,
+      "value": 0.01440824
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "4",
+        "B"
+      ],
+      "letters": "OUY",
+      "output": "YOU",
+      "count": 151164,
+      "total_same_keys": 151277,
+      "dominance": 0.9993,
+      "value": 0.01270316
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "B"
+      ],
+      "letters": "OU",
+      "output": "OU",
+      "count": 280673,
+      "total_same_keys": 281748,
+      "dominance": 0.9962,
+      "value": 0.01175142
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3"
+      ],
+      "letters": "AN",
+      "output": "AN",
+      "count": 313425,
+      "total_same_keys": 355147,
+      "dominance": 0.8825,
+      "value": 0.011163
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "B"
+      ],
+      "letters": "AH",
+      "output": "HA",
+      "count": 283778,
+      "total_same_keys": 312690,
+      "dominance": 0.9075,
+      "value": 0.01053574
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "4"
+      ],
+      "letters": "GN",
+      "output": "NG",
+      "count": 232627,
+      "total_same_keys": 239539,
+      "dominance": 0.9711,
+      "value": 0.00944861
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "D"
+      ],
+      "letters": "AT",
+      "output": "AT",
+      "count": 275805,
+      "total_same_keys": 345444,
+      "dominance": 0.7984,
+      "value": 0.00823081
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "B",
+        "C",
+        "D"
+      ],
+      "letters": "HINT",
+      "output": "THIN",
+      "count": 58761,
+      "total_same_keys": 59508,
+      "dominance": 0.9874,
+      "value": 0.00730502
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "2"
+      ],
+      "letters": "AE",
+      "output": "EA",
+      "count": 169080,
+      "total_same_keys": 170085,
+      "dominance": 0.9941,
+      "value": 0.00706188
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "4"
+      ],
+      "letters": "OY",
+      "output": "YO",
+      "count": 162869,
+      "total_same_keys": 168556,
+      "dominance": 0.9663,
+      "value": 0.00657425
+    },
+    {
+      "room": "H",
+      "keys": [
+        "B",
+        "C"
+      ],
+      "letters": "HI",
+      "output": "HI",
+      "count": 149068,
+      "total_same_keys": 149586,
+      "dominance": 0.9965,
+      "value": 0.00624385
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "A",
+        "B",
+        "D"
+      ],
+      "letters": "AHTW",
+      "output": "WHAT",
+      "count": 48818,
+      "total_same_keys": 49165,
+      "dominance": 0.9929,
+      "value": 0.00610862
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "B",
+        "C"
+      ],
+      "letters": "HIN",
+      "output": "HIN",
+      "count": 64689,
+      "total_same_keys": 66364,
+      "dominance": 0.9748,
+      "value": 0.00527884
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "D"
+      ],
+      "letters": "NT",
+      "output": "NT",
+      "count": 126715,
+      "total_same_keys": 128167,
+      "dominance": 0.9887,
+      "value": 0.00525865
+    },
+    {
+      "room": "H",
+      "keys": [
+        "A",
+        "B"
+      ],
+      "letters": "HW",
+      "output": "WH",
+      "count": 113630,
+      "total_same_keys": 114090,
+      "dominance": 0.996,
+      "value": 0.00475634
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "4",
+        "B",
+        "C"
+      ],
+      "letters": "GHIN",
+      "output": "HING",
+      "count": 43866,
+      "total_same_keys": 50318,
+      "dominance": 0.8718,
+      "value": 0.00459812
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "A"
+      ],
+      "letters": "CO",
+      "output": "CO",
+      "count": 118303,
+      "total_same_keys": 134136,
+      "dominance": 0.882,
+      "value": 0.00420939
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "A",
+        "B"
+      ],
+      "letters": "AHW",
+      "output": "WHA",
+      "count": 49532,
+      "total_same_keys": 50383,
+      "dominance": 0.9831,
+      "value": 0.00408372
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3",
+        "B",
+        "C"
+      ],
+      "letters": "DLOU",
+      "output": "OULD",
+      "count": 32653,
+      "total_same_keys": 33506,
+      "dominance": 0.9745,
+      "value": 0.0039958
+    },
+    {
+      "room": "H",
+      "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "letters": "HITW",
+      "output": "WITH",
+      "count": 31905,
+      "total_same_keys": 32997,
+      "dominance": 0.9669,
+      "value": 0.00386676
+    },
+    {
+      "room": "H",
+      "keys": [
+        "B",
+        "C",
+        "D"
+      ],
+      "letters": "HIT",
+      "output": "THI",
+      "count": 92849,
+      "total_same_keys": 136174,
+      "dominance": 0.6818,
+      "value": 0.00361876
+    },
+    {
+      "room": "R",
+      "keys": [
+        "4",
+        "C"
+      ],
+      "letters": "LY",
+      "output": "LY",
+      "count": 87571,
+      "total_same_keys": 89254,
+      "dominance": 0.9811,
+      "value": 0.00360131
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "A"
+      ],
+      "letters": "AW",
+      "output": "WA",
+      "count": 93794,
+      "total_same_keys": 105795,
+      "dominance": 0.8866,
+      "value": 0.00336402
+    },
+    {
+      "room": "R",
+      "keys": [
+        "B",
+        "D"
+      ],
+      "letters": "SU",
+      "output": "US",
+      "count": 123450,
+      "total_same_keys": 161467,
+      "dominance": 0.7646,
+      "value": 0.00335298
+    },
+    {
+      "room": "H",
+      "keys": [
+        "4",
+        "B",
+        "C",
+        "D"
+      ],
+      "letters": "GHIT",
+      "output": "IGHT",
+      "count": 26398,
+      "total_same_keys": 27279,
+      "dominance": 0.9677,
+      "value": 0.0032026
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "D"
+      ],
+      "letters": "OS",
+      "output": "SO",
+      "count": 118823,
+      "total_same_keys": 158976,
+      "dominance": 0.7474,
+      "value": 0.0030551
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "4",
+        "B"
+      ],
+      "letters": "ORUY",
+      "output": "YOUR",
+      "count": 22288,
+      "total_same_keys": 22318,
+      "dominance": 0.9987,
+      "value": 0.00280754
+    },
+    {
+      "room": "H",
+      "keys": [
+        "A",
+        "C",
+        "D"
+      ],
+      "letters": "ITW",
+      "output": "WIT",
+      "count": 34991,
+      "total_same_keys": 37596,
+      "dominance": 0.9307,
+      "value": 0.00269105
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "4",
+        "C",
+        "D"
+      ],
+      "letters": "GINT",
+      "output": "TING",
+      "count": 21338,
+      "total_same_keys": 21843,
+      "dominance": 0.9769,
+      "value": 0.00261877
+    },
+    {
+      "room": "H",
+      "keys": [
+        "A",
+        "C"
+      ],
+      "letters": "IW",
+      "output": "WI",
+      "count": 62304,
+      "total_same_keys": 62512,
+      "dominance": 0.9967,
+      "value": 0.00261007
+    },
+    {
+      "room": "H",
+      "keys": [
+        "4",
+        "B",
+        "D"
+      ],
+      "letters": "GHT",
+      "output": "GHT",
+      "count": 31205,
+      "total_same_keys": 31685,
+      "dominance": 0.9849,
+      "value": 0.00257816
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "B",
+        "C"
+      ],
+      "letters": "DLU",
+      "output": "ULD",
+      "count": 32690,
+      "total_same_keys": 34829,
+      "dominance": 0.9386,
+      "value": 0.00254259
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "3",
+        "B"
+      ],
+      "letters": "EHN",
+      "output": "HEN",
+      "count": 30527,
+      "total_same_keys": 31037,
+      "dominance": 0.9836,
+      "value": 0.00251823
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "A"
+      ],
+      "letters": "EW",
+      "output": "WE",
+      "count": 81475,
+      "total_same_keys": 101691,
+      "dominance": 0.8012,
+      "value": 0.00244866
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "B",
+        "C"
+      ],
+      "letters": "LOU",
+      "output": "OUL",
+      "count": 33259,
+      "total_same_keys": 37027,
+      "dominance": 0.8982,
+      "value": 0.00243289
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "D"
+      ],
+      "letters": "RS",
+      "output": "RS",
+      "count": 55050,
+      "total_same_keys": 55965,
+      "dominance": 0.9837,
+      "value": 0.00227082
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "4"
+      ],
+      "letters": "EG",
+      "output": "GE",
+      "count": 66868,
+      "total_same_keys": 78492,
+      "dominance": 0.8519,
+      "value": 0.0022499
+    },
+    {
+      "room": "H",
+      "keys": [
+        "4",
+        "B",
+        "C"
+      ],
+      "letters": "GHI",
+      "output": "IGH",
+      "count": 29510,
+      "total_same_keys": 32458,
+      "dominance": 0.9092,
+      "value": 0.00219688
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "4",
+        "D"
+      ],
+      "letters": "EGT",
+      "output": "GET",
+      "count": 26164,
+      "total_same_keys": 26800,
+      "dominance": 0.9763,
+      "value": 0.00213908
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "B"
+      ],
+      "letters": "RU",
+      "output": "UR",
+      "count": 75528,
+      "total_same_keys": 100914,
+      "dominance": 0.7484,
+      "value": 0.00194853
+    },
+    {
+      "room": "H",
+      "keys": [
+        "4",
+        "B"
+      ],
+      "letters": "GH",
+      "output": "GH",
+      "count": 46360,
+      "total_same_keys": 46537,
+      "dominance": 0.9962,
+      "value": 0.00194106
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "3",
+        "A",
+        "B"
+      ],
+      "letters": "EHNW",
+      "output": "WHEN",
+      "count": 15026,
+      "total_same_keys": 15047,
+      "dominance": 0.9986,
+      "value": 0.00189266
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "4"
+      ],
+      "letters": "RY",
+      "output": "RY",
+      "count": 46492,
+      "total_same_keys": 47876,
+      "dominance": 0.9711,
+      "value": 0.00188824
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "C"
+      ],
+      "letters": "DL",
+      "output": "LD",
+      "count": 50617,
+      "total_same_keys": 55602,
+      "dominance": 0.9103,
+      "value": 0.00188756
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "B"
+      ],
+      "letters": "AHN",
+      "output": "HAN",
+      "count": 27387,
+      "total_same_keys": 31916,
+      "dominance": 0.8581,
+      "value": 0.0018654
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "A",
+        "D"
+      ],
+      "letters": "ANTW",
+      "output": "WANT",
+      "count": 14312,
+      "total_same_keys": 14359,
+      "dominance": 0.9967,
+      "value": 0.00179881
+    },
+    {
+      "room": "R",
+      "keys": [
+        "B",
+        "C"
+      ],
+      "letters": "LU",
+      "output": "UL",
+      "count": 55156,
+      "total_same_keys": 68964,
+      "dominance": 0.7998,
+      "value": 0.00165174
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "A",
+        "B"
+      ],
+      "letters": "EHW",
+      "output": "WHE",
+      "count": 24649,
+      "total_same_keys": 29027,
+      "dominance": 0.8492,
+      "value": 0.00164972
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "3",
+        "B",
+        "D"
+      ],
+      "letters": "EHNT",
+      "output": "THEN",
+      "count": 14136,
+      "total_same_keys": 15142,
+      "dominance": 0.9336,
+      "value": 0.00163747
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "B"
+      ],
+      "letters": "ORU",
+      "output": "OUR",
+      "count": 31520,
+      "total_same_keys": 42014,
+      "dominance": 0.7502,
+      "value": 0.00163606
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "B",
+        "D"
+      ],
+      "letters": "AHNT",
+      "output": "THAN",
+      "count": 12601,
+      "total_same_keys": 13169,
+      "dominance": 0.9569,
+      "value": 0.00150736
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "B",
+        "D"
+      ],
+      "letters": "AHT",
+      "output": "HAT",
+      "count": 155872,
+      "total_same_keys": 275990,
+      "dominance": 0.5648,
+      "value": 0.00149176
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "A"
+      ],
+      "letters": "ANW",
+      "output": "WAN",
+      "count": 17449,
+      "total_same_keys": 18705,
+      "dominance": 0.9329,
+      "value": 0.00134611
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "C"
+      ],
+      "letters": "AI",
+      "output": "AI",
+      "count": 51432,
+      "total_same_keys": 69439,
+      "dominance": 0.7407,
+      "value": 0.00129206
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "A",
+        "B"
+      ],
+      "letters": "COU",
+      "output": "COU",
+      "count": 15538,
+      "total_same_keys": 17487,
+      "dominance": 0.8885,
+      "value": 0.00111835
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "A",
+        "B",
+        "C"
+      ],
+      "letters": "CLOU",
+      "output": "COUL",
+      "count": 8677,
+      "total_same_keys": 9270,
+      "dominance": 0.936,
+      "value": 0.00100867
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "D"
+      ],
+      "letters": "DS",
+      "output": "DS",
+      "count": 24443,
+      "total_same_keys": 25788,
+      "dominance": 0.9478,
+      "value": 0.00096288
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "A",
+        "C",
+        "D"
+      ],
+      "letters": "AITW",
+      "output": "WAIT",
+      "count": 7439,
+      "total_same_keys": 7488,
+      "dominance": 0.9935,
+      "value": 0.00093141
+    },
+    {
+      "room": "H",
+      "keys": [
+        "A",
+        "B",
+        "C"
+      ],
+      "letters": "HIW",
+      "output": "WHI",
+      "count": 11038,
+      "total_same_keys": 11098,
+      "dominance": 0.9946,
+      "value": 0.00092258
+    },
+    {
+      "room": "R",
+      "keys": [
+        "A",
+        "D"
+      ],
+      "letters": "CS",
+      "output": "SC",
+      "count": 25293,
+      "total_same_keys": 29528,
+      "dominance": 0.8566,
+      "value": 0.00085886
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "3"
+      ],
+      "letters": "DR",
+      "output": "RD",
+      "count": 35543,
+      "total_same_keys": 48845,
+      "dominance": 0.7277,
+      "value": 0.00085141
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "A"
+      ],
+      "letters": "CDOR",
+      "output": "CORD",
+      "count": 6987,
+      "total_same_keys": 7414,
+      "dominance": 0.9424,
+      "value": 0.00081954
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "D"
+      ],
+      "letters": "MP",
+      "output": "MP",
+      "count": 21419,
+      "total_same_keys": 23458,
+      "dominance": 0.9131,
+      "value": 0.00080214
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "A"
+      ],
+      "letters": "CR",
+      "output": "CR",
+      "count": 26772,
+      "total_same_keys": 33795,
+      "dominance": 0.7922,
+      "value": 0.00078622
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "A",
+        "D"
+      ],
+      "letters": "CRS",
+      "output": "SCR",
+      "count": 8131,
+      "total_same_keys": 8229,
+      "dominance": 0.9881,
+      "value": 0.0006744
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "3"
+      ],
+      "letters": "DOR",
+      "output": "ORD",
+      "count": 13082,
+      "total_same_keys": 17624,
+      "dominance": 0.7423,
+      "value": 0.00066098
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "4",
+        "B"
+      ],
+      "letters": "AGHN",
+      "output": "HANG",
+      "count": 5162,
+      "total_same_keys": 5182,
+      "dominance": 0.9961,
+      "value": 0.00064835
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "2",
+        "3"
+      ],
+      "letters": "AEN",
+      "output": "EAN",
+      "count": 15056,
+      "total_same_keys": 21453,
+      "dominance": 0.7018,
+      "value": 0.00064758
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "A",
+        "D"
+      ],
+      "letters": "ATW",
+      "output": "WAT",
+      "count": 7967,
+      "total_same_keys": 8617,
+      "dominance": 0.9246,
+      "value": 0.00060722
+    },
+    {
+      "room": "R",
+      "keys": [
+        "4",
+        "D"
+      ],
+      "letters": "SY",
+      "output": "YS",
+      "count": 20662,
+      "total_same_keys": 26405,
+      "dominance": 0.7825,
+      "value": 0.00059118
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "B",
+        "D"
+      ],
+      "letters": "ORSU",
+      "output": "OURS",
+      "count": 6387,
+      "total_same_keys": 7895,
+      "dominance": 0.809,
+      "value": 0.00058701
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "A"
+      ],
+      "letters": "NW",
+      "output": "WN",
+      "count": 14379,
+      "total_same_keys": 14883,
+      "dominance": 0.9661,
+      "value": 0.00058032
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "A",
+        "C"
+      ],
+      "letters": "AIW",
+      "output": "WAI",
+      "count": 7642,
+      "total_same_keys": 8294,
+      "dominance": 0.9214,
+      "value": 0.00057969
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "2",
+        "4"
+      ],
+      "letters": "AEG",
+      "output": "AGE",
+      "count": 11657,
+      "total_same_keys": 15828,
+      "dominance": 0.7365,
+      "value": 0.00057701
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "D"
+      ],
+      "letters": "ANT",
+      "output": "ANT",
+      "count": 27130,
+      "total_same_keys": 44790,
+      "dominance": 0.6057,
+      "value": 0.0005737
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "4"
+      ],
+      "letters": "DY",
+      "output": "DY",
+      "count": 14286,
+      "total_same_keys": 15452,
+      "dominance": 0.9245,
+      "value": 0.00054439
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3",
+        "C"
+      ],
+      "letters": "DLO",
+      "output": "OLD",
+      "count": 8412,
+      "total_same_keys": 10148,
+      "dominance": 0.8289,
+      "value": 0.0005396
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "4"
+      ],
+      "letters": "AGN",
+      "output": "ANG",
+      "count": 11171,
+      "total_same_keys": 15399,
+      "dominance": 0.7254,
+      "value": 0.00053062
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "C"
+      ],
+      "letters": "BM",
+      "output": "MB",
+      "count": 12846,
+      "total_same_keys": 13197,
+      "dominance": 0.9734,
+      "value": 0.00052325
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "A",
+        "D"
+      ],
+      "letters": "CORS",
+      "output": "SCOR",
+      "count": 5869,
+      "total_same_keys": 7420,
+      "dominance": 0.791,
+      "value": 0.00051542
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "letters": "AEGN",
+      "output": "ANGE",
+      "count": 6389,
+      "total_same_keys": 8471,
+      "dominance": 0.7542,
+      "value": 0.00050398
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "A",
+        "C"
+      ],
+      "letters": "INW",
+      "output": "WIN",
+      "count": 6292,
+      "total_same_keys": 6580,
+      "dominance": 0.9562,
+      "value": 0.00050135
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "B",
+        "C"
+      ],
+      "letters": "EHI",
+      "output": "HEI",
+      "count": 8159,
+      "total_same_keys": 10126,
+      "dominance": 0.8057,
+      "value": 0.00049598
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "A",
+        "C"
+      ],
+      "letters": "CLO",
+      "output": "LCO",
+      "count": 20985,
+      "total_same_keys": 34196,
+      "dominance": 0.6137,
+      "value": 0.00048718
+    },
+    {
+      "room": "L",
+      "keys": [
+        "A",
+        "D"
+      ],
+      "letters": "PX",
+      "output": "XP",
+      "count": 10965,
+      "total_same_keys": 11002,
+      "dominance": 0.9966,
+      "value": 0.00045933
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "C",
+        "D"
+      ],
+      "letters": "AIT",
+      "output": "ATI",
+      "count": 24177,
+      "total_same_keys": 40623,
+      "dominance": 0.5952,
+      "value": 0.00044275
+    }
+  ]
+}

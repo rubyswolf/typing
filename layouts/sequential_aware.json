@@ -1,0 +1,1093 @@
+{
+  "schema": "chord-typing-layout/v1",
+  "name": "Sequentially Aware Layout",
+  "notes": "Generated with stronger room-transition penalty and automatic fallback chords for dropped letters.",
+  "weights": {
+    "transition_weight": 2.75,
+    "chord_weight": 0.85,
+    "drop_base": -4.0,
+    "seed": 78
+  },
+  "bindings": {
+    "A": "q",
+    "B": "w",
+    "C": "e",
+    "D": "r",
+    "1": "i",
+    "2": "o",
+    "3": "p",
+    "4": "[",
+    "L": "c",
+    "R": "m"
+  },
+  "layout": {
+    "H": {
+      "1": "E",
+      "D": "T",
+      "2": "A",
+      "C": "I",
+      "3": "N",
+      "B": "S",
+      "4": "H",
+      "A": "G"
+    },
+    "R": {
+      "1": "O",
+      "D": "R",
+      "2": "L",
+      "C": "D",
+      "3": "U",
+      "B": "M",
+      "4": "Y",
+      "A": "C"
+    },
+    "L": {
+      "1": "W",
+      "D": "P",
+      "2": "F",
+      "C": "B",
+      "3": "K",
+      "B": "V",
+      "4": "J",
+      "A": "X"
+    }
+  },
+  "dropped_letters": [
+    "Q",
+    "Z"
+  ],
+  "dropped_letter_chords": [
+    {
+      "room": "L",
+      "keys": [
+        "A",
+        "B"
+      ],
+      "letters": "VX",
+      "output": "Q",
+      "count": 0,
+      "total_same_keys": 26,
+      "dominance": 0.0,
+      "value": 0.0,
+      "fallback_for_dropped_letter": true,
+      "sacrificed_bigram_traffic": 26,
+      "sacrificed_bigrams": {
+        "XV": 13,
+        "VX": 13
+      }
+    },
+    {
+      "room": "L",
+      "keys": [
+        "4",
+        "B"
+      ],
+      "letters": "JV",
+      "output": "Z",
+      "count": 0,
+      "total_same_keys": 28,
+      "dominance": 0.0,
+      "value": 0.0,
+      "fallback_for_dropped_letter": true,
+      "sacrificed_bigram_traffic": 28,
+      "sacrificed_bigrams": {
+        "JV": 16,
+        "VJ": 12
+      }
+    }
+  ],
+  "chords": [
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "4",
+        "D"
+      ],
+      "output": "THE",
+      "count": 289191,
+      "dominance": 0.947
+    },
+    {
+      "room": "H",
+      "keys": [
+        "4",
+        "D"
+      ],
+      "output": "TH",
+      "count": 568605,
+      "dominance": 0.9461
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "4"
+      ],
+      "output": "HE",
+      "count": 409673,
+      "dominance": 0.9774
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "C"
+      ],
+      "output": "IN",
+      "count": 421508,
+      "dominance": 0.8747
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "A",
+        "C"
+      ],
+      "output": "ING",
+      "count": 199669,
+      "dominance": 0.8901
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3",
+        "4"
+      ],
+      "output": "YOU",
+      "count": 151164,
+      "dominance": 0.9993
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3"
+      ],
+      "output": "OU",
+      "count": 280673,
+      "dominance": 0.9962
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3"
+      ],
+      "output": "AN",
+      "count": 313425,
+      "dominance": 0.8825
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "4"
+      ],
+      "output": "HA",
+      "count": 283778,
+      "dominance": 0.9075
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "A"
+      ],
+      "output": "NG",
+      "count": 232627,
+      "dominance": 0.9711
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "D"
+      ],
+      "output": "AT",
+      "count": 275805,
+      "dominance": 0.7984
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "4",
+        "C",
+        "D"
+      ],
+      "output": "THIN",
+      "count": 58761,
+      "dominance": 0.9874
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "2"
+      ],
+      "output": "EA",
+      "count": 169080,
+      "dominance": 0.9941
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "4"
+      ],
+      "output": "YO",
+      "count": 162869,
+      "dominance": 0.9663
+    },
+    {
+      "room": "H",
+      "keys": [
+        "4",
+        "C"
+      ],
+      "output": "HI",
+      "count": 149068,
+      "dominance": 0.9965
+    },
+    {
+      "room": "H",
+      "keys": [
+        "B",
+        "D"
+      ],
+      "output": "ST",
+      "count": 202034,
+      "dominance": 0.788
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "4",
+        "C"
+      ],
+      "output": "HIN",
+      "count": 64689,
+      "dominance": 0.9748
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "D"
+      ],
+      "output": "NT",
+      "count": 126715,
+      "dominance": 0.9887
+    },
+    {
+      "room": "H",
+      "keys": [
+        "B",
+        "C"
+      ],
+      "output": "IS",
+      "count": 182173,
+      "dominance": 0.7621
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "4",
+        "A",
+        "C"
+      ],
+      "output": "HING",
+      "count": 43866,
+      "dominance": 0.8718
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "A"
+      ],
+      "output": "CO",
+      "count": 118303,
+      "dominance": 0.882
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "C"
+      ],
+      "output": "OULD",
+      "count": 32653,
+      "dominance": 0.9745
+    },
+    {
+      "room": "H",
+      "keys": [
+        "4",
+        "C",
+        "D"
+      ],
+      "output": "THI",
+      "count": 92849,
+      "dominance": 0.6818
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "4"
+      ],
+      "output": "LY",
+      "count": 87571,
+      "dominance": 0.9811
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "A",
+        "B"
+      ],
+      "output": "COM",
+      "count": 43299,
+      "dominance": 0.9877
+    },
+    {
+      "room": "H",
+      "keys": [
+        "4",
+        "A",
+        "C",
+        "D"
+      ],
+      "output": "IGHT",
+      "count": 26398,
+      "dominance": 0.9677
+    },
+    {
+      "room": "H",
+      "keys": [
+        "4",
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "THIS",
+      "count": 32302,
+      "dominance": 0.8421
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3",
+        "4",
+        "D"
+      ],
+      "output": "YOUR",
+      "count": 22288,
+      "dominance": 0.9987
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "A",
+        "C",
+        "D"
+      ],
+      "output": "TING",
+      "count": 21338,
+      "dominance": 0.9769
+    },
+    {
+      "room": "H",
+      "keys": [
+        "4",
+        "A",
+        "D"
+      ],
+      "output": "GHT",
+      "count": 31205,
+      "dominance": 0.9849
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "A",
+        "B"
+      ],
+      "output": "LCOM",
+      "count": 20417,
+      "dominance": 0.9897
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "3",
+        "C"
+      ],
+      "output": "ULD",
+      "count": 32690,
+      "dominance": 0.9386
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "3",
+        "4"
+      ],
+      "output": "HEN",
+      "count": 30527,
+      "dominance": 0.9836
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "3"
+      ],
+      "output": "OUL",
+      "count": 33259,
+      "dominance": 0.8982
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "A"
+      ],
+      "output": "GE",
+      "count": 66868,
+      "dominance": 0.8519
+    },
+    {
+      "room": "H",
+      "keys": [
+        "4",
+        "A",
+        "C"
+      ],
+      "output": "IGH",
+      "count": 29510,
+      "dominance": 0.9092
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "A",
+        "D"
+      ],
+      "output": "GET",
+      "count": 26164,
+      "dominance": 0.9763
+    },
+    {
+      "room": "H",
+      "keys": [
+        "4",
+        "B"
+      ],
+      "output": "SH",
+      "count": 50978,
+      "dominance": 0.9574
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "D"
+      ],
+      "output": "UR",
+      "count": 75528,
+      "dominance": 0.7484
+    },
+    {
+      "room": "H",
+      "keys": [
+        "4",
+        "A"
+      ],
+      "output": "GH",
+      "count": 46360,
+      "dominance": 0.9962
+    },
+    {
+      "room": "R",
+      "keys": [
+        "4",
+        "D"
+      ],
+      "output": "RY",
+      "count": 46492,
+      "dominance": 0.9711
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "C"
+      ],
+      "output": "LD",
+      "count": 50617,
+      "dominance": 0.9103
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "4"
+      ],
+      "output": "HAN",
+      "count": 27387,
+      "dominance": 0.8581
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "3"
+      ],
+      "output": "UL",
+      "count": 55156,
+      "dominance": 0.7998
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "3",
+        "4",
+        "D"
+      ],
+      "output": "THEN",
+      "count": 14136,
+      "dominance": 0.9336
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3",
+        "D"
+      ],
+      "output": "OUR",
+      "count": 31520,
+      "dominance": 0.7502
+    },
+    {
+      "room": "R",
+      "keys": [
+        "4",
+        "B"
+      ],
+      "output": "MY",
+      "count": 40494,
+      "dominance": 0.9304
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "4",
+        "D"
+      ],
+      "output": "THAN",
+      "count": 12601,
+      "dominance": 0.9569
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "4",
+        "D"
+      ],
+      "output": "HAT",
+      "count": 155872,
+      "dominance": 0.5648
+    },
+    {
+      "room": "H",
+      "keys": [
+        "4",
+        "B",
+        "C"
+      ],
+      "output": "HIS",
+      "count": 37152,
+      "dominance": 0.6866
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "B"
+      ],
+      "output": "NS",
+      "count": 51499,
+      "dominance": 0.7433
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "C"
+      ],
+      "output": "AI",
+      "count": 51432,
+      "dominance": 0.7407
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3",
+        "A"
+      ],
+      "output": "COU",
+      "count": 15538,
+      "dominance": 0.8885
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "A"
+      ],
+      "output": "COUL",
+      "count": 8677,
+      "dominance": 0.936
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "A",
+        "B"
+      ],
+      "output": "NGS",
+      "count": 10984,
+      "dominance": 0.9696
+    },
+    {
+      "room": "R",
+      "keys": [
+        "C",
+        "D"
+      ],
+      "output": "RD",
+      "count": 35543,
+      "dominance": 0.7277
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "A",
+        "C",
+        "D"
+      ],
+      "output": "CORD",
+      "count": 6987,
+      "dominance": 0.9424
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "4",
+        "B",
+        "D"
+      ],
+      "output": "HATS",
+      "count": 7264,
+      "dominance": 0.8903
+    },
+    {
+      "room": "R",
+      "keys": [
+        "A",
+        "D"
+      ],
+      "output": "CR",
+      "count": 26772,
+      "dominance": 0.7922
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "B",
+        "C"
+      ],
+      "output": "MOD",
+      "count": 15500,
+      "dominance": 0.7245
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "C",
+        "D"
+      ],
+      "output": "ORD",
+      "count": 13082,
+      "dominance": 0.7423
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "4",
+        "A"
+      ],
+      "output": "HANG",
+      "count": 5162,
+      "dominance": 0.9961
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "2",
+        "3"
+      ],
+      "output": "EAN",
+      "count": 15056,
+      "dominance": 0.7018
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "A",
+        "B"
+      ],
+      "output": "MUC",
+      "count": 7626,
+      "dominance": 0.9318
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "2",
+        "A"
+      ],
+      "output": "AGE",
+      "count": 11657,
+      "dominance": 0.7365
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "D"
+      ],
+      "output": "ANT",
+      "count": 27130,
+      "dominance": 0.6057
+    },
+    {
+      "room": "H",
+      "keys": [
+        "A",
+        "B"
+      ],
+      "output": "GS",
+      "count": 14094,
+      "dominance": 0.9377
+    },
+    {
+      "room": "R",
+      "keys": [
+        "4",
+        "C"
+      ],
+      "output": "DY",
+      "count": 14286,
+      "dominance": 0.9245
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "C"
+      ],
+      "output": "OLD",
+      "count": 8412,
+      "dominance": 0.8289
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "A"
+      ],
+      "output": "ANG",
+      "count": 11171,
+      "dominance": 0.7254
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "A"
+      ],
+      "output": "ANGE",
+      "count": 6389,
+      "dominance": 0.7542
+    },
+    {
+      "room": "R",
+      "keys": [
+        "B",
+        "D"
+      ],
+      "output": "RM",
+      "count": 13208,
+      "dominance": 0.9243
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "4",
+        "C"
+      ],
+      "output": "HEI",
+      "count": 8159,
+      "dominance": 0.8057
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "A"
+      ],
+      "output": "LCO",
+      "count": 20985,
+      "dominance": 0.6137
+    },
+    {
+      "room": "L",
+      "keys": [
+        "A",
+        "D"
+      ],
+      "output": "XP",
+      "count": 10965,
+      "dominance": 0.9966
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "C",
+        "D"
+      ],
+      "output": "ATI",
+      "count": 24177,
+      "dominance": 0.5952
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "B"
+      ],
+      "output": "LM",
+      "count": 10908,
+      "dominance": 0.9318
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "A",
+        "B"
+      ],
+      "output": "GES",
+      "count": 4989,
+      "dominance": 0.8971
+    },
+    {
+      "room": "R",
+      "keys": [
+        "B",
+        "C"
+      ],
+      "output": "DM",
+      "count": 8975,
+      "dominance": 0.9661
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "2",
+        "B"
+      ],
+      "output": "EAS",
+      "count": 19603,
+      "dominance": 0.5952
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "3",
+        "D"
+      ],
+      "output": "ENT",
+      "count": 39512,
+      "dominance": 0.563
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "D"
+      ],
+      "output": "ROL",
+      "count": 11266,
+      "dominance": 0.6282
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "B"
+      ],
+      "output": "ANS",
+      "count": 10613,
+      "dominance": 0.6227
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "4"
+      ],
+      "output": "UY",
+      "count": 7663,
+      "dominance": 0.8052
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "A",
+        "D"
+      ],
+      "output": "COR",
+      "count": 11158,
+      "dominance": 0.6009
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "4",
+        "B"
+      ],
+      "output": "HAS",
+      "count": 11127,
+      "dominance": 0.5817
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "C",
+        "D"
+      ],
+      "output": "DUR",
+      "count": 4622,
+      "dominance": 0.643
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "B",
+        "D"
+      ],
+      "output": "STAN",
+      "count": 6575,
+      "dominance": 0.5557
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "4",
+        "D"
+      ],
+      "output": "RYO",
+      "count": 5154,
+      "dominance": 0.5734
+    },
+    {
+      "room": "L",
+      "keys": [
+        "A",
+        "B"
+      ],
+      "output": "Q",
+      "count": 0,
+      "dominance": 0.0,
+      "fallback_for_dropped_letter": true,
+      "sacrificed_bigram_traffic": 26,
+      "sacrificed_bigrams": {
+        "XV": 13,
+        "VX": 13
+      }
+    },
+    {
+      "room": "L",
+      "keys": [
+        "4",
+        "B"
+      ],
+      "output": "Z",
+      "count": 0,
+      "dominance": 0.0,
+      "fallback_for_dropped_letter": true,
+      "sacrificed_bigram_traffic": 28,
+      "sacrificed_bigrams": {
+        "JV": 16,
+        "VJ": 12
+      }
+    }
+  ]
+}

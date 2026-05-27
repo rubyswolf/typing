@@ -1,0 +1,129 @@
+Corpus: allDurf.txt
+Letters counted: 23,778,977
+Score: 0.656942
+Dropped letters: Q, Z
+
+Layout:
+Home: 1:E  D:T  2:A  C:I  3:N  B:S  4:H  A:G
+Right room: 1:O  D:R  2:L  C:D  3:U  B:M  4:Y  A:C
+Left room: 1:W  D:P  2:F  C:B  3:K  B:V  4:J  A:X
+
+Chord map:
+H 1+4+D     EHT  -> THE  count=289191   dominance=0.9470
+H 4+D       HT   -> TH   count=568605   dominance=0.9461
+H 1+4       EH   -> HE   count=409673   dominance=0.9774
+H 3+C       IN   -> IN   count=421508   dominance=0.8747
+H 3+A+C     GIN  -> ING  count=199669   dominance=0.8901
+R 1+3+4     OUY  -> YOU  count=151164   dominance=0.9993
+R 1+3       OU   -> OU   count=280673   dominance=0.9962
+H 2+3       AN   -> AN   count=313425   dominance=0.8825
+H 2+4       AH   -> HA   count=283778   dominance=0.9075
+H 3+A       GN   -> NG   count=232627   dominance=0.9711
+H 2+D       AT   -> AT   count=275805   dominance=0.7984
+H 3+4+C+D   HINT -> THIN count=58761    dominance=0.9874
+H 1+2       AE   -> EA   count=169080   dominance=0.9941
+R 1+4       OY   -> YO   count=162869   dominance=0.9663
+H 4+C       HI   -> HI   count=149068   dominance=0.9965
+H B+D       ST   -> ST   count=202034   dominance=0.7880
+H 3+4+C     HIN  -> HIN  count=64689    dominance=0.9748
+H 3+D       NT   -> NT   count=126715   dominance=0.9887
+H B+C       IS   -> IS   count=182173   dominance=0.7621
+H 3+4+A+C   GHIN -> HING count=43866    dominance=0.8718
+R 1+A       CO   -> CO   count=118303   dominance=0.8820
+R 1+2+3+C   DLOU -> OULD count=32653    dominance=0.9745
+H 4+C+D     HIT  -> THI  count=92849    dominance=0.6818
+R 2+4       LY   -> LY   count=87571    dominance=0.9811
+R 1+A+B     CMO  -> COM  count=43299    dominance=0.9877
+H 4+A+C+D   GHIT -> IGHT count=26398    dominance=0.9677
+H 4+B+C+D   HIST -> THIS count=32302    dominance=0.8421
+R 1+3+4+D   ORUY -> YOUR count=22288    dominance=0.9987
+H 3+A+C+D   GINT -> TING count=21338    dominance=0.9769
+H 4+A+D     GHT  -> GHT  count=31205    dominance=0.9849
+R 1+2+A+B   CLMO -> LCOM count=20417    dominance=0.9897
+R 2+3+C     DLU  -> ULD  count=32690    dominance=0.9386
+H 1+3+4     EHN  -> HEN  count=30527    dominance=0.9836
+R 1+2+3     LOU  -> OUL  count=33259    dominance=0.8982
+H 1+A       EG   -> GE   count=66868    dominance=0.8519
+H 4+A+C     GHI  -> IGH  count=29510    dominance=0.9092
+H 1+A+D     EGT  -> GET  count=26164    dominance=0.9763
+H 4+B       HS   -> SH   count=50978    dominance=0.9574
+R 3+D       RU   -> UR   count=75528    dominance=0.7484
+H 4+A       GH   -> GH   count=46360    dominance=0.9962
+R 4+D       RY   -> RY   count=46492    dominance=0.9711
+R 2+C       DL   -> LD   count=50617    dominance=0.9103
+H 2+3+4     AHN  -> HAN  count=27387    dominance=0.8581
+R 2+3       LU   -> UL   count=55156    dominance=0.7998
+H 1+3+4+D   EHNT -> THEN count=14136    dominance=0.9336
+R 1+3+D     ORU  -> OUR  count=31520    dominance=0.7502
+R 4+B       MY   -> MY   count=40494    dominance=0.9304
+H 2+3+4+D   AHNT -> THAN count=12601    dominance=0.9569
+H 2+4+D     AHT  -> HAT  count=155872   dominance=0.5648
+H 4+B+C     HIS  -> HIS  count=37152    dominance=0.6866
+H 3+B       NS   -> NS   count=51499    dominance=0.7433
+H 2+C       AI   -> AI   count=51432    dominance=0.7407
+R 1+3+A     COU  -> COU  count=15538    dominance=0.8885
+R 1+2+3+A   CLOU -> COUL count=8677     dominance=0.9360
+H 3+A+B     GNS  -> NGS  count=10984    dominance=0.9696
+R C+D       DR   -> RD   count=35543    dominance=0.7277
+R 1+A+C+D   CDOR -> CORD count=6987     dominance=0.9424
+H 2+4+B+D   AHST -> HATS count=7264     dominance=0.8903
+R A+D       CR   -> CR   count=26772    dominance=0.7922
+R 1+B+C     DMO  -> MOD  count=15500    dominance=0.7245
+R 1+C+D     DOR  -> ORD  count=13082    dominance=0.7423
+H 2+3+4+A   AGHN -> HANG count=5162     dominance=0.9961
+H 1+2+3     AEN  -> EAN  count=15056    dominance=0.7018
+R 3+A+B     CMU  -> MUC  count=7626     dominance=0.9318
+H 1+2+A     AEG  -> AGE  count=11657    dominance=0.7365
+H 2+3+D     ANT  -> ANT  count=27130    dominance=0.6057
+H A+B       GS   -> GS   count=14094    dominance=0.9377
+R 4+C       DY   -> DY   count=14286    dominance=0.9245
+R 1+2+C     DLO  -> OLD  count=8412     dominance=0.8289
+H 2+3+A     AGN  -> ANG  count=11171    dominance=0.7254
+H 1+2+3+A   AEGN -> ANGE count=6389     dominance=0.7542
+R B+D       MR   -> RM   count=13208    dominance=0.9243
+H 1+4+C     EHI  -> HEI  count=8159     dominance=0.8057
+R 1+2+A     CLO  -> LCO  count=20985    dominance=0.6137
+L A+D       PX   -> XP   count=10965    dominance=0.9966
+H 2+C+D     AIT  -> ATI  count=24177    dominance=0.5952
+R 2+B       LM   -> LM   count=10908    dominance=0.9318
+H 1+A+B     EGS  -> GES  count=4989     dominance=0.8971
+R B+C       DM   -> DM   count=8975     dominance=0.9661
+H 1+2+B     AES  -> EAS  count=19603    dominance=0.5952
+H 1+3+D     ENT  -> ENT  count=39512    dominance=0.5630
+R 1+2+D     LOR  -> ROL  count=11266    dominance=0.6282
+H 2+3+B     ANS  -> ANS  count=10613    dominance=0.6227
+R 3+4       UY   -> UY   count=7663     dominance=0.8052
+R 1+A+D     COR  -> COR  count=11158    dominance=0.6009
+H 2+4+B     AHS  -> HAS  count=11127    dominance=0.5817
+R 3+C+D     DRU  -> DUR  count=4622     dominance=0.6430
+H 2+3+B+D   ANST -> STAN count=6575     dominance=0.5557
+R 1+4+D     ORY  -> RYO  count=5154     dominance=0.5734
+L A+B       VX   -> Q    count=0        dominance=0.0000 fallback
+L 4+B       JV   -> Z    count=0        dominance=0.0000 fallback
+
+Top bigrams:
+TH      568605  chord
+IN      421508  chord
+HE      409673  chord
+AN      313425  chord
+ER      311775  sequential
+RE      301082  sequential
+HA      283778  chord
+OU      280673  chord
+AT      275805  chord
+ON      252910  sequential
+IT      240936  sequential
+NG      232627  chord
+ME      213801  sequential
+TO      213636  sequential
+ST      202034  chord
+OR      200304  sequential
+VE      182422  sequential
+IS      182173  chord
+EN      175531  sequential
+ES      175506  sequential
+EA      169080  chord
+AL      165652  sequential
+ND      165344  sequential
+YO      162869  chord
+LL      157348  sequential

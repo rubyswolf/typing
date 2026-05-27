@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chord Typing Tester</title>
+  <style>
+    :root {
+      --ink: #17130f;
+      --muted: #6b6259;
+      --paper: #f4efe6;
+      --panel: #fffaf0;
+      --line: #d8cbb9;
+      --home: #f2c14e;
+      --right: #70a288;
+      --left: #d7827e;
+      --down: #1f7a8c;
+      --shadow: 0 14px 40px rgba(40, 31, 20, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        linear-gradient(120deg, rgba(242, 193, 78, 0.18), transparent 34%),
+        linear-gradient(240deg, rgba(112, 162, 136, 0.22), transparent 38%),
+        repeating-linear-gradient(90deg, rgba(23, 19, 15, 0.035) 0 1px, transparent 1px 24px),
+        var(--paper);
+      font-family: "Segoe UI", Tahoma, sans-serif;
+    }
+
+    body.dragging::after {
+      content: "Drop layout JSON";
+      position: fixed;
+      inset: 14px;
+      z-index: 20;
+      display: grid;
+      place-items: center;
+      border: 3px dashed var(--down);
+      border-radius: 12px;
+      background: rgba(255, 250, 240, 0.86);
+      color: var(--ink);
+      font-size: clamp(30px, 7vw, 72px);
+      font-weight: 900;
+      pointer-events: none;
+    }
+
+    main {
+      width: min(1240px, calc(100vw - 28px));
+      margin: 0 auto;
+      padding: 24px 0 36px;
+      display: grid;
+      gap: 18px;
+    }
+
+    header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 56px);
+      line-height: 0.94;
+      letter-spacing: 0;
+    }
+
+    .stats {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 240, 0.72);
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .surface,
+    .side {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 240, 0.86);
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+    }
+
+    .surface { padding: 16px; }
+    .side { padding: 14px; display: grid; gap: 14px; }
+
+    textarea {
+      width: 100%;
+      min-height: 220px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background: #fffdf7;
+      color: var(--ink);
+      font: 22px/1.45 Consolas, "Courier New", monospace;
+      outline: none;
+    }
+
+    textarea:focus { border-color: var(--down); box-shadow: 0 0 0 3px rgba(31, 122, 140, 0.16); }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    button,
+    .file-button {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff7e7;
+      color: var(--ink);
+      min-height: 38px;
+      padding: 0 12px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    button:hover,
+    .file-button:hover { border-color: var(--down); }
+
+    .file-button {
+      display: inline-grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .file-button input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .rooms {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .room {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 253, 247, 0.72);
+      padding: 10px;
+    }
+
+    .room.active { outline: 3px solid rgba(31, 122, 140, 0.2); }
+
+    .room h2,
+    .panel-title {
+      margin: 0 0 8px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .key-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(54px, 1fr));
+      gap: 8px;
+    }
+
+    .key {
+      min-height: 74px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffaf0;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      gap: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .room[data-room="H"] .key::before { background: var(--home); }
+    .room[data-room="R"] .key::before { background: var(--right); }
+    .room[data-room="L"] .key::before { background: var(--left); }
+
+    .key::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 6px;
+      opacity: 0.82;
+    }
+
+    .key.down {
+      border-color: var(--down);
+      background: #e9f6f7;
+      transform: translateY(1px);
+    }
+
+    .symbol { font-size: 22px; font-weight: 800; }
+    .letter { font-size: 26px; font-weight: 900; }
+    .binding { color: var(--muted); font: 13px Consolas, "Courier New", monospace; }
+
+    .thumbs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .thumb {
+      min-height: 58px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffaf0;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .thumb.down {
+      background: #e9f6f7;
+      border-color: var(--down);
+    }
+
+    .suggestions,
+    .bindings,
+    .trace { display: grid; gap: 8px; }
+
+    .bindings-panel {
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 253, 247, 0.72);
+      padding: 10px;
+    }
+
+    .bindings {
+      grid-template-columns: repeat(5, minmax(94px, 1fr));
+    }
+
+    .suggestion {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: #fffdf7;
+      border-radius: 8px;
+      padding: 9px 10px;
+      min-height: 54px;
+    }
+
+    .suggestion strong { font-size: 20px; }
+    .suggestion small { display: block; color: var(--muted); margin-top: 2px; }
+    .suggestion .count { color: var(--muted); font: 13px Consolas, "Courier New", monospace; }
+
+    .binding-row {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .binding-row input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      min-height: 34px;
+      padding: 0 8px;
+      background: #fffdf7;
+      color: var(--ink);
+      font: 15px Consolas, "Courier New", monospace;
+    }
+
+    .trace-box {
+      min-height: 88px;
+      max-height: 160px;
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf7;
+      padding: 8px;
+      font: 13px/1.45 Consolas, "Courier New", monospace;
+      color: var(--muted);
+      white-space: pre-wrap;
+    }
+
+    @media (max-width: 980px) {
+      .workspace { grid-template-columns: 1fr; }
+      header { align-items: start; flex-direction: column; }
+      .stats { justify-content: flex-start; }
+      .rooms { grid-template-columns: 1fr; }
+      .bindings { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Chord Typing Tester</h1>
+      <div class="stats">
+        <span class="pill" id="layoutName">No layout loaded</span>
+        <span class="pill">L+R chord = space</span>
+        <span class="pill">QWER = ABCD</span>
+        <span class="pill">IOP[ = 1234</span>
+      </div>
+    </header>
+
+    <section class="workspace">
+      <div class="surface">
+        <textarea id="output" spellcheck="false" autofocus tabindex="-1" aria-label="Typing output"></textarea>
+        <div class="toolbar">
+          <label class="file-button">Upload layout JSON<input id="layoutFile" type="file" accept="application/json,.json" tabindex="-1"></label>
+          <button id="clear" type="button" tabindex="-1">Clear</button>
+          <button id="backspace" type="button" tabindex="-1">Backspace</button>
+          <button id="resetBindings" type="button" tabindex="-1">Reset bindings</button>
+        </div>
+
+        <div class="thumbs">
+          <div class="thumb" id="thumb-L">L thumb: <span data-bind-label="L">c</span></div>
+          <div class="thumb" id="thumb-R">R thumb: <span data-bind-label="R">m</span></div>
+        </div>
+
+        <div class="rooms" id="rooms"></div>
+
+        <section class="bindings-panel">
+          <h2 class="panel-title">Bindings</h2>
+          <div class="bindings" id="bindings"></div>
+        </section>
+      </div>
+
+      <aside class="side">
+        <section>
+          <h2 class="panel-title">Ready Chords</h2>
+          <div class="suggestions" id="suggestions"></div>
+        </section>
+
+        <section class="trace">
+          <h2 class="panel-title">Stroke Trace</h2>
+          <div class="trace-box" id="trace"></div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const ORDER = ["A", "B", "C", "D", "1", "2", "3", "4"];
+    const ROOMS = ["L", "H", "R"];
+    const ROOM_LABEL = { H: "Home", R: "Right room", L: "Left room" };
+    const defaultBindings = { A: "q", B: "w", C: "e", D: "r", 1: "i", 2: "o", 3: "p", 4: "[", L: "c", R: "m" };
+
+    const output = document.getElementById("output");
+    const roomsEl = document.getElementById("rooms");
+    const suggestionsEl = document.getElementById("suggestions");
+    const bindingsEl = document.getElementById("bindings");
+    const traceEl = document.getElementById("trace");
+    const layoutNameEl = document.getElementById("layoutName");
+
+    let data = { name: "No layout loaded", layout: emptyLayout(), chords: [] };
+    let chords = [];
+    let chordBySignature = new Map();
+    let bindings = JSON.parse(localStorage.getItem("chordTesterBindings") || "null") || { ...defaultBindings };
+    let reverse = {};
+    let downPhysical = new Set();
+    let stroke = null;
+    let traceLines = [];
+
+    function emptyLayout() {
+      return {
+        H: Object.fromEntries(ORDER.map(key => [key, "."])),
+        R: Object.fromEntries(ORDER.map(key => [key, "."])),
+        L: Object.fromEntries(ORDER.map(key => [key, "."]))
+      };
+    }
+
+    function normalizeLayoutJson(raw) {
+      const layout = raw.layout;
+      if (!layout || !layout.H || !layout.R || !layout.L) throw new Error("Missing layout.H/R/L");
+      for (const room of ["H", "R", "L"]) {
+        for (const key of ORDER) {
+          if (typeof layout[room][key] !== "string") throw new Error(`Missing ${room}.${key}`);
+        }
+      }
+
+      const rawChords = raw.chords || raw.chord_map || [];
+      const normalizedChords = rawChords.map(entry => {
+        if (Array.isArray(entry)) {
+          return { room: entry[0], keys: entry[1], text: entry[2], count: entry[3] || 0 };
+        }
+        return {
+          room: entry.room,
+          keys: entry.keys,
+          text: entry.text || entry.output,
+          count: entry.count || 0
+        };
+      });
+
+      for (const chord of normalizedChords) {
+        if (!["H", "R", "L"].includes(chord.room)) throw new Error("Chord has invalid room");
+        if (!Array.isArray(chord.keys) || chord.keys.some(key => !ORDER.includes(String(key)))) throw new Error("Chord has invalid keys");
+        if (typeof chord.text !== "string" || chord.text.length === 0) throw new Error("Chord has invalid output");
+        chord.keys = chord.keys.map(String).sort();
+        chord.text = chord.text.toUpperCase();
+      }
+
+      return {
+        name: raw.name || raw.title || "Uploaded layout",
+        layout,
+        chords: normalizedChords.sort((a, b) => (b.count || 0) - (a.count || 0)),
+        bindings: raw.bindings
+      };
+    }
+
+    function applyLayout(nextData) {
+      data = nextData;
+      chords = data.chords;
+      chordBySignature = new Map();
+      for (const chord of chords) chordBySignature.set(signature(chord.room, chord.keys), chord);
+      if (data.bindings) {
+        bindings = { ...defaultBindings, ...data.bindings };
+        localStorage.setItem("chordTesterBindings", JSON.stringify(bindings));
+      }
+      layoutNameEl.textContent = data.name;
+      renderRooms();
+      rebuildReverse();
+      updateVisuals();
+      addTrace(`Loaded ${data.name}: ${chords.length} chords`);
+    }
+
+    function signature(room, keys) {
+      return `${room}:${[...keys].sort().join("+")}`;
+    }
+
+    function rebuildReverse() {
+      reverse = {};
+      for (const [logical, physical] of Object.entries(bindings)) {
+        if (physical) reverse[String(physical).toLowerCase()] = logical;
+      }
+      for (const el of document.querySelectorAll("[data-bind-label]")) {
+        el.textContent = bindings[el.dataset.bindLabel] || "";
+      }
+      for (const input of bindingsEl.querySelectorAll("input")) input.value = bindings[input.dataset.logical] || "";
+    }
+
+    function renderRooms() {
+      roomsEl.innerHTML = "";
+      for (const room of ROOMS) {
+        const card = document.createElement("section");
+        card.className = "room";
+        card.dataset.room = room;
+        card.innerHTML = `<h2>${ROOM_LABEL[room]}</h2><div class="key-grid"></div>`;
+        const grid = card.querySelector(".key-grid");
+        for (const key of ORDER) {
+          const tile = document.createElement("div");
+          tile.className = "key";
+          tile.dataset.room = room;
+          tile.dataset.logical = key;
+          tile.innerHTML = `<div class="symbol">${key}</div><div class="letter">${data.layout[room][key]}</div><div class="binding">${bindings[key] || ""}</div>`;
+          grid.appendChild(tile);
+        }
+        roomsEl.appendChild(card);
+      }
+    }
+
+    function renderBindings() {
+      bindingsEl.innerHTML = "";
+      for (const logical of [...ORDER, "L", "R"]) {
+        const row = document.createElement("label");
+        row.className = "binding-row";
+        row.innerHTML = `<span>${logical}</span><input data-logical="${logical}" value="${bindings[logical] || ""}" maxlength="12" tabindex="-1">`;
+        bindingsEl.appendChild(row);
+      }
+      bindingsEl.addEventListener("input", event => {
+        if (!(event.target instanceof HTMLInputElement)) return;
+        bindings[event.target.dataset.logical] = event.target.value.trim().toLowerCase();
+        localStorage.setItem("chordTesterBindings", JSON.stringify(bindings));
+        rebuildReverse();
+        renderRooms();
+        updateVisuals();
+      });
+    }
+
+    function beginStroke() {
+      if (!stroke) {
+        stroke = { keys: new Set(), order: [], thumbSeen: new Set() };
+        if (downPhysical.has(bindings.L)) stroke.thumbSeen.add("L");
+        if (downPhysical.has(bindings.R)) stroke.thumbSeen.add("R");
+        for (const physical of downPhysical) {
+          const logical = reverse[physical];
+          if (!logical || logical === "L" || logical === "R" || stroke.keys.has(logical)) continue;
+          stroke.keys.add(logical);
+          stroke.order.push(logical);
+        }
+      }
+    }
+
+    function activeRoom() {
+      const leftHeld = Boolean(stroke && stroke.thumbSeen.has("L")) || downPhysical.has(bindings.L);
+      const rightHeld = Boolean(stroke && stroke.thumbSeen.has("R")) || downPhysical.has(bindings.R);
+      if (leftHeld && !rightHeld) return "L";
+      if (rightHeld && !leftHeld) return "R";
+      return "H";
+    }
+
+    function resolveStroke() {
+      if (!stroke) return;
+      const room = activeRoom();
+      const keys = [...stroke.keys].sort();
+      let text = "";
+      let source = "";
+
+      if (stroke.thumbSeen.has("L") && stroke.thumbSeen.has("R") && keys.length === 0) {
+        text = " ";
+        source = "L+R -> space";
+      } else if (keys.length) {
+        const chord = chordBySignature.get(signature(room, keys));
+        if (chord) {
+          text = chord.text.toLowerCase();
+          source = `${room} ${keys.join("+")} -> ${chord.text}`;
+        } else {
+          text = stroke.order.map(key => data.layout[room][key]).join("").toLowerCase();
+          source = `${room} ${stroke.order.join(" ")} -> ${text.toUpperCase()}`;
+        }
+      }
+
+      if (text) insertText(text);
+      if (source) addTrace(source);
+      stroke = null;
+      updateVisuals();
+    }
+
+    function resolveThumbSpaceIfReady(logical) {
+      if (!stroke || logical !== "L" && logical !== "R") return false;
+      if (!stroke.thumbSeen.has("L") || !stroke.thumbSeen.has("R") || stroke.keys.size !== 0) return false;
+      insertText(" ");
+      addTrace("L+R -> space");
+      stroke = null;
+      updateVisuals();
+      return true;
+    }
+
+    function insertText(text) {
+      const start = output.selectionStart;
+      const end = output.selectionEnd;
+      output.value = output.value.slice(0, start) + text + output.value.slice(end);
+      output.selectionStart = output.selectionEnd = start + text.length;
+      output.focus();
+    }
+
+    function addTrace(line) {
+      traceLines.unshift(line);
+      traceLines = traceLines.slice(0, 18);
+      traceEl.textContent = traceLines.join("\n");
+    }
+
+    function suggestions() {
+      const room = activeRoom();
+      if (stroke && stroke.thumbSeen.has("L") && stroke.thumbSeen.has("R") && stroke.keys.size === 0) {
+        return [{ room: "H", keys: ["L", "R"], text: "SPACE", count: 0 }];
+      }
+      if (!stroke || stroke.keys.size === 0) {
+        return chords.filter(chord => chord.room === room).slice(0, 8);
+      }
+      const held = [...stroke.keys];
+      return chords
+        .filter(chord => chord.room === room && held.every(key => chord.keys.includes(key)))
+        .slice(0, 8);
+    }
+
+    function updateVisuals() {
+      const room = activeRoom();
+      for (const card of document.querySelectorAll(".room")) card.classList.toggle("active", card.dataset.room === room);
+      for (const tile of document.querySelectorAll(".key")) {
+        tile.classList.toggle("down", Boolean(stroke && tile.dataset.room === room && stroke.keys.has(tile.dataset.logical)));
+        tile.querySelector(".binding").textContent = bindings[tile.dataset.logical] || "";
+      }
+      document.getElementById("thumb-L").classList.toggle("down", downPhysical.has(bindings.L));
+      document.getElementById("thumb-R").classList.toggle("down", downPhysical.has(bindings.R));
+      renderSuggestions();
+    }
+
+    function renderSuggestions() {
+      const items = suggestions();
+      suggestionsEl.innerHTML = "";
+      if (!items.length) {
+        suggestionsEl.innerHTML = `<div class="suggestion"><div><strong>No chords</strong><small>Upload a layout or change room/held keys</small></div></div>`;
+        return;
+      }
+      for (const chord of items) {
+        const row = document.createElement("div");
+        row.className = "suggestion";
+        row.innerHTML = `<div><strong>${chord.text}</strong><small>${ROOM_LABEL[chord.room] || "Thumbs"} ${chord.keys.join("+")}</small></div><span class="count">${Number(chord.count || 0).toLocaleString()}</span>`;
+        suggestionsEl.appendChild(row);
+      }
+    }
+
+    function preventTabFocus(event) {
+      if (event.key === "Tab") {
+        event.preventDefault();
+      }
+    }
+
+    function handleKeyDown(event) {
+      preventTabFocus(event);
+      if (event.ctrlKey || event.altKey || event.metaKey) return;
+      const physical = event.key.toLowerCase();
+      const logical = reverse[physical];
+      if (!logical) return;
+      event.preventDefault();
+      if (event.repeat) return;
+      output.focus();
+      downPhysical.add(physical);
+      beginStroke();
+      if (logical === "L" || logical === "R") {
+        stroke.thumbSeen.add(logical);
+      } else if (!stroke.keys.has(logical)) {
+        stroke.keys.add(logical);
+        stroke.order.push(logical);
+      }
+      updateVisuals();
+    }
+
+    function handleKeyUp(event) {
+      const physical = event.key.toLowerCase();
+      const logical = reverse[physical];
+      if (!logical) return;
+      event.preventDefault();
+      downPhysical.delete(physical);
+      if (resolveThumbSpaceIfReady(logical)) return;
+      if (stroke && (logical === "L" || logical === "R") && stroke.keys.size > 0) {
+        resolveStroke();
+        return;
+      }
+      if (stroke && logical !== "L" && logical !== "R" && !stroke.order.some(key => downPhysical.has(bindings[key]))) {
+        resolveStroke();
+        return;
+      }
+      if (downPhysical.size === 0) {
+        if (stroke) resolveStroke();
+        else updateVisuals();
+      }
+      else updateVisuals();
+    }
+
+    async function loadLayoutFile(file) {
+      if (!file) return;
+      try {
+        const parsed = JSON.parse(await file.text());
+        applyLayout(normalizeLayoutJson(parsed));
+      } catch (error) {
+        addTrace(`Layout load failed: ${error.message}`);
+      }
+    }
+
+    document.getElementById("layoutFile").addEventListener("change", async event => {
+      await loadLayoutFile(event.target.files[0]);
+      event.target.value = "";
+    });
+
+    window.addEventListener("dragenter", event => {
+      event.preventDefault();
+      document.body.classList.add("dragging");
+    });
+
+    window.addEventListener("dragover", event => {
+      event.preventDefault();
+      event.dataTransfer.dropEffect = "copy";
+      document.body.classList.add("dragging");
+    });
+
+    window.addEventListener("dragleave", event => {
+      if (event.target === document || event.clientX <= 0 || event.clientY <= 0 || event.clientX >= window.innerWidth || event.clientY >= window.innerHeight) {
+        document.body.classList.remove("dragging");
+      }
+    });
+
+    window.addEventListener("drop", async event => {
+      event.preventDefault();
+      document.body.classList.remove("dragging");
+      await loadLayoutFile(event.dataTransfer.files[0]);
+    });
+
+    document.getElementById("clear").addEventListener("click", () => {
+      output.value = "";
+      output.focus();
+    });
+
+    document.getElementById("backspace").addEventListener("click", () => {
+      const start = output.selectionStart;
+      const end = output.selectionEnd;
+      if (start !== end) {
+        output.value = output.value.slice(0, start) + output.value.slice(end);
+        output.selectionStart = output.selectionEnd = start;
+      } else if (start > 0) {
+        output.value = output.value.slice(0, start - 1) + output.value.slice(start);
+        output.selectionStart = output.selectionEnd = start - 1;
+      }
+      output.focus();
+    });
+
+    document.getElementById("resetBindings").addEventListener("click", () => {
+      bindings = { ...defaultBindings };
+      localStorage.setItem("chordTesterBindings", JSON.stringify(bindings));
+      rebuildReverse();
+      renderRooms();
+      updateVisuals();
+      output.focus();
+    });
+
+    window.addEventListener("keydown", preventTabFocus, true);
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+    window.addEventListener("blur", () => {
+      downPhysical.clear();
+      stroke = null;
+      updateVisuals();
+    });
+
+    renderBindings();
+    renderRooms();
+    rebuildReverse();
+    updateVisuals();
+  </script>
+</body>
+</html>

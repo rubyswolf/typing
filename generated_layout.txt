@@ -1,0 +1,128 @@
+Corpus: allDurf.txt
+Letters counted: 23,778,977
+Score: 1.026387
+Dropped letters: Q, Z
+
+Layout:
+Home: 1:E  D:T  2:A  C:I  3:N  B:H  4:G  A:W
+Right room: 1:O  D:S  2:R  C:L  3:D  B:U  4:Y  A:C
+Left room: 1:M  D:P  2:F  C:B  3:K  B:V  4:J  A:X
+
+Chord map:
+H 1+B+D     EHT  -> THE  count=289191   dominance=0.9470
+H B+D       HT   -> TH   count=568605   dominance=0.9461
+H 1+B       EH   -> HE   count=409673   dominance=0.9774
+H 3+C       IN   -> IN   count=421508   dominance=0.8747
+H 3+4+C     GIN  -> ING  count=199669   dominance=0.8901
+R 1+4+B     OUY  -> YOU  count=151164   dominance=0.9993
+R 1+B       OU   -> OU   count=280673   dominance=0.9962
+H 2+3       AN   -> AN   count=313425   dominance=0.8825
+H 2+B       AH   -> HA   count=283778   dominance=0.9075
+H 3+4       GN   -> NG   count=232627   dominance=0.9711
+H 2+D       AT   -> AT   count=275805   dominance=0.7984
+H 3+B+C+D   HINT -> THIN count=58761    dominance=0.9874
+H 1+2       AE   -> EA   count=169080   dominance=0.9941
+R 1+4       OY   -> YO   count=162869   dominance=0.9663
+H B+C       HI   -> HI   count=149068   dominance=0.9965
+H 2+A+B+D   AHTW -> WHAT count=48818    dominance=0.9929
+H 3+B+C     HIN  -> HIN  count=64689    dominance=0.9748
+H 3+D       NT   -> NT   count=126715   dominance=0.9887
+H A+B       HW   -> WH   count=113630   dominance=0.9960
+H 3+4+B+C   GHIN -> HING count=43866    dominance=0.8718
+R 1+A       CO   -> CO   count=118303   dominance=0.8820
+H 2+A+B     AHW  -> WHA  count=49532    dominance=0.9831
+R 1+3+B+C   DLOU -> OULD count=32653    dominance=0.9745
+H A+B+C+D   HITW -> WITH count=31905    dominance=0.9669
+H B+C+D     HIT  -> THI  count=92849    dominance=0.6818
+R 4+C       LY   -> LY   count=87571    dominance=0.9811
+H 2+A       AW   -> WA   count=93794    dominance=0.8866
+R B+D       SU   -> US   count=123450   dominance=0.7646
+H 4+B+C+D   GHIT -> IGHT count=26398    dominance=0.9677
+R 1+D       OS   -> SO   count=118823   dominance=0.7474
+R 1+2+4+B   ORUY -> YOUR count=22288    dominance=0.9987
+H A+C+D     ITW  -> WIT  count=34991    dominance=0.9307
+H 3+4+C+D   GINT -> TING count=21338    dominance=0.9769
+H A+C       IW   -> WI   count=62304    dominance=0.9967
+H 4+B+D     GHT  -> GHT  count=31205    dominance=0.9849
+R 3+B+C     DLU  -> ULD  count=32690    dominance=0.9386
+H 1+3+B     EHN  -> HEN  count=30527    dominance=0.9836
+H 1+A       EW   -> WE   count=81475    dominance=0.8012
+R 1+B+C     LOU  -> OUL  count=33259    dominance=0.8982
+R 2+D       RS   -> RS   count=55050    dominance=0.9837
+H 1+4       EG   -> GE   count=66868    dominance=0.8519
+H 4+B+C     GHI  -> IGH  count=29510    dominance=0.9092
+H 1+4+D     EGT  -> GET  count=26164    dominance=0.9763
+R 2+B       RU   -> UR   count=75528    dominance=0.7484
+H 4+B       GH   -> GH   count=46360    dominance=0.9962
+H 1+3+A+B   EHNW -> WHEN count=15026    dominance=0.9986
+R 2+4       RY   -> RY   count=46492    dominance=0.9711
+R 3+C       DL   -> LD   count=50617    dominance=0.9103
+H 2+3+B     AHN  -> HAN  count=27387    dominance=0.8581
+H 2+3+A+D   ANTW -> WANT count=14312    dominance=0.9967
+R B+C       LU   -> UL   count=55156    dominance=0.7998
+H 1+A+B     EHW  -> WHE  count=24649    dominance=0.8492
+H 1+3+B+D   EHNT -> THEN count=14136    dominance=0.9336
+R 1+2+B     ORU  -> OUR  count=31520    dominance=0.7502
+H 2+3+B+D   AHNT -> THAN count=12601    dominance=0.9569
+H 2+B+D     AHT  -> HAT  count=155872   dominance=0.5648
+H 2+3+A     ANW  -> WAN  count=17449    dominance=0.9329
+H 2+C       AI   -> AI   count=51432    dominance=0.7407
+R 1+A+B     COU  -> COU  count=15538    dominance=0.8885
+R 1+A+B+C   CLOU -> COUL count=8677     dominance=0.9360
+R 3+D       DS   -> DS   count=24443    dominance=0.9478
+H 2+A+C+D   AITW -> WAIT count=7439     dominance=0.9935
+H A+B+C     HIW  -> WHI  count=11038    dominance=0.9946
+R A+D       CS   -> SC   count=25293    dominance=0.8566
+R 2+3       DR   -> RD   count=35543    dominance=0.7277
+R 1+2+3+A   CDOR -> CORD count=6987     dominance=0.9424
+L 1+D       MP   -> MP   count=21419    dominance=0.9131
+R 2+A       CR   -> CR   count=26772    dominance=0.7922
+R 2+A+D     CRS  -> SCR  count=8131     dominance=0.9881
+R 1+2+3     DOR  -> ORD  count=13082    dominance=0.7423
+H 2+3+4+B   AGHN -> HANG count=5162     dominance=0.9961
+H 1+2+3     AEN  -> EAN  count=15056    dominance=0.7018
+H 2+A+D     ATW  -> WAT  count=7967     dominance=0.9246
+R 4+D       SY   -> YS   count=20662    dominance=0.7825
+R 1+2+B+D   ORSU -> OURS count=6387     dominance=0.8090
+H 3+A       NW   -> WN   count=14379    dominance=0.9661
+H 2+A+C     AIW  -> WAI  count=7642     dominance=0.9214
+H 1+2+4     AEG  -> AGE  count=11657    dominance=0.7365
+H 2+3+D     ANT  -> ANT  count=27130    dominance=0.6057
+R 3+4       DY   -> DY   count=14286    dominance=0.9245
+R 1+3+C     DLO  -> OLD  count=8412     dominance=0.8289
+H 2+3+4     AGN  -> ANG  count=11171    dominance=0.7254
+L 1+C       BM   -> MB   count=12846    dominance=0.9734
+R 1+2+A+D   CORS -> SCOR count=5869     dominance=0.7910
+H 1+2+3+4   AEGN -> ANGE count=6389     dominance=0.7542
+H 3+A+C     INW  -> WIN  count=6292     dominance=0.9562
+H 1+B+C     EHI  -> HEI  count=8159     dominance=0.8057
+R 1+A+C     CLO  -> LCO  count=20985    dominance=0.6137
+L A+D       PX   -> XP   count=10965    dominance=0.9966
+H 2+C+D     AIT  -> ATI  count=24177    dominance=0.5952
+
+Top bigrams:
+TH      568605  chord
+IN      421508  chord
+HE      409673  chord
+AN      313425  chord
+ER      311775  ordered
+RE      301082  ordered
+HA      283778  chord
+OU      280673  chord
+AT      275805  chord
+ON      252910  ordered
+IT      240936  ordered
+NG      232627  chord
+ME      213801  ordered
+TO      213636  ordered
+ST      202034  ordered
+OR      200304  ordered
+VE      182422  ordered
+IS      182173  ordered
+EN      175531  ordered
+ES      175506  ordered
+EA      169080  chord
+AL      165652  ordered
+ND      165344  ordered
+YO      162869  chord
+LL      157348  ordered
