@@ -18,6 +18,7 @@ ORDER = ["A", "B", "C", "D", "1", "2", "3", "4"]
 THUMBS = {"L", "R"}
 ROOMS = {"H", "L", "R"}
 SHIFT_KEYS = {"shift", "left shift", "right shift"}
+COACH_PAIR_WINDOW = 3.0
 INPUT_KEYBOARD = 1
 KEYEVENTF_KEYUP = 0x0002
 KEYEVENTF_UNICODE = 0x0004
@@ -128,6 +129,7 @@ class ChordTranslator:
         self.pending_tip: tuple[str, str, str] | None = None
         self.next_press_id = 1
         self.key_press_ids: dict[str, int] = {}
+        self.thumb_press_ids: dict[str, int] = {}
         self.stop_event = threading.Event()
         self.output_queue: queue.Queue[str] = queue.Queue()
         self.overlay_queue: queue.Queue[tuple[str, str, str, str]] = queue.Queue()
@@ -296,6 +298,9 @@ class ChordTranslator:
                 if logical in ORDER:
                     self.key_press_ids[logical] = self.next_press_id
                     self.next_press_id += 1
+                elif logical in THUMBS:
+                    self.thumb_press_ids[logical] = self.next_press_id
+                    self.next_press_id += 1
                 if self.toggle_physical.issubset(self.down):
                     self.toggle()
                     return
@@ -388,6 +393,7 @@ class ChordTranslator:
             "key_ids": tuple(self.key_press_ids.get(key, 0) for key in keys),
             "order": order,
             "thumbs": thumbs,
+            "thumb_ids": tuple(self.thumb_press_ids.get(thumb, 0) for thumb in thumbs),
             "used_chord": used_chord,
             "time": time.monotonic(),
         }
@@ -426,7 +432,7 @@ class ChordTranslator:
         if len(self.recent_strokes) < 2:
             return False
         previous, current = self.recent_strokes[-2], self.recent_strokes[-1]
-        if time.monotonic() - float(previous["time"]) > 1.5:
+        if time.monotonic() - float(previous["time"]) > COACH_PAIR_WINDOW:
             return False
         if previous["used_chord"] or current["used_chord"]:
             return False
@@ -435,6 +441,12 @@ class ChordTranslator:
         if len(previous["keys"]) != 1 or len(current["keys"]) != 1:  # type: ignore[arg-type]
             return False
         if not previous["thumbs"] or not current["thumbs"]:
+            return False
+        if previous["thumbs"] != current["thumbs"]:
+            return False
+        previous_thumb_id = previous.get("thumb_ids", (0,))[0]  # type: ignore[index]
+        current_thumb_id = current.get("thumb_ids", (0,))[0]  # type: ignore[index]
+        if previous_thumb_id and previous_thumb_id == current_thumb_id:
             return False
         room = str(current["room"])
         combined = f"{previous['output']}{current['output']}".upper()
@@ -449,7 +461,7 @@ class ChordTranslator:
         if len(self.recent_strokes) < 2:
             return False
         previous, current = self.recent_strokes[-2], self.recent_strokes[-1]
-        if time.monotonic() - float(previous["time"]) > 1.5:
+        if time.monotonic() - float(previous["time"]) > COACH_PAIR_WINDOW:
             return False
         if previous["used_chord"] or current["used_chord"]:
             return False
