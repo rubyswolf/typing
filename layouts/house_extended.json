@@ -1338,11 +1338,19 @@
         "C",
         "D"
       ],
-      "output": "PI",
-      "count": 28536,
-      "dominance": 0.7252,
+      "output": "BL",
+      "count": 34585,
+      "total_same_keys": 35941,
+      "dominance": 0.9623,
       "house_extended_cross_room": true,
-      "source": "cross-room bigram candidate"
+      "source": "cross-room 2-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "PI",
+        "count": 28536,
+        "dominance": 0.7252,
+        "source": "cross-room bigram candidate"
+      }
     },
     {
       "room": "L",
@@ -1362,11 +1370,19 @@
         "2",
         "D"
       ],
-      "output": "FT",
-      "count": 12111,
-      "dominance": 0.7678,
+      "output": "PR",
+      "count": 43279,
+      "total_same_keys": 48729,
+      "dominance": 0.8882,
       "house_extended_cross_room": true,
-      "source": "cross-room bigram candidate"
+      "source": "cross-room 2-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "FT",
+        "count": 12111,
+        "dominance": 0.7678,
+        "source": "cross-room bigram candidate"
+      }
     },
     {
       "room": "R",
@@ -1537,11 +1553,19 @@
         "C",
         "D"
       ],
-      "output": "TION",
-      "count": 34367,
-      "dominance": 0.6243,
+      "output": "LIKE",
+      "count": 43828,
+      "total_same_keys": 45173,
+      "dominance": 0.9702,
       "house_extended_cross_room": true,
-      "source": "cross-room 4-gram candidate"
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "TION",
+        "count": 34367,
+        "dominance": 0.6243,
+        "source": "cross-room 4-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -1766,11 +1790,19 @@
         "2",
         "B"
       ],
-      "output": "AME",
-      "count": 35710,
-      "dominance": 0.5625,
+      "output": "VER",
+      "count": 60609,
+      "total_same_keys": 90611,
+      "dominance": 0.6689,
       "house_extended_cross_room": true,
-      "source": "cross-room 3-gram candidate"
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "AME",
+        "count": 35710,
+        "dominance": 0.5625,
+        "source": "cross-room 3-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -1846,11 +1878,19 @@
         "3",
         "4"
       ],
-      "output": "CAU",
-      "count": 16044,
-      "dominance": 0.9205,
+      "output": "CHA",
+      "count": 20706,
+      "total_same_keys": 27382,
+      "dominance": 0.7562,
       "house_extended_cross_room": true,
-      "source": "cross-room 3-gram candidate"
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "CAU",
+        "count": 16044,
+        "dominance": 0.9205,
+        "source": "cross-room 3-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -1925,103 +1965,6 @@
       "room": "H",
       "keys": [
         "1",
-        "2",
-        "4",
-        "C",
-        "D"
-      ],
-      "output": "ABOUT",
-      "count": 20152,
-      "dominance": 0.9951,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "C",
-        "D"
-      ],
-      "output": "ATION",
-      "count": 15564,
-      "dominance": 0.8202,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "B"
-      ],
-      "output": "CAUSE",
-      "count": 15493,
-      "dominance": 0.5308,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "C"
-      ],
-      "output": "BECAU",
-      "count": 12745,
-      "dominance": 0.9799,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "B",
-        "C"
-      ],
-      "output": "BECAUS",
-      "count": 12718,
-      "dominance": 0.977,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "4",
-        "B",
-        "C",
-        "D"
-      ],
-      "output": "METHI",
-      "count": 10717,
-      "dominance": 0.9936,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
         "3",
         "4",
         "C",
@@ -2033,23 +1976,6 @@
       "house_extended_cross_room": false,
       "added_high_order_ngram": true,
       "source": "additive 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "B",
-        "C",
-        "D"
-      ],
-      "output": "METHIN",
-      "count": 10642,
-      "dominance": 0.9963,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate"
     },
     {
       "room": "H",
@@ -2069,40 +1995,6 @@
       "source": "additive 6-gram candidate"
     },
     {
-      "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "A",
-        "B",
-        "C",
-        "D"
-      ],
-      "output": "METHING",
-      "count": 10548,
-      "dominance": 0.9906,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 7-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "2",
-        "4",
-        "A",
-        "C",
-        "D"
-      ],
-      "output": "RIGHT",
-      "count": 9752,
-      "dominance": 0.9877,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
       "room": "R",
       "keys": [
         "1",
@@ -2119,22 +2011,6 @@
       "source": "additive 5-gram candidate"
     },
     {
-      "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "B",
-        "C",
-        "D"
-      ],
-      "output": "TIONS",
-      "count": 8410,
-      "dominance": 0.5972,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
       "room": "R",
       "keys": [
         "1",
@@ -2143,12 +2019,19 @@
         "C",
         "D"
       ],
-      "output": "THEIR",
-      "count": 7587,
-      "dominance": 0.688,
+      "output": "ABOUT",
+      "count": 20152,
+      "total_same_keys": 20252,
+      "dominance": 0.9951,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "THEIR",
+        "count": 7587,
+        "dominance": 0.688,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "H",
@@ -2184,7 +2067,30 @@
       "source": "additive 6-gram candidate"
     },
     {
-      "room": "H",
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "C",
+        "D"
+      ],
+      "output": "ATION",
+      "count": 15564,
+      "total_same_keys": 18977,
+      "dominance": 0.8202,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "INTER",
+        "count": 5917,
+        "dominance": 0.5211,
+        "source": "additive cross-house 5-gram candidate"
+      }
+    },
+    {
+      "room": "R",
       "keys": [
         "1",
         "2",
@@ -2194,45 +2100,20 @@
       ],
       "output": "MORNI",
       "count": 7269,
+      "total_same_keys": 7928,
       "dominance": 0.9169,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "B",
-        "C"
-      ],
-      "output": "DISCO",
-      "count": 6051,
-      "dominance": 0.997,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "ISCOR",
+        "count": 5642,
+        "dominance": 0.9623,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "C",
-        "D"
-      ],
-      "output": "INTER",
-      "count": 5917,
-      "dominance": 0.5211,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
       "keys": [
         "1",
         "2",
@@ -2242,46 +2123,20 @@
       ],
       "output": "UNDER",
       "count": 5759,
+      "total_same_keys": 6891,
       "dominance": 0.8357,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "ROUND",
+        "count": 5026,
+        "dominance": 0.6368,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "B",
-        "C"
-      ],
-      "output": "ISCOR",
-      "count": 5642,
-      "dominance": 0.9623,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "B",
-        "C"
-      ],
-      "output": "DISCOR",
-      "count": 5640,
-      "dominance": 0.4977,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate"
-    },
-    {
-      "room": "H",
       "keys": [
         "1",
         "2",
@@ -2291,123 +2146,17 @@
       ],
       "output": "SCORD",
       "count": 5637,
+      "total_same_keys": 5798,
       "dominance": 0.9722,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "C",
-        "D"
-      ],
-      "output": "ANYTH",
-      "count": 5123,
-      "dominance": 0.9957,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "A"
-      ],
-      "output": "ROUND",
-      "count": 5026,
-      "dominance": 0.6368,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "D"
-      ],
-      "output": "WATCH",
-      "count": 5024,
-      "dominance": 0.9849,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "A",
-        "B",
-        "D"
-      ],
-      "output": "STAND",
-      "count": 4789,
-      "dominance": 0.9405,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "B",
-        "C",
-        "D"
-      ],
-      "output": "ATIONS",
-      "count": 4619,
-      "dominance": 0.7389,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "4",
-        "A",
-        "B",
-        "C",
-        "D"
-      ],
-      "output": "MIGHT",
-      "count": 4479,
-      "dominance": 0.9672,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "B"
-      ],
-      "output": "ANDOM",
-      "count": 4464,
-      "dominance": 0.8789,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "ANDOM",
+        "count": 4464,
+        "dominance": 0.8789,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -2442,39 +2191,6 @@
       "source": "additive cross-house 5-gram candidate"
     },
     {
-      "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "A",
-        "D"
-      ],
-      "output": "OULDN",
-      "count": 3870,
-      "dominance": 0.989,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "A",
-        "B"
-      ],
-      "output": "UNDERS",
-      "count": 3870,
-      "dominance": 0.9556,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate"
-    },
-    {
       "room": "R",
       "keys": [
         "1",
@@ -2483,12 +2199,19 @@
         "C",
         "D"
       ],
-      "output": "SPECI",
-      "count": 3854,
-      "dominance": 0.9609,
+      "output": "TIONS",
+      "count": 8410,
+      "total_same_keys": 14082,
+      "dominance": 0.5972,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "SPECI",
+        "count": 3854,
+        "dominance": 0.9609,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "H",
@@ -2505,89 +2228,6 @@
       "house_extended_cross_room": false,
       "added_high_order_ngram": true,
       "source": "additive 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "A",
-        "B",
-        "D"
-      ],
-      "output": "DERST",
-      "count": 3819,
-      "dominance": 0.6903,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "A",
-        "B",
-        "C"
-      ],
-      "output": "MAGIN",
-      "count": 3816,
-      "dominance": 0.6137,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "B",
-        "D"
-      ],
-      "output": "NDERST",
-      "count": 3815,
-      "dominance": 0.9858,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "A",
-        "B",
-        "D"
-      ],
-      "output": "UNDERST",
-      "count": 3811,
-      "dominance": 0.9922,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 7-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "C"
-      ],
-      "output": "RIEND",
-      "count": 3679,
-      "dominance": 0.615,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
     },
     {
       "room": "L",
@@ -2614,12 +2254,19 @@
         "4",
         "D"
       ],
-      "output": "ANOTH",
-      "count": 3608,
-      "dominance": 0.9058,
+      "output": "WATCH",
+      "count": 5024,
+      "total_same_keys": 5101,
+      "dominance": 0.9849,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "ANOTH",
+        "count": 3608,
+        "dominance": 0.9058,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -2630,12 +2277,19 @@
         "C",
         "D"
       ],
-      "output": "CTIVE",
-      "count": 3607,
-      "dominance": 0.6953,
+      "output": "SPECI",
+      "count": 3854,
+      "total_same_keys": 4011,
+      "dominance": 0.9609,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "CTIVE",
+        "count": 3607,
+        "dominance": 0.6953,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -2663,12 +2317,19 @@
         "B",
         "C"
       ],
-      "output": "MAGINE",
-      "count": 3549,
-      "dominance": 0.7883,
+      "output": "DISCOR",
+      "count": 5640,
+      "total_same_keys": 11332,
+      "dominance": 0.4977,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate"
+      "source": "additive cross-house 6-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "MAGINE",
+        "count": 3549,
+        "dominance": 0.7883,
+        "source": "additive cross-house 6-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -2682,22 +2343,6 @@
       "output": "CATIO",
       "count": 3487,
       "dominance": 0.6029,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "B",
-        "C",
-        "D"
-      ],
-      "output": "LWAYS",
-      "count": 3482,
-      "dominance": 0.9977,
       "house_extended_cross_room": true,
       "added_high_order_ngram": true,
       "source": "additive cross-house 5-gram candidate"
@@ -2720,22 +2365,6 @@
       "source": "additive cross-house 6-gram candidate"
     },
     {
-      "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "A",
-        "B"
-      ],
-      "output": "SOUND",
-      "count": 3382,
-      "dominance": 0.5838,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
       "room": "R",
       "keys": [
         "1",
@@ -2744,12 +2373,19 @@
         "C",
         "D"
       ],
-      "output": "UESTI",
-      "count": 3356,
-      "dominance": 0.9649,
+      "output": "METHI",
+      "count": 10717,
+      "total_same_keys": 10786,
+      "dominance": 0.9936,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "UESTI",
+        "count": 3356,
+        "dominance": 0.9649,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "H",
@@ -2784,22 +2420,6 @@
       "source": "additive cross-house 5-gram candidate"
     },
     {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "A",
-        "C",
-        "D"
-      ],
-      "output": "TODAY",
-      "count": 3101,
-      "dominance": 0.9904,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
       "room": "R",
       "keys": [
         "1",
@@ -2808,61 +2428,19 @@
         "C",
         "D"
       ],
-      "output": "VERYT",
-      "count": 3100,
-      "dominance": 0.9933,
+      "output": "LWAYS",
+      "count": 3482,
+      "total_same_keys": 3490,
+      "dominance": 0.9977,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "B",
-        "C"
-      ],
-      "output": "HAVIN",
-      "count": 3007,
-      "dominance": 0.998,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "A",
-        "B",
-        "C"
-      ],
-      "output": "HAVING",
-      "count": 2968,
-      "dominance": 0.9993,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "B",
-        "C",
-        "D"
-      ],
-      "output": "SICAL",
-      "count": 2957,
-      "dominance": 0.878,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "VERYT",
+        "count": 3100,
+        "dominance": 0.9933,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -2873,93 +2451,19 @@
         "C",
         "D"
       ],
-      "output": "ERYTH",
-      "count": 2839,
-      "dominance": 0.9224,
+      "output": "ABOUT",
+      "count": 20152,
+      "dominance": 0.9951,
       "house_extended_cross_room": true,
       "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "B",
-        "C",
-        "D"
-      ],
-      "output": "VERYTH",
-      "count": 2837,
-      "dominance": 0.9947,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "A",
-        "B",
-        "C",
-        "D"
-      ],
-      "output": "EXIST",
-      "count": 2805,
-      "dominance": 0.8147,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "B",
-        "C"
-      ],
-      "output": "YOURS",
-      "count": 2742,
-      "dominance": 0.9967,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "D"
-      ],
-      "output": "ANTED",
-      "count": 2576,
-      "dominance": 0.7701,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "B",
-        "D"
-      ],
-      "output": "URSEL",
-      "count": 2467,
-      "dominance": 0.5763,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "moved_from_invalid_home_cross_room": true,
+      "replaced_cross_room_chord": {
+        "output": "ERYTH",
+        "count": 2839,
+        "dominance": 0.9224,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -2986,12 +2490,19 @@
         "C",
         "D"
       ],
-      "output": "ATIVE",
-      "count": 2348,
-      "dominance": 0.632,
+      "output": "LWAYS",
+      "count": 3482,
+      "dominance": 0.9977,
       "house_extended_cross_room": true,
       "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "moved_from_invalid_home_cross_room": true,
+      "replaced_cross_room_chord": {
+        "output": "VERYT",
+        "count": 3100,
+        "dominance": 0.9933,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -3002,12 +2513,19 @@
         "A",
         "D"
       ],
-      "output": "EXACT",
-      "count": 2324,
-      "dominance": 0.9974,
+      "output": "ANTED",
+      "count": 2576,
+      "total_same_keys": 3345,
+      "dominance": 0.7701,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "EXACT",
+        "count": 2324,
+        "dominance": 0.9974,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -3034,44 +2552,19 @@
         "B",
         "C"
       ],
-      "output": "UMBER",
-      "count": 2277,
-      "dominance": 0.9665,
+      "output": "YOURS",
+      "count": 2742,
+      "total_same_keys": 2751,
+      "dominance": 0.9967,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "B",
-        "D"
-      ],
-      "output": "SPEAK",
-      "count": 2273,
-      "dominance": 0.9542,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "3",
-        "4",
-        "B",
-        "C",
-        "D"
-      ],
-      "output": "MINUT",
-      "count": 2267,
-      "dominance": 0.6065,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "UMBER",
+        "count": 2277,
+        "dominance": 0.9665,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -3083,12 +2576,19 @@
         "C",
         "D"
       ],
-      "output": "MINUTE",
-      "count": 2260,
-      "dominance": 0.9796,
+      "output": "METHIN",
+      "count": 10642,
+      "total_same_keys": 10682,
+      "dominance": 0.9963,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate"
+      "source": "additive cross-house 6-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "MINUTE",
+        "count": 2260,
+        "dominance": 0.9796,
+        "source": "additive cross-house 6-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -3099,12 +2599,19 @@
         "C",
         "D"
       ],
-      "output": "INUTE",
-      "count": 2260,
-      "dominance": 0.7286,
+      "output": "WITCH",
+      "count": 2311,
+      "total_same_keys": 2381,
+      "dominance": 0.9706,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "INUTE",
+        "count": 2260,
+        "dominance": 0.7286,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -3115,12 +2622,19 @@
         "C",
         "D"
       ],
-      "output": "ACTIV",
-      "count": 2229,
-      "dominance": 0.9032,
+      "output": "SICAL",
+      "count": 2957,
+      "total_same_keys": 3368,
+      "dominance": 0.878,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "ACTIV",
+        "count": 2229,
+        "dominance": 0.9032,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -3139,22 +2653,6 @@
       "source": "additive cross-house 5-gram candidate"
     },
     {
-      "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "B",
-        "C"
-      ],
-      "output": "NUMBE",
-      "count": 2080,
-      "dominance": 0.9943,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
       "room": "R",
       "keys": [
         "1",
@@ -3164,12 +2662,19 @@
         "B",
         "C"
       ],
-      "output": "NUMBER",
-      "count": 2079,
-      "dominance": 0.9957,
+      "output": "BECAUS",
+      "count": 12718,
+      "total_same_keys": 13018,
+      "dominance": 0.977,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate"
+      "source": "additive cross-house 6-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "NUMBER",
+        "count": 2079,
+        "dominance": 0.9957,
+        "source": "additive cross-house 6-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -3181,12 +2686,19 @@
         "C",
         "D"
       ],
-      "output": "SPECIF",
-      "count": 1969,
-      "dominance": 0.9995,
+      "output": "ATIONS",
+      "count": 4619,
+      "total_same_keys": 6251,
+      "dominance": 0.7389,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate"
+      "source": "additive cross-house 6-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "SPECIF",
+        "count": 1969,
+        "dominance": 0.9995,
+        "source": "additive cross-house 6-gram candidate"
+      }
     },
     {
       "room": "H",
@@ -3214,12 +2726,19 @@
         "B",
         "D"
       ],
-      "output": "SUPER",
-      "count": 1958,
-      "dominance": 0.8664,
+      "output": "URSEL",
+      "count": 2467,
+      "total_same_keys": 4281,
+      "dominance": 0.5763,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "SUPER",
+        "count": 1958,
+        "dominance": 0.8664,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -3230,12 +2749,19 @@
         "B",
         "D"
       ],
-      "output": "THERS",
-      "count": 1951,
-      "dominance": 0.8606,
+      "output": "SUPER",
+      "count": 1958,
+      "total_same_keys": 2260,
+      "dominance": 0.8664,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "THERS",
+        "count": 1951,
+        "dominance": 0.8606,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -3246,12 +2772,19 @@
         "B",
         "D"
       ],
-      "output": "STEAD",
-      "count": 1893,
-      "dominance": 0.6258,
+      "output": "DERST",
+      "count": 3819,
+      "total_same_keys": 5532,
+      "dominance": 0.6903,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "STEAD",
+        "count": 1893,
+        "dominance": 0.6258,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -3278,12 +2811,19 @@
         "B",
         "C"
       ],
-      "output": "RIOUS",
-      "count": 1862,
-      "dominance": 0.9191,
+      "output": "UMBER",
+      "count": 2277,
+      "total_same_keys": 2356,
+      "dominance": 0.9665,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "RIOUS",
+        "count": 1862,
+        "dominance": 0.9191,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -3328,30 +2868,19 @@
         "B",
         "D"
       ],
-      "output": "NSTEAD",
-      "count": 1848,
-      "dominance": 0.9625,
+      "output": "NDERST",
+      "count": 3815,
+      "total_same_keys": 3870,
+      "dominance": 0.9858,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "B",
-        "C",
-        "D"
-      ],
-      "output": "INSTEAD",
-      "count": 1848,
-      "dominance": 0.9409,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 7-gram candidate"
+      "source": "additive cross-house 6-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "NSTEAD",
+        "count": 1848,
+        "dominance": 0.9625,
+        "source": "additive cross-house 6-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -3362,28 +2891,19 @@
         "4",
         "D"
       ],
-      "output": "CTURE",
-      "count": 1830,
-      "dominance": 0.8901,
+      "output": "WATCH",
+      "count": 5024,
+      "dominance": 0.9849,
       "house_extended_cross_room": true,
       "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "B",
-        "D"
-      ],
-      "output": "MONTH",
-      "count": 1722,
-      "dominance": 0.9948,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "moved_from_invalid_home_cross_room": true,
+      "replaced_cross_room_chord": {
+        "output": "CTURE",
+        "count": 1830,
+        "dominance": 0.8901,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -3394,12 +2914,19 @@
         "C",
         "D"
       ],
-      "output": "TRIED",
-      "count": 1720,
-      "dominance": 0.5184,
+      "output": "TODAY",
+      "count": 3101,
+      "total_same_keys": 3131,
+      "dominance": 0.9904,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "TRIED",
+        "count": 1720,
+        "dominance": 0.5184,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -3410,12 +2937,19 @@
         "B",
         "D"
       ],
-      "output": "NUTES",
-      "count": 1705,
-      "dominance": 0.904,
+      "output": "MONTH",
+      "count": 1722,
+      "total_same_keys": 1731,
+      "dominance": 0.9948,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "NUTES",
+        "count": 1705,
+        "dominance": 0.904,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -3476,28 +3010,19 @@
         "A",
         "D"
       ],
-      "output": "ODPAC",
-      "count": 1645,
-      "dominance": 0.9654,
+      "output": "EXACT",
+      "count": 2324,
+      "total_same_keys": 2330,
+      "dominance": 0.9974,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "A",
-        "B",
-        "C"
-      ],
-      "output": "IMAGE",
-      "count": 1634,
-      "dominance": 0.9663,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "ODPAC",
+        "count": 1645,
+        "dominance": 0.9654,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -3515,22 +3040,6 @@
       "house_extended_cross_room": true,
       "added_high_order_ngram": true,
       "source": "additive cross-house 6-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "C",
-        "D"
-      ],
-      "output": "LOGIC",
-      "count": 1609,
-      "dominance": 0.9889,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
     },
     {
       "room": "H",
@@ -3576,12 +3085,19 @@
         "C",
         "D"
       ],
-      "output": "RESTING",
-      "count": 1543,
-      "dominance": 0.8971,
+      "output": "INSTEAD",
+      "count": 1848,
+      "total_same_keys": 1964,
+      "dominance": 0.9409,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 7-gram candidate"
+      "source": "additive cross-house 7-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "RESTING",
+        "count": 1543,
+        "dominance": 0.8971,
+        "source": "additive cross-house 7-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -3608,12 +3124,19 @@
         "C",
         "D"
       ],
-      "output": "ATCHI",
-      "count": 1501,
-      "dominance": 0.9042,
+      "output": "ANYTH",
+      "count": 5123,
+      "total_same_keys": 5145,
+      "dominance": 0.9957,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "ATCHI",
+        "count": 1501,
+        "dominance": 0.9042,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -3624,12 +3147,19 @@
         "C",
         "D"
       ],
-      "output": "LRIGH",
-      "count": 1471,
-      "dominance": 0.9946,
+      "output": "RIGHT",
+      "count": 9752,
+      "total_same_keys": 9873,
+      "dominance": 0.9877,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "LRIGH",
+        "count": 1471,
+        "dominance": 0.9946,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -3640,12 +3170,19 @@
         "4",
         "B"
       ],
-      "output": "ONFUS",
-      "count": 1463,
-      "dominance": 0.9966,
+      "output": "CAUSE",
+      "count": 15493,
+      "total_same_keys": 29190,
+      "dominance": 0.5308,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "ONFUS",
+        "count": 1463,
+        "dominance": 0.9966,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -3672,12 +3209,19 @@
         "C",
         "D"
       ],
-      "output": "IDENT",
-      "count": 1423,
-      "dominance": 0.5021,
+      "output": "LOGIC",
+      "count": 1609,
+      "total_same_keys": 1627,
+      "dominance": 0.9889,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "IDENT",
+        "count": 1423,
+        "dominance": 0.5021,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -3745,23 +3289,6 @@
       "source": "additive cross-house 5-gram candidate"
     },
     {
-      "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "C",
-        "D"
-      ],
-      "output": "WATCHI",
-      "count": 1314,
-      "dominance": 0.9924,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate"
-    },
-    {
       "room": "R",
       "keys": [
         "1",
@@ -3770,12 +3297,19 @@
         "B",
         "C"
       ],
-      "output": "DRIVE",
-      "count": 1247,
-      "dominance": 0.7485,
+      "output": "IMAGE",
+      "count": 1634,
+      "total_same_keys": 1691,
+      "dominance": 0.9663,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "DRIVE",
+        "count": 1247,
+        "dominance": 0.7485,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -3803,12 +3337,19 @@
         "C",
         "D"
       ],
-      "output": "GLISH",
-      "count": 1239,
-      "dominance": 0.6838,
+      "output": "MIGHT",
+      "count": 4479,
+      "total_same_keys": 4631,
+      "dominance": 0.9672,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "GLISH",
+        "count": 1239,
+        "dominance": 0.6838,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -3838,12 +3379,19 @@
         "C",
         "D"
       ],
-      "output": "ENGLISH",
-      "count": 1230,
-      "dominance": 0.9777,
+      "output": "METHING",
+      "count": 10548,
+      "total_same_keys": 10648,
+      "dominance": 0.9906,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 7-gram candidate"
+      "source": "additive cross-house 7-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "ENGLISH",
+        "count": 1230,
+        "dominance": 0.9777,
+        "source": "additive cross-house 7-gram candidate"
+      }
     },
     {
       "room": "L",
@@ -3862,22 +3410,6 @@
       "source": "additive cross-house 5-gram candidate"
     },
     {
-      "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "A",
-        "D"
-      ],
-      "output": "LANGU",
-      "count": 1217,
-      "dominance": 0.8693,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
       "room": "R",
       "keys": [
         "1",
@@ -3887,12 +3419,19 @@
         "C",
         "D"
       ],
-      "output": "ICTURE",
-      "count": 1210,
-      "dominance": 0.8061,
+      "output": "WATCHI",
+      "count": 1314,
+      "total_same_keys": 1324,
+      "dominance": 0.9924,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate"
+      "source": "additive cross-house 6-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "ICTURE",
+        "count": 1210,
+        "dominance": 0.8061,
+        "source": "additive cross-house 6-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -3911,38 +3450,6 @@
       "source": "additive cross-house 5-gram candidate"
     },
     {
-      "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "B",
-        "D"
-      ],
-      "output": "STRUC",
-      "count": 1127,
-      "dominance": 0.9223,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "B",
-        "D"
-      ],
-      "output": "PENDS",
-      "count": 1114,
-      "dominance": 0.5649,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
       "room": "L",
       "keys": [
         "1",
@@ -3951,12 +3458,19 @@
         "B",
         "C"
       ],
-      "output": "IDEAS",
-      "count": 1071,
-      "dominance": 0.6296,
+      "output": "DRIVE",
+      "count": 1247,
+      "total_same_keys": 1666,
+      "dominance": 0.7485,
       "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true,
+      "replaced_cross_room_chord": {
+        "output": "IDEAS",
+        "count": 1071,
+        "dominance": 0.6296,
+        "source": "additive cross-house 5-gram candidate"
+      }
     },
     {
       "room": "R",
@@ -3970,22 +3484,6 @@
       "output": "RTING",
       "count": 1051,
       "dominance": 0.7986,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "A",
-        "C"
-      ],
-      "output": "URING",
-      "count": 1042,
-      "dominance": 0.7271,
       "house_extended_cross_room": true,
       "added_high_order_ngram": true,
       "source": "additive cross-house 5-gram candidate"
@@ -4021,6 +3519,1794 @@
       "house_extended_cross_room": false,
       "added_high_order_ngram": true,
       "source": "additive 5-gram candidate"
+    },
+    {
+      "room": "L",
+      "keys": [
+        "4",
+        "C"
+      ],
+      "output": "BU",
+      "count": 57268,
+      "total_same_keys": 69215,
+      "dominance": 0.8274,
+      "house_extended_cross_room": true,
+      "source": "cross-room 2-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "C",
+        "D"
+      ],
+      "output": "LIK",
+      "count": 44026,
+      "total_same_keys": 52983,
+      "dominance": 0.8309,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "4",
+        "C",
+        "D"
+      ],
+      "output": "BUT",
+      "count": 42807,
+      "total_same_keys": 47514,
+      "dominance": 0.9009,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "2",
+        "D"
+      ],
+      "output": "PRO",
+      "count": 22915,
+      "total_same_keys": 33279,
+      "dominance": 0.6886,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "4",
+        "C"
+      ],
+      "output": "BOU",
+      "count": 21688,
+      "total_same_keys": 23142,
+      "dominance": 0.9372,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "2",
+        "C"
+      ],
+      "output": "ABO",
+      "count": 21337,
+      "total_same_keys": 29077,
+      "dominance": 0.7338,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "A",
+        "C"
+      ],
+      "output": "IDE",
+      "count": 21105,
+      "total_same_keys": 34306,
+      "dominance": 0.6152,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "3",
+        "B"
+      ],
+      "output": "MAK",
+      "count": 20912,
+      "total_same_keys": 21473,
+      "dominance": 0.9739,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "2",
+        "4",
+        "C"
+      ],
+      "output": "ABOU",
+      "count": 20191,
+      "total_same_keys": 20207,
+      "dominance": 0.9992,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "B",
+        "C"
+      ],
+      "output": "VERY",
+      "count": 19865,
+      "total_same_keys": 19998,
+      "dominance": 0.9933,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "2",
+        "C"
+      ],
+      "output": "BR",
+      "count": 19704,
+      "total_same_keys": 24327,
+      "dominance": 0.81,
+      "house_extended_cross_room": true,
+      "source": "cross-room 2-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "B"
+      ],
+      "output": "MAKE",
+      "count": 17381,
+      "total_same_keys": 17661,
+      "dominance": 0.9841,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "A",
+        "B"
+      ],
+      "output": "GAM",
+      "count": 15926,
+      "total_same_keys": 22917,
+      "dominance": 0.6949,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "3",
+        "D"
+      ],
+      "output": "CAL",
+      "count": 15067,
+      "total_same_keys": 24792,
+      "dominance": 0.6077,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "B",
+        "D"
+      ],
+      "output": "MET",
+      "count": 14990,
+      "total_same_keys": 19523,
+      "dominance": 0.7678,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "4",
+        "D"
+      ],
+      "output": "UAL",
+      "count": 14980,
+      "total_same_keys": 23770,
+      "dominance": 0.6302,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "A",
+        "C"
+      ],
+      "output": "DAY",
+      "count": 14894,
+      "total_same_keys": 21469,
+      "dominance": 0.6937,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "B",
+        "D"
+      ],
+      "output": "ALS",
+      "count": 13931,
+      "total_same_keys": 24846,
+      "dominance": 0.5607,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "C"
+      ],
+      "output": "BECA",
+      "count": 13034,
+      "total_same_keys": 13548,
+      "dominance": 0.9621,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "C",
+        "D"
+      ],
+      "output": "ABL",
+      "count": 12994,
+      "total_same_keys": 20996,
+      "dominance": 0.6189,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "B",
+        "D"
+      ],
+      "output": "SPE",
+      "count": 12971,
+      "total_same_keys": 20513,
+      "dominance": 0.6323,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "B",
+        "C"
+      ],
+      "output": "MB",
+      "count": 12846,
+      "total_same_keys": 13197,
+      "dominance": 0.9734,
+      "house_extended_cross_room": true,
+      "source": "cross-room 2-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "C"
+      ],
+      "output": "BECAU",
+      "count": 12745,
+      "total_same_keys": 13006,
+      "dominance": 0.9799,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3",
+        "A",
+        "C"
+      ],
+      "output": "OING",
+      "count": 12647,
+      "total_same_keys": 22707,
+      "dominance": 0.557,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "4",
+        "B",
+        "D"
+      ],
+      "output": "THEM",
+      "count": 12352,
+      "total_same_keys": 23646,
+      "dominance": 0.5224,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "3",
+        "D"
+      ],
+      "output": "LK",
+      "count": 12189,
+      "total_same_keys": 13393,
+      "dominance": 0.9101,
+      "house_extended_cross_room": true,
+      "source": "cross-room 2-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "2",
+        "3",
+        "C"
+      ],
+      "output": "FIN",
+      "count": 12151,
+      "total_same_keys": 17408,
+      "dominance": 0.698,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "4",
+        "D"
+      ],
+      "output": "CTU",
+      "count": 11954,
+      "total_same_keys": 19011,
+      "dominance": 0.6288,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "A",
+        "B",
+        "C"
+      ],
+      "output": "DIS",
+      "count": 11937,
+      "total_same_keys": 20988,
+      "dominance": 0.5688,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "3",
+        "D"
+      ],
+      "output": "PEN",
+      "count": 11304,
+      "total_same_keys": 11589,
+      "dominance": 0.9754,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3",
+        "4",
+        "A"
+      ],
+      "output": "OUND",
+      "count": 10775,
+      "total_same_keys": 14011,
+      "dominance": 0.769,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "2",
+        "3",
+        "B"
+      ],
+      "output": "VAN",
+      "count": 10398,
+      "total_same_keys": 10947,
+      "dominance": 0.9498,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "A",
+        "D"
+      ],
+      "output": "EXP",
+      "count": 10306,
+      "total_same_keys": 16387,
+      "dominance": 0.6289,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3",
+        "B",
+        "C"
+      ],
+      "output": "IONS",
+      "count": 10109,
+      "total_same_keys": 21844,
+      "dominance": 0.4628,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "3",
+        "4",
+        "D"
+      ],
+      "output": "CTUA",
+      "count": 9811,
+      "total_same_keys": 20082,
+      "dominance": 0.4885,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "2",
+        "C",
+        "D"
+      ],
+      "output": "PROB",
+      "count": 9611,
+      "total_same_keys": 9763,
+      "dominance": 0.9844,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "A",
+        "B"
+      ],
+      "output": "NDS",
+      "count": 9481,
+      "total_same_keys": 9558,
+      "dominance": 0.9919,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "3",
+        "A",
+        "B"
+      ],
+      "output": "DVAN",
+      "count": 9184,
+      "total_same_keys": 9287,
+      "dominance": 0.9889,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "A",
+        "B",
+        "C"
+      ],
+      "output": "VID",
+      "count": 8816,
+      "total_same_keys": 10138,
+      "dominance": 0.8696,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "2",
+        "4",
+        "D"
+      ],
+      "output": "TUF",
+      "count": 8677,
+      "total_same_keys": 9966,
+      "dominance": 0.8707,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "4",
+        "B",
+        "D"
+      ],
+      "output": "STUF",
+      "count": 8636,
+      "total_same_keys": 8823,
+      "dominance": 0.9788,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "3",
+        "C",
+        "D"
+      ],
+      "output": "PIN",
+      "count": 8513,
+      "total_same_keys": 9794,
+      "dominance": 0.8692,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3",
+        "4",
+        "C"
+      ],
+      "output": "JOIN",
+      "count": 8469,
+      "total_same_keys": 8484,
+      "dominance": 0.9982,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "2",
+        "3",
+        "D"
+      ],
+      "output": "ALK",
+      "count": 8431,
+      "total_same_keys": 8839,
+      "dominance": 0.9538,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "3",
+        "C",
+        "D"
+      ],
+      "output": "ICAL",
+      "count": 8269,
+      "total_same_keys": 14103,
+      "dominance": 0.5863,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "TIV",
+      "count": 8096,
+      "total_same_keys": 9621,
+      "dominance": 0.8415,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "2",
+        "B",
+        "D"
+      ],
+      "output": "SELF",
+      "count": 8064,
+      "total_same_keys": 8327,
+      "dominance": 0.9684,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "B",
+        "C"
+      ],
+      "output": "MAY",
+      "count": 7737,
+      "total_same_keys": 8120,
+      "dominance": 0.9528,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "3",
+        "B",
+        "C"
+      ],
+      "output": "VIN",
+      "count": 7674,
+      "total_same_keys": 12365,
+      "dominance": 0.6206,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "2",
+        "3",
+        "4"
+      ],
+      "output": "FUN",
+      "count": 7573,
+      "total_same_keys": 10115,
+      "dominance": 0.7487,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "3",
+        "B",
+        "D"
+      ],
+      "output": "COMP",
+      "count": 7422,
+      "total_same_keys": 7474,
+      "dominance": 0.993,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "TIVE",
+      "count": 7055,
+      "total_same_keys": 7914,
+      "dominance": 0.8915,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "3",
+        "A"
+      ],
+      "output": "DK",
+      "count": 7046,
+      "total_same_keys": 7415,
+      "dominance": 0.9502,
+      "house_extended_cross_room": true,
+      "source": "cross-room 2-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "2",
+        "A",
+        "C"
+      ],
+      "output": "BAD",
+      "count": 6980,
+      "total_same_keys": 8710,
+      "dominance": 0.8014,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "A",
+        "C",
+        "D"
+      ],
+      "output": "LING",
+      "count": 6951,
+      "total_same_keys": 10236,
+      "dominance": 0.6791,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "A",
+        "B",
+        "C"
+      ],
+      "output": "DISC",
+      "count": 6891,
+      "total_same_keys": 6925,
+      "dominance": 0.9951,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "A",
+        "C"
+      ],
+      "output": "IDK",
+      "count": 6804,
+      "total_same_keys": 8851,
+      "dominance": 0.7687,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "3",
+        "A",
+        "B",
+        "C"
+      ],
+      "output": "VING",
+      "count": 6734,
+      "total_same_keys": 6744,
+      "dominance": 0.9985,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "3",
+        "B"
+      ],
+      "output": "NV",
+      "count": 6609,
+      "total_same_keys": 6697,
+      "dominance": 0.9869,
+      "house_extended_cross_room": true,
+      "source": "cross-room 2-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "A",
+        "B",
+        "C"
+      ],
+      "output": "SAID",
+      "count": 6521,
+      "total_same_keys": 8139,
+      "dominance": 0.8012,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "3",
+        "A"
+      ],
+      "output": "KED",
+      "count": 6517,
+      "total_same_keys": 6649,
+      "dominance": 0.9801,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "2",
+        "B",
+        "C"
+      ],
+      "output": "MBER",
+      "count": 6409,
+      "total_same_keys": 6721,
+      "dominance": 0.9536,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "4",
+        "B",
+        "C"
+      ],
+      "output": "USI",
+      "count": 6334,
+      "total_same_keys": 8096,
+      "dominance": 0.7824,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "4",
+        "B",
+        "D"
+      ],
+      "output": "SUP",
+      "count": 6271,
+      "total_same_keys": 8951,
+      "dominance": 0.7006,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2"
+      ],
+      "output": "WR",
+      "count": 6266,
+      "total_same_keys": 8196,
+      "dominance": 0.7645,
+      "house_extended_cross_room": true,
+      "source": "cross-room 2-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "3",
+        "C",
+        "D"
+      ],
+      "output": "POIN",
+      "count": 6230,
+      "total_same_keys": 7856,
+      "dominance": 0.793,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "A",
+        "B",
+        "C"
+      ],
+      "output": "SIDE",
+      "count": 6163,
+      "total_same_keys": 11297,
+      "dominance": 0.5455,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "3",
+        "4",
+        "C"
+      ],
+      "output": "WHIC",
+      "count": 6120,
+      "total_same_keys": 6613,
+      "dominance": 0.9254,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "4",
+        "A",
+        "C"
+      ],
+      "output": "GUY",
+      "count": 6041,
+      "total_same_keys": 6091,
+      "dominance": 0.9918,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "A",
+        "C"
+      ],
+      "output": "EADY",
+      "count": 5626,
+      "total_same_keys": 7225,
+      "dominance": 0.7787,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "3",
+        "A",
+        "C",
+        "D"
+      ],
+      "output": "PING",
+      "count": 5458,
+      "total_same_keys": 5484,
+      "dominance": 0.9953,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "A",
+        "B",
+        "C"
+      ],
+      "output": "VIDE",
+      "count": 5411,
+      "total_same_keys": 6874,
+      "dominance": 0.7872,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "4",
+        "B",
+        "C"
+      ],
+      "output": "UMB",
+      "count": 5239,
+      "total_same_keys": 5918,
+      "dominance": 0.8853,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "2",
+        "B",
+        "C"
+      ],
+      "output": "BAS",
+      "count": 5188,
+      "total_same_keys": 7362,
+      "dominance": 0.7047,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "4",
+        "C",
+        "D"
+      ],
+      "output": "NYTH",
+      "count": 5128,
+      "total_same_keys": 5213,
+      "dominance": 0.9837,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "4",
+        "A",
+        "B"
+      ],
+      "output": "USED",
+      "count": 5125,
+      "total_same_keys": 5621,
+      "dominance": 0.9118,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "B"
+      ],
+      "output": "AKES",
+      "count": 5079,
+      "total_same_keys": 6888,
+      "dominance": 0.7374,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "D"
+      ],
+      "output": "WATC",
+      "count": 5027,
+      "total_same_keys": 5092,
+      "dominance": 0.9872,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "A",
+        "D"
+      ],
+      "output": "DAT",
+      "count": 4850,
+      "total_same_keys": 5169,
+      "dominance": 0.9383,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "3",
+        "A",
+        "D"
+      ],
+      "output": "TAND",
+      "count": 4816,
+      "total_same_keys": 5104,
+      "dominance": 0.9436,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "3",
+        "A",
+        "B",
+        "D"
+      ],
+      "output": "STAND",
+      "count": 4789,
+      "total_same_keys": 5092,
+      "dominance": 0.9405,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "2",
+        "A"
+      ],
+      "output": "EXA",
+      "count": 4730,
+      "total_same_keys": 5160,
+      "dominance": 0.9167,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "IRST",
+      "count": 4620,
+      "total_same_keys": 7979,
+      "dominance": 0.579,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "A",
+        "D"
+      ],
+      "output": "ATED",
+      "count": 4521,
+      "total_same_keys": 10268,
+      "dominance": 0.4403,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3",
+        "A",
+        "B"
+      ],
+      "output": "NDOM",
+      "count": 4519,
+      "total_same_keys": 5179,
+      "dominance": 0.8726,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "4",
+        "A",
+        "B",
+        "C"
+      ],
+      "output": "MIGH",
+      "count": 4500,
+      "total_same_keys": 4508,
+      "dominance": 0.9982,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "4",
+        "C"
+      ],
+      "output": "UIC",
+      "count": 4462,
+      "total_same_keys": 6669,
+      "dominance": 0.6691,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "3",
+        "B",
+        "C"
+      ],
+      "output": "MANY",
+      "count": 4291,
+      "total_same_keys": 5944,
+      "dominance": 0.7219,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "4",
+        "B",
+        "C"
+      ],
+      "output": "IOUS",
+      "count": 4212,
+      "total_same_keys": 5098,
+      "dominance": 0.8262,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "A",
+        "D"
+      ],
+      "output": "NGL",
+      "count": 4168,
+      "total_same_keys": 4181,
+      "dominance": 0.9969,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "3",
+        "A",
+        "D"
+      ],
+      "output": "XPEC",
+      "count": 4105,
+      "total_same_keys": 5257,
+      "dominance": 0.7809,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "CTIV",
+      "count": 4081,
+      "total_same_keys": 4273,
+      "dominance": 0.9551,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "2",
+        "3",
+        "C",
+        "D"
+      ],
+      "output": "ALKI",
+      "count": 4038,
+      "total_same_keys": 4190,
+      "dominance": 0.9637,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "A",
+        "B"
+      ],
+      "output": "UNDERS",
+      "count": 3870,
+      "total_same_keys": 4050,
+      "dominance": 0.9556,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 6-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "A",
+        "B",
+        "D"
+      ],
+      "output": "UNDERST",
+      "count": 3811,
+      "total_same_keys": 3841,
+      "dominance": 0.9922,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 7-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3",
+        "4",
+        "A",
+        "B"
+      ],
+      "output": "SOUND",
+      "count": 3382,
+      "total_same_keys": 5793,
+      "dominance": 0.5838,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "2",
+        "3",
+        "4",
+        "B",
+        "C"
+      ],
+      "output": "HAVIN",
+      "count": 3007,
+      "total_same_keys": 3013,
+      "dominance": 0.998,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "2",
+        "3",
+        "4",
+        "A",
+        "B",
+        "C"
+      ],
+      "output": "HAVING",
+      "count": 2968,
+      "total_same_keys": 2970,
+      "dominance": 0.9993,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 6-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "4",
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "VERYTH",
+      "count": 2837,
+      "total_same_keys": 2852,
+      "dominance": 0.9947,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 6-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "EXIST",
+      "count": 2805,
+      "total_same_keys": 3443,
+      "dominance": 0.8147,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "3",
+        "4",
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "MINUT",
+      "count": 2267,
+      "total_same_keys": 3738,
+      "dominance": 0.6065,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "2",
+        "3",
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "ACTIV",
+      "count": 2229,
+      "total_same_keys": 2468,
+      "dominance": 0.9032,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3",
+        "4",
+        "B",
+        "C"
+      ],
+      "output": "NUMBE",
+      "count": 2080,
+      "total_same_keys": 2092,
+      "dominance": 0.9943,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "B",
+        "C"
+      ],
+      "output": "BECAUS",
+      "count": 12718,
+      "dominance": 0.977,
+      "house_extended_cross_room": true,
+      "added_high_order_ngram": true,
+      "source": "additive cross-house 6-gram candidate",
+      "moved_from_invalid_home_cross_room": true,
+      "replaced_cross_room_chord": {
+        "output": "NUMBER",
+        "count": 2079,
+        "dominance": 0.9957,
+        "source": "additive cross-house 6-gram candidate"
+      }
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "3",
+        "4",
+        "A",
+        "D"
+      ],
+      "output": "LANGU",
+      "count": 1217,
+      "total_same_keys": 1400,
+      "dominance": 0.8693,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "3",
+        "4",
+        "B",
+        "D"
+      ],
+      "output": "STRUC",
+      "count": 1127,
+      "total_same_keys": 1222,
+      "dominance": 0.9223,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3",
+        "A",
+        "B",
+        "D"
+      ],
+      "output": "PENDS",
+      "count": 1114,
+      "total_same_keys": 1972,
+      "dominance": 0.5649,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "R",
+      "keys": [
+        "2",
+        "3",
+        "4",
+        "A",
+        "C"
+      ],
+      "output": "URING",
+      "count": 1042,
+      "total_same_keys": 1433,
+      "dominance": 0.7271,
+      "house_extended_cross_room": true,
+      "source": "additive cross-house 5-gram candidate",
+      "added_cross_room_candidate": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "C"
+      ],
+      "output": "BECAU",
+      "count": 12745,
+      "dominance": 0.9799,
+      "house_extended_cross_room": true,
+      "added_high_order_ngram": true,
+      "source": "additive cross-house 5-gram candidate",
+      "moved_from_invalid_home_cross_room": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "2",
+        "4",
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "VERYTH",
+      "count": 2837,
+      "dominance": 0.9947,
+      "house_extended_cross_room": true,
+      "added_high_order_ngram": true,
+      "source": "additive cross-house 6-gram candidate",
+      "moved_from_invalid_home_cross_room": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "3",
+        "4",
+        "B",
+        "C"
+      ],
+      "output": "NUMBE",
+      "count": 2080,
+      "dominance": 0.9943,
+      "house_extended_cross_room": true,
+      "added_high_order_ngram": true,
+      "source": "additive cross-house 5-gram candidate",
+      "moved_from_invalid_home_cross_room": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "C",
+        "D"
+      ],
+      "output": "WATCHI",
+      "count": 1314,
+      "dominance": 0.9924,
+      "house_extended_cross_room": true,
+      "added_high_order_ngram": true,
+      "source": "additive cross-house 6-gram candidate",
+      "moved_from_invalid_home_cross_room": true
+    },
+    {
+      "room": "L",
+      "keys": [
+        "1",
+        "3",
+        "A",
+        "B",
+        "D"
+      ],
+      "output": "PENDS",
+      "count": 1114,
+      "dominance": 0.5649,
+      "house_extended_cross_room": true,
+      "added_high_order_ngram": true,
+      "source": "additive cross-house 5-gram candidate",
+      "moved_from_invalid_home_cross_room": true
     }
   ],
   "extends": "house.json",
