@@ -1091,6 +1091,281 @@
         "JV": 16,
         "VJ": 12
       }
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "4",
+        "A",
+        "C",
+        "D"
+      ],
+      "output": "THING",
+      "count": 40384,
+      "dominance": 0.8479,
+      "added_high_order_ngram": true,
+      "source": "5-gram additive candidate"
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "3",
+        "4",
+        "C",
+        "D"
+      ],
+      "output": "ETHIN",
+      "count": 10700,
+      "dominance": 0.9418,
+      "added_high_order_ngram": true,
+      "source": "5-gram additive candidate"
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "3",
+        "4",
+        "A",
+        "C",
+        "D"
+      ],
+      "output": "ETHING",
+      "count": 10589,
+      "dominance": 0.9682,
+      "added_high_order_ngram": true,
+      "source": "6-gram additive candidate"
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "3",
+        "4",
+        "A",
+        "D"
+      ],
+      "output": "COULD",
+      "count": 8667,
+      "dominance": 0.9677,
+      "added_high_order_ngram": true,
+      "source": "5-gram additive candidate"
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "4",
+        "A",
+        "B",
+        "C"
+      ],
+      "output": "HINGS",
+      "count": 7543,
+      "dominance": 0.8892,
+      "added_high_order_ngram": true,
+      "source": "5-gram additive candidate"
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "4",
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "THINGS",
+      "count": 7526,
+      "dominance": 0.9695,
+      "added_high_order_ngram": true,
+      "source": "6-gram additive candidate"
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "A"
+      ],
+      "output": "HANGE",
+      "count": 4383,
+      "dominance": 0.9955,
+      "added_high_order_ngram": true,
+      "source": "5-gram additive candidate"
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "A",
+        "C",
+        "D"
+      ],
+      "output": "ATING",
+      "count": 3829,
+      "dominance": 0.8545,
+      "added_high_order_ngram": true,
+      "source": "5-gram additive candidate"
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "A",
+        "C"
+      ],
+      "output": "AGINE",
+      "count": 3553,
+      "dominance": 0.8997,
+      "added_high_order_ngram": true,
+      "source": "5-gram additive candidate"
+    },
+    {
+      "room": "H",
+      "keys": [
+        "3",
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "STING",
+      "count": 3337,
+      "dominance": 0.8301,
+      "added_high_order_ngram": true,
+      "source": "5-gram additive candidate"
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "3",
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "ESTING",
+      "count": 1965,
+      "dominance": 0.8499,
+      "added_high_order_ngram": true,
+      "source": "6-gram additive candidate"
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "B",
+        "D"
+      ],
+      "output": "NSTEA",
+      "count": 1852,
+      "dominance": 0.76,
+      "added_high_order_ngram": true,
+      "source": "5-gram additive candidate"
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "INSTEA",
+      "count": 1851,
+      "dominance": 0.7703,
+      "added_high_order_ngram": true,
+      "source": "6-gram additive candidate"
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "A",
+        "C",
+        "D"
+      ],
+      "output": "EATING",
+      "count": 1582,
+      "dominance": 0.7211,
+      "added_high_order_ngram": true,
+      "source": "6-gram additive candidate"
+    },
+    {
+      "room": "H",
+      "keys": [
+        "1",
+        "3",
+        "A",
+        "B",
+        "C"
+      ],
+      "output": "ESIGN",
+      "count": 1553,
+      "dominance": 0.5687,
+      "added_high_order_ngram": true,
+      "source": "5-gram additive candidate"
+    },
+    {
+      "room": "R",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "A"
+      ],
+      "output": "RODUC",
+      "count": 1132,
+      "dominance": 0.9956,
+      "added_high_order_ngram": true,
+      "source": "5-gram additive candidate"
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "4",
+        "A",
+        "C",
+        "D"
+      ],
+      "output": "AIGHT",
+      "count": 1095,
+      "dominance": 0.9856,
+      "added_high_order_ngram": true,
+      "source": "5-gram additive candidate"
+    },
+    {
+      "room": "H",
+      "keys": [
+        "2",
+        "3",
+        "A",
+        "B",
+        "C"
+      ],
+      "output": "GAINS",
+      "count": 1004,
+      "dominance": 0.5609,
+      "added_high_order_ngram": true,
+      "source": "5-gram additive candidate"
     }
   ],
   "letter_counts": {
