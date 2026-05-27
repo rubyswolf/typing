@@ -205,6 +205,7 @@ class ChordTranslator:
         self.stroke = {"keys": keys, "order": order, "thumbs": thumbs}
 
     def active_room(self) -> str:
+        self.reconcile_down_state()
         thumbs = set()
         if self.stroke:
             thumbs.update(self.stroke["thumbs"])  # type: ignore[arg-type]
@@ -217,6 +218,27 @@ class ChordTranslator:
         if "R" in thumbs and "L" not in thumbs:
             return "R"
         return "H"
+
+    def reconcile_down_state(self) -> None:
+        stale = {
+            physical
+            for physical in self.down
+            if physical in self.mapped_physical and not keyboard.is_pressed(physical)
+        }
+        if not stale:
+            return
+
+        self.down.difference_update(stale)
+        if self.stroke:
+            for physical in stale:
+                logical = self.physical_to_logical.get(physical)
+                if logical in THUMBS:
+                    self.stroke["thumbs"].discard(logical)  # type: ignore[union-attr]
+                elif logical in ORDER:
+                    self.stroke["keys"].discard(logical)  # type: ignore[union-attr]
+                    self.stroke["order"] = [  # type: ignore[index]
+                        key for key in self.stroke["order"] if key != logical  # type: ignore[index]
+                    ]
 
     def handle_enabled_event(self, event: keyboard.KeyboardEvent) -> None:
         if self.injecting:
@@ -240,6 +262,7 @@ class ChordTranslator:
                 return
 
             if event.event_type == "down":
+                self.reconcile_down_state()
                 if physical in self.down:
                     return
                 self.down.add(physical)
@@ -258,6 +281,7 @@ class ChordTranslator:
                 return
 
             self.down.discard(physical)
+            self.reconcile_down_state()
             if self.resolve_thumb_space_if_ready(logical):
                 return
             if self.stroke and logical in THUMBS and self.stroke["keys"]:  # type: ignore[index]

@@ -155,6 +155,7 @@
     .target .current { color: var(--ink); background: rgba(242, 193, 78, 0.44); }
     .target .pending { color: var(--muted); }
     .target .wrong { color: #9f2d20; background: rgba(215, 130, 126, 0.22); }
+    .target .fake-hit { color: #5f4700; background: rgba(242, 193, 78, 0.76); }
 
     .toolbar {
       display: flex;
@@ -373,6 +374,7 @@
             <button class="trainer-mode" type="button" data-mode="R" tabindex="-1">Right room</button>
             <button class="trainer-mode" type="button" data-mode="RIGHT_SIDE" tabindex="-1">Right side</button>
             <button class="trainer-mode" type="button" data-mode="FULL" tabindex="-1">Full House</button>
+            <button class="trainer-mode" type="button" data-mode="CHORDS" tabindex="-1">Chords</button>
             <button id="newPrompt" type="button" tabindex="-1">New prompt</button>
             <span class="pill" id="trainerStatus">0 / 0</span>
           </div>
@@ -441,6 +443,10 @@
     let targetText = "";
     let targetIndex = 0;
     let mistakeIndex = -1;
+    let chordTargets = [];
+    let chordTargetIndex = 0;
+    let fakeHitIndex = -1;
+    let chordTypedBuffer = "";
 
     const wordLengthDistribution = [
       [1, 0.08518], [2, 0.17598], [3, 0.21063], [4, 0.21457], [5, 0.11125],
@@ -606,12 +612,69 @@
           text = stroke.order.map(key => data.layout[room][key]).join("").toLowerCase();
           source = `${room} ${stroke.order.join(" ")} -> ${text.toUpperCase()}`;
         }
+        if (handleChordTrainingStroke(room, keys, chord, text)) {
+          stroke = null;
+          updateVisuals();
+          return;
+        }
       }
 
       if (text) insertText(text);
       if (source) addTrace(source);
       stroke = null;
       updateVisuals();
+    }
+
+    function handleChordTrainingStroke(room, keys, chord, text) {
+      if (trainerMode !== "CHORDS" || chordTargetIndex >= chordTargets.length) return false;
+      const target = chordTargets[chordTargetIndex];
+
+      if (!target.fake) {
+        const matchesTargetChord = target.room === room && signature(room, target.keys) === signature(room, keys);
+        if (!matchesTargetChord || !chord || chord.text !== target.text) {
+          addTrace(`Needs chord: ${target.text}`);
+          renderTarget();
+          return true;
+        }
+        insertText(chord.text.toLowerCase());
+        advanceChordTarget(false);
+        return true;
+      }
+
+      if (chord) {
+        addTrace(`Fake target, type letters: ${target.text}`);
+        renderTarget();
+        return true;
+      }
+
+      chordTypedBuffer += text;
+      if (!target.text.toLowerCase().startsWith(chordTypedBuffer)) {
+        chordTypedBuffer = "";
+        addTrace(`Wrong order for fake target: ${target.text}`);
+        renderTarget();
+        return true;
+      }
+
+      insertText(text);
+      if (chordTypedBuffer === target.text.toLowerCase()) {
+        const oneStroke = keys.length >= 2 && text === target.text.toLowerCase();
+        fakeHitIndex = chordTargetIndex;
+        advanceChordTarget(oneStroke);
+      }
+      return true;
+    }
+
+    function advanceChordTarget(yellow) {
+      const completedIndex = chordTargetIndex;
+      chordTargetIndex += 1;
+      chordTypedBuffer = "";
+      fakeHitIndex = yellow ? completedIndex : -1;
+      if (chordTargetIndex >= chordTargets.length) {
+        addTrace("Chord prompt complete");
+        newChordPrompt();
+      } else {
+        renderTarget();
+      }
     }
 
     function resolveThumbSpaceIfReady(logical) {
@@ -660,10 +723,17 @@
     }
 
     function newTrainingPrompt() {
+      if (trainerMode === "CHORDS") {
+        newChordPrompt();
+        return;
+      }
+
       const letters = lettersForTrainingMode();
       if (!letters.length) {
         targetText = "";
         targetIndex = 0;
+        chordTargets = [];
+        chordTargetIndex = 0;
         renderTarget();
         return;
       }
@@ -680,11 +750,54 @@
       targetText = words.join(" ").slice(0, 180);
       targetIndex = 0;
       mistakeIndex = -1;
+      chordTargets = [];
+      chordTargetIndex = 0;
+      fakeHitIndex = -1;
+      chordTypedBuffer = "";
       output.value = "";
       renderTarget();
     }
 
+    function newChordPrompt() {
+      const real = chords.filter(chord => chord.keys.length >= 2 && chord.keys.length <= 4);
+      const fake = fakeChordCandidates();
+      const items = [];
+      for (let i = 0; i < 28; i++) {
+        const useFake = fake.length && (i % 2 === 1 || !real.length);
+        const source = useFake ? fake : real;
+        const picked = source[Math.floor(Math.random() * source.length)];
+        items.push({ ...picked, fake: useFake });
+      }
+      chordTargets = items;
+      chordTargetIndex = 0;
+      fakeHitIndex = -1;
+      chordTypedBuffer = "";
+      targetText = "";
+      targetIndex = 0;
+      mistakeIndex = -1;
+      output.value = "";
+      renderTarget();
+    }
+
+    function fakeChordCandidates() {
+      const realSignatures = new Set(chords.map(chord => signature(chord.room, chord.keys)));
+      const candidates = [];
+      for (const room of ["H", "L", "R"]) {
+        for (let i = 0; i < ORDER.length; i++) {
+          for (let j = i + 1; j < ORDER.length; j++) {
+            const keys = [ORDER[i], ORDER[j]].sort();
+            if (realSignatures.has(signature(room, keys))) continue;
+            const text = keys.map(key => data.layout[room][key]).join("");
+            if (!/^[A-Z]{2}$/.test(text)) continue;
+            candidates.push({ room, keys, text, count: 0 });
+          }
+        }
+      }
+      return candidates;
+    }
+
     function consumeTrainingText(text) {
+      if (trainerMode === "CHORDS") return;
       if (!targetText) return;
       for (const char of text) {
         if (targetIndex >= targetText.length) break;
@@ -705,6 +818,20 @@
     }
 
     function renderTarget() {
+      if (trainerMode === "CHORDS") {
+        const parts = chordTargets.map((target, index) => {
+          const label = escapeHtml(target.text.toLowerCase());
+          let className = "pending";
+          if (index === fakeHitIndex) className = "fake-hit";
+          else if (index < chordTargetIndex) className = "done";
+          else if (index === chordTargetIndex) className = index === fakeHitIndex ? "fake-hit" : "current";
+          return `<span class="${className}">${label}</span>`;
+        });
+        targetEl.innerHTML = parts.join("");
+        trainerStatusEl.textContent = `${Math.min(chordTargetIndex, chordTargets.length)} / ${chordTargets.length}`;
+        return;
+      }
+
       const done = escapeHtml(targetText.slice(0, targetIndex));
       const currentChar = targetText[targetIndex] || "";
       const current = escapeHtml(currentChar || " ");
