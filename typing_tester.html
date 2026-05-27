@@ -502,7 +502,9 @@
         name: raw.name || raw.title || "Uploaded layout",
         layout,
         chords: normalizedChords.sort((a, b) => (b.count || 0) - (a.count || 0)),
-        bindings: raw.bindings
+        bindings: raw.bindings,
+        letterCounts: raw.letter_counts || raw.letterCounts || {},
+        spaceCount: raw.space_count || raw.spaceCount || 0
       };
     }
 
@@ -863,13 +865,25 @@
     function suggestions() {
       const room = activeRoom();
       if (stroke && stroke.thumbSeen.has("L") && stroke.thumbSeen.has("R") && stroke.keys.size === 0) {
-        return [{ room: "H", keys: ["L", "R"], text: "SPACE", count: 0, current: true }];
+        return [{ room: "H", keys: ["L", "R"], text: "SPACE", count: data.spaceCount || 0, current: true }];
       }
+      const singles = ORDER.map(key => {
+        const letter = data.layout[room][key];
+        return {
+          room,
+          keys: [key],
+          text: letter,
+          count: data.letterCounts?.[letter] || 0,
+          single: true
+        };
+      }).filter(item => /^[A-Z]$/.test(item.text));
       if (!stroke || stroke.keys.size === 0) {
         return chords.filter(chord => chord.room === room).slice(0, 8);
       }
       const held = [...stroke.keys];
-      const exact = chordBySignature.get(signature(room, held));
+      const exact = held.length === 1
+        ? singles.find(item => item.keys[0] === held[0])
+        : chordBySignature.get(signature(room, held));
       const matches = chords
         .filter(chord => chord.room === room && held.every(key => chord.keys.includes(key)))
         .filter(chord => !exact || signature(chord.room, chord.keys) !== signature(exact.room, exact.keys));
@@ -901,7 +915,8 @@
       for (const chord of items) {
         const row = document.createElement("div");
         row.className = `suggestion${chord.current ? " current-chord" : ""}`;
-        row.innerHTML = `<div><strong>${chord.text}</strong><small>${ROOM_LABEL[chord.room] || "Thumbs"} ${chord.keys.join("+")}</small></div><span class="count">${Number(chord.count || 0).toLocaleString()}</span>`;
+        const label = chord.single ? "single" : (ROOM_LABEL[chord.room] || "Thumbs");
+        row.innerHTML = `<div><strong>${chord.text}</strong><small>${label} ${chord.keys.join("+")}</small></div><span class="count">${Number(chord.count || 0).toLocaleString()}</span>`;
         suggestionsEl.appendChild(row);
       }
     }
