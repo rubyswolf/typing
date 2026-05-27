@@ -119,6 +119,43 @@
 
     textarea:focus { border-color: var(--down); box-shadow: 0 0 0 3px rgba(31, 122, 140, 0.16); }
 
+    .trainer {
+      margin-bottom: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 253, 247, 0.72);
+      padding: 12px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .trainer-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .trainer-mode.active {
+      border-color: var(--down);
+      background: #e9f6f7;
+    }
+
+    .target {
+      min-height: 84px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf7;
+      padding: 12px;
+      font: 24px/1.5 Consolas, "Courier New", monospace;
+      overflow-wrap: anywhere;
+    }
+
+    .target .done { color: var(--down); background: rgba(31, 122, 140, 0.12); }
+    .target .current { color: var(--ink); background: rgba(242, 193, 78, 0.44); }
+    .target .pending { color: var(--muted); }
+    .target .wrong { color: #9f2d20; background: rgba(215, 130, 126, 0.22); }
+
     .toolbar {
       display: flex;
       flex-wrap: wrap;
@@ -329,6 +366,19 @@
 
     <section class="workspace">
       <div class="surface">
+        <section class="trainer">
+          <div class="trainer-controls">
+            <button class="trainer-mode active" type="button" data-mode="H" tabindex="-1">Home room</button>
+            <button class="trainer-mode" type="button" data-mode="L" tabindex="-1">Left room</button>
+            <button class="trainer-mode" type="button" data-mode="R" tabindex="-1">Right room</button>
+            <button class="trainer-mode" type="button" data-mode="RIGHT_SIDE" tabindex="-1">Right side</button>
+            <button class="trainer-mode" type="button" data-mode="FULL" tabindex="-1">Full House</button>
+            <button id="newPrompt" type="button" tabindex="-1">New prompt</button>
+            <span class="pill" id="trainerStatus">0 / 0</span>
+          </div>
+          <div class="target" id="target"></div>
+        </section>
+
         <textarea id="output" spellcheck="false" autofocus tabindex="-1" aria-label="Typing output"></textarea>
         <div class="toolbar">
           <label class="file-button">Upload layout JSON<input id="layoutFile" type="file" accept="application/json,.json" tabindex="-1"></label>
@@ -376,6 +426,8 @@
     const bindingsEl = document.getElementById("bindings");
     const traceEl = document.getElementById("trace");
     const layoutNameEl = document.getElementById("layoutName");
+    const targetEl = document.getElementById("target");
+    const trainerStatusEl = document.getElementById("trainerStatus");
 
     let data = { name: "No layout loaded", layout: emptyLayout(), chords: [] };
     let chords = [];
@@ -385,6 +437,17 @@
     let downPhysical = new Set();
     let stroke = null;
     let traceLines = [];
+    let trainerMode = "H";
+    let targetText = "";
+    let targetIndex = 0;
+    let mistakeIndex = -1;
+
+    const wordLengthDistribution = [
+      [1, 0.08518], [2, 0.17598], [3, 0.21063], [4, 0.21457], [5, 0.11125],
+      [6, 0.07525], [7, 0.05643], [8, 0.03223], [9, 0.01895], [10, 0.00981],
+      [11, 0.00509], [12, 0.00212], [13, 0.0014], [14, 0.0006], [15, 0.00022],
+      [16, 0.00009], [17, 0.00005], [18, 0.00002], [19, 0.00004], [20, 0.0001]
+    ];
 
     function emptyLayout() {
       return {
@@ -444,6 +507,7 @@
       layoutNameEl.textContent = data.name;
       renderRooms();
       rebuildReverse();
+      newTrainingPrompt();
       updateVisuals();
       addTrace(`Loaded ${data.name}: ${chords.length} chords`);
     }
@@ -565,13 +629,104 @@
       const end = output.selectionEnd;
       output.value = output.value.slice(0, start) + text + output.value.slice(end);
       output.selectionStart = output.selectionEnd = start + text.length;
+      consumeTrainingText(text);
       output.focus();
+    }
+
+    function escapeHtml(text) {
+      return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+    }
+
+    function sampleWordLength() {
+      let roll = Math.random();
+      for (const [length, probability] of wordLengthDistribution) {
+        roll -= probability;
+        if (roll <= 0) return length;
+      }
+      return 4;
+    }
+
+    function lettersForTrainingMode() {
+      if (trainerMode === "RIGHT_SIDE") {
+        return ["H", "R"].flatMap(room => ORDER.map(key => data.layout[room][key])).filter(letter => /^[A-Z]$/.test(letter));
+      }
+      if (trainerMode === "FULL") {
+        return ROOMS.flatMap(room => ORDER.map(key => data.layout[room][key])).filter(letter => /^[A-Z]$/.test(letter));
+      }
+      return ORDER.map(key => data.layout[trainerMode][key]).filter(letter => /^[A-Z]$/.test(letter));
+    }
+
+    function newTrainingPrompt() {
+      const letters = lettersForTrainingMode();
+      if (!letters.length) {
+        targetText = "";
+        targetIndex = 0;
+        renderTarget();
+        return;
+      }
+
+      const words = [];
+      while (words.join(" ").length < 150) {
+        const length = sampleWordLength();
+        let word = "";
+        for (let i = 0; i < length; i++) {
+          word += letters[Math.floor(Math.random() * letters.length)].toLowerCase();
+        }
+        words.push(word);
+      }
+      targetText = words.join(" ").slice(0, 180);
+      targetIndex = 0;
+      mistakeIndex = -1;
+      output.value = "";
+      renderTarget();
+    }
+
+    function consumeTrainingText(text) {
+      if (!targetText) return;
+      for (const char of text) {
+        if (targetIndex >= targetText.length) break;
+        if (char === targetText[targetIndex]) {
+          targetIndex += 1;
+          mistakeIndex = -1;
+        } else {
+          mistakeIndex = targetIndex;
+          break;
+        }
+      }
+      if (targetIndex >= targetText.length) {
+        addTrace("Training prompt complete");
+        newTrainingPrompt();
+        return;
+      }
+      renderTarget();
+    }
+
+    function renderTarget() {
+      const done = escapeHtml(targetText.slice(0, targetIndex));
+      const currentChar = targetText[targetIndex] || "";
+      const current = escapeHtml(currentChar || " ");
+      const pending = escapeHtml(targetText.slice(targetIndex + 1));
+      const currentClass = mistakeIndex === targetIndex ? "wrong" : "current";
+      targetEl.innerHTML = `<span class="done">${done}</span><span class="${currentClass}">${current}</span><span class="pending">${pending}</span>`;
+      trainerStatusEl.textContent = `${Math.min(targetIndex, targetText.length)} / ${targetText.length}`;
     }
 
     function addTrace(line) {
       traceLines.unshift(line);
       traceLines = traceLines.slice(0, 18);
       traceEl.textContent = traceLines.join("\n");
+    }
+
+    function setTrainerMode(mode) {
+      trainerMode = mode;
+      for (const button of document.querySelectorAll(".trainer-mode")) {
+        button.classList.toggle("active", button.dataset.mode === mode);
+      }
+      newTrainingPrompt();
+      output.focus();
     }
 
     function suggestions() {
@@ -703,6 +858,9 @@
 
     document.getElementById("clear").addEventListener("click", () => {
       output.value = "";
+      targetIndex = 0;
+      mistakeIndex = -1;
+      renderTarget();
       output.focus();
     });
 
@@ -715,6 +873,9 @@
       } else if (start > 0) {
         output.value = output.value.slice(0, start - 1) + output.value.slice(start);
         output.selectionStart = output.selectionEnd = start - 1;
+        targetIndex = Math.max(0, targetIndex - 1);
+        mistakeIndex = -1;
+        renderTarget();
       }
       output.focus();
     });
@@ -728,6 +889,15 @@
       output.focus();
     });
 
+    document.getElementById("newPrompt").addEventListener("click", () => {
+      newTrainingPrompt();
+      output.focus();
+    });
+
+    for (const button of document.querySelectorAll(".trainer-mode")) {
+      button.addEventListener("click", () => setTrainerMode(button.dataset.mode));
+    }
+
     window.addEventListener("keydown", preventTabFocus, true);
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
@@ -740,6 +910,7 @@
     renderBindings();
     renderRooms();
     rebuildReverse();
+    newTrainingPrompt();
     updateVisuals();
   </script>
 </body>
