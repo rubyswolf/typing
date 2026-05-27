@@ -148,84 +148,14 @@ def append_extended(data, stats):
     return additions
 
 
-def overwrite_weaker_extended_single_room_chords(data, stats):
-    layout = data['layout']
-    letter_lookup = lookup(layout)
-    replacements = []
-
-    for letters, stat in sorted(stats.items(), key=lambda item: (-item[1]['count'], -item[1]['dominance'], item[1]['output'])):
-        size = stat['size']
-        if stat['count'] < EXTENDED_MIN_COUNT or stat['dominance'] < DOMINANCE_BY_SIZE[size]:
-            continue
-        if any(letter not in letter_lookup for letter in stat['output']):
-            continue
-
-        keys = [letter_lookup[letter][1] for letter in stat['output']]
-        if len(set(keys)) != size:
-            continue
-
-        native_rooms = [letter_lookup[letter][0] for letter in stat['output']]
-        if len(set(native_rooms)) <= 1:
-            continue
-
-        sorted_keys = sorted(keys)
-        for index, existing in enumerate(data['chords']):
-            if tuple(sorted(map(str, existing.get('keys', [])))) != tuple(sorted_keys):
-                continue
-            if not existing.get('added_high_order_ngram'):
-                continue
-            if existing.get('house_extended_cross_room'):
-                continue
-            if int(existing.get('count') or 0) >= stat['count']:
-                continue
-
-            replacement = {
-                'room': existing['room'],
-                'keys': sorted_keys,
-                'output': stat['output'],
-                'count': stat['count'],
-                'dominance': round(stat['dominance'], 4),
-                'house_extended_cross_room': True,
-                'added_high_order_ngram': True,
-                'replaced_high_order_single_room': {
-                    'output': existing.get('output'),
-                    'count': existing.get('count'),
-                    'dominance': existing.get('dominance'),
-                    'source': existing.get('source'),
-                },
-                'source': f'additive cross-house {size}-gram candidate replacing weaker single-room chord',
-            }
-            data['chords'][index] = replacement
-            replacements.append((existing, replacement))
-            break
-
-    return replacements
-
-
 stats = scan()
 for path, appender in [(HOUSE, append_house), (EXTENDED, append_extended)]:
     data = json.loads(path.read_text(encoding='utf-8'))
     before = len(data['chords'])
     additions = appender(data, stats)
-    replacements = []
-    if path == EXTENDED:
-        replacements = overwrite_weaker_extended_single_room_chords(data, stats)
     path.write_text(json.dumps(data, indent=2) + '\n', encoding='utf-8')
     print(path)
-    print('before', before, 'after', len(data['chords']), 'added', len(additions), 'replaced', len(replacements))
+    print('before', before, 'after', len(data['chords']), 'added', len(additions))
     for entry in additions[:20]:
         print(entry['room'], '+'.join(entry['keys']), entry['output'], entry['count'], entry['dominance'])
-    if replacements:
-        print('Replacements:')
-        for old, new in replacements[:20]:
-            print(
-                new['room'],
-                '+'.join(new['keys']),
-                old['output'],
-                old['count'],
-                '->',
-                new['output'],
-                new['count'],
-                new['dominance'],
-            )
     print()
