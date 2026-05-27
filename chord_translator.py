@@ -6,6 +6,8 @@ import json
 import queue
 import threading
 import time
+import tkinter as tk
+from collections import defaultdict, deque
 from pathlib import Path
 from ctypes import wintypes
 
@@ -68,6 +70,13 @@ USER32.SendInput.argtypes = (wintypes.UINT, ctypes.POINTER(INPUT), ctypes.c_int)
 USER32.SendInput.restype = wintypes.UINT
 
 
+def normalize_physical_key(key: str) -> str:
+    key = str(key).lower()
+    if key in {" ", "spacebar"}:
+        return "space"
+    return key
+
+
 class ChordTranslator:
     def __init__(self, layout_path: Path) -> None:
         data = json.loads(layout_path.read_text(encoding="utf-8"))
@@ -76,27 +85,36 @@ class ChordTranslator:
         self.layout = data["layout"]
         self.bindings = data.get(
             "bindings",
-            {"A": "q", "B": "w", "C": "e", "D": "r", "1": "i", "2": "o", "3": "p", "4": "[", "L": "c", "R": "m"},
+            {"A": "q", "B": "w", "C": "e", "D": "r", "1": "u", "2": "i", "3": "o", "4": "p", "L": "c", "R": " "},
         )
         self.physical_to_logical = {
-            str(physical).lower(): logical
+            normalize_physical_key(physical): logical
             for logical, physical in self.bindings.items()
             if physical
         }
         self.mapped_physical = set(self.physical_to_logical)
         self.toggle_physical = {
-            self.bindings["D"].lower(),
-            self.bindings["1"].lower(),
-            self.bindings["L"].lower(),
-            self.bindings["R"].lower(),
+            normalize_physical_key(self.bindings["D"]),
+            normalize_physical_key(self.bindings["1"]),
+            normalize_physical_key(self.bindings["L"]),
+            normalize_physical_key(self.bindings["R"]),
         }
         self.chords: dict[tuple[str, tuple[str, ...]], str] = {}
+        self.chord_counts: dict[tuple[str, tuple[str, ...]], int] = {}
+        self.output_to_chords: dict[str, list[tuple[str, tuple[str, ...], int]]] = defaultdict(list)
         for entry in data.get("chords", data.get("chord_map", [])):
             room = entry["room"]
             keys = tuple(sorted(map(str, entry["keys"])))
             output = entry.get("text") or entry.get("output")
             if room in ROOMS and keys and output:
-                self.chords[(room, keys)] = str(output).lower()
+                output_text = str(output).lower()
+                self.chords[(room, keys)] = output_text
+                self.chord_counts[(room, keys)] = int(entry.get("count") or 0)
+                self.output_to_chords[output_text].append((room, keys, int(entry.get("count") or 0)))
+        for entries in self.output_to_chords.values():
+            entries.sort(key=lambda item: item[2], reverse=True)
+        self.letter_counts = data.get("letter_counts") or data.get("letterCounts") or {}
+        self.space_count = int(data.get("space_count") or data.get("spaceCount") or 0)
 
         self.lock = threading.RLock()
         self.enabled = False
@@ -106,13 +124,20 @@ class ChordTranslator:
         self.suppression_hooks: list[object] = []
         self.ignore_until_toggle_release = False
         self.injecting = False
+        self.recent_strokes: deque[dict[str, object]] = deque(maxlen=8)
+        self.pending_tip: tuple[str, str, str] | None = None
+        self.next_press_id = 1
+        self.key_press_ids: dict[str, int] = {}
         self.stop_event = threading.Event()
         self.output_queue: queue.Queue[str] = queue.Queue()
+        self.overlay_queue: queue.Queue[tuple[str, str, str, str]] = queue.Queue()
         self.output_thread = threading.Thread(target=self.output_worker, daemon=True)
+        self.overlay_thread = threading.Thread(target=run_overlay, args=(self.overlay_queue, self.stop_event), daemon=True)
 
     def run(self) -> None:
-        combo = "+".join(self.bindings[item] for item in ["D", "1", "L", "R"])
+        combo = "+".join(normalize_physical_key(self.bindings[item]) for item in ["D", "1", "L", "R"])
         self.output_thread.start()
+        self.overlay_thread.start()
         keyboard.hook(self.handle_passive_event, suppress=False)
         keyboard.add_hotkey("ctrl+alt+esc", self.stop, suppress=False)
 
@@ -158,9 +183,10 @@ class ChordTranslator:
         else:
             self.disable_suppression()
         print(f"State: {'enabled' if self.enabled else 'disabled'}")
+        self.update_overlay()
 
     def update_down(self, event: keyboard.KeyboardEvent) -> str | None:
-        physical = str(event.name or "").lower()
+        physical = normalize_physical_key(event.name or "")
         if physical not in self.mapped_physical:
             return None
         if event.event_type == "down":
@@ -173,7 +199,7 @@ class ChordTranslator:
         if self.injecting:
             return
         with self.lock:
-            physical_name = str(event.name or "").lower()
+            physical_name = normalize_physical_key(event.name or "")
             if physical_name in SHIFT_KEYS:
                 self.shift_down = event.event_type == "down"
                 return
@@ -185,6 +211,7 @@ class ChordTranslator:
             if self.ignore_until_toggle_release:
                 if not self.toggle_physical.intersection(self.down):
                     self.ignore_until_toggle_release = False
+                    self.update_overlay()
                 return
             if event.event_type == "down" and self.toggle_physical.issubset(self.down):
                 self.toggle()
@@ -244,7 +271,7 @@ class ChordTranslator:
         if self.injecting:
             return
         with self.lock:
-            physical = str(event.name or "").lower()
+            physical = normalize_physical_key(event.name or "")
             if physical in SHIFT_KEYS:
                 self.shift_down = event.event_type == "down"
                 return
@@ -266,6 +293,9 @@ class ChordTranslator:
                 if physical in self.down:
                     return
                 self.down.add(physical)
+                if logical in ORDER:
+                    self.key_press_ids[logical] = self.next_press_id
+                    self.next_press_id += 1
                 if self.toggle_physical.issubset(self.down):
                     self.toggle()
                     return
@@ -275,6 +305,7 @@ class ChordTranslator:
                 elif logical in ORDER and logical not in self.stroke["keys"]:  # type: ignore[operator]
                     self.stroke["keys"].add(logical)  # type: ignore[union-attr]
                     self.stroke["order"].append(logical)  # type: ignore[union-attr]
+                self.update_overlay()
                 return
 
             if event.event_type != "up":
@@ -283,15 +314,19 @@ class ChordTranslator:
             self.down.discard(physical)
             self.reconcile_down_state()
             if self.resolve_thumb_space_if_ready(logical):
+                self.update_overlay()
                 return
             if self.stroke and logical in THUMBS and self.stroke["keys"]:  # type: ignore[index]
                 self.resolve_stroke()
+                self.update_overlay()
                 return
             if self.stroke and logical in ORDER and not self.any_finger_held():
                 self.resolve_stroke()
+                self.update_overlay()
                 return
             if not self.down and self.stroke:
                 self.resolve_stroke()
+            self.update_overlay()
 
     def any_finger_held(self) -> bool:
         for physical in self.down:
@@ -309,6 +344,7 @@ class ChordTranslator:
             return False
         self.stroke = None
         self.emit(" ")
+        self.record_stroke(" ", "H", (), (), ("L", "R"), True)
         return True
 
     def resolve_stroke(self) -> None:
@@ -316,19 +352,171 @@ class ChordTranslator:
             return
         room = self.active_room()
         keys = tuple(sorted(self.stroke["keys"]))  # type: ignore[arg-type]
+        order = tuple(self.stroke["order"])  # type: ignore[arg-type]
+        thumbs = tuple(sorted(self.stroke["thumbs"]))  # type: ignore[arg-type]
         output = ""
+        used_chord = False
         if keys:
             output = self.chords.get((room, keys), "")
-            if not output:
+            used_chord = bool(output)
+            if not used_chord:
                 output = "".join(self.layout[room][key].lower() for key in self.stroke["order"])  # type: ignore[index]
         self.stroke = None
         if output:
+            raw_output = output
             if self.shift_down:
                 output = output.upper()
             self.emit(output)
+            self.record_stroke(raw_output, room, keys, order, thumbs, used_chord)
 
     def emit(self, text: str) -> None:
         self.output_queue.put(text)
+
+    def record_stroke(
+        self,
+        output: str,
+        room: str,
+        keys: tuple[str, ...],
+        order: tuple[str, ...],
+        thumbs: tuple[str, ...],
+        used_chord: bool,
+    ) -> None:
+        stroke = {
+            "output": output.lower(),
+            "room": room,
+            "keys": keys,
+            "key_ids": tuple(self.key_press_ids.get(key, 0) for key in keys),
+            "order": order,
+            "thumbs": thumbs,
+            "used_chord": used_chord,
+            "time": time.monotonic(),
+        }
+        self.recent_strokes.append(stroke)
+        self.detect_inefficient_stroke(stroke)
+
+    def detect_inefficient_stroke(self, stroke: dict[str, object]) -> None:
+        if self.detect_changed_keys():
+            return
+        if self.detect_missed_chord(stroke):
+            return
+        self.detect_changed_rooms()
+
+    def detect_missed_chord(self, stroke: dict[str, object]) -> bool:
+        if stroke["output"] == " ":
+            return False
+        recent = list(self.recent_strokes)
+        for length in range(min(4, len(recent)), 1, -1):
+            segment = recent[-length:]
+            if any(item["output"] == " " for item in segment):
+                continue
+            text = "".join(str(item["output"]) for item in segment)
+            entries = self.output_to_chords.get(text)
+            if not entries:
+                continue
+            room, keys, count = entries[0]
+            self.queue_tip(
+                "Missed Chord",
+                f"{text.upper()} is {room} {'+'.join(keys)}",
+                f"{count:,}" if count else "",
+            )
+            return True
+        return False
+
+    def detect_changed_rooms(self) -> bool:
+        if len(self.recent_strokes) < 2:
+            return False
+        previous, current = self.recent_strokes[-2], self.recent_strokes[-1]
+        if time.monotonic() - float(previous["time"]) > 1.5:
+            return False
+        if previous["used_chord"] or current["used_chord"]:
+            return False
+        if previous["room"] != current["room"] or previous["room"] not in {"L", "R"}:
+            return False
+        if len(previous["keys"]) != 1 or len(current["keys"]) != 1:  # type: ignore[arg-type]
+            return False
+        if not previous["thumbs"] or not current["thumbs"]:
+            return False
+        room = str(current["room"])
+        combined = f"{previous['output']}{current['output']}".upper()
+        self.queue_tip(
+            "Changed Rooms",
+            f"Stay in {room}: hold {room}, tap {previous['keys'][0]} then {current['keys'][0]}",  # type: ignore[index]
+            combined,
+        )
+        return True
+
+    def detect_changed_keys(self) -> bool:
+        if len(self.recent_strokes) < 2:
+            return False
+        previous, current = self.recent_strokes[-2], self.recent_strokes[-1]
+        if time.monotonic() - float(previous["time"]) > 1.5:
+            return False
+        if previous["used_chord"] or current["used_chord"]:
+            return False
+        if {previous["room"], current["room"]} != {"L", "R"}:
+            return False
+        if len(previous["keys"]) != 1 or len(current["keys"]) != 1:  # type: ignore[arg-type]
+            return False
+        if previous["keys"] != current["keys"]:
+            return False
+        key = previous["keys"][0]  # type: ignore[index]
+        previous_key_id = previous.get("key_ids", (0,))[0]  # type: ignore[index]
+        current_key_id = current.get("key_ids", (0,))[0]  # type: ignore[index]
+        if previous_key_id and previous_key_id == current_key_id:
+            return False
+        first_room = str(previous["room"])
+        second_room = str(current["room"])
+        text = f"{previous['output']}{current['output']}".upper()
+        self.queue_tip(
+            "Changed Keys",
+            f"Hold {key}, tap {first_room} then {second_room}",
+            text,
+        )
+        return True
+
+    def queue_tip(self, title: str, detail: str, meta: str = "") -> None:
+        self.pending_tip = (title, detail, meta)
+
+    def update_overlay(self) -> None:
+        if not self.enabled:
+            self.overlay_queue.put(("hide", "", "", ""))
+            return
+
+        if not self.stroke:
+            if self.pending_tip:
+                title, detail, meta = self.pending_tip
+                self.pending_tip = None
+                self.overlay_queue.put(("tip", title, detail, meta))
+                return
+            self.overlay_queue.put(("idle", "", "", ""))
+            return
+
+        room = self.active_room()
+        keys = tuple(sorted(self.stroke["keys"]))  # type: ignore[arg-type]
+        thumbs = self.stroke["thumbs"]  # type: ignore[assignment]
+
+        if not keys and {"L", "R"}.issubset(thumbs):
+            self.overlay_queue.put(("show", "SPACE", "L+R", f"{self.space_count:,}"))
+            return
+
+        if not keys:
+            self.overlay_queue.put(("idle", "", "", ""))
+            return
+
+        if len(keys) == 1:
+            letter = self.layout[room][keys[0]]
+            count = int(self.letter_counts.get(letter, 0))
+            self.overlay_queue.put(("single", letter, f"{room} {keys[0]}", f"{count:,}"))
+            return
+
+        output = self.chords.get((room, keys))
+        if output:
+            count = self.chord_counts.get((room, keys), 0)
+            self.overlay_queue.put(("chord", output.upper(), f"{room} {'+'.join(keys)}", f"{count:,}"))
+            return
+
+        sequential = "".join(self.layout[room][key] for key in self.stroke["order"])  # type: ignore[index]
+        self.overlay_queue.put(("miss", sequential, f"{room} {'+'.join(keys)}", "no chord"))
 
     def output_worker(self) -> None:
         while not self.stop_event.is_set():
@@ -343,6 +531,118 @@ class ChordTranslator:
                 print(f"SendInput failed for {text!r}: {error}")
             finally:
                 self.injecting = False
+
+
+def run_overlay(
+    overlay_queue: queue.Queue[tuple[str, str, str, str]],
+    stop_event: threading.Event,
+) -> None:
+    root = tk.Tk()
+    root.withdraw()
+
+    live = tk.Toplevel(root)
+    live.withdraw()
+    live.overrideredirect(True)
+    live.attributes("-topmost", True)
+    live.configure(bg="#15110d")
+
+    live_frame = tk.Frame(live, bg="#15110d", padx=14, pady=10)
+    live_frame.pack()
+    live_title = tk.Label(live_frame, text="", bg="#15110d", fg="#f8f2e8", font=("Segoe UI", 28, "bold"))
+    live_title.pack(anchor="e")
+    live_subtitle = tk.Label(live_frame, text="", bg="#15110d", fg="#d8cbb9", font=("Segoe UI", 11))
+    live_subtitle.pack(anchor="e")
+    live_count = tk.Label(live_frame, text="", bg="#15110d", fg="#8fc7b0", font=("Consolas", 10))
+    live_count.pack(anchor="e")
+
+    tip = tk.Toplevel(root)
+    tip.withdraw()
+    tip.overrideredirect(True)
+    tip.attributes("-topmost", True)
+    tip.configure(bg="#4b3511")
+
+    tip_frame = tk.Frame(tip, bg="#4b3511", padx=18, pady=12)
+    tip_frame.pack()
+    tip_title = tk.Label(tip_frame, text="", bg="#4b3511", fg="#fff7dc", font=("Segoe UI", 18, "bold"))
+    tip_title.pack(anchor="center")
+    tip_subtitle = tk.Label(tip_frame, text="", bg="#4b3511", fg="#f1d9a2", font=("Segoe UI", 11))
+    tip_subtitle.pack(anchor="center")
+    tip_count = tk.Label(tip_frame, text="", bg="#4b3511", fg="#ffd166", font=("Consolas", 10))
+    tip_count.pack(anchor="center")
+
+    colors = {
+        "show": ("#15110d", "#f8f2e8"),
+        "single": ("#14323a", "#f8f2e8"),
+        "chord": ("#123323", "#f8f2e8"),
+        "miss": ("#5a231d", "#fff3d7"),
+    }
+    tip_until = 0.0
+
+    def place_top_right() -> None:
+        live.update_idletasks()
+        width = live.winfo_reqwidth()
+        height = live.winfo_reqheight()
+        x = live.winfo_screenwidth() - width - 18
+        y = 18
+        live.geometry(f"{width}x{height}+{x}+{y}")
+
+    def place_top_center() -> None:
+        tip.update_idletasks()
+        width = tip.winfo_reqwidth()
+        height = tip.winfo_reqheight()
+        x = (tip.winfo_screenwidth() - width) // 2
+        y = 18
+        tip.geometry(f"{width}x{height}+{x}+{y}")
+
+    def apply(kind: str, main: str, sub: str, meta: str) -> None:
+        nonlocal tip_until
+        if kind == "idle":
+            live.withdraw()
+            return
+        if kind == "hide":
+            live.withdraw()
+            tip.withdraw()
+            tip_until = 0.0
+            return
+        if kind == "tip":
+            tip_until = time.monotonic() + 2.4
+            tip_title.configure(text=main)
+            tip_subtitle.configure(text=sub)
+            tip_count.configure(text=meta)
+            place_top_center()
+            tip.deiconify()
+            return
+        else:
+            live.lift()
+        bg, fg = colors.get(kind, colors["show"])
+        live.configure(bg=bg)
+        live_frame.configure(bg=bg)
+        live_title.configure(text=main, bg=bg, fg=fg)
+        live_subtitle.configure(text=sub, bg=bg)
+        live_count.configure(text=meta, bg=bg)
+        place_top_right()
+        live.deiconify()
+
+    def poll() -> None:
+        nonlocal tip_until
+        if stop_event.is_set():
+            root.destroy()
+            return
+        latest = None
+        try:
+            while True:
+                latest = overlay_queue.get_nowait()
+        except queue.Empty:
+            pass
+        if latest:
+            apply(*latest)
+        elif tip_until and time.monotonic() >= tip_until:
+            tip.withdraw()
+            tip_until = 0.0
+        root.after(30, poll)
+
+    root.after(30, poll)
+    root.mainloop()
 
 
 def send_unicode_text(text: str) -> None:

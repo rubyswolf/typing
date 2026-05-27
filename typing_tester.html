@@ -366,7 +366,7 @@
         <span class="pill" id="layoutName">No layout loaded</span>
         <span class="pill">L+R chord = space</span>
         <span class="pill">QWER = ABCD</span>
-        <span class="pill">IOP[ = 1234</span>
+        <span class="pill">UIOP = 1234</span>
       </div>
     </header>
 
@@ -396,7 +396,7 @@
 
         <div class="thumbs">
           <div class="thumb" id="thumb-L">L thumb: <span data-bind-label="L">c</span></div>
-          <div class="thumb" id="thumb-R">R thumb: <span data-bind-label="R">m</span></div>
+          <div class="thumb" id="thumb-R">R thumb: <span data-bind-label="R">space</span></div>
         </div>
 
         <div class="rooms" id="rooms"></div>
@@ -425,7 +425,7 @@
     const ORDER = ["A", "B", "C", "D", "1", "2", "3", "4"];
     const ROOMS = ["L", "H", "R"];
     const ROOM_LABEL = { H: "Home", R: "Right room", L: "Left room" };
-    const defaultBindings = { A: "q", B: "w", C: "e", D: "r", 1: "i", 2: "o", 3: "p", 4: "[", L: "c", R: "m" };
+    const defaultBindings = { A: "q", B: "w", C: "e", D: "r", 1: "u", 2: "i", 3: "o", 4: "p", L: "c", R: " " };
 
     const output = document.getElementById("output");
     const roomsEl = document.getElementById("rooms");
@@ -529,15 +529,23 @@
       return `${room}:${[...keys].sort().join("+")}`;
     }
 
+    function displayBinding(value) {
+      return value === " " ? "space" : value;
+    }
+
+    function normalizePhysicalKey(value) {
+      return value === "space" ? " " : value;
+    }
+
     function rebuildReverse() {
       reverse = {};
       for (const [logical, physical] of Object.entries(bindings)) {
-        if (physical) reverse[String(physical).toLowerCase()] = logical;
+        if (physical) reverse[normalizePhysicalKey(String(physical).toLowerCase())] = logical;
       }
       for (const el of document.querySelectorAll("[data-bind-label]")) {
-        el.textContent = bindings[el.dataset.bindLabel] || "";
+        el.textContent = displayBinding(bindings[el.dataset.bindLabel] || "");
       }
-      for (const input of bindingsEl.querySelectorAll("input")) input.value = bindings[input.dataset.logical] || "";
+      for (const input of bindingsEl.querySelectorAll("input")) input.value = displayBinding(bindings[input.dataset.logical] || "");
     }
 
     function renderRooms() {
@@ -553,7 +561,7 @@
           tile.className = "key";
           tile.dataset.room = room;
           tile.dataset.logical = key;
-          tile.innerHTML = `<div class="symbol">${key}</div><div class="letter">${data.layout[room][key]}</div><div class="binding">${bindings[key] || ""}</div>`;
+          tile.innerHTML = `<div class="symbol">${key}</div><div class="letter">${data.layout[room][key]}</div><div class="binding">${displayBinding(bindings[key] || "")}</div>`;
           grid.appendChild(tile);
         }
         roomsEl.appendChild(card);
@@ -570,7 +578,7 @@
       }
       bindingsEl.addEventListener("input", event => {
         if (!(event.target instanceof HTMLInputElement)) return;
-        bindings[event.target.dataset.logical] = event.target.value.trim().toLowerCase();
+        bindings[event.target.dataset.logical] = normalizePhysicalKey(event.target.value.trim().toLowerCase());
         localStorage.setItem("chordTesterBindings", JSON.stringify(bindings));
         rebuildReverse();
         renderRooms();
@@ -898,7 +906,7 @@
       for (const card of document.querySelectorAll(".room")) card.classList.toggle("active", card.dataset.room === room);
       for (const tile of document.querySelectorAll(".key")) {
         tile.classList.toggle("down", Boolean(stroke && tile.dataset.room === room && stroke.keys.has(tile.dataset.logical)));
-        tile.querySelector(".binding").textContent = bindings[tile.dataset.logical] || "";
+        tile.querySelector(".binding").textContent = displayBinding(bindings[tile.dataset.logical] || "");
       }
       document.getElementById("thumb-L").classList.toggle("down", downPhysical.has(bindings.L));
       document.getElementById("thumb-R").classList.toggle("down", downPhysical.has(bindings.R));
