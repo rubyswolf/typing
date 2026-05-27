@@ -312,6 +312,11 @@
     .suggestion strong { font-size: 20px; }
     .suggestion small { display: block; color: var(--muted); margin-top: 2px; }
     .suggestion .count { color: var(--muted); font: 13px Consolas, "Courier New", monospace; }
+    .suggestion.current-chord {
+      border-color: var(--down);
+      background: #e9f6f7;
+      box-shadow: inset 0 0 0 2px rgba(31, 122, 140, 0.18);
+    }
 
     .binding-row {
       display: grid;
@@ -657,9 +662,8 @@
 
       insertText(text);
       if (chordTypedBuffer === target.text.toLowerCase()) {
-        const oneStroke = keys.length >= 2 && text === target.text.toLowerCase();
         fakeHitIndex = chordTargetIndex;
-        advanceChordTarget(oneStroke);
+        advanceChordTarget(true);
       }
       return true;
     }
@@ -859,15 +863,20 @@
     function suggestions() {
       const room = activeRoom();
       if (stroke && stroke.thumbSeen.has("L") && stroke.thumbSeen.has("R") && stroke.keys.size === 0) {
-        return [{ room: "H", keys: ["L", "R"], text: "SPACE", count: 0 }];
+        return [{ room: "H", keys: ["L", "R"], text: "SPACE", count: 0, current: true }];
       }
       if (!stroke || stroke.keys.size === 0) {
         return chords.filter(chord => chord.room === room).slice(0, 8);
       }
       const held = [...stroke.keys];
-      return chords
+      const exact = chordBySignature.get(signature(room, held));
+      const matches = chords
         .filter(chord => chord.room === room && held.every(key => chord.keys.includes(key)))
-        .slice(0, 8);
+        .filter(chord => !exact || signature(chord.room, chord.keys) !== signature(exact.room, exact.keys));
+      return [
+        ...(exact ? [{ ...exact, current: true }] : []),
+        ...matches
+      ].slice(0, 8);
     }
 
     function updateVisuals() {
@@ -891,7 +900,7 @@
       }
       for (const chord of items) {
         const row = document.createElement("div");
-        row.className = "suggestion";
+        row.className = `suggestion${chord.current ? " current-chord" : ""}`;
         row.innerHTML = `<div><strong>${chord.text}</strong><small>${ROOM_LABEL[chord.room] || "Thumbs"} ${chord.keys.join("+")}</small></div><span class="count">${Number(chord.count || 0).toLocaleString()}</span>`;
         suggestionsEl.appendChild(row);
       }

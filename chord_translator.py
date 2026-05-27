@@ -362,7 +362,7 @@ def send_unicode_text(text: str) -> None:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="System-wide translator for the chord typing layout.")
-    parser.add_argument("layout", nargs="?", default="layouts/reverse_modifier_aware.json")
+    parser.add_argument("layout", nargs="?", default="layouts/house_extended.json")
     return parser.parse_args()
 
 
