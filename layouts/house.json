@@ -1116,11 +1116,13 @@
         "C",
         "D"
       ],
-      "output": "ETHIN",
+      "output": "SOMETHING",
       "count": 10700,
       "dominance": 0.9418,
       "added_high_order_ngram": true,
-      "source": "5-gram additive candidate"
+      "source": "5-gram additive candidate",
+      "completed_fragment": "ETHIN",
+      "completed_word_count": 10521
     },
     {
       "room": "H",
@@ -1132,11 +1134,13 @@
         "C",
         "D"
       ],
-      "output": "ETHING",
+      "output": "SOMETHING",
       "count": 10589,
       "dominance": 0.9682,
       "added_high_order_ngram": true,
-      "source": "6-gram additive candidate"
+      "source": "6-gram additive candidate",
+      "completed_fragment": "ETHING",
+      "completed_word_count": 10521
     },
     {
       "room": "R",
@@ -1162,11 +1166,13 @@
         "B",
         "C"
       ],
-      "output": "HINGS",
+      "output": "THINGS",
       "count": 7543,
       "dominance": 0.8892,
       "added_high_order_ngram": true,
-      "source": "5-gram additive candidate"
+      "source": "5-gram additive candidate",
+      "completed_fragment": "HINGS",
+      "completed_word_count": 7444
     },
     {
       "room": "H",
@@ -1193,11 +1199,13 @@
         "4",
         "A"
       ],
-      "output": "HANGE",
+      "output": "CHANGE",
       "count": 4383,
       "dominance": 0.9955,
       "added_high_order_ngram": true,
-      "source": "5-gram additive candidate"
+      "source": "5-gram additive candidate",
+      "completed_fragment": "HANGE",
+      "completed_word_count": 2836
     },
     {
       "room": "H",
@@ -1223,11 +1231,13 @@
         "A",
         "C"
       ],
-      "output": "AGINE",
+      "output": "IMAGINE",
       "count": 3553,
       "dominance": 0.8997,
       "added_high_order_ngram": true,
-      "source": "5-gram additive candidate"
+      "source": "5-gram additive candidate",
+      "completed_fragment": "AGINE",
+      "completed_word_count": 3401
     },
     {
       "room": "H",
@@ -1254,11 +1264,13 @@
         "C",
         "D"
       ],
-      "output": "ESTING",
+      "output": "INTERESTING",
       "count": 1965,
       "dominance": 0.8499,
       "added_high_order_ngram": true,
-      "source": "6-gram additive candidate"
+      "source": "6-gram additive candidate",
+      "completed_fragment": "ESTING",
+      "completed_word_count": 1429
     },
     {
       "room": "H",
@@ -1269,11 +1281,13 @@
         "B",
         "D"
       ],
-      "output": "NSTEA",
+      "output": "INSTEAD",
       "count": 1852,
       "dominance": 0.76,
       "added_high_order_ngram": true,
-      "source": "5-gram additive candidate"
+      "source": "5-gram additive candidate",
+      "completed_fragment": "NSTEA",
+      "completed_word_count": 1846
     },
     {
       "room": "H",
@@ -1285,11 +1299,13 @@
         "C",
         "D"
       ],
-      "output": "INSTEA",
+      "output": "INSTEAD",
       "count": 1851,
       "dominance": 0.7703,
       "added_high_order_ngram": true,
-      "source": "6-gram additive candidate"
+      "source": "6-gram additive candidate",
+      "completed_fragment": "INSTEA",
+      "completed_word_count": 1846
     },
     {
       "room": "H",
@@ -1346,11 +1362,13 @@
         "C",
         "D"
       ],
-      "output": "AIGHT",
+      "output": "STRAIGHT",
       "count": 1095,
       "dominance": 0.9856,
       "added_high_order_ngram": true,
-      "source": "5-gram additive candidate"
+      "source": "5-gram additive candidate",
+      "completed_fragment": "AIGHT",
+      "completed_word_count": 758
     },
     {
       "room": "H",
@@ -1361,11 +1379,13 @@
         "B",
         "C"
       ],
-      "output": "GAINS",
+      "output": "AGAINST",
       "count": 1004,
       "dominance": 0.5609,
       "added_high_order_ngram": true,
-      "source": "5-gram additive candidate"
+      "source": "5-gram additive candidate",
+      "completed_fragment": "GAINS",
+      "completed_word_count": 983
     }
   ],
   "letter_counts": {
