@@ -462,9 +462,18 @@
         "4",
         "D"
       ],
-      "output": "OUL",
-      "count": 33259,
-      "dominance": 0.8982
+      "output": "OUT",
+      "count": 44534,
+      "total_same_keys": 48135,
+      "dominance": 0.9252,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "OUL",
+        "count": 33259,
+        "dominance": 0.8982,
+        "source": null
+      }
     },
     {
       "room": "H",
@@ -534,9 +543,18 @@
         "2",
         "C"
       ],
-      "output": "RY",
-      "count": 46492,
-      "dominance": 0.9711
+      "output": "AY",
+      "count": 77643,
+      "total_same_keys": 86143,
+      "dominance": 0.9013,
+      "house_extended_cross_room": true,
+      "source": "cross-room 2-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "RY",
+        "count": 46492,
+        "dominance": 0.9711,
+        "source": null
+      }
     },
     {
       "room": "R",
@@ -588,9 +606,18 @@
         "2",
         "4"
       ],
-      "output": "OUR",
-      "count": 31520,
-      "dominance": 0.7502
+      "output": "HER",
+      "count": 68824,
+      "total_same_keys": 71206,
+      "dominance": 0.9665,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "OUR",
+        "count": 31520,
+        "dominance": 0.7502,
+        "source": null
+      }
     },
     {
       "room": "R",
@@ -663,9 +690,18 @@
         "3",
         "4"
       ],
-      "output": "COU",
-      "count": 15538,
-      "dominance": 0.8885
+      "output": "OUN",
+      "count": 17747,
+      "total_same_keys": 23000,
+      "dominance": 0.7716,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "COU",
+        "count": 15538,
+        "dominance": 0.8885,
+        "source": null
+      }
     },
     {
       "room": "R",
@@ -708,9 +744,18 @@
         "3",
         "A"
       ],
-      "output": "CORD",
-      "count": 6987,
-      "dominance": 0.9424
+      "output": "NDER",
+      "count": 10890,
+      "total_same_keys": 14910,
+      "dominance": 0.7304,
+      "house_extended_cross_room": true,
+      "source": "cross-room 4-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "CORD",
+        "count": 6987,
+        "dominance": 0.9424,
+        "source": null
+      }
     },
     {
       "room": "H",
@@ -730,9 +775,18 @@
         "2",
         "3"
       ],
-      "output": "CR",
-      "count": 26772,
-      "dominance": 0.7922
+      "output": "RN",
+      "count": 26841,
+      "total_same_keys": 27581,
+      "dominance": 0.9732,
+      "house_extended_cross_room": true,
+      "source": "cross-room 2-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "CR",
+        "count": 26772,
+        "dominance": 0.7922,
+        "source": null
+      }
     },
     {
       "room": "R",
@@ -752,9 +806,18 @@
         "2",
         "A"
       ],
-      "output": "ORD",
-      "count": 13082,
-      "dominance": 0.7423
+      "output": "EAD",
+      "count": 27283,
+      "total_same_keys": 47277,
+      "dominance": 0.5771,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "ORD",
+        "count": 13082,
+        "dominance": 0.7423,
+        "source": null
+      }
     },
     {
       "room": "H",
@@ -839,9 +902,18 @@
         "A",
         "D"
       ],
-      "output": "OLD",
-      "count": 8412,
-      "dominance": 0.8289
+      "output": "TED",
+      "count": 20218,
+      "total_same_keys": 21458,
+      "dominance": 0.9422,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "OLD",
+        "count": 8412,
+        "dominance": 0.8289,
+        "source": null
+      }
     },
     {
       "room": "H",
@@ -872,9 +944,18 @@
         "2",
         "B"
       ],
-      "output": "RM",
-      "count": 13208,
-      "dominance": 0.9243
+      "output": "RS",
+      "count": 55050,
+      "total_same_keys": 55965,
+      "dominance": 0.9837,
+      "house_extended_cross_room": true,
+      "source": "cross-room 2-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "RM",
+        "count": 13208,
+        "dominance": 0.9243,
+        "source": null
+      }
     },
     {
       "room": "H",
@@ -894,9 +975,18 @@
         "3",
         "D"
       ],
-      "output": "LCO",
-      "count": 20985,
-      "dominance": 0.6137
+      "output": "NOT",
+      "count": 55761,
+      "total_same_keys": 87780,
+      "dominance": 0.6352,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "LCO",
+        "count": 20985,
+        "dominance": 0.6137,
+        "source": null
+      }
     },
     {
       "room": "L",
@@ -925,9 +1015,18 @@
         "B",
         "D"
       ],
-      "output": "LM",
-      "count": 10908,
-      "dominance": 0.9318
+      "output": "MP",
+      "count": 21419,
+      "total_same_keys": 23458,
+      "dominance": 0.9131,
+      "house_extended_cross_room": true,
+      "source": "cross-room 2-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "LM",
+        "count": 10908,
+        "dominance": 0.9318,
+        "source": null
+      }
     },
     {
       "room": "H",
@@ -946,9 +1045,18 @@
         "A",
         "B"
       ],
-      "output": "DM",
-      "count": 8975,
-      "dominance": 0.9661
+      "output": "DS",
+      "count": 24443,
+      "total_same_keys": 25788,
+      "dominance": 0.9478,
+      "house_extended_cross_room": true,
+      "source": "cross-room 2-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "DM",
+        "count": 8975,
+        "dominance": 0.9661,
+        "source": null
+      }
     },
     {
       "room": "H",
@@ -979,9 +1087,18 @@
         "2",
         "D"
       ],
-      "output": "ROL",
-      "count": 11266,
-      "dominance": 0.6282
+      "output": "TER",
+      "count": 44151,
+      "total_same_keys": 71244,
+      "dominance": 0.6197,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "ROL",
+        "count": 11266,
+        "dominance": 0.6282,
+        "source": null
+      }
     },
     {
       "room": "H",
@@ -1000,9 +1117,18 @@
         "4",
         "C"
       ],
-      "output": "UY",
-      "count": 7663,
-      "dominance": 0.8052
+      "output": "BU",
+      "count": 57268,
+      "total_same_keys": 69215,
+      "dominance": 0.8274,
+      "house_extended_cross_room": true,
+      "source": "cross-room 2-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "UY",
+        "count": 7663,
+        "dominance": 0.8052,
+        "source": null
+      }
     },
     {
       "room": "R",
@@ -1011,9 +1137,18 @@
         "2",
         "3"
       ],
-      "output": "COR",
-      "count": 11158,
-      "dominance": 0.6009
+      "output": "ORK",
+      "count": 11641,
+      "total_same_keys": 13615,
+      "dominance": 0.855,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "COR",
+        "count": 11158,
+        "dominance": 0.6009,
+        "source": null
+      }
     },
     {
       "room": "H",
@@ -1033,9 +1168,18 @@
         "4",
         "A"
       ],
-      "output": "DUR",
-      "count": 4622,
-      "dominance": 0.643
+      "output": "HAD",
+      "count": 8068,
+      "total_same_keys": 9646,
+      "dominance": 0.8364,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "DUR",
+        "count": 4622,
+        "dominance": 0.643,
+        "source": null
+      }
     },
     {
       "room": "H",
@@ -1056,9 +1200,18 @@
         "2",
         "C"
       ],
-      "output": "RYO",
-      "count": 5154,
-      "dominance": 0.5734
+      "output": "YEA",
+      "count": 22364,
+      "total_same_keys": 27207,
+      "dominance": 0.822,
+      "house_extended_cross_room": true,
+      "source": "cross-room 3-gram candidate replacing side-room native chord",
+      "replaced_side_room_native_chord": {
+        "output": "RYO",
+        "count": 5154,
+        "dominance": 0.5734,
+        "source": null
+      }
     },
     {
       "room": "L",
