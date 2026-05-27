@@ -136,7 +136,10 @@ class ChordTranslator:
     def enable_suppression(self) -> None:
         self.disable_suppression()
         for physical in sorted(self.mapped_physical):
-            self.suppression_hooks.append(keyboard.hook_key(physical, self.handle_enabled_event, suppress=True))
+            def callback(event: keyboard.KeyboardEvent, _physical: str = physical) -> None:
+                self.handle_enabled_event(event)
+
+            self.suppression_hooks.append(keyboard.hook_key(physical, callback, suppress=True))
 
     def disable_suppression(self) -> None:
         for hook in self.suppression_hooks:
