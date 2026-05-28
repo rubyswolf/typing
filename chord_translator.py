@@ -25,6 +25,7 @@ KEYEVENTF_KEYUP = 0x0002
 KEYEVENTF_UNICODE = 0x0004
 ULONG_PTR = wintypes.WPARAM
 USER32 = ctypes.WinDLL("user32", use_last_error=True)
+BACKSPACE_CHORD = ("1", "2", "3", "4")
 
 
 class KEYBDINPUT(ctypes.Structure):
@@ -74,6 +75,7 @@ USER32.GetKeyState.argtypes = (ctypes.c_int,)
 USER32.GetKeyState.restype = ctypes.c_short
 
 VK_CAPITAL = 0x14
+VK_BACK = 0x08
 
 
 def normalize_physical_key(key: str) -> str:
@@ -128,6 +130,7 @@ class ChordTranslator:
         self.suppression_hooks: list[object] = []
         self.injecting = False
         self.recent_strokes: deque[dict[str, object]] = deque(maxlen=8)
+        self.output_lengths: list[int] = []
         self.pending_tip: tuple[str, str, str] | None = None
         self.last_toggle_time = 0.0
         self.pending_windows: set[str] = set()
@@ -261,6 +264,7 @@ class ChordTranslator:
     def toggle(self) -> None:
         self.enabled = not self.enabled
         self.stroke = None
+        self.output_lengths.clear()
         self.down.difference_update(self.mapped_physical)
         if self.enabled:
             self.enable_suppression()
@@ -434,6 +438,11 @@ class ChordTranslator:
         output = ""
         used_chord = False
         if keys:
+            if keys == BACKSPACE_CHORD:
+                self.stroke = None
+                self.emit("\b")
+                self.update_overlay()
+                return
             output = self.chords.get((room, keys), "")
             used_chord = bool(output)
             if not used_chord and room != "A":
@@ -448,6 +457,11 @@ class ChordTranslator:
 
     def emit(self, text: str) -> None:
         self.output_queue.put(text)
+
+    def backspace_count(self) -> int:
+        if self.output_lengths:
+            return self.output_lengths.pop()
+        return 1
 
     def record_stroke(
         self,
@@ -587,6 +601,10 @@ class ChordTranslator:
             self.overlay_queue.put(("idle", "", "", ""))
             return
 
+        if keys == BACKSPACE_CHORD:
+            self.overlay_queue.put(("chord", "BACKSPACE", "any 1+2+3+4", ""))
+            return
+
         output = self.chords.get((room, keys))
         if output:
             count = self.chord_counts.get((room, keys), 0)
@@ -614,7 +632,11 @@ class ChordTranslator:
                 continue
             self.injecting = True
             try:
-                send_unicode_text(text)
+                if text == "\b":
+                    send_virtual_key(VK_BACK, self.backspace_count())
+                else:
+                    send_unicode_text(text)
+                    self.output_lengths.append(len(text))
             except OSError as error:
                 print(f"SendInput failed for {text!r}: {error}")
             finally:
@@ -756,6 +778,18 @@ def send_unicode_text(text: str) -> None:
         inputs.append(INPUT(type=INPUT_KEYBOARD, union=INPUT_UNION(ki=KEYBDINPUT(0, code, KEYEVENTF_UNICODE | KEYEVENTF_KEYUP, 0, 0))))
     if not inputs:
         return
+    array_type = INPUT * len(inputs)
+    sent = USER32.SendInput(len(inputs), array_type(*inputs), ctypes.sizeof(INPUT))
+    if sent != len(inputs):
+        error = ctypes.get_last_error()
+        raise OSError(error, f"SendInput sent {sent}/{len(inputs)} inputs")
+
+
+def send_virtual_key(vk: int, count: int = 1) -> None:
+    inputs = []
+    for _ in range(max(1, count)):
+        inputs.append(INPUT(type=INPUT_KEYBOARD, union=INPUT_UNION(ki=KEYBDINPUT(vk, 0, 0, 0, 0))))
+        inputs.append(INPUT(type=INPUT_KEYBOARD, union=INPUT_UNION(ki=KEYBDINPUT(vk, 0, KEYEVENTF_KEYUP, 0, 0))))
     array_type = INPUT * len(inputs)
     sent = USER32.SendInput(len(inputs), array_type(*inputs), ctypes.sizeof(INPUT))
     if sent != len(inputs):

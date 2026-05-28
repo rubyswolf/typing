@@ -474,6 +474,7 @@
     let downPhysical = new Set();
     let stroke = null;
     let traceLines = [];
+    let outputUnits = [];
     let trainerMode = "H";
     let targetText = "";
     let targetIndex = 0;
@@ -684,6 +685,13 @@
         text = " ";
         source = "L+R -> space";
       } else if (keys.length) {
+        if (signature("H", keys) === signature("H", ["1", "2", "3", "4"])) {
+          performBackspace();
+          addTrace("1+2+3+4 -> backspace");
+          stroke = null;
+          updateVisuals();
+          return;
+        }
         const chord = chordBySignature.get(signature(room, keys));
         if (chord) {
           text = chord.text.toLowerCase();
@@ -917,6 +925,7 @@
       const end = output.selectionEnd;
       output.value = output.value.slice(0, start) + text + output.value.slice(end);
       output.selectionStart = output.selectionEnd = start + text.length;
+      outputUnits.push(text.length);
       consumeTrainingText(text);
       output.focus();
     }
@@ -1249,6 +1258,25 @@
       }
     }
 
+    function performBackspace() {
+      const start = output.selectionStart;
+      const end = output.selectionEnd;
+      if (start !== end) {
+        output.value = output.value.slice(0, start) + output.value.slice(end);
+        output.selectionStart = output.selectionEnd = start;
+        outputUnits = [];
+      } else if (start > 0) {
+        const length = Math.max(1, outputUnits.pop() || 1);
+        const deleteStart = Math.max(0, start - length);
+        output.value = output.value.slice(0, deleteStart) + output.value.slice(start);
+        output.selectionStart = output.selectionEnd = deleteStart;
+        targetIndex = Math.max(0, targetIndex - (start - deleteStart));
+        mistakeIndex = -1;
+        renderTarget();
+      }
+      output.focus();
+    }
+
     function preventTabFocus(event) {
       if (event.key === "Tab") {
         event.preventDefault();
@@ -1366,6 +1394,7 @@
 
     document.getElementById("clear").addEventListener("click", () => {
       output.value = "";
+      outputUnits = [];
       if (trainerMode === "WORD_CHAIN") {
         wordPromptIndex = 0;
         wordTypedText = "";
@@ -1380,19 +1409,7 @@
     });
 
     document.getElementById("backspace").addEventListener("click", () => {
-      const start = output.selectionStart;
-      const end = output.selectionEnd;
-      if (start !== end) {
-        output.value = output.value.slice(0, start) + output.value.slice(end);
-        output.selectionStart = output.selectionEnd = start;
-      } else if (start > 0) {
-        output.value = output.value.slice(0, start - 1) + output.value.slice(start);
-        output.selectionStart = output.selectionEnd = start - 1;
-        targetIndex = Math.max(0, targetIndex - 1);
-        mistakeIndex = -1;
-        renderTarget();
-      }
-      output.focus();
+      performBackspace();
     });
 
     document.getElementById("resetBindings").addEventListener("click", () => {
