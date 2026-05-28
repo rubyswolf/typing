@@ -6550,6 +6550,21 @@
       "attic_chord": true,
       "attic_kind": "extension",
       "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "4",
+        "A",
+        "B",
+        "D"
+      ],
+      "output": "JUST",
+      "count": 52253,
+      "attic_chord": true,
+      "manual_chord": true,
+      "attic_kind": "manual-extension",
+      "source": "manual attic request for JUST"
     }
   ],
   "extends": "house.json",
