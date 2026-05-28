@@ -424,7 +424,7 @@
   <script>
     const ORDER = ["A", "B", "C", "D", "1", "2", "3", "4"];
     const ROOMS = ["L", "H", "R"];
-    const ROOM_LABEL = { H: "Home", R: "Right room", L: "Left room" };
+    const ROOM_LABEL = { H: "Home", R: "Right room", L: "Left room", A: "Attic" };
     const defaultBindings = { A: "q", B: "w", C: "e", D: "r", 1: "u", 2: "i", 3: "o", 4: "p", L: "c", R: " " };
 
     const output = document.getElementById("output");
@@ -491,7 +491,7 @@
       });
 
       for (const chord of normalizedChords) {
-        if (!["H", "R", "L"].includes(chord.room)) throw new Error("Chord has invalid room");
+        if (!["H", "R", "L", "A"].includes(chord.room)) throw new Error("Chord has invalid room");
         if (!Array.isArray(chord.keys) || chord.keys.some(key => !ORDER.includes(String(key)))) throw new Error("Chord has invalid keys");
         if (typeof chord.text !== "string" || chord.text.length === 0) throw new Error("Chord has invalid output");
         chord.keys = chord.keys.map(String).sort();
@@ -603,6 +603,7 @@
     function activeRoom() {
       const leftHeld = Boolean(stroke && stroke.thumbSeen.has("L")) || downPhysical.has(bindings.L);
       const rightHeld = Boolean(stroke && stroke.thumbSeen.has("R")) || downPhysical.has(bindings.R);
+      if (leftHeld && rightHeld) return "A";
       if (leftHeld && !rightHeld) return "L";
       if (rightHeld && !leftHeld) return "R";
       return "H";
@@ -624,7 +625,7 @@
           text = chord.text.toLowerCase();
           source = `${room} ${keys.join("+")} -> ${chord.text}`;
         } else {
-          text = stroke.order.map(key => data.layout[room][key]).join("").toLowerCase();
+          text = room === "A" ? "" : stroke.order.map(key => data.layout[room][key]).join("").toLowerCase();
           source = `${room} ${stroke.order.join(" ")} -> ${text.toUpperCase()}`;
         }
         if (handleChordTrainingStroke(room, keys, chord, text)) {
@@ -875,7 +876,7 @@
       if (stroke && stroke.thumbSeen.has("L") && stroke.thumbSeen.has("R") && stroke.keys.size === 0) {
         return [{ room: "H", keys: ["L", "R"], text: "SPACE", count: data.spaceCount || 0, current: true }];
       }
-      const singles = ORDER.map(key => {
+      const singles = room === "A" ? [] : ORDER.map(key => {
         const letter = data.layout[room][key];
         return {
           room,

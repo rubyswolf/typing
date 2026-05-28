@@ -5578,6 +5578,754 @@
       "dominance": null,
       "manual_chord": true,
       "source": "manual request: L A+B+4 -> QU"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "2",
+        "D"
+      ],
+      "output": "ER",
+      "count": 311775,
+      "dominance": 0.5087,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "1",
+        "2"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "2",
+        "C"
+      ],
+      "output": "RE",
+      "count": 301082,
+      "dominance": 0.4913,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "2",
+        "1"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "3",
+        "D"
+      ],
+      "output": "ON",
+      "count": 252909,
+      "dominance": 0.6289,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "1",
+        "3"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "C",
+        "D"
+      ],
+      "output": "IT",
+      "count": 240936,
+      "dominance": 0.6545,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "C",
+        "D"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "2",
+        "B"
+      ],
+      "output": "ES",
+      "count": 175506,
+      "dominance": 0.5405,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "1",
+        "B"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "D"
+      ],
+      "output": "LL",
+      "count": 157348,
+      "dominance": 0.5,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "D",
+        "D"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "C",
+        "D"
+      ],
+      "output": "LE",
+      "count": 155120,
+      "dominance": 0.5325,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "D",
+        "1"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "3",
+        "B"
+      ],
+      "output": "NO",
+      "count": 149236,
+      "dominance": 0.3711,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "3",
+        "1"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "A",
+        "B"
+      ],
+      "output": "SE",
+      "count": 149185,
+      "dominance": 0.4595,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "B",
+        "1"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "C"
+      ],
+      "output": "AR",
+      "count": 140972,
+      "dominance": 0.6473,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "2",
+        "2"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "2",
+        "A"
+      ],
+      "output": "ED",
+      "count": 139176,
+      "dominance": 0.5704,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "1",
+        "A"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "3",
+        "B"
+      ],
+      "output": "AS",
+      "count": 122894,
+      "dominance": 0.7086,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "2",
+        "B"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "3",
+        "4",
+        "D"
+      ],
+      "output": "UT",
+      "count": 110858,
+      "dominance": 0.7199,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "4",
+        "D"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "4",
+        "A"
+      ],
+      "output": "HO",
+      "count": 108613,
+      "dominance": 0.8497,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "4",
+        "1"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "A",
+        "B"
+      ],
+      "output": "MA",
+      "count": 107130,
+      "dominance": 0.5577,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "B",
+        "2"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "3",
+        "A"
+      ],
+      "output": "AD",
+      "count": 86701,
+      "dominance": 0.6865,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "2",
+        "A"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "3",
+        "C"
+      ],
+      "output": "RI",
+      "count": 72093,
+      "dominance": 0.6548,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "2",
+        "C"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "A",
+        "C"
+      ],
+      "output": "ID",
+      "count": 70442,
+      "dominance": 0.5161,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "C",
+        "A"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "4",
+        "A",
+        "C"
+      ],
+      "output": "DI",
+      "count": 66049,
+      "dominance": 0.4839,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "A",
+        "C"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "B",
+        "C"
+      ],
+      "output": "YE",
+      "count": 62600,
+      "dominance": 0.5592,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "C",
+        "1"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "B",
+        "C"
+      ],
+      "output": "IM",
+      "count": 61408,
+      "dominance": 0.5933,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "C",
+        "B"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "3",
+        "4",
+        "C"
+      ],
+      "output": "NI",
+      "count": 60407,
+      "dominance": 0.1253,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "3",
+        "C"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "3",
+        "4",
+        "A"
+      ],
+      "output": "UN",
+      "count": 60023,
+      "dominance": 0.8596,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "4",
+        "3"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "3",
+        "B",
+        "C"
+      ],
+      "output": "SI",
+      "count": 56864,
+      "dominance": 0.2379,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "B",
+        "C"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "4",
+        "A"
+      ],
+      "output": "JU",
+      "count": 54939,
+      "dominance": 0.9982,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "4",
+        "4"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "B",
+        "D"
+      ],
+      "output": "TS",
+      "count": 54369,
+      "dominance": 0.212,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "D",
+        "B"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "3",
+        "B"
+      ],
+      "output": "CK",
+      "count": 51403,
+      "dominance": 0.9979,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "3",
+        "3"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "4",
+        "C",
+        "D"
+      ],
+      "output": "TU",
+      "count": 43124,
+      "dominance": 0.2801,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "D",
+        "4"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "3",
+        "D"
+      ],
+      "output": "RT",
+      "count": 39731,
+      "dominance": 0.4215,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "2",
+        "D"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "4",
+        "A",
+        "B"
+      ],
+      "output": "SU",
+      "count": 38017,
+      "dominance": 0.2354,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "B",
+        "4"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "4",
+        "C"
+      ],
+      "output": "AH",
+      "count": 28912,
+      "dominance": 0.0925,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "2",
+        "4"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "4",
+        "A"
+      ],
+      "output": "UA",
+      "count": 25845,
+      "dominance": 0.513,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "4",
+        "2"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "3",
+        "C",
+        "D"
+      ],
+      "output": "LC",
+      "count": 21996,
+      "dominance": 0.6053,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "D",
+        "3"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "4",
+        "D"
+      ],
+      "output": "OH",
+      "count": 19214,
+      "dominance": 0.1503,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "1",
+        "4"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "3",
+        "4",
+        "B"
+      ],
+      "output": "UM",
+      "count": 19197,
+      "dominance": 0.5059,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "4",
+        "B"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "3",
+        "A",
+        "B"
+      ],
+      "output": "SN",
+      "count": 17786,
+      "dominance": 0.2567,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "cross-hand",
+      "native_keys": [
+        "B",
+        "3"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "3",
+        "B",
+        "D"
+      ],
+      "output": "SL",
+      "count": 15440,
+      "dominance": 0.3562,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "B",
+        "D"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "4",
+        "A",
+        "D"
+      ],
+      "output": "GL",
+      "count": 9655,
+      "dominance": 0.9208,
+      "attic_chord": true,
+      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
+      "attic_kind": "same-hand",
+      "native_keys": [
+        "A",
+        "D"
+      ],
+      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "2",
+        "3"
+      ],
+      "output": "OR",
+      "count": 200304,
+      "dominance": 0.6872,
+      "attic_chord": true,
+      "manual_chord": true,
+      "attic_kind": "manual-same-hand",
+      "source": "manual attic request for OR/RO"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "2",
+        "4"
+      ],
+      "output": "RO",
+      "count": 91175,
+      "dominance": 0.3128,
+      "attic_chord": true,
+      "manual_chord": true,
+      "attic_kind": "manual-same-hand",
+      "source": "manual attic request for OR/RO"
     }
   ],
   "extends": "house.json",

@@ -16,8 +16,9 @@ import keyboard
 
 ORDER = ["A", "B", "C", "D", "1", "2", "3", "4"]
 THUMBS = {"L", "R"}
-ROOMS = {"H", "L", "R"}
+ROOMS = {"H", "L", "R", "A"}
 SHIFT_KEYS = {"shift", "left shift", "right shift"}
+WINDOWS_KEYS = {"windows", "left windows", "right windows"}
 COACH_PAIR_WINDOW = 3.0
 INPUT_KEYBOARD = 1
 KEYEVENTF_KEYUP = 0x0002
@@ -102,12 +103,6 @@ class ChordTranslator:
             if physical
         }
         self.mapped_physical = set(self.physical_to_logical)
-        self.toggle_physical = {
-            normalize_physical_key(self.bindings["D"]),
-            normalize_physical_key(self.bindings["1"]),
-            normalize_physical_key(self.bindings["L"]),
-            normalize_physical_key(self.bindings["R"]),
-        }
         self.chords: dict[tuple[str, tuple[str, ...]], str] = {}
         self.chord_counts: dict[tuple[str, tuple[str, ...]], int] = {}
         self.output_to_chords: dict[str, list[tuple[str, tuple[str, ...], int]]] = defaultdict(list)
@@ -131,10 +126,10 @@ class ChordTranslator:
         self.shift_down = False
         self.stroke: dict[str, object] | None = None
         self.suppression_hooks: list[object] = []
-        self.ignore_until_toggle_release = False
         self.injecting = False
         self.recent_strokes: deque[dict[str, object]] = deque(maxlen=8)
         self.pending_tip: tuple[str, str, str] | None = None
+        self.last_toggle_time = 0.0
         self.next_press_id = 1
         self.key_press_ids: dict[str, int] = {}
         self.thumb_press_ids: dict[str, int] = {}
@@ -145,15 +140,15 @@ class ChordTranslator:
         self.overlay_thread = threading.Thread(target=run_overlay, args=(self.overlay_queue, self.stop_event), daemon=True)
 
     def run(self) -> None:
-        combo = "+".join(normalize_physical_key(self.bindings[item]) for item in ["D", "1", "L", "R"])
         self.output_thread.start()
         self.overlay_thread.start()
         keyboard.hook(self.handle_passive_event, suppress=False)
+        keyboard.add_hotkey("windows+space", self.toggle_hotkey, suppress=True, trigger_on_release=False)
         keyboard.add_hotkey("ctrl+alt+esc", self.stop, suppress=False)
 
         print(f"Loaded: {self.name}")
         print(f"Layout: {self.layout_path}")
-        print(f"Toggle: D+1+L+R ({combo})")
+        print("Toggle: Win+Space")
         print("Exit: Ctrl+Alt+Esc")
         print("State: disabled")
         try:
@@ -184,16 +179,34 @@ class ChordTranslator:
                 pass
         self.suppression_hooks.clear()
 
+    def any_windows_key_down(self) -> bool:
+        return any(key in self.down or keyboard.is_pressed(key) for key in WINDOWS_KEYS)
+
+    def toggle_hotkey(self) -> None:
+        now = time.monotonic()
+        if now - self.last_toggle_time < 0.35:
+            return
+        self.last_toggle_time = now
+        self.toggle()
+
     def toggle(self) -> None:
         self.enabled = not self.enabled
         self.stroke = None
-        self.ignore_until_toggle_release = True
+        self.down.difference_update(self.mapped_physical)
         if self.enabled:
             self.enable_suppression()
         else:
             self.disable_suppression()
         print(f"State: {'enabled' if self.enabled else 'disabled'}")
         self.update_overlay()
+        self.overlay_queue.put(
+            (
+                "switch",
+                "House (extended)" if self.enabled else "QWERTY",
+                "Win+Space",
+                "enabled" if self.enabled else "disabled",
+            )
+        )
 
     def update_down(self, event: keyboard.KeyboardEvent) -> str | None:
         physical = normalize_physical_key(event.name or "")
@@ -213,18 +226,11 @@ class ChordTranslator:
             if physical_name in SHIFT_KEYS:
                 self.shift_down = event.event_type == "down"
                 return
-            if self.enabled and not self.ignore_until_toggle_release:
+            if self.enabled:
                 return
             physical = self.update_down(event)
             if physical is None:
                 return
-            if self.ignore_until_toggle_release:
-                if not self.toggle_physical.intersection(self.down):
-                    self.ignore_until_toggle_release = False
-                    self.update_overlay()
-                return
-            if event.event_type == "down" and self.toggle_physical.issubset(self.down):
-                self.toggle()
 
     def begin_stroke(self) -> None:
         if self.stroke is not None:
@@ -254,6 +260,8 @@ class ChordTranslator:
             return "L"
         if "R" in thumbs and "L" not in thumbs:
             return "R"
+        if "L" in thumbs and "R" in thumbs:
+            return "A"
         return "H"
 
     def reconcile_down_state(self) -> None:
@@ -285,17 +293,11 @@ class ChordTranslator:
             if physical in SHIFT_KEYS:
                 self.shift_down = event.event_type == "down"
                 return
+            if physical == "space" and event.event_type == "down" and self.any_windows_key_down():
+                self.toggle_hotkey()
+                return
             logical = self.physical_to_logical.get(physical)
             if logical is None:
-                return
-
-            if self.ignore_until_toggle_release:
-                if event.event_type == "up":
-                    self.down.discard(physical)
-                    if not self.toggle_physical.intersection(self.down):
-                        self.ignore_until_toggle_release = False
-                elif event.event_type == "down":
-                    self.down.add(physical)
                 return
 
             if event.event_type == "down":
@@ -309,9 +311,6 @@ class ChordTranslator:
                 elif logical in THUMBS:
                     self.thumb_press_ids[logical] = self.next_press_id
                     self.next_press_id += 1
-                if self.toggle_physical.issubset(self.down):
-                    self.toggle()
-                    return
                 self.begin_stroke()
                 if logical in THUMBS:
                     self.stroke["thumbs"].add(logical)  # type: ignore[union-attr]
@@ -372,7 +371,7 @@ class ChordTranslator:
         if keys:
             output = self.chords.get((room, keys), "")
             used_chord = bool(output)
-            if not used_chord:
+            if not used_chord and room != "A":
                 output = "".join(self.layout[room][key].lower() for key in self.stroke["order"])  # type: ignore[index]
         self.stroke = None
         if output:
@@ -523,16 +522,20 @@ class ChordTranslator:
             self.overlay_queue.put(("idle", "", "", ""))
             return
 
-        if len(keys) == 1:
+        output = self.chords.get((room, keys))
+        if output:
+            count = self.chord_counts.get((room, keys), 0)
+            self.overlay_queue.put(("chord", output.upper(), f"{room} {'+'.join(keys)}", f"{count:,}"))
+            return
+
+        if len(keys) == 1 and room != "A":
             letter = self.layout[room][keys[0]]
             count = int(self.letter_counts.get(letter, 0))
             self.overlay_queue.put(("single", letter, f"{room} {keys[0]}", f"{count:,}"))
             return
 
-        output = self.chords.get((room, keys))
-        if output:
-            count = self.chord_counts.get((room, keys), 0)
-            self.overlay_queue.put(("chord", output.upper(), f"{room} {'+'.join(keys)}", f"{count:,}"))
+        if room == "A":
+            self.overlay_queue.put(("miss", "ATTIC", f"{room} {'+'.join(keys)}", "no chord"))
             return
 
         sequential = "".join(self.layout[room][key] for key in self.stroke["order"])  # type: ignore[index]
@@ -624,8 +627,23 @@ def run_overlay(
             tip.withdraw()
             tip_until = 0.0
             return
-        if kind == "tip":
+        if kind in {"tip", "switch"}:
             tip_until = time.monotonic() + 2.4
+            if kind == "switch":
+                bg = "#16253f" if meta == "enabled" else "#2b2f36"
+                fg = "#f7fbff"
+                sub_fg = "#b8c7e0"
+                meta_fg = "#8fd3ff" if meta == "enabled" else "#c8cdd5"
+            else:
+                bg = "#4b3511"
+                fg = "#fff7dc"
+                sub_fg = "#f1d9a2"
+                meta_fg = "#ffd166"
+            tip.configure(bg=bg)
+            tip_frame.configure(bg=bg)
+            tip_title.configure(bg=bg, fg=fg)
+            tip_subtitle.configure(bg=bg, fg=sub_fg)
+            tip_count.configure(bg=bg, fg=meta_fg)
             tip_title.configure(text=main)
             tip_subtitle.configure(text=sub)
             tip_count.configure(text=meta)
