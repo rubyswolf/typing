@@ -648,9 +648,10 @@
         "4",
         "D"
       ],
-      "output": "HAT",
-      "count": 155872,
-      "dominance": 0.5648
+      "output": "THAT",
+      "count": 94833,
+      "dominance": 0.6084,
+      "source": "replaced HAT after corpus cost analysis; exact WHAT already has its own chord"
     },
     {
       "room": "H",

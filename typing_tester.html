@@ -33,7 +33,7 @@
     }
 
     body.dragging::after {
-      content: "Drop layout JSON";
+      content: "Drop JSON";
       position: fixed;
       inset: 14px;
       z-index: 20;
@@ -156,6 +156,34 @@
     .target .pending { color: var(--muted); }
     .target .wrong { color: #9f2d20; background: rgba(215, 130, 126, 0.22); }
     .target .fake-hit { color: #5f4700; background: rgba(242, 193, 78, 0.76); }
+    .target .chunk {
+      display: inline-block;
+      border-bottom: 2px dotted rgba(31, 122, 140, 0.45);
+      cursor: help;
+      position: relative;
+    }
+    .target .chunk:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      bottom: calc(100% + 6px);
+      transform: translateX(-50%);
+      white-space: nowrap;
+      background: #17130f;
+      color: #fffaf0;
+      border-radius: 6px;
+      padding: 4px 7px;
+      font: 12px/1.2 Consolas, "Courier New", monospace;
+      box-shadow: var(--shadow);
+      pointer-events: none;
+    }
+    .target .breakdown {
+      color: #9f2d20;
+      background: rgba(215, 130, 126, 0.14);
+      padding: 0 3px;
+      border-radius: 4px;
+    }
 
     .toolbar {
       display: flex;
@@ -380,6 +408,7 @@
             <button class="trainer-mode" type="button" data-mode="RIGHT_SIDE" tabindex="-1">Right side</button>
             <button class="trainer-mode" type="button" data-mode="FULL" tabindex="-1">Full House</button>
             <button class="trainer-mode" type="button" data-mode="CHORDS" tabindex="-1">Chords</button>
+            <button class="trainer-mode" type="button" data-mode="WORD_CHAIN" tabindex="-1">Word chain</button>
             <button id="newPrompt" type="button" tabindex="-1">New prompt</button>
             <span class="pill" id="trainerStatus">0 / 0</span>
           </div>
@@ -389,6 +418,7 @@
         <textarea id="output" spellcheck="false" autofocus tabindex="-1" aria-label="Typing output"></textarea>
         <div class="toolbar">
           <label class="file-button">Upload layout JSON<input id="layoutFile" type="file" accept="application/json,.json" tabindex="-1"></label>
+          <label class="file-button">Upload word chain JSON<input id="wordChainFile" type="file" accept="application/json,.json" tabindex="-1"></label>
           <button id="clear" type="button" tabindex="-1">Clear</button>
           <button id="backspace" type="button" tabindex="-1">Backspace</button>
           <button id="resetBindings" type="button" tabindex="-1">Reset bindings</button>
@@ -452,6 +482,14 @@
     let chordTargetIndex = 0;
     let fakeHitIndex = -1;
     let chordTypedBuffer = "";
+    let wordChain = null;
+    let wordChainByWord = new Map();
+    let wordPrompt = [];
+    let wordPromptIndex = 0;
+    let wordTypedText = "";
+    let wordStrokeCount = 0;
+    let wordAwaitingSpace = false;
+    let wordFeedback = null;
 
     const wordLengthDistribution = [
       [1, 0.08518], [2, 0.17598], [3, 0.21063], [4, 0.21457], [5, 0.11125],
@@ -523,6 +561,32 @@
       newTrainingPrompt();
       updateVisuals();
       addTrace(`Loaded ${data.name}: ${chords.length} chords`);
+    }
+
+    function normalizeWordChainJson(raw) {
+      const entries = raw.words || raw.word_chain || raw.chain;
+      if (!Array.isArray(entries) || entries.length === 0) throw new Error("Missing words array");
+      const words = entries.map(entry => {
+        const word = String(entry.word || "").toLowerCase();
+        if (!/^[a-z]+$/.test(word)) throw new Error(`Invalid word chain entry: ${word || "(blank)"}`);
+        const next = (entry.next || entry.next_words || []).map(item => {
+          if (typeof item === "string") return { word: item.toLowerCase(), count: 0 };
+          return { word: String(item.word || "").toLowerCase(), count: Number(item.count || 0) };
+        }).filter(item => /^[a-z]+$/.test(item.word));
+        return { word, count: Number(entry.count || 0), next };
+      });
+      return {
+        name: raw.name || raw.title || "Uploaded word chain",
+        randomJumpProbability: Number(raw.random_jump_probability ?? raw.randomJumpProbability ?? 0.2),
+        words
+      };
+    }
+
+    function applyWordChain(nextChain) {
+      wordChain = nextChain;
+      wordChainByWord = new Map(nextChain.words.map(entry => [entry.word, entry]));
+      addTrace(`Loaded ${nextChain.name}: ${nextChain.words.length} words`);
+      if (trainerMode === "WORD_CHAIN") newTrainingPrompt();
     }
 
     function signature(room, keys) {
@@ -633,9 +697,24 @@
           updateVisuals();
           return;
         }
+        if (handleWordChainStroke(room, keys, chord, text)) {
+          stroke = null;
+          updateVisuals();
+          return;
+        }
       }
 
-      if (text) insertText(text);
+      if (text) {
+        if (trainerMode === "WORD_CHAIN") {
+          if (handleWordChainStroke(room, keys, null, text)) {
+            stroke = null;
+            updateVisuals();
+            return;
+          }
+        } else {
+          insertText(text);
+        }
+      }
       if (source) addTrace(source);
       stroke = null;
       updateVisuals();
@@ -692,9 +771,140 @@
       }
     }
 
+    function handleWordChainStroke(room, keys, chord, text) {
+      if (trainerMode !== "WORD_CHAIN") return false;
+      const current = wordPrompt[wordPromptIndex];
+      if (!current) return true;
+
+      if (wordAwaitingSpace) {
+        if (text !== " ") {
+          renderTarget();
+          return true;
+        }
+        insertText(" ");
+        advanceWordChainWord();
+        return true;
+      }
+
+      if (text === " ") {
+        renderTarget();
+        return true;
+      }
+
+      const candidateText = wordTypedText + text;
+      if (!current.word.startsWith(candidateText)) {
+        renderTarget();
+        return true;
+      }
+
+      insertText(text);
+      wordTypedText = candidateText;
+      wordStrokeCount += 1;
+
+      if (wordTypedText === current.word) {
+        finishWordChainWord(current);
+      }
+      renderTarget();
+      return true;
+    }
+
+    function finishWordChainWord(current) {
+      if (wordFeedback && wordFeedback.wordIndex < wordPromptIndex) {
+        wordFeedback = null;
+      }
+      const optimalCount = current.chunks.length;
+      if (wordStrokeCount !== optimalCount) {
+        wordFeedback = { wordIndex: wordPromptIndex, word: current.word };
+        addTrace(`Suboptimal: ${current.word} as ${current.chunks.map(chunk => chunk.text).join("-")}`);
+      }
+      wordAwaitingSpace = wordPromptIndex < wordPrompt.length - 1;
+      if (!wordAwaitingSpace) advanceWordChainWord();
+    }
+
+    function advanceWordChainWord() {
+      const previousFeedbackIndex = wordFeedback?.wordIndex;
+      wordPromptIndex += 1;
+      wordTypedText = "";
+      wordStrokeCount = 0;
+      wordAwaitingSpace = false;
+      if (previousFeedbackIndex !== undefined && wordPromptIndex > previousFeedbackIndex + 1) {
+        wordFeedback = null;
+      }
+      if (wordPromptIndex >= wordPrompt.length) {
+        addTrace("Word-chain prompt complete");
+        newWordChainPrompt();
+      } else {
+        renderTarget();
+      }
+    }
+
+    function buildStrokeOptions() {
+      const options = [];
+      for (const chord of chords) {
+        if (!/^[A-Z]+$/.test(chord.text)) continue;
+        options.push({
+          text: chord.text.toLowerCase(),
+          code: `${chord.room} ${chord.keys.join("+")}`,
+          count: Number(chord.count || 0),
+          chord: true
+        });
+      }
+      for (const room of ["H", "L", "R"]) {
+        for (const key of ORDER) {
+          const letter = data.layout[room][key];
+          if (!/^[A-Z]$/.test(letter)) continue;
+          options.push({
+            text: letter.toLowerCase(),
+            code: `${room} ${key}`,
+            count: Number(data.letterCounts?.[letter] || 0),
+            chord: false
+          });
+        }
+      }
+      return options.sort((a, b) => b.text.length - a.text.length || b.count - a.count);
+    }
+
+    function optimalChunksForWord(word) {
+      const options = buildStrokeOptions();
+      const memo = new Map();
+
+      function bestAt(index) {
+        if (index >= word.length) return { cost: 0, chunks: [] };
+        if (memo.has(index)) return memo.get(index);
+        let best = null;
+        for (const option of options) {
+          if (!word.startsWith(option.text, index)) continue;
+          const rest = bestAt(index + option.text.length);
+          if (!rest) continue;
+          const candidate = { cost: 1 + rest.cost, chunks: [option, ...rest.chunks] };
+          if (
+            !best ||
+            candidate.cost < best.cost ||
+            (candidate.cost === best.cost && candidate.chunks[0].text.length > best.chunks[0].text.length) ||
+            (candidate.cost === best.cost && candidate.chunks[0].text.length === best.chunks[0].text.length && option.count > best.chunks[0].count)
+          ) {
+            best = candidate;
+          }
+        }
+        if (!best) {
+          best = { cost: 1, chunks: [{ text: word[index], code: "?", count: 0, chord: false }] };
+        }
+        memo.set(index, best);
+        return best;
+      }
+
+      return bestAt(0).chunks;
+    }
+
     function resolveThumbSpaceIfReady(logical) {
       if (!stroke || logical !== "L" && logical !== "R") return false;
       if (!stroke.thumbSeen.has("L") || !stroke.thumbSeen.has("R") || stroke.keys.size !== 0) return false;
+      if (trainerMode === "WORD_CHAIN") {
+        handleWordChainStroke("H", [], null, " ");
+        stroke = null;
+        updateVisuals();
+        return true;
+      }
       insertText(" ");
       addTrace("L+R -> space");
       stroke = null;
@@ -742,6 +952,10 @@
         newChordPrompt();
         return;
       }
+      if (trainerMode === "WORD_CHAIN") {
+        newWordChainPrompt();
+        return;
+      }
 
       const letters = lettersForTrainingMode();
       if (!letters.length) {
@@ -763,6 +977,72 @@
         words.push(word);
       }
       targetText = words.join(" ").slice(0, 180);
+      targetIndex = 0;
+      mistakeIndex = -1;
+      chordTargets = [];
+      chordTargetIndex = 0;
+      fakeHitIndex = -1;
+      chordTypedBuffer = "";
+      output.value = "";
+      renderTarget();
+    }
+
+    function weightedChoice(items, weightKey = "count") {
+      const total = items.reduce((sum, item) => sum + Math.max(0, Number(item[weightKey] || 0)), 0);
+      if (total <= 0) return items[Math.floor(Math.random() * items.length)];
+      let roll = Math.random() * total;
+      for (const item of items) {
+        roll -= Math.max(0, Number(item[weightKey] || 0));
+        if (roll <= 0) return item;
+      }
+      return items[items.length - 1];
+    }
+
+    function nextChainWord(current) {
+      if (!wordChain || !wordChain.words.length || Math.random() < wordChain.randomJumpProbability) {
+        return weightedChoice(wordChain.words).word;
+      }
+      const entry = wordChainByWord.get(current);
+      const next = entry?.next || [];
+      const usable = next.filter(item => wordChainByWord.has(item.word));
+      if (!usable.length) return weightedChoice(wordChain.words).word;
+      const topCount = Math.min(usable.length, Math.floor(Math.random() * 5) + 1);
+      return weightedChoice(usable.slice(0, topCount)).word;
+    }
+
+    function newWordChainPrompt() {
+      if (!wordChain || !wordChain.words.length) {
+        targetText = "";
+        targetIndex = 0;
+        wordPrompt = [];
+        wordPromptIndex = 0;
+        wordTypedText = "";
+        wordStrokeCount = 0;
+        wordAwaitingSpace = false;
+        wordFeedback = null;
+        targetEl.innerHTML = `<span class="pending">Upload word_chain_top1k.json to use Word chain mode.</span>`;
+        trainerStatusEl.textContent = "0 / 0";
+        return;
+      }
+
+      const words = [];
+      let current = weightedChoice(wordChain.words).word;
+      const targetWords = 18 + Math.floor(Math.random() * 11);
+      for (let i = 0; i < targetWords; i++) {
+        words.push(current);
+        current = nextChainWord(current);
+      }
+
+      wordPrompt = words.map((word, index) => {
+        const chunks = optimalChunksForWord(word);
+        return { word, chunks };
+      });
+      wordPromptIndex = 0;
+      wordTypedText = "";
+      wordStrokeCount = 0;
+      wordAwaitingSpace = false;
+      wordFeedback = null;
+      targetText = "";
       targetIndex = 0;
       mistakeIndex = -1;
       chordTargets = [];
@@ -812,7 +1092,7 @@
     }
 
     function consumeTrainingText(text) {
-      if (trainerMode === "CHORDS") return;
+      if (trainerMode === "CHORDS" || trainerMode === "WORD_CHAIN") return;
       if (!targetText) return;
       for (const char of text) {
         if (targetIndex >= targetText.length) break;
@@ -844,6 +1124,45 @@
         });
         targetEl.innerHTML = parts.join("");
         trainerStatusEl.textContent = `${Math.min(chordTargetIndex, chordTargets.length)} / ${chordTargets.length}`;
+        return;
+      }
+      if (trainerMode === "WORD_CHAIN") {
+        if (!wordPrompt.length) {
+          targetEl.innerHTML = `<span class="pending">Upload word_chain_top1k.json to use Word chain mode.</span>`;
+          trainerStatusEl.textContent = "0 / 0";
+          return;
+        }
+
+        const parts = [];
+        for (let wordIndex = 0; wordIndex < wordPrompt.length; wordIndex++) {
+          const item = wordPrompt[wordIndex];
+          const showBreakdown = wordFeedback && wordFeedback.wordIndex === wordIndex;
+          if (!showBreakdown) {
+            if (wordIndex === wordPromptIndex) {
+              const done = escapeHtml(wordTypedText);
+              const rest = escapeHtml(item.word.slice(wordTypedText.length));
+              const spaceClass = wordAwaitingSpace ? "current" : "pending";
+              parts.push(`<span class="done">${done}</span><span class="current">${rest}</span>${wordIndex < wordPrompt.length - 1 ? `<span class="${spaceClass}"> </span>` : ""}`);
+            } else {
+              let className = "pending";
+              if (wordIndex < wordPromptIndex) className = "done";
+              parts.push(`<span class="${className}">${escapeHtml(item.word)}</span>${wordIndex < wordPrompt.length - 1 ? " " : ""}`);
+            }
+            continue;
+          }
+          for (let chunkIndex = 0; chunkIndex < item.chunks.length; chunkIndex++) {
+            const chunk = item.chunks[chunkIndex];
+            const className = "fake-hit chunk";
+            const label = escapeHtml(chunk.text);
+            const separator = showBreakdown && chunk.text !== " " && chunkIndex < item.chunks.length - 1 && item.chunks[chunkIndex + 1].text !== " " ? "-" : "";
+            parts.push(`<span class="${className}" data-tooltip="${escapeHtml(chunk.code)}">${label}</span>${separator}`);
+          }
+          parts.push(wordIndex < wordPrompt.length - 1 ? " " : "");
+        }
+        targetEl.innerHTML = parts.join("");
+        const completedLetters = wordPrompt.slice(0, wordPromptIndex).reduce((sum, item) => sum + item.word.length, 0) + wordTypedText.length;
+        const totalLetters = wordPrompt.reduce((sum, item) => sum + item.word.length, 0);
+        trainerStatusEl.textContent = `${Math.min(completedLetters, totalLetters)} / ${totalLetters}`;
         return;
       }
 
@@ -988,8 +1307,37 @@
       }
     }
 
+    async function loadWordChainFile(file) {
+      if (!file) return;
+      try {
+        const parsed = JSON.parse(await file.text());
+        applyWordChain(normalizeWordChainJson(parsed));
+      } catch (error) {
+        addTrace(`Word chain load failed: ${error.message}`);
+      }
+    }
+
+    async function loadJsonFile(file) {
+      if (!file) return;
+      try {
+        const parsed = JSON.parse(await file.text());
+        if (parsed.words || parsed.word_chain || parsed.chain || parsed.schema === "house.word_chain.v1") {
+          applyWordChain(normalizeWordChainJson(parsed));
+        } else {
+          applyLayout(normalizeLayoutJson(parsed));
+        }
+      } catch (error) {
+        addTrace(`JSON load failed: ${error.message}`);
+      }
+    }
+
     document.getElementById("layoutFile").addEventListener("change", async event => {
       await loadLayoutFile(event.target.files[0]);
+      event.target.value = "";
+    });
+
+    document.getElementById("wordChainFile").addEventListener("change", async event => {
+      await loadWordChainFile(event.target.files[0]);
       event.target.value = "";
     });
 
@@ -1013,11 +1361,18 @@
     window.addEventListener("drop", async event => {
       event.preventDefault();
       document.body.classList.remove("dragging");
-      await loadLayoutFile(event.dataTransfer.files[0]);
+      await loadJsonFile(event.dataTransfer.files[0]);
     });
 
     document.getElementById("clear").addEventListener("click", () => {
       output.value = "";
+      if (trainerMode === "WORD_CHAIN") {
+        wordPromptIndex = 0;
+        wordTypedText = "";
+        wordStrokeCount = 0;
+        wordAwaitingSpace = false;
+        wordFeedback = null;
+      }
       targetIndex = 0;
       mistakeIndex = -1;
       renderTarget();
