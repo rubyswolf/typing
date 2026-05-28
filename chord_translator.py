@@ -69,6 +69,10 @@ class INPUT(ctypes.Structure):
 
 USER32.SendInput.argtypes = (wintypes.UINT, ctypes.POINTER(INPUT), ctypes.c_int)
 USER32.SendInput.restype = wintypes.UINT
+USER32.GetKeyState.argtypes = (ctypes.c_int,)
+USER32.GetKeyState.restype = ctypes.c_short
+
+VK_CAPITAL = 0x14
 
 
 def normalize_physical_key(key: str) -> str:
@@ -76,6 +80,10 @@ def normalize_physical_key(key: str) -> str:
     if key in {" ", "spacebar"}:
         return "space"
     return key
+
+
+def caps_lock_on() -> bool:
+    return bool(USER32.GetKeyState(VK_CAPITAL) & 1)
 
 
 class ChordTranslator:
@@ -369,7 +377,7 @@ class ChordTranslator:
         self.stroke = None
         if output:
             raw_output = output
-            if self.shift_down:
+            if self.shift_down ^ caps_lock_on():
                 output = output.upper()
             self.emit(output)
             self.record_stroke(raw_output, room, keys, order, thumbs, used_chord)
