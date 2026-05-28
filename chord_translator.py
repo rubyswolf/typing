@@ -270,7 +270,7 @@ class ChordTranslator:
         self.overlay_queue.put(
             (
                 "switch",
-                "House (extended)" if self.enabled else "QWERTY",
+                "House" if self.enabled else "QWERTY",
                 "Win+Space",
                 "enabled" if self.enabled else "disabled",
             )

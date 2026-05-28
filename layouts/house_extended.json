@@ -6058,8 +6058,7 @@
     {
       "room": "A",
       "keys": [
-        "3",
-        "B"
+        "3"
       ],
       "output": "CK",
       "count": 51403,
@@ -6071,7 +6070,8 @@
         "3",
         "3"
       ],
-      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+      "source": "manual move of CK to attic 3",
+      "manual_chord": true
     },
     {
       "room": "A",
@@ -6680,6 +6680,59 @@
       "manual_chord": true,
       "source": "manual missing-bigram request",
       "attic_chord": true
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "3"
+      ],
+      "output": "NOW",
+      "count": 34639,
+      "manual_chord": true,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "manual attic extension from newly added bigrams"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "4"
+      ],
+      "output": "HOW",
+      "count": 32158,
+      "manual_chord": true,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "manual attic extension from newly added bigrams"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "4",
+        "D"
+      ],
+      "output": "HEL",
+      "count": 14745,
+      "manual_chord": true,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "manual attic extension from newly added bigrams"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "4",
+        "B"
+      ],
+      "output": "SOU",
+      "count": 6127,
+      "manual_chord": true,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "manual attic extension from newly added bigrams"
     }
   ],
   "extends": "house.json",
