@@ -6326,6 +6326,230 @@
       "manual_chord": true,
       "attic_kind": "manual-same-hand",
       "source": "manual attic request for OR/RO"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "4",
+        "B",
+        "C"
+      ],
+      "output": "HEY",
+      "count": 40870,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "2",
+        "A",
+        "B"
+      ],
+      "output": "AME",
+      "count": 35710,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "output": "OUR",
+      "count": 31520,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "B"
+      ],
+      "output": "WAS",
+      "count": 29546,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "2",
+        "4",
+        "B"
+      ],
+      "output": "MOR",
+      "count": 26458,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "A",
+        "B",
+        "D"
+      ],
+      "output": "EST",
+      "count": 22546,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "4",
+        "A",
+        "D"
+      ],
+      "output": "OTH",
+      "count": 22233,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "3",
+        "B",
+        "D"
+      ],
+      "output": "STA",
+      "count": 21109,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "STI",
+      "count": 21069,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "2",
+        "C",
+        "D"
+      ],
+      "output": "EIR",
+      "count": 10474,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "3",
+        "4",
+        "C"
+      ],
+      "output": "AIN",
+      "count": 20819,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "A"
+      ],
+      "output": "END",
+      "count": 18016,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "4",
+        "A",
+        "B"
+      ],
+      "output": "SHO",
+      "count": 16743,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "2",
+        "4",
+        "A"
+      ],
+      "output": "ORD",
+      "count": 13082,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "3",
+        "B",
+        "C"
+      ],
+      "output": "SAY",
+      "count": 14621,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "3",
+        "A",
+        "D"
+      ],
+      "output": "ONG",
+      "count": 13706,
+      "attic_chord": true,
+      "attic_kind": "extension",
+      "source": "selected attic extension; ranked by added stroke savings and corpus count"
     }
   ],
   "extends": "house.json",

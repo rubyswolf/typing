@@ -130,6 +130,7 @@ class ChordTranslator:
         self.recent_strokes: deque[dict[str, object]] = deque(maxlen=8)
         self.pending_tip: tuple[str, str, str] | None = None
         self.last_toggle_time = 0.0
+        self.suppressing_win_space = False
         self.next_press_id = 1
         self.key_press_ids: dict[str, int] = {}
         self.thumb_press_ids: dict[str, int] = {}
@@ -142,8 +143,8 @@ class ChordTranslator:
     def run(self) -> None:
         self.output_thread.start()
         self.overlay_thread.start()
+        keyboard.hook(self.handle_toggle_event, suppress=True)
         keyboard.hook(self.handle_passive_event, suppress=False)
-        keyboard.add_hotkey("windows+space", self.toggle_hotkey, suppress=True, trigger_on_release=False)
         keyboard.add_hotkey("ctrl+alt+esc", self.stop, suppress=False)
 
         print(f"Loaded: {self.name}")
@@ -181,6 +182,22 @@ class ChordTranslator:
 
     def any_windows_key_down(self) -> bool:
         return any(key in self.down or keyboard.is_pressed(key) for key in WINDOWS_KEYS)
+
+    def handle_toggle_event(self, event: keyboard.KeyboardEvent) -> bool:
+        physical = normalize_physical_key(event.name or "")
+        if physical != "space":
+            return True
+
+        if event.event_type == "down" and self.any_windows_key_down():
+            self.suppressing_win_space = True
+            self.toggle_hotkey()
+            return False
+
+        if event.event_type == "up" and self.suppressing_win_space:
+            self.suppressing_win_space = False
+            return False
+
+        return True
 
     def toggle_hotkey(self) -> None:
         now = time.monotonic()
@@ -292,9 +309,6 @@ class ChordTranslator:
             physical = normalize_physical_key(event.name or "")
             if physical in SHIFT_KEYS:
                 self.shift_down = event.event_type == "down"
-                return
-            if physical == "space" and event.event_type == "down" and self.any_windows_key_down():
-                self.toggle_hotkey()
                 return
             logical = self.physical_to_logical.get(physical)
             if logical is None:
