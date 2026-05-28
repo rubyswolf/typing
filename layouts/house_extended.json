@@ -5565,6 +5565,19 @@
       "moved_from_invalid_home_cross_room": true,
       "completed_fragment": "PENDS",
       "completed_word_count": 1030
+    },
+    {
+      "room": "L",
+      "keys": [
+        "4",
+        "A",
+        "B"
+      ],
+      "output": "QU",
+      "count": 21291,
+      "dominance": null,
+      "manual_chord": true,
+      "source": "manual request: L A+B+4 -> QU"
     }
   ],
   "extends": "house.json",
