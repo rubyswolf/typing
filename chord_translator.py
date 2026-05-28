@@ -130,7 +130,9 @@ class ChordTranslator:
         self.recent_strokes: deque[dict[str, object]] = deque(maxlen=8)
         self.pending_tip: tuple[str, str, str] | None = None
         self.last_toggle_time = 0.0
-        self.suppressing_win_space = False
+        self.pending_windows: set[str] = set()
+        self.forwarded_windows: set[str] = set()
+        self.win_space_combo_active = False
         self.next_press_id = 1
         self.key_press_ids: dict[str, int] = {}
         self.thumb_press_ids: dict[str, int] = {}
@@ -181,23 +183,74 @@ class ChordTranslator:
         self.suppression_hooks.clear()
 
     def any_windows_key_down(self) -> bool:
-        return any(key in self.down or keyboard.is_pressed(key) for key in WINDOWS_KEYS)
+        return bool(self.pending_windows or self.forwarded_windows) or any(
+            key in self.down or keyboard.is_pressed(key) for key in WINDOWS_KEYS
+        )
 
     def handle_toggle_event(self, event: keyboard.KeyboardEvent) -> bool:
         physical = normalize_physical_key(event.name or "")
-        if physical != "space":
+        if self.injecting:
             return True
 
-        if event.event_type == "down" and self.any_windows_key_down():
-            self.suppressing_win_space = True
+        if physical in WINDOWS_KEYS:
+            if event.event_type == "down":
+                if physical not in self.pending_windows and physical not in self.forwarded_windows:
+                    self.pending_windows.add(physical)
+                return False
+
+            if event.event_type == "up":
+                if physical in self.forwarded_windows:
+                    self.forwarded_windows.discard(physical)
+                    self.replay_key_up(physical)
+                    return False
+                if physical in self.pending_windows:
+                    self.pending_windows.discard(physical)
+                    if not self.win_space_combo_active:
+                        self.replay_key_tap(physical)
+                    elif not self.pending_windows:
+                        self.win_space_combo_active = False
+                    return False
+            return True
+
+        if physical == "space" and event.event_type == "down" and self.pending_windows:
+            self.win_space_combo_active = True
             self.toggle_hotkey()
             return False
 
-        if event.event_type == "up" and self.suppressing_win_space:
-            self.suppressing_win_space = False
+        if physical == "space" and event.event_type == "up" and self.win_space_combo_active:
             return False
 
+        if event.event_type == "down" and self.pending_windows and not self.win_space_combo_active:
+            self.forward_pending_windows()
+
         return True
+
+    def forward_pending_windows(self) -> None:
+        for physical in sorted(self.pending_windows):
+            self.replay_key_down(physical)
+            self.forwarded_windows.add(physical)
+        self.pending_windows.clear()
+
+    def replay_key_down(self, physical: str) -> None:
+        self.injecting = True
+        try:
+            keyboard.press(physical)
+        finally:
+            self.injecting = False
+
+    def replay_key_up(self, physical: str) -> None:
+        self.injecting = True
+        try:
+            keyboard.release(physical)
+        finally:
+            self.injecting = False
+
+    def replay_key_tap(self, physical: str) -> None:
+        self.injecting = True
+        try:
+            keyboard.press_and_release(physical)
+        finally:
+            self.injecting = False
 
     def toggle_hotkey(self) -> None:
         now = time.monotonic()
