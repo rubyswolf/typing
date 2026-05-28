@@ -429,9 +429,10 @@
         "B",
         "D"
       ],
-      "output": "LCOM",
-      "count": 20417,
-      "dominance": 0.9897
+      "output": "WELCOME",
+      "count": 19997,
+      "dominance": 0.98,
+      "source": "replaced LCOM after corpus cost analysis"
     },
     {
       "room": "R",
@@ -451,9 +452,10 @@
         "3",
         "4"
       ],
-      "output": "HEN",
-      "count": 30527,
-      "dominance": 0.9836
+      "output": "WHEN",
+      "count": 14614,
+      "dominance": 0.4787,
+      "source": "replaced HEN after corpus cost analysis"
     },
     {
       "room": "R",
@@ -965,9 +967,10 @@
         "4",
         "C"
       ],
-      "output": "HEI",
-      "count": 8159,
-      "dominance": 0.8057
+      "output": "THEIR",
+      "count": 7500,
+      "dominance": 0.9196,
+      "source": "replaced HEI after corpus cost analysis"
     },
     {
       "room": "R",
@@ -1138,12 +1141,12 @@
         "2",
         "3"
       ],
-      "output": "ORK",
-      "count": 11641,
+      "output": "WORK",
+      "count": 5455,
       "total_same_keys": 13615,
-      "dominance": 0.855,
+      "dominance": 0.4686,
       "house_extended_cross_room": true,
-      "source": "cross-room 3-gram candidate replacing side-room native chord",
+      "source": "replaced ORK after corpus cost analysis",
       "replaced_side_room_native_chord": {
         "output": "COR",
         "count": 11158,
@@ -1587,11 +1590,11 @@
         "4",
         "D"
       ],
-      "output": "THER",
-      "count": 42778,
-      "dominance": 0.9517,
+      "output": "THERE",
+      "count": 18613,
+      "dominance": 0.4351,
       "house_extended_cross_room": true,
-      "source": "cross-room 4-gram candidate"
+      "source": "replaced THER after corpus cost analysis"
     },
     {
       "room": "L",
@@ -2066,11 +2069,11 @@
         "3",
         "B"
       ],
-      "output": "VEN",
-      "count": 21471,
-      "dominance": 0.6816,
+      "output": "EVEN",
+      "count": 13879,
+      "dominance": 0.6464,
       "house_extended_cross_room": true,
-      "source": "cross-room 3-gram candidate"
+      "source": "replaced VEN after corpus cost analysis"
     },
     {
       "room": "R",
@@ -4269,12 +4272,12 @@
         "4",
         "D"
       ],
-      "output": "CTUA",
-      "count": 9811,
+      "output": "ACTUALLY",
+      "count": 7980,
       "total_same_keys": 20082,
-      "dominance": 0.4885,
+      "dominance": 0.8134,
       "house_extended_cross_room": true,
-      "source": "cross-room 4-gram candidate",
+      "source": "replaced CTUA after corpus cost analysis",
       "added_cross_room_candidate": true
     },
     {
@@ -4316,12 +4319,12 @@
         "A",
         "B"
       ],
-      "output": "DVAN",
-      "count": 9184,
+      "output": "ADVANCED",
+      "count": 8956,
       "total_same_keys": 9287,
-      "dominance": 0.9889,
+      "dominance": 0.9752,
       "house_extended_cross_room": true,
-      "source": "cross-room 4-gram candidate",
+      "source": "replaced DVAN after corpus cost analysis",
       "added_cross_room_candidate": true
     },
     {
@@ -4362,12 +4365,12 @@
         "B",
         "D"
       ],
-      "output": "STUF",
-      "count": 8636,
+      "output": "STUFF",
+      "count": 8403,
       "total_same_keys": 8823,
-      "dominance": 0.9788,
+      "dominance": 0.973,
       "house_extended_cross_room": true,
-      "source": "cross-room 4-gram candidate",
+      "source": "replaced STUF after corpus cost analysis",
       "added_cross_room_candidate": true
     },
     {

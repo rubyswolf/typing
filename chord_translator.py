@@ -153,7 +153,6 @@ class ChordTranslator:
         print(f"Layout: {self.layout_path}")
         print("Toggle: Win+Space")
         print("Exit: Ctrl+Alt+Esc")
-        print("State: disabled")
         try:
             while not self.stop_event.is_set():
                 time.sleep(0.1)
@@ -267,7 +266,6 @@ class ChordTranslator:
             self.enable_suppression()
         else:
             self.disable_suppression()
-        print(f"State: {'enabled' if self.enabled else 'disabled'}")
         self.update_overlay()
         self.overlay_queue.put(
             (
