@@ -5837,9 +5837,8 @@
     {
       "room": "A",
       "keys": [
-        "2",
-        "3",
-        "A"
+        "A",
+        "2"
       ],
       "output": "AD",
       "count": 86701,
@@ -5851,7 +5850,8 @@
         "2",
         "A"
       ],
-      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+      "source": "manual move of AD to intuitive attic A+2",
+      "manual_chord": true
     },
     {
       "room": "A",
@@ -6769,6 +6769,18 @@
       "attic_chord": true,
       "attic_kind": "single-key local bigram",
       "source": "manual fill of free single attic key with top local bigram"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "A",
+        "1"
+      ],
+      "output": "DO",
+      "count": 105462,
+      "manual_chord": true,
+      "attic_chord": true,
+      "source": "manual add of DO to intuitive attic A+1"
     }
   ],
   "extends": "house.json",
