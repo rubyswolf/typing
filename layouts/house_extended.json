@@ -3738,13 +3738,14 @@
         "4",
         "C"
       ],
-      "output": "BU",
-      "count": 57268,
+      "output": "UB",
+      "count": 11947,
       "total_same_keys": 69215,
-      "dominance": 0.8274,
+      "dominance": 0.1726,
       "house_extended_cross_room": true,
-      "source": "cross-room 2-gram candidate",
-      "added_cross_room_candidate": true
+      "source": "manual split of duplicate BU: left version is UB, right version remains BU",
+      "added_cross_room_candidate": true,
+      "manual_chord": true
     },
     {
       "room": "R",
