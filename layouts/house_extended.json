@@ -5856,9 +5856,8 @@
     {
       "room": "A",
       "keys": [
-        "2",
-        "3",
-        "C"
+        "C",
+        "2"
       ],
       "output": "RI",
       "count": 72093,
@@ -5870,7 +5869,8 @@
         "2",
         "C"
       ],
-      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+      "source": "manual move of RI to intuitive attic chord",
+      "manual_chord": true
     },
     {
       "room": "A",
@@ -5913,9 +5913,8 @@
     {
       "room": "A",
       "keys": [
-        "1",
-        "B",
-        "C"
+        "C",
+        "1"
       ],
       "output": "YE",
       "count": 62600,
@@ -5927,12 +5926,12 @@
         "C",
         "1"
       ],
-      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+      "source": "manual move of YE to intuitive attic chord",
+      "manual_chord": true
     },
     {
       "room": "A",
       "keys": [
-        "2",
         "B",
         "C"
       ],
@@ -5946,7 +5945,8 @@
         "C",
         "B"
       ],
-      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+      "source": "manual move of IM to intuitive attic chord",
+      "manual_chord": true
     },
     {
       "room": "A",
@@ -5971,8 +5971,7 @@
       "room": "A",
       "keys": [
         "3",
-        "4",
-        "A"
+        "4"
       ],
       "output": "UN",
       "count": 60023,
@@ -5984,7 +5983,8 @@
         "4",
         "3"
       ],
-      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+      "source": "manual move of UN to intuitive attic 3+4",
+      "manual_chord": true
     },
     {
       "room": "A",
@@ -6026,7 +6026,6 @@
     {
       "room": "A",
       "keys": [
-        "1",
         "B",
         "D"
       ],
@@ -6040,7 +6039,8 @@
         "D",
         "B"
       ],
-      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+      "source": "manual move of TS to intuitive attic B+D",
+      "manual_chord": true
     },
     {
       "room": "A",
@@ -6082,9 +6082,8 @@
     {
       "room": "A",
       "keys": [
-        "2",
-        "3",
-        "D"
+        "D",
+        "2"
       ],
       "output": "RT",
       "count": 39731,
@@ -6096,7 +6095,8 @@
         "2",
         "D"
       ],
-      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+      "source": "manual move of RT to intuitive attic chord",
+      "manual_chord": true
     },
     {
       "room": "A",
@@ -6140,8 +6140,7 @@
       "room": "A",
       "keys": [
         "2",
-        "4",
-        "A"
+        "4"
       ],
       "output": "UA",
       "count": 25845,
@@ -6153,14 +6152,14 @@
         "4",
         "2"
       ],
-      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+      "source": "manual move of UA to intuitive attic chord",
+      "manual_chord": true
     },
     {
       "room": "A",
       "keys": [
-        "3",
-        "C",
-        "D"
+        "D",
+        "3"
       ],
       "output": "LC",
       "count": 21996,
@@ -6172,7 +6171,8 @@
         "D",
         "3"
       ],
-      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+      "source": "manual move of LC to intuitive attic chord",
+      "manual_chord": true
     },
     {
       "room": "A",
@@ -6196,9 +6196,8 @@
     {
       "room": "A",
       "keys": [
-        "3",
-        "4",
-        "B"
+        "B",
+        "4"
       ],
       "output": "UM",
       "count": 19197,
@@ -6210,7 +6209,8 @@
         "4",
         "B"
       ],
-      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+      "source": "manual move of UM to intuitive attic chord",
+      "manual_chord": true
     },
     {
       "room": "A",
@@ -6253,7 +6253,6 @@
     {
       "room": "A",
       "keys": [
-        "4",
         "A",
         "D"
       ],
@@ -6267,7 +6266,8 @@
         "A",
         "D"
       ],
-      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+      "source": "manual move of GL to intuitive attic chord",
+      "manual_chord": true
     },
     {
       "room": "A",

@@ -27,6 +27,7 @@ KEYEVENTF_UNICODE = 0x0004
 ULONG_PTR = wintypes.WPARAM
 USER32 = ctypes.WinDLL("user32", use_last_error=True)
 BACKSPACE_CHORD = ("1", "2", "3", "4")
+TITLE_CHORD = ("A", "B", "C", "D")
 
 
 class KEYBDINPUT(ctypes.Structure):
@@ -131,6 +132,7 @@ class ChordTranslator:
         self.enabled = False
         self.down: set[str] = set()
         self.shift_down = False
+        self.title_next = False
         self.stroke: dict[str, object] | None = None
         self.suppression_hooks: list[object] = []
         self.injecting = False
@@ -269,6 +271,7 @@ class ChordTranslator:
     def toggle(self) -> None:
         self.enabled = not self.enabled
         self.stroke = None
+        self.title_next = False
         self.output_lengths.clear()
         self.down.difference_update(self.mapped_physical)
         if self.enabled:
@@ -443,6 +446,18 @@ class ChordTranslator:
         output = ""
         used_chord = False
         if keys:
+            if room == "H" and keys == TITLE_CHORD:
+                self.stroke = None
+                self.title_next = not self.title_next
+                self.overlay_queue.put(
+                    (
+                        "chord",
+                        "TITLE" if self.title_next else "TITLE OFF",
+                        f"H {format_keys(TITLE_CHORD)}",
+                        "next chord" if self.title_next else "cancelled",
+                    )
+                )
+                return
             if keys == BACKSPACE_CHORD:
                 self.stroke = None
                 self.emit("\b")
@@ -455,7 +470,10 @@ class ChordTranslator:
         self.stroke = None
         if output:
             raw_output = output
-            if self.shift_down ^ caps_lock_on():
+            if self.title_next:
+                output = output[:1].upper() + output[1:].lower()
+                self.title_next = False
+            elif self.shift_down ^ caps_lock_on():
                 output = output.upper()
             self.emit(output)
             self.record_stroke(raw_output, room, keys, order, thumbs, used_chord)
@@ -604,6 +622,12 @@ class ChordTranslator:
 
         if not keys:
             self.overlay_queue.put(("idle", "", "", ""))
+            return
+
+        if room == "H" and keys == TITLE_CHORD:
+            title = "TITLE OFF" if self.title_next else "TITLE"
+            meta = "cancel" if self.title_next else "prime next chord"
+            self.overlay_queue.put(("chord", title, f"H {format_keys(TITLE_CHORD)}", meta))
             return
 
         if keys == BACKSPACE_CHORD:

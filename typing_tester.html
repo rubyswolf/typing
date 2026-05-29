@@ -475,6 +475,7 @@
     let stroke = null;
     let traceLines = [];
     let outputUnits = [];
+    let titleNext = false;
     let trainerMode = "H";
     let targetText = "";
     let targetIndex = 0;
@@ -690,6 +691,13 @@
         text = " ";
         source = "L+R -> space";
       } else if (keys.length) {
+        if (room === "H" && signature("H", keys) === signature("H", ["A", "B", "C", "D"])) {
+          titleNext = !titleNext;
+          addTrace(titleNext ? "H A+B+C+D -> title next" : "H A+B+C+D -> title cancelled");
+          stroke = null;
+          updateVisuals();
+          return;
+        }
         if (signature("H", keys) === signature("H", ["1", "2", "3", "4"])) {
           performBackspace();
           addTrace("1+2+3+4 -> backspace");
@@ -926,6 +934,10 @@
     }
 
     function insertText(text) {
+      if (titleNext && text) {
+        text = text[0].toUpperCase() + text.slice(1).toLowerCase();
+        titleNext = false;
+      }
       const start = output.selectionStart;
       const end = output.selectionEnd;
       output.value = output.value.slice(0, start) + text + output.value.slice(end);
@@ -1208,6 +1220,9 @@
       const room = activeRoom();
       if (stroke && stroke.thumbSeen.has("L") && stroke.thumbSeen.has("R") && stroke.keys.size === 0) {
         return [{ room: "H", keys: ["L", "R"], text: "SPACE", count: data.spaceCount || 0, current: true }];
+      }
+      if (stroke && activeRoom() === "H" && signature("H", [...stroke.keys]) === signature("H", ["A", "B", "C", "D"])) {
+        return [{ room: "H", keys: ["A", "B", "C", "D"], text: titleNext ? "TITLE OFF" : "TITLE", count: 0, current: true }];
       }
       const singles = room === "A" ? [] : ORDER.map(key => {
         const letter = data.layout[room][key];
