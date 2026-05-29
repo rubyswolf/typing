@@ -5723,8 +5723,7 @@
     {
       "room": "A",
       "keys": [
-        "2",
-        "C"
+        "2"
       ],
       "output": "AR",
       "count": 140972,
@@ -5736,7 +5735,8 @@
         "2",
         "2"
       ],
-      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+      "source": "manual move of AR to single attic 2",
+      "manual_chord": true
     },
     {
       "room": "A",
@@ -6007,8 +6007,7 @@
     {
       "room": "A",
       "keys": [
-        "4",
-        "A"
+        "4"
       ],
       "output": "JU",
       "count": 54939,
@@ -6020,7 +6019,8 @@
         "4",
         "4"
       ],
-      "source": "attic bigram candidate; collisions resolved by highest corpus count"
+      "source": "manual move of JU to attic 4",
+      "manual_chord": true
     },
     {
       "room": "A",
@@ -6602,10 +6602,10 @@
       "keys": [
         "D"
       ],
-      "output": "EL",
-      "count": 136165,
+      "output": "PL",
+      "count": 63895,
       "manual_chord": true,
-      "source": "manual missing-bigram request",
+      "source": "manual replacement of single attic D with local PL; EL relocated to A 1+A+D",
       "attic_chord": true
     },
     {
@@ -6719,6 +6719,56 @@
       "attic_chord": true,
       "attic_kind": "extension",
       "source": "manual attic extension from newly added bigrams"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "A",
+        "D"
+      ],
+      "output": "EL",
+      "count": 136165,
+      "manual_chord": true,
+      "attic_chord": true,
+      "attic_kind": "relocated",
+      "source": "manual relocation of EL from attic D"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "A"
+      ],
+      "output": "GG",
+      "count": 15537,
+      "manual_chord": true,
+      "attic_chord": true,
+      "attic_kind": "single-key local bigram",
+      "source": "manual fill of free single attic key with top local bigram"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "B"
+      ],
+      "output": "SS",
+      "count": 45801,
+      "manual_chord": true,
+      "attic_chord": true,
+      "attic_kind": "single-key local bigram",
+      "source": "manual fill of free single attic key with top local bigram"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "C"
+      ],
+      "output": "BI",
+      "count": 20043,
+      "manual_chord": true,
+      "attic_chord": true,
+      "attic_kind": "single-key local bigram",
+      "source": "manual fill of free single attic key with top local bigram"
     }
   ],
   "extends": "house.json",
