@@ -6781,6 +6781,20 @@
       "manual_chord": true,
       "attic_chord": true,
       "source": "manual add of DO to intuitive attic A+1"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "B",
+        "D",
+        "1",
+        "3"
+      ],
+      "output": "N'T",
+      "count": 44242,
+      "manual_chord": true,
+      "attic_chord": true,
+      "source": "manual contraction chord for n't; count from allDurf.original.txt"
     }
   ],
   "extends": "house.json",
