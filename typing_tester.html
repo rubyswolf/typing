@@ -594,6 +594,11 @@
       return `${room}:${[...keys].sort().join("+")}`;
     }
 
+    function displayKeys(keys) {
+      const rank = new Map(ORDER.map((key, index) => [key, index]));
+      return [...keys].sort((a, b) => (rank.get(a) ?? 99) - (rank.get(b) ?? 99)).join("+");
+    }
+
     function displayBinding(value) {
       return value === " " ? "space" : value;
     }
@@ -695,7 +700,7 @@
         const chord = chordBySignature.get(signature(room, keys));
         if (chord) {
           text = chord.text.toLowerCase();
-          source = `${room} ${keys.join("+")} -> ${chord.text}`;
+          source = `${room} ${displayKeys(keys)} -> ${chord.text}`;
         } else {
           text = room === "A" ? "" : stroke.order.map(key => data.layout[room][key]).join("").toLowerCase();
           source = `${room} ${stroke.order.join(" ")} -> ${text.toUpperCase()}`;
@@ -852,7 +857,7 @@
         if (!/^[A-Z]+$/.test(chord.text)) continue;
         options.push({
           text: chord.text.toLowerCase(),
-          code: `${chord.room} ${chord.keys.join("+")}`,
+          code: `${chord.room} ${displayKeys(chord.keys)}`,
           count: Number(chord.count || 0),
           chord: true
         });
@@ -1253,7 +1258,7 @@
         const row = document.createElement("div");
         row.className = `suggestion${chord.current ? " current-chord" : ""}`;
         const label = chord.single ? "single" : (ROOM_LABEL[chord.room] || "Thumbs");
-        row.innerHTML = `<div><strong>${chord.text}</strong><small>${label} ${chord.keys.join("+")}</small></div><span class="count">${Number(chord.count || 0).toLocaleString()}</span>`;
+        row.innerHTML = `<div><strong>${chord.text}</strong><small>${label} ${displayKeys(chord.keys)}</small></div><span class="count">${Number(chord.count || 0).toLocaleString()}</span>`;
         suggestionsEl.appendChild(row);
       }
     }

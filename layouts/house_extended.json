@@ -6400,21 +6400,20 @@
     {
       "room": "A",
       "keys": [
-        "2",
-        "3",
         "B",
-        "D"
+        "D",
+        "2"
       ],
       "output": "STA",
       "count": 21109,
       "attic_chord": true,
       "attic_kind": "extension",
-      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+      "source": "manual move of STA to more intuitive attic chord",
+      "manual_chord": true
     },
     {
       "room": "A",
       "keys": [
-        "2",
         "B",
         "C",
         "D"
@@ -6423,7 +6422,8 @@
       "count": 21069,
       "attic_chord": true,
       "attic_kind": "extension",
-      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+      "source": "manual move of STI to more intuitive attic chord",
+      "manual_chord": true
     },
     {
       "room": "A",
@@ -6456,30 +6456,30 @@
     {
       "room": "A",
       "keys": [
+        "A",
         "1",
-        "2",
-        "3",
-        "A"
+        "3"
       ],
       "output": "END",
       "count": 18016,
       "attic_chord": true,
       "attic_kind": "extension",
-      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+      "source": "manual move of END to more intuitive attic chord",
+      "manual_chord": true
     },
     {
       "room": "A",
       "keys": [
+        "B",
         "1",
-        "4",
-        "A",
-        "B"
+        "4"
       ],
       "output": "SHO",
       "count": 16743,
       "attic_chord": true,
       "attic_kind": "extension",
-      "source": "selected attic extension; ranked by added stroke savings and corpus count"
+      "source": "manual move of SHO to more intuitive attic chord",
+      "manual_chord": true
     },
     {
       "room": "A",
@@ -6526,17 +6526,16 @@
     {
       "room": "A",
       "keys": [
-        "4",
-        "A",
         "B",
-        "D"
+        "D",
+        "4"
       ],
       "output": "JUST",
       "count": 52253,
       "attic_chord": true,
       "manual_chord": true,
       "attic_kind": "manual-extension",
-      "source": "manual attic request for JUST"
+      "source": "manual move of JUST to more intuitive attic chord"
     },
     {
       "room": "H",
@@ -6636,25 +6635,25 @@
     {
       "room": "A",
       "keys": [
-        "2",
+        "1",
         "B"
       ],
       "output": "SO",
       "count": 118823,
       "manual_chord": true,
-      "source": "manual missing-bigram request",
+      "source": "manual swap: SO gets the more logical attic 1+B slot",
       "attic_chord": true
     },
     {
       "room": "A",
       "keys": [
-        "1",
+        "2",
         "B"
       ],
       "output": "OM",
       "count": 117584,
       "manual_chord": true,
-      "source": "manual missing-bigram request",
+      "source": "manual swap: OM moved from attic 1+B to 2+B",
       "attic_chord": true
     },
     {

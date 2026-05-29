@@ -15,6 +15,7 @@ import keyboard
 
 
 ORDER = ["A", "B", "C", "D", "1", "2", "3", "4"]
+KEY_DISPLAY_RANK = {key: index for index, key in enumerate(ORDER)}
 THUMBS = {"L", "R"}
 ROOMS = {"H", "L", "R", "A"}
 SHIFT_KEYS = {"shift", "left shift", "right shift"}
@@ -87,6 +88,10 @@ def normalize_physical_key(key: str) -> str:
 
 def caps_lock_on() -> bool:
     return bool(USER32.GetKeyState(VK_CAPITAL) & 1)
+
+
+def format_keys(keys) -> str:
+    return "+".join(sorted(map(str, keys), key=lambda key: KEY_DISPLAY_RANK.get(key, 99)))
 
 
 class ChordTranslator:
@@ -508,7 +513,7 @@ class ChordTranslator:
             room, keys, count = entries[0]
             self.queue_tip(
                 "Missed Chord",
-                f"{text.upper()} is {room} {'+'.join(keys)}",
+                f"{text.upper()} is {room} {format_keys(keys)}",
                 f"{count:,}" if count else "",
             )
             return True
@@ -602,13 +607,13 @@ class ChordTranslator:
             return
 
         if keys == BACKSPACE_CHORD:
-            self.overlay_queue.put(("chord", "BACKSPACE", "any 1+2+3+4", ""))
+            self.overlay_queue.put(("chord", "BACKSPACE", f"any {format_keys(BACKSPACE_CHORD)}", ""))
             return
 
         output = self.chords.get((room, keys))
         if output:
             count = self.chord_counts.get((room, keys), 0)
-            self.overlay_queue.put(("chord", output.upper(), f"{room} {'+'.join(keys)}", f"{count:,}"))
+            self.overlay_queue.put(("chord", output.upper(), f"{room} {format_keys(keys)}", f"{count:,}"))
             return
 
         if len(keys) == 1 and room != "A":
@@ -618,11 +623,11 @@ class ChordTranslator:
             return
 
         if room == "A":
-            self.overlay_queue.put(("miss", "ATTIC", f"{room} {'+'.join(keys)}", "no chord"))
+            self.overlay_queue.put(("miss", "ATTIC", f"{room} {format_keys(keys)}", "no chord"))
             return
 
         sequential = "".join(self.layout[room][key] for key in self.stroke["order"])  # type: ignore[index]
-        self.overlay_queue.put(("miss", sequential, f"{room} {'+'.join(keys)}", "no chord"))
+        self.overlay_queue.put(("miss", sequential, f"{room} {format_keys(keys)}", "no chord"))
 
     def output_worker(self) -> None:
         while not self.stop_event.is_set():
