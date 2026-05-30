@@ -6795,6 +6795,68 @@
       "manual_chord": true,
       "attic_chord": true,
       "source": "manual contraction chord for n't; count from allDurf.original.txt"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "A",
+        "B"
+      ],
+      "output": "IF",
+      "count": 48039,
+      "manual_chord": true,
+      "attic_chord": true,
+      "source": "manual abstract attic chord for awkward high-gain bigram"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "B",
+        "3"
+      ],
+      "output": "AM",
+      "count": 84975,
+      "manual_chord": true,
+      "attic_chord": true,
+      "source": "manual abstract attic chord for awkward high-gain bigram"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "3"
+      ],
+      "output": "WE",
+      "count": 81475,
+      "manual_chord": true,
+      "attic_chord": true,
+      "source": "manual abstract attic chord for awkward high-gain bigram"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "2",
+        "3",
+        "4"
+      ],
+      "output": "OP",
+      "count": 53075,
+      "manual_chord": true,
+      "attic_chord": true,
+      "source": "manual mirrored attic chord for awkward high-gain bigram"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "1",
+        "3",
+        "4"
+      ],
+      "output": "PO",
+      "count": 39960,
+      "manual_chord": true,
+      "attic_chord": true,
+      "source": "manual mirrored attic chord for awkward high-gain bigram"
     }
   ],
   "extends": "house.json",
