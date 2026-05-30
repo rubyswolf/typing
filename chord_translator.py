@@ -744,6 +744,7 @@ def run_overlay(
             tip_until = 0.0
             return
         if kind in {"tip", "switch"}:
+            live.withdraw()
             tip_until = time.monotonic() + 2.4
             if kind == "switch":
                 bg = "#16253f" if meta == "enabled" else "#2b2f36"
