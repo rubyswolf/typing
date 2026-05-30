@@ -6857,6 +6857,56 @@
       "manual_chord": true,
       "attic_chord": true,
       "source": "manual mirrored attic chord for awkward high-gain bigram"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "D",
+        "1",
+        "2",
+        "3"
+      ],
+      "output": "FOR",
+      "count": 50552,
+      "manual_chord": true,
+      "attic_chord": true,
+      "source": "manual attic chord for top-frequency word"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "A",
+        "4"
+      ],
+      "output": "CAN",
+      "count": 34111,
+      "manual_chord": true,
+      "attic_chord": true,
+      "source": "manual attic chord for top-frequency word"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "C",
+        "4"
+      ],
+      "output": "ARE",
+      "count": 33379,
+      "manual_chord": true,
+      "attic_chord": true,
+      "source": "manual attic chord for top-frequency word"
+    },
+    {
+      "room": "A",
+      "keys": [
+        "A",
+        "3"
+      ],
+      "output": "ALL",
+      "count": 19926,
+      "manual_chord": true,
+      "attic_chord": true,
+      "source": "manual attic chord for top-frequency word"
     }
   ],
   "extends": "house.json",
