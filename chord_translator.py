@@ -96,7 +96,14 @@ def format_keys(keys) -> str:
 
 
 class ChordTranslator:
-    def __init__(self, layout_path: Path) -> None:
+    def __init__(
+        self,
+        layout_path: Path,
+        visualizer: bool = False,
+        no_keycaps: bool = False,
+        fade: bool = False,
+        chord_visuals: bool = False,
+    ) -> None:
         data = json.loads(layout_path.read_text(encoding="utf-8"))
         self.layout_path = layout_path
         self.name = data.get("name", layout_path.stem)
@@ -139,6 +146,7 @@ class ChordTranslator:
         self.recent_strokes: deque[dict[str, object]] = deque(maxlen=8)
         self.output_lengths: list[int] = []
         self.pending_tip: tuple[str, str, str] | None = None
+        self.pending_visual_flash: tuple[str, ...] = ()
         self.last_toggle_time = 0.0
         self.pending_windows: set[str] = set()
         self.forwarded_windows: set[str] = set()
@@ -148,9 +156,13 @@ class ChordTranslator:
         self.thumb_press_ids: dict[str, int] = {}
         self.stop_event = threading.Event()
         self.output_queue: queue.Queue[str] = queue.Queue()
-        self.overlay_queue: queue.Queue[tuple[str, str, str, str]] = queue.Queue()
+        self.overlay_queue: queue.Queue[tuple[str, str, str, str, tuple[str, ...], tuple[str, ...]]] = queue.Queue()
         self.output_thread = threading.Thread(target=self.output_worker, daemon=True)
-        self.overlay_thread = threading.Thread(target=run_overlay, args=(self.overlay_queue, self.stop_event), daemon=True)
+        self.overlay_thread = threading.Thread(
+            target=run_overlay,
+            args=(self.overlay_queue, self.stop_event, visualizer, no_keycaps, fade, chord_visuals),
+            daemon=True,
+        )
 
     def run(self) -> None:
         self.output_thread.start()
@@ -279,13 +291,11 @@ class ChordTranslator:
         else:
             self.disable_suppression()
         self.update_overlay()
-        self.overlay_queue.put(
-            (
-                "switch",
-                "House" if self.enabled else "QWERTY",
-                "Win+Space",
-                "enabled" if self.enabled else "disabled",
-            )
+        self.queue_overlay(
+            "switch",
+            "House" if self.enabled else "QWERTY",
+            "Win+Space",
+            "enabled" if self.enabled else "disabled",
         )
 
     def update_down(self, event: keyboard.KeyboardEvent) -> str | None:
@@ -431,6 +441,8 @@ class ChordTranslator:
         thumbs = self.stroke["thumbs"]  # type: ignore[assignment]
         if keys or not {"L", "R"}.issubset(thumbs):
             return False
+        visual_keys = tuple(sorted(thumbs, key=lambda key: KEY_DISPLAY_RANK.get(key, 98 if key == "L" else 99)))
+        self.pending_visual_flash = visual_keys
         self.stroke = None
         self.emit(" ")
         self.record_stroke(" ", "H", (), (), ("L", "R"), True)
@@ -443,22 +455,23 @@ class ChordTranslator:
         keys = tuple(sorted(self.stroke["keys"]))  # type: ignore[arg-type]
         order = tuple(self.stroke["order"])  # type: ignore[arg-type]
         thumbs = tuple(sorted(self.stroke["thumbs"]))  # type: ignore[arg-type]
+        visual_keys = tuple(sorted((*keys, *thumbs), key=lambda key: KEY_DISPLAY_RANK.get(key, 98 if key == "L" else 99)))
         output = ""
         used_chord = False
         if keys:
             if room == "H" and keys == TITLE_CHORD:
+                self.pending_visual_flash = visual_keys
                 self.stroke = None
                 self.title_next = not self.title_next
-                self.overlay_queue.put(
-                    (
-                        "chord",
-                        "TITLE" if self.title_next else "TITLE OFF",
-                        f"H {format_keys(TITLE_CHORD)}",
-                        "next chord" if self.title_next else "cancelled",
-                    )
+                self.queue_overlay(
+                    "chord",
+                    "TITLE" if self.title_next else "TITLE OFF",
+                    f"H {format_keys(TITLE_CHORD)}",
+                    "next chord" if self.title_next else "cancelled",
                 )
                 return
             if keys == BACKSPACE_CHORD:
+                self.pending_visual_flash = visual_keys
                 self.stroke = None
                 self.emit("\b")
                 self.update_overlay()
@@ -477,6 +490,7 @@ class ChordTranslator:
                 output = output.upper()
             self.emit(output)
             self.record_stroke(raw_output, room, keys, order, thumbs, used_chord)
+            self.pending_visual_flash = visual_keys
 
     def emit(self, text: str) -> None:
         self.output_queue.put(text)
@@ -598,18 +612,32 @@ class ChordTranslator:
     def queue_tip(self, title: str, detail: str, meta: str = "") -> None:
         self.pending_tip = (title, detail, meta)
 
+    def held_logical_keys(self) -> tuple[str, ...]:
+        held = {
+            logical
+            for physical in self.down
+            for logical in [self.physical_to_logical.get(physical)]
+            if logical in ORDER or logical in THUMBS
+        }
+        return tuple(sorted(held, key=lambda key: KEY_DISPLAY_RANK.get(key, 98 if key == "L" else 99)))
+
+    def queue_overlay(self, kind: str, main: str = "", sub: str = "", meta: str = "") -> None:
+        flash_keys = self.pending_visual_flash
+        self.pending_visual_flash = ()
+        self.overlay_queue.put((kind, main, sub, meta, self.held_logical_keys(), flash_keys))
+
     def update_overlay(self) -> None:
         if not self.enabled:
-            self.overlay_queue.put(("hide", "", "", ""))
+            self.queue_overlay("hide")
             return
 
         if not self.stroke:
             if self.pending_tip:
                 title, detail, meta = self.pending_tip
                 self.pending_tip = None
-                self.overlay_queue.put(("tip", title, detail, meta))
+                self.queue_overlay("tip", title, detail, meta)
                 return
-            self.overlay_queue.put(("idle", "", "", ""))
+            self.queue_overlay("idle")
             return
 
         room = self.active_room()
@@ -617,41 +645,41 @@ class ChordTranslator:
         thumbs = self.stroke["thumbs"]  # type: ignore[assignment]
 
         if not keys and {"L", "R"}.issubset(thumbs):
-            self.overlay_queue.put(("show", "SPACE", "L+R", f"{self.space_count:,}"))
+            self.queue_overlay("show", "SPACE", "L+R", f"{self.space_count:,}")
             return
 
         if not keys:
-            self.overlay_queue.put(("idle", "", "", ""))
+            self.queue_overlay("idle")
             return
 
         if room == "H" and keys == TITLE_CHORD:
             title = "TITLE OFF" if self.title_next else "TITLE"
             meta = "cancel" if self.title_next else "prime next chord"
-            self.overlay_queue.put(("chord", title, f"H {format_keys(TITLE_CHORD)}", meta))
+            self.queue_overlay("chord", title, f"H {format_keys(TITLE_CHORD)}", meta)
             return
 
         if keys == BACKSPACE_CHORD:
-            self.overlay_queue.put(("chord", "BACKSPACE", f"any {format_keys(BACKSPACE_CHORD)}", ""))
+            self.queue_overlay("chord", "BACKSPACE", f"any {format_keys(BACKSPACE_CHORD)}", "")
             return
 
         output = self.chords.get((room, keys))
         if output:
             count = self.chord_counts.get((room, keys), 0)
-            self.overlay_queue.put(("chord", output.upper(), f"{room} {format_keys(keys)}", f"{count:,}"))
+            self.queue_overlay("chord", output.upper(), f"{room} {format_keys(keys)}", f"{count:,}")
             return
 
         if len(keys) == 1 and room != "A":
             letter = self.layout[room][keys[0]]
             count = int(self.letter_counts.get(letter, 0))
-            self.overlay_queue.put(("single", letter, f"{room} {keys[0]}", f"{count:,}"))
+            self.queue_overlay("single", letter, f"{room} {keys[0]}", f"{count:,}")
             return
 
         if room == "A":
-            self.overlay_queue.put(("miss", "ATTIC", f"{room} {format_keys(keys)}", "no chord"))
+            self.queue_overlay("miss", "ATTIC", f"{room} {format_keys(keys)}", "no chord")
             return
 
         sequential = "".join(self.layout[room][key] for key in self.stroke["order"])  # type: ignore[index]
-        self.overlay_queue.put(("miss", sequential, f"{room} {format_keys(keys)}", "no chord"))
+        self.queue_overlay("miss", sequential, f"{room} {format_keys(keys)}", "no chord")
 
     def output_worker(self) -> None:
         while not self.stop_event.is_set():
@@ -673,9 +701,14 @@ class ChordTranslator:
 
 
 def run_overlay(
-    overlay_queue: queue.Queue[tuple[str, str, str, str]],
+    overlay_queue: queue.Queue[tuple[str, str, str, str, tuple[str, ...], tuple[str, ...]]],
     stop_event: threading.Event,
+    visualizer: bool = False,
+    no_keycaps: bool = False,
+    fade: bool = False,
+    chord_visuals: bool = False,
 ) -> None:
+    fade = fade or chord_visuals
     root = tk.Tk()
     root.withdraw()
 
@@ -709,6 +742,70 @@ def run_overlay(
     tip_count = tk.Label(tip_frame, text="", bg="#4b3511", fg="#ffd166", font=("Consolas", 10))
     tip_count.pack(anchor="center")
 
+    visual = tk.Toplevel(root) if visualizer else None
+    visual_keys: dict[str, tk.Label] = {}
+    visual_levels: dict[str, float] = {}
+    visual_active_keys: set[str] = set()
+    visual_hold_until: dict[str, float] = {}
+    visual_last_tick = time.monotonic()
+    if visual:
+        visual.withdraw()
+        visual.overrideredirect(True)
+        visual.attributes("-topmost", True)
+        visual.attributes("-transparentcolor", "#ff00ff")
+        try:
+            visual.attributes("-alpha", 0.94)
+        except tk.TclError:
+            pass
+        visual.configure(bg="#ff00ff")
+        visual_frame = tk.Frame(visual, bg="#ff00ff", padx=0, pady=0)
+        visual_frame.pack()
+
+        def add_hand(parent: tk.Frame, keys: list[str], thumb: str) -> None:
+            key_row = tk.Frame(parent, bg="#ff00ff")
+            key_row.pack()
+            for key in keys:
+                label = "" if no_keycaps else key
+                widget = tk.Label(
+                    key_row,
+                    text=label,
+                    width=3,
+                    height=1,
+                    bg="#2b3030",
+                    fg="#ffffff",
+                    font=("Segoe UI", 15, "bold"),
+                    relief="solid",
+                    bd=2,
+                )
+                widget.pack(side="left", ipadx=8, ipady=10, padx=3, pady=3)
+                visual_keys[key] = widget
+                visual_levels[key] = 0.0
+                visual_hold_until[key] = 0.0
+            thumb_label = "" if no_keycaps else thumb
+            thumb_widget = tk.Label(
+                parent,
+                text=thumb_label,
+                width=18,
+                height=1,
+                bg="#2b3030",
+                fg="#ffffff",
+                font=("Segoe UI", 15, "bold"),
+                relief="solid",
+                bd=2,
+            )
+            thumb_widget.pack(fill="x", ipady=10, padx=3, pady=3)
+            visual_keys[thumb] = thumb_widget
+            visual_levels[thumb] = 0.0
+            visual_hold_until[thumb] = 0.0
+
+        left_cluster = tk.Frame(visual_frame, bg="#ff00ff")
+        left_cluster.pack(side="left", padx=(0, 8))
+        right_cluster = tk.Frame(visual_frame, bg="#ff00ff")
+        right_cluster.pack(side="left", padx=(8, 0))
+        add_hand(left_cluster, ["A", "B", "C", "D"], "L")
+        add_hand(right_cluster, ["1", "2", "3", "4"], "R")
+        visual.geometry("+18+18")
+
     colors = {
         "show": ("#15110d", "#f8f2e8"),
         "single": ("#14323a", "#f8f2e8"),
@@ -733,8 +830,98 @@ def run_overlay(
         y = 18
         tip.geometry(f"{width}x{height}+{x}+{y}")
 
-    def apply(kind: str, main: str, sub: str, meta: str) -> None:
+    def blend_color(start: str, end: str, amount: float) -> str:
+        amount = max(0.0, min(1.0, amount))
+        left = tuple(int(start[index : index + 2], 16) for index in (1, 3, 5))
+        right = tuple(int(end[index : index + 2], 16) for index in (1, 3, 5))
+        values = [round(a + (b - a) * amount) for a, b in zip(left, right)]
+        return f"#{values[0]:02X}{values[1]:02X}{values[2]:02X}"
+
+    def ease_out(amount: float) -> float:
+        return 1.0 - (1.0 - amount) * (1.0 - amount)
+
+    def render_visualizer() -> None:
+        if not visual:
+            return
+        for key, widget in visual_keys.items():
+            level = visual_levels.get(key, 0.0)
+            fill = blend_color("#2b3030", "#B3FF00", ease_out(level))
+            fg = "#12100b" if level > 0.55 else "#ffffff"
+            widget.configure(bg=fill, fg=fg)
+
+    def tick_visualizer() -> None:
+        nonlocal visual_last_tick
+        if not visual:
+            return
+        now = time.monotonic()
+        elapsed = now - visual_last_tick
+        visual_last_tick = now
+        decay = elapsed / 0.28
+        changed = False
+        for key, level in list(visual_levels.items()):
+            if not chord_visuals and key in visual_active_keys:
+                if level != 1.0:
+                    visual_levels[key] = 1.0
+                    changed = True
+                continue
+            if not fade and not chord_visuals and now < visual_hold_until.get(key, 0.0):
+                if level != 1.0:
+                    visual_levels[key] = 1.0
+                    changed = True
+                continue
+            if level <= 0.0:
+                continue
+            if not fade:
+                visual_levels[key] = 0.0
+                changed = True
+                continue
+            visual_levels[key] = max(0.0, level - decay)
+            changed = True
+        if changed:
+            render_visualizer()
+
+    def update_visualizer(
+        kind: str,
+        meta: str,
+        held_keys: tuple[str, ...],
+        flash_keys: tuple[str, ...],
+    ) -> None:
+        nonlocal visual_active_keys, visual_last_tick
+        if not visual:
+            return
+        if kind == "hide" or (kind == "switch" and meta == "disabled"):
+            visual.withdraw()
+            visual_active_keys = set()
+            return
+        active = set(flash_keys if chord_visuals else held_keys)
+        visual_active_keys = set() if chord_visuals else set(active)
+        now = time.monotonic()
+        if active:
+            visual_last_tick = now
+        for key in visual_keys:
+            if key in active:
+                visual_levels[key] = 1.0
+                if not fade and not chord_visuals:
+                    visual_hold_until[key] = max(visual_hold_until.get(key, 0.0), now + (1.0 / 30.0))
+            elif not fade:
+                visual_levels[key] = 1.0 if not chord_visuals and now < visual_hold_until.get(key, 0.0) else 0.0
+        if chord_visuals and not flash_keys and not fade:
+            for key in visual_keys:
+                visual_levels[key] = 0.0
+        render_visualizer()
+        visual.lift()
+        visual.deiconify()
+
+    def apply(
+        kind: str,
+        main: str,
+        sub: str,
+        meta: str,
+        held_keys: tuple[str, ...],
+        flash_keys: tuple[str, ...],
+    ) -> None:
         nonlocal tip_until
+        update_visualizer(kind, meta, held_keys, flash_keys)
         if kind == "idle":
             live.withdraw()
             return
@@ -794,6 +981,7 @@ def run_overlay(
         elif tip_until and time.monotonic() >= tip_until:
             tip.withdraw()
             tip_until = 0.0
+        tick_visualizer()
         root.after(30, poll)
 
     root.after(30, poll)
@@ -829,13 +1017,28 @@ def send_virtual_key(vk: int, count: int = 1) -> None:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="System-wide translator for the chord typing layout.")
+    parser.add_argument("-v", "--visualizer", action="store_true", help="Show a persistent top-left keypress visualizer in House mode.")
+    parser.add_argument("-k", "--no-keycaps", action="store_true", help="Hide keycap labels in the visualizer.")
+    parser.add_argument("-f", "--fade", action="store_true", help="Fade released visualizer keys back to idle instead of clearing instantly.")
+    parser.add_argument(
+        "-c",
+        "--chord-visuals",
+        action="store_true",
+        help="Flash completed chord keys instead of showing held keys. Implies --fade.",
+    )
     parser.add_argument("layout", nargs="?", default="layouts/house_extended.json")
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    ChordTranslator(Path(args.layout)).run()
+    ChordTranslator(
+        Path(args.layout),
+        visualizer=args.visualizer or args.chord_visuals,
+        no_keycaps=args.no_keycaps,
+        fade=args.fade,
+        chord_visuals=args.chord_visuals,
+    ).run()
 
 
 if __name__ == "__main__":
