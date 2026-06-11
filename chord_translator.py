@@ -19,6 +19,7 @@ KEY_DISPLAY_RANK = {key: index for index, key in enumerate(ORDER)}
 THUMBS = {"L", "R"}
 ROOMS = {"H", "L", "R", "A"}
 SHIFT_KEYS = {"shift", "left shift", "right shift"}
+PASSTHROUGH_MODIFIER_KEYS = {"ctrl", "left ctrl", "right ctrl", "alt", "left alt", "right alt", "alt gr"}
 WINDOWS_KEYS = {"windows", "left windows", "right windows"}
 COACH_PAIR_WINDOW = 3.0
 INPUT_KEYBOARD = 1
@@ -150,6 +151,7 @@ class ChordTranslator:
         self.last_toggle_time = 0.0
         self.pending_windows: set[str] = set()
         self.forwarded_windows: set[str] = set()
+        self.passthrough_modifiers: set[str] = set()
         self.win_space_combo_active = False
         self.next_press_id = 1
         self.key_press_ids: dict[str, int] = {}
@@ -203,6 +205,23 @@ class ChordTranslator:
                 pass
         self.suppression_hooks.clear()
 
+    def enter_modifier_passthrough(self, physical: str) -> None:
+        self.passthrough_modifiers.add(physical)
+        if not self.enabled:
+            return
+        self.stroke = None
+        self.down.difference_update(self.mapped_physical)
+        self.disable_suppression()
+        self.update_overlay()
+
+    def exit_modifier_passthrough(self, physical: str) -> None:
+        self.passthrough_modifiers.discard(physical)
+        if not self.enabled or self.passthrough_modifiers:
+            return
+        self.down.difference_update(self.mapped_physical)
+        self.enable_suppression()
+        self.update_overlay()
+
     def any_windows_key_down(self) -> bool:
         return bool(self.pending_windows or self.forwarded_windows) or any(
             key in self.down or keyboard.is_pressed(key) for key in WINDOWS_KEYS
@@ -211,6 +230,13 @@ class ChordTranslator:
     def handle_toggle_event(self, event: keyboard.KeyboardEvent) -> bool:
         physical = normalize_physical_key(event.name or "")
         if self.injecting:
+            return True
+
+        if physical in PASSTHROUGH_MODIFIER_KEYS:
+            if event.event_type == "down":
+                self.enter_modifier_passthrough(physical)
+            elif event.event_type == "up":
+                self.exit_modifier_passthrough(physical)
             return True
 
         if physical in WINDOWS_KEYS:
@@ -286,7 +312,7 @@ class ChordTranslator:
         self.title_next = False
         self.output_lengths.clear()
         self.down.difference_update(self.mapped_physical)
-        if self.enabled:
+        if self.enabled and not self.passthrough_modifiers:
             self.enable_suppression()
         else:
             self.disable_suppression()
