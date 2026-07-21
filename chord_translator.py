@@ -485,6 +485,19 @@ class ChordTranslator:
         output = ""
         used_chord = False
         if keys:
+            if keys == TITLE_CHORD and {"L", "R"}.issubset(thumbs):
+                self.pending_visual_flash = visual_keys
+                self.stroke = None
+                self.title_next = not self.title_next
+                self.emit(" ")
+                self.record_stroke(" ", "A", keys, order, thumbs, True)
+                self.queue_overlay(
+                    "chord",
+                    "SPACE + TITLE" if self.title_next else "SPACE + TITLE OFF",
+                    f"A {format_keys(TITLE_CHORD)}+L+R",
+                    "next chord" if self.title_next else "cancelled",
+                )
+                return
             if room == "H" and keys == TITLE_CHORD:
                 self.pending_visual_flash = visual_keys
                 self.stroke = None
@@ -676,6 +689,12 @@ class ChordTranslator:
 
         if not keys:
             self.queue_overlay("idle")
+            return
+
+        if keys == TITLE_CHORD and {"L", "R"}.issubset(thumbs):
+            title = "SPACE + TITLE OFF" if self.title_next else "SPACE + TITLE"
+            meta = "space + cancel" if self.title_next else "space + prime next chord"
+            self.queue_overlay("chord", title, f"A {format_keys(TITLE_CHORD)}+L+R", meta)
             return
 
         if room == "H" and keys == TITLE_CHORD:
