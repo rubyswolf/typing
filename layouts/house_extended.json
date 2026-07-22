@@ -55,17 +55,11 @@
       "A": "X"
     }
   },
-  "dropped_letters": [
-    "Q",
-    "Z"
-  ],
+  "dropped_letters": ["Q", "Z"],
   "dropped_letter_chords": [
     {
       "room": "L",
-      "keys": [
-        "A",
-        "B"
-      ],
+      "keys": ["A", "B"],
       "letters": "VX",
       "output": "Q",
       "count": 22950,
@@ -81,10 +75,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "4",
-        "B"
-      ],
+      "keys": ["4", "B"],
       "letters": "JV",
       "output": "Z",
       "count": 24166,
@@ -102,333 +93,217 @@
   "chords": [
     {
       "room": "H",
-      "keys": [
-        "1",
-        "4",
-        "D"
-      ],
+      "keys": ["1", "4", "D"],
       "output": "THE",
       "count": 289191,
       "dominance": 0.947
     },
     {
       "room": "H",
-      "keys": [
-        "4",
-        "D"
-      ],
+      "keys": ["4", "D"],
       "output": "TH",
       "count": 568605,
       "dominance": 0.9461
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "4"
-      ],
+      "keys": ["1", "4"],
       "output": "HE",
       "count": 409673,
       "dominance": 0.9774
     },
     {
       "room": "H",
-      "keys": [
-        "3",
-        "C"
-      ],
+      "keys": ["3", "C"],
       "output": "IN",
       "count": 421508,
       "dominance": 0.8747
     },
     {
       "room": "H",
-      "keys": [
-        "3",
-        "A",
-        "C"
-      ],
+      "keys": ["3", "A", "C"],
       "output": "ING",
       "count": 199669,
       "dominance": 0.8901
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "4",
-        "C"
-      ],
+      "keys": ["1", "4", "C"],
       "output": "YOU",
       "count": 151164,
       "dominance": 0.9993
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "4"
-      ],
+      "keys": ["1", "4"],
       "output": "OU",
       "count": 280673,
       "dominance": 0.9962
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "3"
-      ],
+      "keys": ["2", "3"],
       "output": "AN",
       "count": 313425,
       "dominance": 0.8825
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "4"
-      ],
+      "keys": ["2", "4"],
       "output": "HA",
       "count": 283778,
       "dominance": 0.9075
     },
     {
       "room": "H",
-      "keys": [
-        "3",
-        "A"
-      ],
+      "keys": ["3", "A"],
       "output": "NG",
       "count": 232627,
       "dominance": 0.9711
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "D"
-      ],
+      "keys": ["2", "D"],
       "output": "AT",
       "count": 275805,
       "dominance": 0.7984
     },
     {
       "room": "H",
-      "keys": [
-        "3",
-        "4",
-        "C",
-        "D"
-      ],
+      "keys": ["3", "4", "C", "D"],
       "output": "THIN",
       "count": 58761,
       "dominance": 0.9874
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "2"
-      ],
+      "keys": ["1", "2"],
       "output": "EA",
       "count": 169080,
       "dominance": 0.9941
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "C"
-      ],
+      "keys": ["1", "C"],
       "output": "YO",
       "count": 162869,
       "dominance": 0.9663
     },
     {
       "room": "H",
-      "keys": [
-        "4",
-        "C"
-      ],
+      "keys": ["4", "C"],
       "output": "HI",
       "count": 149068,
       "dominance": 0.9965
     },
     {
       "room": "H",
-      "keys": [
-        "B",
-        "D"
-      ],
+      "keys": ["B", "D"],
       "output": "ST",
       "count": 202034,
       "dominance": 0.788
     },
     {
       "room": "H",
-      "keys": [
-        "3",
-        "4",
-        "C"
-      ],
+      "keys": ["3", "4", "C"],
       "output": "HIN",
       "count": 64689,
       "dominance": 0.9748
     },
     {
       "room": "H",
-      "keys": [
-        "3",
-        "D"
-      ],
+      "keys": ["3", "D"],
       "output": "NT",
       "count": 126715,
       "dominance": 0.9887
     },
     {
       "room": "H",
-      "keys": [
-        "B",
-        "C"
-      ],
+      "keys": ["B", "C"],
       "output": "IS",
       "count": 182173,
       "dominance": 0.7621
     },
     {
       "room": "H",
-      "keys": [
-        "3",
-        "4",
-        "A",
-        "C"
-      ],
+      "keys": ["3", "4", "A", "C"],
       "output": "HING",
       "count": 43866,
       "dominance": 0.8718
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3"
-      ],
+      "keys": ["1", "3"],
       "output": "CO",
       "count": 118303,
       "dominance": 0.882
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "4",
-        "A",
-        "D"
-      ],
+      "keys": ["1", "4", "A", "D"],
       "output": "OULD",
       "count": 32653,
       "dominance": 0.9745
     },
     {
       "room": "H",
-      "keys": [
-        "4",
-        "C",
-        "D"
-      ],
+      "keys": ["4", "C", "D"],
       "output": "THI",
       "count": 92849,
       "dominance": 0.6818
     },
     {
       "room": "R",
-      "keys": [
-        "C",
-        "D"
-      ],
+      "keys": ["C", "D"],
       "output": "LY",
       "count": 87571,
       "dominance": 0.9811
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "B"
-      ],
+      "keys": ["1", "3", "B"],
       "output": "COM",
       "count": 43299,
       "dominance": 0.9877
     },
     {
       "room": "H",
-      "keys": [
-        "4",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["4", "A", "C", "D"],
       "output": "IGHT",
       "count": 26398,
       "dominance": 0.9677
     },
     {
       "room": "H",
-      "keys": [
-        "4",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["4", "B", "C", "D"],
       "output": "THIS",
       "count": 32302,
       "dominance": 0.8421
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "C"
-      ],
+      "keys": ["1", "2", "4", "C"],
       "output": "YOUR",
       "count": 22288,
       "dominance": 0.9987
     },
     {
       "room": "H",
-      "keys": [
-        "3",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["3", "A", "C", "D"],
       "output": "TING",
       "count": 21338,
       "dominance": 0.9769
     },
     {
       "room": "H",
-      "keys": [
-        "4",
-        "A",
-        "D"
-      ],
+      "keys": ["4", "A", "D"],
       "output": "GHT",
       "count": 31205,
       "dominance": 0.9849
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "3", "B", "D"],
       "output": "WELCOME",
       "count": 19997,
       "dominance": 0.98,
@@ -436,22 +311,14 @@
     },
     {
       "room": "R",
-      "keys": [
-        "4",
-        "A",
-        "D"
-      ],
+      "keys": ["4", "A", "D"],
       "output": "ULD",
       "count": 32690,
       "dominance": 0.9386
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "4"
-      ],
+      "keys": ["1", "3", "4"],
       "output": "WHEN",
       "count": 14614,
       "dominance": 0.4787,
@@ -459,11 +326,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "4",
-        "D"
-      ],
+      "keys": ["1", "4", "D"],
       "output": "OUT",
       "count": 44534,
       "total_same_keys": 48135,
@@ -479,72 +342,49 @@
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "A"
-      ],
+      "keys": ["1", "A"],
       "output": "GE",
       "count": 66868,
       "dominance": 0.8519
     },
     {
       "room": "H",
-      "keys": [
-        "4",
-        "A",
-        "C"
-      ],
+      "keys": ["4", "A", "C"],
       "output": "IGH",
       "count": 29510,
       "dominance": 0.9092
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "A",
-        "D"
-      ],
+      "keys": ["1", "A", "D"],
       "output": "GET",
       "count": 26164,
       "dominance": 0.9763
     },
     {
       "room": "H",
-      "keys": [
-        "4",
-        "B"
-      ],
+      "keys": ["4", "B"],
       "output": "SH",
       "count": 50978,
       "dominance": 0.9574
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "4"
-      ],
+      "keys": ["2", "4"],
       "output": "UR",
       "count": 75528,
       "dominance": 0.7484
     },
     {
       "room": "H",
-      "keys": [
-        "4",
-        "A"
-      ],
+      "keys": ["4", "A"],
       "output": "GH",
       "count": 46360,
       "dominance": 0.9962
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "C"
-      ],
+      "keys": ["2", "C"],
       "output": "AY",
       "count": 77643,
       "total_same_keys": 86143,
@@ -560,54 +400,35 @@
     },
     {
       "room": "R",
-      "keys": [
-        "A",
-        "D"
-      ],
+      "keys": ["A", "D"],
       "output": "LD",
       "count": 50617,
       "dominance": 0.9103
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "4"
-      ],
+      "keys": ["2", "3", "4"],
       "output": "HAN",
       "count": 27387,
       "dominance": 0.8581
     },
     {
       "room": "R",
-      "keys": [
-        "4",
-        "D"
-      ],
+      "keys": ["4", "D"],
       "output": "UL",
       "count": 55156,
       "dominance": 0.7998
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "D"
-      ],
+      "keys": ["1", "3", "4", "D"],
       "output": "THEN",
       "count": 14136,
       "dominance": 0.9336
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "4"
-      ],
+      "keys": ["1", "2", "4"],
       "output": "HER",
       "count": 68824,
       "total_same_keys": 71206,
@@ -623,33 +444,21 @@
     },
     {
       "room": "R",
-      "keys": [
-        "B",
-        "C"
-      ],
+      "keys": ["B", "C"],
       "output": "MY",
       "count": 40494,
       "dominance": 0.9304
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "D"
-      ],
+      "keys": ["2", "3", "4", "D"],
       "output": "THAN",
       "count": 12601,
       "dominance": 0.9569
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "4",
-        "D"
-      ],
+      "keys": ["2", "4", "D"],
       "output": "THAT",
       "count": 94833,
       "dominance": 0.6084,
@@ -657,42 +466,28 @@
     },
     {
       "room": "H",
-      "keys": [
-        "4",
-        "B",
-        "C"
-      ],
+      "keys": ["4", "B", "C"],
       "output": "HIS",
       "count": 37152,
       "dominance": 0.6866
     },
     {
       "room": "H",
-      "keys": [
-        "3",
-        "B"
-      ],
+      "keys": ["3", "B"],
       "output": "NS",
       "count": 51499,
       "dominance": 0.7433
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "C"
-      ],
+      "keys": ["2", "C"],
       "output": "AI",
       "count": 51432,
       "dominance": 0.7407
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "4"
-      ],
+      "keys": ["1", "3", "4"],
       "output": "OUN",
       "count": 17747,
       "total_same_keys": 23000,
@@ -708,45 +503,28 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "D"
-      ],
+      "keys": ["1", "3", "4", "D"],
       "output": "COUL",
       "count": 8677,
       "dominance": 0.936
     },
     {
       "room": "H",
-      "keys": [
-        "3",
-        "A",
-        "B"
-      ],
+      "keys": ["3", "A", "B"],
       "output": "NGS",
       "count": 10984,
       "dominance": 0.9696
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "A"
-      ],
+      "keys": ["2", "A"],
       "output": "RD",
       "count": 35543,
       "dominance": 0.7277
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A"
-      ],
+      "keys": ["1", "2", "3", "A"],
       "output": "NDER",
       "count": 10890,
       "total_same_keys": 14910,
@@ -762,22 +540,14 @@
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "4",
-        "B",
-        "D"
-      ],
+      "keys": ["2", "4", "B", "D"],
       "output": "THAT'S",
       "count": 12607,
       "dominance": 0.8903
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3"
-      ],
+      "keys": ["2", "3"],
       "output": "RN",
       "count": 26841,
       "total_same_keys": 27581,
@@ -793,22 +563,14 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "A",
-        "B"
-      ],
+      "keys": ["1", "A", "B"],
       "output": "MOD",
       "count": 15500,
       "dominance": 0.7245
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "A"
-      ],
+      "keys": ["1", "2", "A"],
       "output": "EAD",
       "count": 27283,
       "total_same_keys": 47277,
@@ -824,87 +586,56 @@
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "A"
-      ],
+      "keys": ["2", "3", "4", "A"],
       "output": "HANG",
       "count": 5162,
       "dominance": 0.9961
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3"
-      ],
+      "keys": ["1", "2", "3"],
       "output": "EAN",
       "count": 15056,
       "dominance": 0.7018
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "4",
-        "B"
-      ],
+      "keys": ["3", "4", "B"],
       "output": "MUC",
       "count": 7626,
       "dominance": 0.9318
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "A"
-      ],
+      "keys": ["1", "2", "A"],
       "output": "AGE",
       "count": 11657,
       "dominance": 0.7365
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "D"
-      ],
+      "keys": ["2", "3", "D"],
       "output": "ANT",
       "count": 27130,
       "dominance": 0.6057
     },
     {
       "room": "H",
-      "keys": [
-        "A",
-        "B"
-      ],
+      "keys": ["A", "B"],
       "output": "GS",
       "count": 14094,
       "dominance": 0.9377
     },
     {
       "room": "R",
-      "keys": [
-        "A",
-        "C"
-      ],
+      "keys": ["A", "C"],
       "output": "DY",
       "count": 14286,
       "dominance": 0.9245
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "A",
-        "D"
-      ],
+      "keys": ["1", "A", "D"],
       "output": "TED",
       "count": 20218,
       "total_same_keys": 21458,
@@ -920,33 +651,21 @@
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "A"
-      ],
+      "keys": ["2", "3", "A"],
       "output": "ANG",
       "count": 11171,
       "dominance": 0.7254
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A"
-      ],
+      "keys": ["1", "2", "3", "A"],
       "output": "ANGE",
       "count": 6389,
       "dominance": 0.7542
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "B"
-      ],
+      "keys": ["2", "B"],
       "output": "RS",
       "count": 55050,
       "total_same_keys": 55965,
@@ -962,11 +681,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "4",
-        "C"
-      ],
+      "keys": ["1", "4", "C"],
       "output": "THEIR",
       "count": 7500,
       "dominance": 0.9196,
@@ -974,11 +689,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "D"
-      ],
+      "keys": ["1", "3", "D"],
       "output": "NOT",
       "count": 55761,
       "total_same_keys": 87780,
@@ -994,31 +705,21 @@
     },
     {
       "room": "L",
-      "keys": [
-        "A",
-        "D"
-      ],
+      "keys": ["A", "D"],
       "output": "XP",
       "count": 10965,
       "dominance": 0.9966
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "C",
-        "D"
-      ],
+      "keys": ["2", "C", "D"],
       "output": "ATI",
       "count": 24177,
       "dominance": 0.5952
     },
     {
       "room": "R",
-      "keys": [
-        "B",
-        "D"
-      ],
+      "keys": ["B", "D"],
       "output": "MP",
       "count": 21419,
       "total_same_keys": 23458,
@@ -1034,21 +735,14 @@
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "A",
-        "B"
-      ],
+      "keys": ["1", "A", "B"],
       "output": "GES",
       "count": 4989,
       "dominance": 0.8971
     },
     {
       "room": "R",
-      "keys": [
-        "A",
-        "B"
-      ],
+      "keys": ["A", "B"],
       "output": "DS",
       "count": 24443,
       "total_same_keys": 25788,
@@ -1064,33 +758,21 @@
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "B"
-      ],
+      "keys": ["1", "2", "B"],
       "output": "EAS",
       "count": 19603,
       "dominance": 0.5952
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "D"
-      ],
+      "keys": ["1", "3", "D"],
       "output": "ENT",
       "count": 39512,
       "dominance": 0.563
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "D"
-      ],
+      "keys": ["1", "2", "D"],
       "output": "TER",
       "count": 44151,
       "total_same_keys": 71244,
@@ -1106,21 +788,14 @@
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "B"
-      ],
+      "keys": ["2", "3", "B"],
       "output": "ANS",
       "count": 10613,
       "dominance": 0.6227
     },
     {
       "room": "R",
-      "keys": [
-        "4",
-        "C"
-      ],
+      "keys": ["4", "C"],
       "output": "BU",
       "count": 57268,
       "total_same_keys": 69215,
@@ -1136,11 +811,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3"
-      ],
+      "keys": ["1", "2", "3"],
       "output": "WORK",
       "count": 5455,
       "total_same_keys": 13615,
@@ -1156,22 +827,14 @@
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "4",
-        "B"
-      ],
+      "keys": ["2", "4", "B"],
       "output": "HAS",
       "count": 11127,
       "dominance": 0.5817
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "4",
-        "A"
-      ],
+      "keys": ["2", "4", "A"],
       "output": "HAD",
       "count": 8068,
       "total_same_keys": 9646,
@@ -1187,23 +850,14 @@
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "B",
-        "D"
-      ],
+      "keys": ["2", "3", "B", "D"],
       "output": "STAN",
       "count": 6575,
       "dominance": 0.5557
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "C"
-      ],
+      "keys": ["1", "2", "C"],
       "output": "YEA",
       "count": 22364,
       "total_same_keys": 27207,
@@ -1219,10 +873,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "A",
-        "B"
-      ],
+      "keys": ["A", "B"],
       "output": "Q",
       "count": 22950,
       "dominance": 0.0,
@@ -1235,10 +886,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "4",
-        "B"
-      ],
+      "keys": ["4", "B"],
       "output": "Z",
       "count": 24166,
       "dominance": 0.0,
@@ -1251,10 +899,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "D"
-      ],
+      "keys": ["1", "D"],
       "output": "TO",
       "count": 213636,
       "dominance": null,
@@ -1263,10 +908,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "A"
-      ],
+      "keys": ["3", "A"],
       "output": "ND",
       "count": 165344,
       "dominance": 0.9295,
@@ -1275,10 +917,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "B"
-      ],
+      "keys": ["1", "B"],
       "output": "ME",
       "count": 213801,
       "dominance": 0.7975,
@@ -1287,10 +926,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "4"
-      ],
+      "keys": ["1", "4"],
       "output": "WH",
       "count": 113630,
       "dominance": 0.996,
@@ -1299,10 +935,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "C"
-      ],
+      "keys": ["1", "C"],
       "output": "BE",
       "count": 119799,
       "dominance": 0.955,
@@ -1311,10 +944,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "B"
-      ],
+      "keys": ["1", "B"],
       "output": "VE",
       "count": 182422,
       "dominance": 0.7351,
@@ -1323,10 +953,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3"
-      ],
+      "keys": ["1", "3"],
       "output": "KE",
       "count": 106085,
       "dominance": 0.9523,
@@ -1335,10 +962,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "D"
-      ],
+      "keys": ["2", "D"],
       "output": "AL",
       "count": 165652,
       "dominance": 0.7196,
@@ -1347,10 +971,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "4"
-      ],
+      "keys": ["3", "4"],
       "output": "CH",
       "count": 85147,
       "dominance": 0.9974,
@@ -1359,10 +980,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "4",
-        "B"
-      ],
+      "keys": ["4", "B"],
       "output": "US",
       "count": 123450,
       "dominance": 0.7646,
@@ -1371,10 +989,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2"
-      ],
+      "keys": ["1", "2"],
       "output": "WA",
       "count": 93794,
       "dominance": 0.8866,
@@ -1383,10 +998,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "C"
-      ],
+      "keys": ["3", "C"],
       "output": "IC",
       "count": 83392,
       "dominance": 0.8121,
@@ -1395,10 +1007,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "A"
-      ],
+      "keys": ["1", "A"],
       "output": "GO",
       "count": 70452,
       "dominance": 0.8355,
@@ -1407,10 +1016,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "D"
-      ],
+      "keys": ["1", "D"],
       "output": "PE",
       "count": 82555,
       "dominance": 0.7233,
@@ -1419,10 +1025,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "B"
-      ],
+      "keys": ["2", "B"],
       "output": "AV",
       "count": 57017,
       "dominance": 0.7532,
@@ -1431,10 +1034,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "3"
-      ],
+      "keys": ["2", "3"],
       "output": "AK",
       "count": 40295,
       "dominance": 0.8794,
@@ -1443,10 +1043,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "D"
-      ],
+      "keys": ["3", "D"],
       "output": "CT",
       "count": 47764,
       "dominance": 0.7904,
@@ -1455,10 +1052,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "A"
-      ],
+      "keys": ["1", "A"],
       "output": "EX",
       "count": 30269,
       "dominance": 0.9154,
@@ -1467,10 +1061,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "B"
-      ],
+      "keys": ["3", "B"],
       "output": "SC",
       "count": 25293,
       "dominance": 0.8566,
@@ -1479,10 +1070,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "B",
-        "D"
-      ],
+      "keys": ["B", "D"],
       "output": "SP",
       "count": 27216,
       "dominance": 0.7531,
@@ -1491,10 +1079,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "C",
-        "D"
-      ],
+      "keys": ["C", "D"],
       "output": "BL",
       "count": 34585,
       "total_same_keys": 35941,
@@ -1511,10 +1096,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "4",
-        "D"
-      ],
+      "keys": ["4", "D"],
       "output": "PH",
       "count": 9140,
       "dominance": 0.9665,
@@ -1523,10 +1105,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "D"
-      ],
+      "keys": ["2", "D"],
       "output": "PR",
       "count": 43279,
       "total_same_keys": 48729,
@@ -1543,11 +1122,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "A"
-      ],
+      "keys": ["2", "3", "A"],
       "output": "AND",
       "count": 101044,
       "dominance": 0.9125,
@@ -1556,12 +1131,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "D"
-      ],
+      "keys": ["1", "2", "4", "D"],
       "output": "WHAT",
       "count": 48818,
       "dominance": 0.9929,
@@ -1570,12 +1140,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "B"
-      ],
+      "keys": ["1", "2", "4", "B"],
       "output": "HAVE",
       "count": 41888,
       "dominance": 0.968,
@@ -1584,12 +1149,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "D"
-      ],
+      "keys": ["1", "2", "4", "D"],
       "output": "THERE",
       "count": 18613,
       "dominance": 0.4351,
@@ -1598,11 +1158,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "4"
-      ],
+      "keys": ["1", "2", "4"],
       "output": "WHA",
       "count": 49532,
       "dominance": 0.9831,
@@ -1611,12 +1167,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "4",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "4", "C", "D"],
       "output": "WITH",
       "count": 31905,
       "dominance": 0.9669,
@@ -1625,11 +1176,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "4",
-        "B"
-      ],
+      "keys": ["2", "4", "B"],
       "output": "HAV",
       "count": 45575,
       "dominance": 0.998,
@@ -1638,11 +1185,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "C"
-      ],
+      "keys": ["1", "3", "C"],
       "output": "IKE",
       "count": 45121,
       "dominance": 0.961,
@@ -1651,11 +1194,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "B"
-      ],
+      "keys": ["1", "2", "B"],
       "output": "AVE",
       "count": 47796,
       "dominance": 0.9148,
@@ -1664,12 +1203,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "4",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "4", "C", "D"],
       "output": "THEY",
       "count": 28101,
       "dominance": 0.9964,
@@ -1678,11 +1212,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "4",
-        "B",
-        "D"
-      ],
+      "keys": ["4", "B", "D"],
       "output": "UST",
       "count": 57946,
       "dominance": 0.7841,
@@ -1691,11 +1221,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "C", "D"],
       "output": "WIT",
       "count": 34991,
       "dominance": 0.9307,
@@ -1704,12 +1230,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "C", "D"],
       "output": "LIKE",
       "count": 43828,
       "total_same_keys": 45173,
@@ -1726,11 +1247,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "C", "D"],
       "output": "TIO",
       "count": 34628,
       "dominance": 0.8142,
@@ -1739,11 +1256,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "C"
-      ],
+      "keys": ["2", "3", "C"],
       "output": "ANY",
       "count": 26229,
       "dominance": 0.9637,
@@ -1752,12 +1265,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "C", "D"],
       "output": "ATIO",
       "count": 15740,
       "dominance": 0.9796,
@@ -1766,11 +1274,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "4",
-        "B"
-      ],
+      "keys": ["1", "4", "B"],
       "output": "USE",
       "count": 35070,
       "dominance": 0.722,
@@ -1779,11 +1283,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3"
-      ],
+      "keys": ["1", "2", "3"],
       "output": "AKE",
       "count": 28858,
       "dominance": 0.8304,
@@ -1792,12 +1292,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "B"
-      ],
+      "keys": ["2", "3", "4", "B"],
       "output": "CAUS",
       "count": 15694,
       "dominance": 0.9429,
@@ -1806,12 +1301,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "B"
-      ],
+      "keys": ["1", "2", "4", "B"],
       "output": "AUSE",
       "count": 15601,
       "dominance": 0.9422,
@@ -1820,12 +1310,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "D"],
       "output": "WANT",
       "count": 14312,
       "dominance": 0.9967,
@@ -1834,11 +1319,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "C"
-      ],
+      "keys": ["1", "3", "C"],
       "output": "ION",
       "count": 43944,
       "dominance": 0.5619,
@@ -1847,12 +1328,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "B", "C", "D"],
       "output": "TIME",
       "count": 18007,
       "dominance": 0.7723,
@@ -1861,11 +1337,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "B", "C"],
       "output": "YES",
       "count": 21854,
       "dominance": 0.8904,
@@ -1874,11 +1346,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "4",
-        "A"
-      ],
+      "keys": ["3", "4", "A"],
       "output": "UND",
       "count": 20404,
       "dominance": 0.9229,
@@ -1887,12 +1355,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "A",
-        "B"
-      ],
+      "keys": ["1", "2", "A", "B"],
       "output": "GAME",
       "count": 15158,
       "dominance": 0.8504,
@@ -1901,11 +1364,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "A"
-      ],
+      "keys": ["1", "3", "A"],
       "output": "DON",
       "count": 30508,
       "dominance": 0.6578,
@@ -1914,12 +1373,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "2", "B", "D"],
       "output": "ALSO",
       "count": 11438,
       "dominance": 0.9684,
@@ -1928,11 +1382,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "B"
-      ],
+      "keys": ["1", "2", "B"],
       "output": "VER",
       "count": 60609,
       "total_same_keys": 90611,
@@ -1949,11 +1399,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "B", "C"],
       "output": "IVE",
       "count": 23021,
       "dominance": 0.7634,
@@ -1962,11 +1408,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["B", "C", "D"],
       "output": "TIM",
       "count": 19258,
       "dominance": 0.8606,
@@ -1975,11 +1417,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "B",
-        "C"
-      ],
+      "keys": ["3", "B", "C"],
       "output": "MIN",
       "count": 18476,
       "dominance": 0.8613,
@@ -1988,12 +1426,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "D"
-      ],
+      "keys": ["1", "3", "A", "D"],
       "output": "DONT",
       "count": 10112,
       "dominance": 0.9966,
@@ -2002,12 +1435,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "4",
-        "A",
-        "C"
-      ],
+      "keys": ["2", "4", "A", "C"],
       "output": "RIGH",
       "count": 9770,
       "dominance": 0.9961,
@@ -2016,11 +1444,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "4"
-      ],
+      "keys": ["2", "3", "4"],
       "output": "CHA",
       "count": 20706,
       "total_same_keys": 27382,
@@ -2037,11 +1461,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "4",
-        "A"
-      ],
+      "keys": ["1", "4", "A"],
       "output": "OUG",
       "count": 14051,
       "dominance": 0.9714,
@@ -2050,11 +1470,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "B"
-      ],
+      "keys": ["1", "3", "B"],
       "output": "EVEN",
       "count": 13879,
       "dominance": 0.6464,
@@ -2063,12 +1479,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "A",
-        "C"
-      ],
+      "keys": ["2", "3", "A", "C"],
       "output": "RING",
       "count": 8781,
       "dominance": 0.9141,
@@ -2077,11 +1488,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "4",
-        "B"
-      ],
+      "keys": ["2", "4", "B"],
       "output": "AUS",
       "count": 16620,
       "dominance": 0.7668,
@@ -2090,13 +1497,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "3",
-        "4",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["3", "4", "A", "C", "D"],
       "output": "THING",
       "count": 40384,
       "dominance": 0.8479,
@@ -2106,13 +1507,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "4", "C", "D"],
       "output": "SOMETHING",
       "count": 10700,
       "dominance": 0.9418,
@@ -2124,14 +1519,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "4", "A", "C", "D"],
       "output": "SOMETHING",
       "count": 10589,
       "dominance": 0.9682,
@@ -2143,13 +1531,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "A",
-        "D"
-      ],
+      "keys": ["1", "3", "4", "A", "D"],
       "output": "COULD",
       "count": 8667,
       "dominance": 0.9677,
@@ -2159,13 +1541,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "4", "C", "D"],
       "output": "ABOUT",
       "count": 20152,
       "total_same_keys": 20252,
@@ -2182,13 +1558,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "3",
-        "4",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["3", "4", "A", "B", "C"],
       "output": "THINGS",
       "count": 7543,
       "dominance": 0.8892,
@@ -2200,14 +1570,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "3",
-        "4",
-        "A",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["3", "4", "A", "B", "C", "D"],
       "output": "THINGS",
       "count": 7526,
       "dominance": 0.9695,
@@ -2217,13 +1580,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "C", "D"],
       "output": "ATION",
       "count": 15564,
       "total_same_keys": 18977,
@@ -2240,13 +1597,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "2", "3", "B", "C"],
       "output": "MORNING",
       "count": 7269,
       "total_same_keys": 7928,
@@ -2265,13 +1616,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "A"
-      ],
+      "keys": ["1", "2", "3", "4", "A"],
       "output": "UNDER",
       "count": 5759,
       "total_same_keys": 6891,
@@ -2288,13 +1633,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "B"
-      ],
+      "keys": ["1", "2", "3", "A", "B"],
       "output": "DISCORD",
       "count": 5637,
       "total_same_keys": 5798,
@@ -2313,13 +1652,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "A"
-      ],
+      "keys": ["1", "2", "3", "4", "A"],
       "output": "CHANGE",
       "count": 4383,
       "dominance": 0.9955,
@@ -2331,13 +1664,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "B"
-      ],
+      "keys": ["1", "2", "3", "A", "B"],
       "output": "UNDERSTAND",
       "count": 4240,
       "dominance": 0.9636,
@@ -2349,13 +1676,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "B", "C", "D"],
       "output": "TIONS",
       "count": 8410,
       "total_same_keys": 14082,
@@ -2372,13 +1693,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "2",
-        "3",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["2", "3", "A", "C", "D"],
       "output": "ATING",
       "count": 3829,
       "dominance": 0.8545,
@@ -2388,13 +1703,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "3",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["2", "3", "A", "B", "C"],
       "output": "HAVING",
       "count": 3635,
       "dominance": 0.9846,
@@ -2406,13 +1715,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "4", "D"],
       "output": "WATCH",
       "count": 5024,
       "total_same_keys": 5101,
@@ -2429,13 +1732,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "B", "C", "D"],
       "output": "SPECI",
       "count": 3854,
       "total_same_keys": 4011,
@@ -2452,13 +1749,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "C"
-      ],
+      "keys": ["1", "2", "3", "A", "C"],
       "output": "IMAGINE",
       "count": 3553,
       "dominance": 0.8997,
@@ -2470,14 +1761,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "2", "3", "A", "B", "C"],
       "output": "DISCORD",
       "count": 5640,
       "total_same_keys": 11332,
@@ -2496,13 +1780,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "C", "D"],
       "output": "CATIO",
       "count": 3487,
       "dominance": 0.6029,
@@ -2512,14 +1790,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "4", "A", "C", "D"],
       "output": "NOTHING",
       "count": 3406,
       "dominance": 0.7769,
@@ -2531,13 +1802,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "4",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "4", "B", "C", "D"],
       "output": "SOMETHING",
       "count": 10717,
       "total_same_keys": 10786,
@@ -2556,13 +1821,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "3",
-        "A",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["3", "A", "B", "C", "D"],
       "output": "STING",
       "count": 3337,
       "dominance": 0.8301,
@@ -2572,13 +1831,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "4",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["3", "4", "A", "B", "C"],
       "output": "USING",
       "count": 3108,
       "dominance": 0.922,
@@ -2588,13 +1841,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "B", "C", "D"],
       "output": "ALWAYS",
       "count": 3482,
       "total_same_keys": 3490,
@@ -2613,13 +1860,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "4", "C", "D"],
       "output": "ABOUT",
       "count": 20152,
       "dominance": 0.9951,
@@ -2636,13 +1877,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "C"
-      ],
+      "keys": ["1", "2", "3", "A", "C"],
       "output": "ERING",
       "count": 2444,
       "dominance": 0.558,
@@ -2652,13 +1887,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "B", "C", "D"],
       "output": "ALWAYS",
       "count": 3482,
       "dominance": 0.9977,
@@ -2677,13 +1906,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "A", "D"],
       "output": "WANTED",
       "count": 2576,
       "total_same_keys": 3345,
@@ -2702,13 +1925,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "4", "C", "D"],
       "output": "WITCH",
       "count": 2311,
       "dominance": 0.9706,
@@ -2718,13 +1935,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "2", "4", "B", "C"],
       "output": "YOURSELF",
       "count": 2742,
       "total_same_keys": 2751,
@@ -2743,14 +1954,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "4", "B", "C", "D"],
       "output": "SOMETHING",
       "count": 10642,
       "total_same_keys": 10682,
@@ -2769,13 +1973,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "4", "C", "D"],
       "output": "WITCH",
       "count": 2311,
       "total_same_keys": 2381,
@@ -2792,13 +1990,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["2", "3", "B", "C", "D"],
       "output": "BASICALLY",
       "count": 2957,
       "total_same_keys": 3368,
@@ -2817,13 +2009,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "B"
-      ],
+      "keys": ["1", "2", "3", "4", "B"],
       "output": "HAVEN",
       "count": 2097,
       "dominance": 0.9929,
@@ -2833,14 +2019,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "2", "3", "4", "B", "C"],
       "output": "BECAUSE",
       "count": 12718,
       "total_same_keys": 13018,
@@ -2859,14 +2038,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "B", "C", "D"],
       "output": "ATIONS",
       "count": 4619,
       "total_same_keys": 6251,
@@ -2883,14 +2055,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "A", "B", "C", "D"],
       "output": "INTERESTING",
       "count": 1965,
       "dominance": 0.8499,
@@ -2902,13 +2067,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "2", "4", "B", "D"],
       "output": "YOURSELF",
       "count": 2467,
       "total_same_keys": 4281,
@@ -2927,13 +2086,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "2", "4", "B", "D"],
       "output": "SUPER",
       "count": 1958,
       "total_same_keys": 2260,
@@ -2950,13 +2103,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "A",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "2", "A", "B", "D"],
       "output": "UNDERSTAND",
       "count": 3819,
       "total_same_keys": 5532,
@@ -2975,13 +2122,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "B", "D"],
       "output": "COMPA",
       "count": 1885,
       "dominance": 0.9397,
@@ -2991,13 +2132,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "2", "4", "B", "C"],
       "output": "NUMBER",
       "count": 2277,
       "total_same_keys": 2356,
@@ -3016,13 +2151,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "B", "D"],
       "output": "INSTEAD",
       "count": 1852,
       "dominance": 0.76,
@@ -3034,14 +2163,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "B", "C", "D"],
       "output": "INSTEAD",
       "count": 1851,
       "dominance": 0.7703,
@@ -3053,14 +2175,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "A", "B", "D"],
       "output": "UNDERSTAND",
       "count": 3815,
       "total_same_keys": 3870,
@@ -3079,13 +2194,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "4", "D"],
       "output": "WATCH",
       "count": 5024,
       "dominance": 0.9849,
@@ -3102,13 +2211,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "A", "C", "D"],
       "output": "TODAY",
       "count": 3101,
       "total_same_keys": 3131,
@@ -3125,13 +2228,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "3", "4", "B", "D"],
       "output": "MONTH",
       "count": 1722,
       "total_same_keys": 1731,
@@ -3148,14 +2245,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "4", "B", "C", "D"],
       "output": "MINUTES",
       "count": 1704,
       "dominance": 0.9306,
@@ -3167,13 +2257,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "A",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "2", "A", "B", "D"],
       "output": "EXAMPLE",
       "count": 1690,
       "dominance": 0.9912,
@@ -3185,13 +2269,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "A", "D"],
       "output": "EXACTLY",
       "count": 2324,
       "total_same_keys": 2330,
@@ -3210,14 +2288,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "2", "3", "A", "B", "C"],
       "output": "FRIENDS",
       "count": 1613,
       "dominance": 0.5407,
@@ -3229,14 +2300,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "A", "C", "D"],
       "output": "EATING",
       "count": 1582,
       "dominance": 0.7211,
@@ -3246,13 +2310,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "3", "A", "B", "C"],
       "output": "ESIGN",
       "count": 1553,
       "dominance": 0.5687,
@@ -3262,15 +2320,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "A", "B", "C", "D"],
       "output": "INSTEAD",
       "count": 1848,
       "total_same_keys": 1964,
@@ -3287,13 +2337,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "4",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "4", "B", "C", "D"],
       "output": "OUSLY",
       "count": 1521,
       "dominance": 0.6718,
@@ -3303,13 +2347,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "C",
-        "D"
-      ],
+      "keys": ["2", "3", "4", "C", "D"],
       "output": "ANYTHING",
       "count": 5123,
       "total_same_keys": 5145,
@@ -3328,13 +2366,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "4",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["2", "4", "A", "C", "D"],
       "output": "RIGHT",
       "count": 9752,
       "total_same_keys": 9873,
@@ -3351,13 +2383,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "B"
-      ],
+      "keys": ["1", "2", "3", "4", "B"],
       "output": "BECAUSE",
       "count": 15493,
       "total_same_keys": 29190,
@@ -3376,13 +2402,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "2", "3", "B", "C"],
       "output": "ANYMORE",
       "count": 1426,
       "dominance": 0.9774,
@@ -3394,13 +2414,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "A", "C", "D"],
       "output": "LOGIC",
       "count": 1609,
       "total_same_keys": 1627,
@@ -3417,13 +2431,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "4",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["2", "4", "A", "C", "D"],
       "output": "BIRTHDAY",
       "count": 1394,
       "dominance": 0.9213,
@@ -3435,14 +2443,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "A", "C", "D"],
       "output": "DIRECT",
       "count": 1336,
       "dominance": 0.6775,
@@ -3452,13 +2453,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "3", "A", "B", "C"],
       "output": "COMING",
       "count": 1335,
       "dominance": 0.9591,
@@ -3470,13 +2465,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "3", "4", "B", "D"],
       "output": "AMOUNT",
       "count": 1334,
       "dominance": 0.9889,
@@ -3488,13 +2477,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "2", "A", "B", "C"],
       "output": "IMAGE",
       "count": 1634,
       "total_same_keys": 1691,
@@ -3511,14 +2494,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "A", "B", "C", "D"],
       "output": "ENGLISH",
       "count": 1244,
       "dominance": 0.4772,
@@ -3530,13 +2506,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "4",
-        "A",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["4", "A", "B", "C", "D"],
       "output": "MIGHT",
       "count": 4479,
       "total_same_keys": 4631,
@@ -3553,14 +2523,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "4",
-        "A",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["3", "4", "A", "B", "C", "D"],
       "output": "ENGLISH",
       "count": 1235,
       "dominance": 0.9817,
@@ -3572,15 +2535,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "A",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "4", "A", "B", "C", "D"],
       "output": "SOMETHING",
       "count": 10548,
       "total_same_keys": 10648,
@@ -3599,13 +2554,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "A", "C", "D"],
       "output": "PLAYED",
       "count": 1229,
       "dominance": 0.8139,
@@ -3617,14 +2566,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "4", "C", "D"],
       "output": "WATCHING",
       "count": 1314,
       "total_same_keys": 1324,
@@ -3643,13 +2585,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "4",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["3", "4", "A", "C", "D"],
       "output": "CHILD",
       "count": 1142,
       "dominance": 0.9956,
@@ -3659,13 +2595,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "2", "A", "B", "C"],
       "output": "DRIVE",
       "count": 1247,
       "total_same_keys": 1666,
@@ -3682,13 +2612,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["2", "3", "A", "C", "D"],
       "output": "RTING",
       "count": 1051,
       "dominance": 0.7986,
@@ -3698,13 +2622,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "A", "C", "D"],
       "output": "SLEEPING",
       "count": 1021,
       "dominance": 0.7824,
@@ -3716,13 +2634,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["2", "3", "A", "B", "C"],
       "output": "AGAINST",
       "count": 1004,
       "dominance": 0.5609,
@@ -3734,10 +2646,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "4",
-        "C"
-      ],
+      "keys": ["4", "C"],
       "output": "UB",
       "count": 11947,
       "total_same_keys": 69215,
@@ -3749,11 +2658,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "C",
-        "D"
-      ],
+      "keys": ["3", "C", "D"],
       "output": "LIK",
       "count": 44026,
       "total_same_keys": 52983,
@@ -3764,11 +2669,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "4",
-        "C",
-        "D"
-      ],
+      "keys": ["4", "C", "D"],
       "output": "BUT",
       "count": 42807,
       "total_same_keys": 47514,
@@ -3779,11 +2680,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "D"
-      ],
+      "keys": ["1", "2", "D"],
       "output": "PRO",
       "count": 22915,
       "total_same_keys": 33279,
@@ -3794,11 +2691,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "4",
-        "C"
-      ],
+      "keys": ["1", "4", "C"],
       "output": "BOU",
       "count": 21688,
       "total_same_keys": 23142,
@@ -3809,11 +2702,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "C"
-      ],
+      "keys": ["1", "2", "C"],
       "output": "ABO",
       "count": 21337,
       "total_same_keys": 29077,
@@ -3824,11 +2713,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "A",
-        "C"
-      ],
+      "keys": ["1", "A", "C"],
       "output": "IDE",
       "count": 21105,
       "total_same_keys": 34306,
@@ -3839,11 +2724,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "B"
-      ],
+      "keys": ["2", "3", "B"],
       "output": "MAK",
       "count": 20912,
       "total_same_keys": 21473,
@@ -3854,12 +2735,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "C"
-      ],
+      "keys": ["1", "2", "4", "C"],
       "output": "ABOU",
       "count": 20191,
       "total_same_keys": 20207,
@@ -3870,12 +2746,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "2", "B", "C"],
       "output": "VERY",
       "count": 19865,
       "total_same_keys": 19998,
@@ -3886,10 +2757,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "C"
-      ],
+      "keys": ["2", "C"],
       "output": "BR",
       "count": 19704,
       "total_same_keys": 24327,
@@ -3900,12 +2768,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "B"
-      ],
+      "keys": ["1", "2", "3", "B"],
       "output": "MAKE",
       "count": 17381,
       "total_same_keys": 17661,
@@ -3916,11 +2779,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "A",
-        "B"
-      ],
+      "keys": ["2", "A", "B"],
       "output": "GAM",
       "count": 15926,
       "total_same_keys": 22917,
@@ -3931,11 +2790,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "D"
-      ],
+      "keys": ["2", "3", "D"],
       "output": "CAL",
       "count": 15067,
       "total_same_keys": 24792,
@@ -3946,11 +2801,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "B", "D"],
       "output": "MET",
       "count": 14990,
       "total_same_keys": 19523,
@@ -3961,11 +2812,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "4",
-        "D"
-      ],
+      "keys": ["2", "4", "D"],
       "output": "UAL",
       "count": 14980,
       "total_same_keys": 23770,
@@ -3976,11 +2823,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "A",
-        "C"
-      ],
+      "keys": ["2", "A", "C"],
       "output": "DAY",
       "count": 14894,
       "total_same_keys": 21469,
@@ -3991,11 +2834,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "B",
-        "D"
-      ],
+      "keys": ["2", "B", "D"],
       "output": "ALS",
       "count": 13931,
       "total_same_keys": 24846,
@@ -4006,12 +2845,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "C"
-      ],
+      "keys": ["1", "2", "3", "C"],
       "output": "BECA",
       "count": 13034,
       "total_same_keys": 13548,
@@ -4022,11 +2856,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "C",
-        "D"
-      ],
+      "keys": ["2", "C", "D"],
       "output": "ABL",
       "count": 12994,
       "total_same_keys": 20996,
@@ -4037,11 +2867,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "B", "D"],
       "output": "SPE",
       "count": 12971,
       "total_same_keys": 20513,
@@ -4052,10 +2878,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "B",
-        "C"
-      ],
+      "keys": ["B", "C"],
       "output": "MB",
       "count": 12846,
       "total_same_keys": 13197,
@@ -4066,13 +2889,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "C"
-      ],
+      "keys": ["1", "2", "3", "4", "C"],
       "output": "BECAUSE",
       "count": 12745,
       "total_same_keys": 13006,
@@ -4085,12 +2902,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "C"
-      ],
+      "keys": ["1", "3", "A", "C"],
       "output": "OING",
       "count": 12647,
       "total_same_keys": 22707,
@@ -4101,12 +2913,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "4",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "4", "B", "D"],
       "output": "THEM",
       "count": 12352,
       "total_same_keys": 23646,
@@ -4117,10 +2924,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "3",
-        "D"
-      ],
+      "keys": ["3", "D"],
       "output": "LK",
       "count": 12189,
       "total_same_keys": 13393,
@@ -4131,11 +2935,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "3",
-        "C"
-      ],
+      "keys": ["2", "3", "C"],
       "output": "FIN",
       "count": 12151,
       "total_same_keys": 17408,
@@ -4146,11 +2946,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "4",
-        "D"
-      ],
+      "keys": ["3", "4", "D"],
       "output": "CTU",
       "count": 11954,
       "total_same_keys": 19011,
@@ -4161,11 +2957,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["A", "B", "C"],
       "output": "DIS",
       "count": 11937,
       "total_same_keys": 20988,
@@ -4176,11 +2968,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "D"
-      ],
+      "keys": ["1", "3", "D"],
       "output": "PEN",
       "count": 11304,
       "total_same_keys": 11589,
@@ -4191,12 +2979,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "A"
-      ],
+      "keys": ["1", "3", "4", "A"],
       "output": "OUND",
       "count": 10775,
       "total_same_keys": 14011,
@@ -4207,11 +2990,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "3",
-        "B"
-      ],
+      "keys": ["2", "3", "B"],
       "output": "VAN",
       "count": 10398,
       "total_same_keys": 10947,
@@ -4222,11 +3001,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "A",
-        "D"
-      ],
+      "keys": ["1", "A", "D"],
       "output": "EXP",
       "count": 10306,
       "total_same_keys": 16387,
@@ -4237,12 +3012,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "3", "B", "C"],
       "output": "IONS",
       "count": 10109,
       "total_same_keys": 21844,
@@ -4253,12 +3023,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "D"
-      ],
+      "keys": ["2", "3", "4", "D"],
       "output": "ACTUALLY",
       "count": 7980,
       "total_same_keys": 20082,
@@ -4269,12 +3034,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "C", "D"],
       "output": "PROB",
       "count": 9611,
       "total_same_keys": 9763,
@@ -4285,11 +3045,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "A",
-        "B"
-      ],
+      "keys": ["3", "A", "B"],
       "output": "NDS",
       "count": 9481,
       "total_same_keys": 9558,
@@ -4300,12 +3056,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "A",
-        "B"
-      ],
+      "keys": ["2", "3", "A", "B"],
       "output": "ADVANCED",
       "count": 8956,
       "total_same_keys": 9287,
@@ -4316,11 +3067,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["A", "B", "C"],
       "output": "VID",
       "count": 8816,
       "total_same_keys": 10138,
@@ -4331,11 +3078,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "4",
-        "D"
-      ],
+      "keys": ["2", "4", "D"],
       "output": "TUF",
       "count": 8677,
       "total_same_keys": 9966,
@@ -4346,12 +3089,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "4",
-        "B",
-        "D"
-      ],
+      "keys": ["2", "4", "B", "D"],
       "output": "STUFF",
       "count": 8403,
       "total_same_keys": 8823,
@@ -4362,11 +3100,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "3",
-        "C",
-        "D"
-      ],
+      "keys": ["3", "C", "D"],
       "output": "PIN",
       "count": 8513,
       "total_same_keys": 9794,
@@ -4377,12 +3111,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "C"
-      ],
+      "keys": ["1", "3", "4", "C"],
       "output": "JOIN",
       "count": 8469,
       "total_same_keys": 8484,
@@ -4393,11 +3122,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "3",
-        "D"
-      ],
+      "keys": ["2", "3", "D"],
       "output": "ALK",
       "count": 8431,
       "total_same_keys": 8839,
@@ -4408,12 +3133,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "C",
-        "D"
-      ],
+      "keys": ["2", "3", "C", "D"],
       "output": "ICAL",
       "count": 8269,
       "total_same_keys": 14103,
@@ -4424,11 +3144,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["B", "C", "D"],
       "output": "TIV",
       "count": 8096,
       "total_same_keys": 9621,
@@ -4439,12 +3155,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "2", "B", "D"],
       "output": "SELF",
       "count": 8064,
       "total_same_keys": 8327,
@@ -4455,11 +3166,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "B",
-        "C"
-      ],
+      "keys": ["2", "B", "C"],
       "output": "MAY",
       "count": 7737,
       "total_same_keys": 8120,
@@ -4470,11 +3177,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "3",
-        "B",
-        "C"
-      ],
+      "keys": ["3", "B", "C"],
       "output": "VIN",
       "count": 7674,
       "total_same_keys": 12365,
@@ -4485,11 +3188,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "3",
-        "4"
-      ],
+      "keys": ["2", "3", "4"],
       "output": "FUN",
       "count": 7573,
       "total_same_keys": 10115,
@@ -4500,12 +3199,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "3", "B", "D"],
       "output": "COMP",
       "count": 7422,
       "total_same_keys": 7474,
@@ -4516,12 +3210,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "B", "C", "D"],
       "output": "TIVE",
       "count": 7055,
       "total_same_keys": 7914,
@@ -4532,10 +3221,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "3",
-        "A"
-      ],
+      "keys": ["3", "A"],
       "output": "DK",
       "count": 7046,
       "total_same_keys": 7415,
@@ -4546,11 +3232,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "A",
-        "C"
-      ],
+      "keys": ["2", "A", "C"],
       "output": "BAD",
       "count": 6980,
       "total_same_keys": 8710,
@@ -4561,12 +3243,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["3", "A", "C", "D"],
       "output": "LING",
       "count": 6951,
       "total_same_keys": 10236,
@@ -4577,12 +3254,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["3", "A", "B", "C"],
       "output": "DISC",
       "count": 6891,
       "total_same_keys": 6925,
@@ -4593,11 +3265,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "A",
-        "C"
-      ],
+      "keys": ["3", "A", "C"],
       "output": "IDK",
       "count": 6804,
       "total_same_keys": 8851,
@@ -4608,12 +3276,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "3",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["3", "A", "B", "C"],
       "output": "VING",
       "count": 6734,
       "total_same_keys": 6744,
@@ -4624,10 +3287,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "3",
-        "B"
-      ],
+      "keys": ["3", "B"],
       "output": "NV",
       "count": 6609,
       "total_same_keys": 6697,
@@ -4638,12 +3298,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["2", "A", "B", "C"],
       "output": "SAID",
       "count": 6521,
       "total_same_keys": 8139,
@@ -4654,11 +3309,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "A"
-      ],
+      "keys": ["1", "3", "A"],
       "output": "KED",
       "count": 6517,
       "total_same_keys": 6649,
@@ -4669,12 +3320,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "2", "B", "C"],
       "output": "MBER",
       "count": 6409,
       "total_same_keys": 6721,
@@ -4685,11 +3331,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "4",
-        "B",
-        "C"
-      ],
+      "keys": ["4", "B", "C"],
       "output": "USI",
       "count": 6334,
       "total_same_keys": 8096,
@@ -4700,11 +3342,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "4",
-        "B",
-        "D"
-      ],
+      "keys": ["4", "B", "D"],
       "output": "SUP",
       "count": 6271,
       "total_same_keys": 8951,
@@ -4715,10 +3353,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2"
-      ],
+      "keys": ["1", "2"],
       "output": "WR",
       "count": 6266,
       "total_same_keys": 8196,
@@ -4729,12 +3364,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "3", "C", "D"],
       "output": "POIN",
       "count": 6230,
       "total_same_keys": 7856,
@@ -4745,12 +3375,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "A", "B", "C"],
       "output": "SIDE",
       "count": 6163,
       "total_same_keys": 11297,
@@ -4761,12 +3386,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "C"
-      ],
+      "keys": ["1", "3", "4", "C"],
       "output": "WHIC",
       "count": 6120,
       "total_same_keys": 6613,
@@ -4777,11 +3397,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "4",
-        "A",
-        "C"
-      ],
+      "keys": ["4", "A", "C"],
       "output": "GUY",
       "count": 6041,
       "total_same_keys": 6091,
@@ -4792,12 +3408,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "A",
-        "C"
-      ],
+      "keys": ["1", "2", "A", "C"],
       "output": "EADY",
       "count": 5626,
       "total_same_keys": 7225,
@@ -4808,12 +3419,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "3",
-        "A",
-        "C",
-        "D"
-      ],
+      "keys": ["3", "A", "C", "D"],
       "output": "PING",
       "count": 5458,
       "total_same_keys": 5484,
@@ -4824,12 +3430,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "A", "B", "C"],
       "output": "VIDE",
       "count": 5411,
       "total_same_keys": 6874,
@@ -4840,11 +3441,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "4",
-        "B",
-        "C"
-      ],
+      "keys": ["4", "B", "C"],
       "output": "UMB",
       "count": 5239,
       "total_same_keys": 5918,
@@ -4855,11 +3452,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "B",
-        "C"
-      ],
+      "keys": ["2", "B", "C"],
       "output": "BAS",
       "count": 5188,
       "total_same_keys": 7362,
@@ -4870,12 +3463,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "4",
-        "C",
-        "D"
-      ],
+      "keys": ["3", "4", "C", "D"],
       "output": "NYTH",
       "count": 5128,
       "total_same_keys": 5213,
@@ -4886,12 +3474,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "4",
-        "A",
-        "B"
-      ],
+      "keys": ["1", "4", "A", "B"],
       "output": "USED",
       "count": 5125,
       "total_same_keys": 5621,
@@ -4902,12 +3485,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "B"
-      ],
+      "keys": ["1", "2", "3", "B"],
       "output": "AKES",
       "count": 5079,
       "total_same_keys": 6888,
@@ -4918,12 +3496,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "D"],
       "output": "WATC",
       "count": 5027,
       "total_same_keys": 5092,
@@ -4934,11 +3507,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "A",
-        "D"
-      ],
+      "keys": ["2", "A", "D"],
       "output": "DAT",
       "count": 4850,
       "total_same_keys": 5169,
@@ -4949,12 +3518,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "A",
-        "D"
-      ],
+      "keys": ["2", "3", "A", "D"],
       "output": "TAND",
       "count": 4816,
       "total_same_keys": 5104,
@@ -4965,13 +3529,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "A",
-        "B",
-        "D"
-      ],
+      "keys": ["2", "3", "A", "B", "D"],
       "output": "STAND",
       "count": 4789,
       "total_same_keys": 5092,
@@ -4982,11 +3540,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "A"
-      ],
+      "keys": ["1", "2", "A"],
       "output": "EXA",
       "count": 4730,
       "total_same_keys": 5160,
@@ -4997,12 +3551,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["2", "B", "C", "D"],
       "output": "IRST",
       "count": 4620,
       "total_same_keys": 7979,
@@ -5013,12 +3562,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "A",
-        "D"
-      ],
+      "keys": ["1", "2", "A", "D"],
       "output": "ATED",
       "count": 4521,
       "total_same_keys": 10268,
@@ -5029,12 +3573,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "B"
-      ],
+      "keys": ["1", "3", "A", "B"],
       "output": "NDOM",
       "count": 4519,
       "total_same_keys": 5179,
@@ -5045,12 +3584,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "4",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["4", "A", "B", "C"],
       "output": "MIGH",
       "count": 4500,
       "total_same_keys": 4508,
@@ -5061,11 +3595,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "4",
-        "C"
-      ],
+      "keys": ["3", "4", "C"],
       "output": "UIC",
       "count": 4462,
       "total_same_keys": 6669,
@@ -5076,12 +3606,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "B",
-        "C"
-      ],
+      "keys": ["2", "3", "B", "C"],
       "output": "MANY",
       "count": 4291,
       "total_same_keys": 5944,
@@ -5092,12 +3617,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "4",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "4", "B", "C"],
       "output": "IOUS",
       "count": 4212,
       "total_same_keys": 5098,
@@ -5108,11 +3628,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "A",
-        "D"
-      ],
+      "keys": ["3", "A", "D"],
       "output": "NGL",
       "count": 4168,
       "total_same_keys": 4181,
@@ -5123,12 +3639,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "D"
-      ],
+      "keys": ["1", "3", "A", "D"],
       "output": "XPEC",
       "count": 4105,
       "total_same_keys": 5257,
@@ -5139,12 +3650,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["3", "B", "C", "D"],
       "output": "CTIV",
       "count": 4081,
       "total_same_keys": 4273,
@@ -5155,12 +3661,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "3",
-        "C",
-        "D"
-      ],
+      "keys": ["2", "3", "C", "D"],
       "output": "ALKI",
       "count": 4038,
       "total_same_keys": 4190,
@@ -5171,14 +3672,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "A",
-        "B"
-      ],
+      "keys": ["1", "2", "3", "4", "A", "B"],
       "output": "UNDERSTAND",
       "count": 3870,
       "total_same_keys": 4050,
@@ -5191,15 +3685,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "A",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "4", "A", "B", "D"],
       "output": "UNDERSTAND",
       "count": 3811,
       "total_same_keys": 3841,
@@ -5212,13 +3698,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "A",
-        "B"
-      ],
+      "keys": ["1", "3", "4", "A", "B"],
       "output": "SOUNDS",
       "count": 3382,
       "total_same_keys": 5793,
@@ -5231,13 +3711,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "B",
-        "C"
-      ],
+      "keys": ["2", "3", "4", "B", "C"],
       "output": "HAVING",
       "count": 3007,
       "total_same_keys": 3013,
@@ -5250,14 +3724,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "A",
-        "B",
-        "C"
-      ],
+      "keys": ["2", "3", "4", "A", "B", "C"],
       "output": "HAVING",
       "count": 2968,
       "total_same_keys": 2970,
@@ -5268,14 +3735,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "4", "B", "C", "D"],
       "output": "EVERYTHING",
       "count": 2837,
       "total_same_keys": 2852,
@@ -5288,13 +3748,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "A",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "A", "B", "C", "D"],
       "output": "EXIST",
       "count": 2805,
       "total_same_keys": 3443,
@@ -5305,13 +3759,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "3",
-        "4",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["3", "4", "B", "C", "D"],
       "output": "MINUTES",
       "count": 2267,
       "total_same_keys": 3738,
@@ -5324,13 +3772,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "2",
-        "3",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["2", "3", "B", "C", "D"],
       "output": "ACTIVE",
       "count": 2229,
       "total_same_keys": 2468,
@@ -5343,13 +3785,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "3", "4", "B", "C"],
       "output": "NUMBER",
       "count": 2080,
       "total_same_keys": 2092,
@@ -5362,14 +3798,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "2", "3", "4", "B", "C"],
       "output": "BECAUSE",
       "count": 12718,
       "dominance": 0.977,
@@ -5388,13 +3817,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "A",
-        "D"
-      ],
+      "keys": ["2", "3", "4", "A", "D"],
       "output": "LANGUAGE",
       "count": 1217,
       "total_same_keys": 1400,
@@ -5407,13 +3830,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "B",
-        "D"
-      ],
+      "keys": ["2", "3", "4", "B", "D"],
       "output": "STRUC",
       "count": 1127,
       "total_same_keys": 1222,
@@ -5424,13 +3841,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "3", "A", "B", "D"],
       "output": "DEPENDS",
       "count": 1114,
       "total_same_keys": 1972,
@@ -5443,13 +3854,7 @@
     },
     {
       "room": "R",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "A",
-        "C"
-      ],
+      "keys": ["2", "3", "4", "A", "C"],
       "output": "DURING",
       "count": 1042,
       "total_same_keys": 1433,
@@ -5462,13 +3867,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "C"
-      ],
+      "keys": ["1", "2", "3", "4", "C"],
       "output": "BECAUSE",
       "count": 12745,
       "dominance": 0.9799,
@@ -5481,14 +3880,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "4", "B", "C", "D"],
       "output": "EVERYTHING",
       "count": 2837,
       "dominance": 0.9947,
@@ -5501,13 +3893,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "4",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "3", "4", "B", "C"],
       "output": "NUMBER",
       "count": 2080,
       "dominance": 0.9943,
@@ -5520,14 +3906,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "3", "4", "C", "D"],
       "output": "WATCHING",
       "count": 1314,
       "dominance": 0.9924,
@@ -5540,13 +3919,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "3", "A", "B", "D"],
       "output": "DEPENDS",
       "count": 1114,
       "dominance": 0.5649,
@@ -5559,11 +3932,7 @@
     },
     {
       "room": "L",
-      "keys": [
-        "4",
-        "A",
-        "B"
-      ],
+      "keys": ["4", "A", "B"],
       "output": "QU",
       "count": 21291,
       "dominance": null,
@@ -5572,710 +3941,465 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "2",
-        "D"
-      ],
+      "keys": ["1", "2", "D"],
       "output": "ER",
       "count": 311775,
       "dominance": 0.5087,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "1",
-        "2"
-      ],
+      "native_keys": ["1", "2"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "2",
-        "C"
-      ],
+      "keys": ["1", "2", "C"],
       "output": "RE",
       "count": 301082,
       "dominance": 0.4913,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "2",
-        "1"
-      ],
+      "native_keys": ["2", "1"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "3",
-        "D"
-      ],
+      "keys": ["1", "3", "D"],
       "output": "ON",
       "count": 252909,
       "dominance": 0.6289,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "1",
-        "3"
-      ],
+      "native_keys": ["1", "3"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "2",
-        "B"
-      ],
+      "keys": ["1", "2", "B"],
       "output": "ES",
       "count": 175506,
       "dominance": 0.5405,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "1",
-        "B"
-      ],
+      "native_keys": ["1", "B"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "D"
-      ],
+      "keys": ["1", "D"],
       "output": "LL",
       "count": 157348,
       "dominance": 0.5,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "D",
-        "D"
-      ],
+      "native_keys": ["D", "D"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "C", "D"],
       "output": "LE",
       "count": 155120,
       "dominance": 0.5325,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "D",
-        "1"
-      ],
+      "native_keys": ["D", "1"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "3",
-        "B"
-      ],
+      "keys": ["1", "3", "B"],
       "output": "NO",
       "count": 149236,
       "dominance": 0.3711,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "3",
-        "1"
-      ],
+      "native_keys": ["3", "1"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "A",
-        "B"
-      ],
+      "keys": ["1", "A", "B"],
       "output": "SE",
       "count": 149185,
       "dominance": 0.4595,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "B",
-        "1"
-      ],
+      "native_keys": ["B", "1"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "2"
-      ],
+      "keys": ["2"],
       "output": "AR",
       "count": 140972,
       "dominance": 0.6473,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "2",
-        "2"
-      ],
+      "native_keys": ["2", "2"],
       "source": "manual move of AR to single attic 2",
       "manual_chord": true
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "2",
-        "A"
-      ],
+      "keys": ["1", "2", "A"],
       "output": "ED",
       "count": 139176,
       "dominance": 0.5704,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "1",
-        "A"
-      ],
+      "native_keys": ["1", "A"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "2",
-        "3",
-        "B"
-      ],
+      "keys": ["2", "3", "B"],
       "output": "AS",
       "count": 122894,
       "dominance": 0.7086,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "2",
-        "B"
-      ],
+      "native_keys": ["2", "B"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "3",
-        "4",
-        "D"
-      ],
+      "keys": ["3", "4", "D"],
       "output": "UT",
       "count": 110858,
       "dominance": 0.7199,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "4",
-        "D"
-      ],
+      "native_keys": ["4", "D"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "4",
-        "A"
-      ],
+      "keys": ["1", "4", "A"],
       "output": "HO",
       "count": 108613,
       "dominance": 0.8497,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "4",
-        "1"
-      ],
+      "native_keys": ["4", "1"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "2",
-        "A",
-        "B"
-      ],
+      "keys": ["2", "A", "B"],
       "output": "MA",
       "count": 107130,
       "dominance": 0.5577,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "B",
-        "2"
-      ],
+      "native_keys": ["B", "2"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "A",
-        "2"
-      ],
+      "keys": ["A", "2"],
       "output": "AD",
       "count": 86701,
       "dominance": 0.6865,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "2",
-        "A"
-      ],
+      "native_keys": ["2", "A"],
       "source": "manual move of AD to intuitive attic A+2",
       "manual_chord": true
     },
     {
       "room": "A",
-      "keys": [
-        "C",
-        "2"
-      ],
+      "keys": ["C", "2"],
       "output": "RI",
       "count": 72093,
       "dominance": 0.6548,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "2",
-        "C"
-      ],
+      "native_keys": ["2", "C"],
       "source": "manual move of RI to intuitive attic chord",
       "manual_chord": true
     },
     {
       "room": "A",
-      "keys": [
-        "2",
-        "A",
-        "C"
-      ],
+      "keys": ["2", "A", "C"],
       "output": "ID",
       "count": 70442,
       "dominance": 0.5161,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "C",
-        "A"
-      ],
+      "native_keys": ["C", "A"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "4",
-        "A",
-        "C"
-      ],
+      "keys": ["4", "A", "C"],
       "output": "DI",
       "count": 66049,
       "dominance": 0.4839,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "A",
-        "C"
-      ],
+      "native_keys": ["A", "C"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "C",
-        "1"
-      ],
+      "keys": ["C", "1"],
       "output": "YE",
       "count": 62600,
       "dominance": 0.5592,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "C",
-        "1"
-      ],
+      "native_keys": ["C", "1"],
       "source": "manual move of YE to intuitive attic chord",
       "manual_chord": true
     },
     {
       "room": "A",
-      "keys": [
-        "B",
-        "C"
-      ],
+      "keys": ["B", "C"],
       "output": "IM",
       "count": 61408,
       "dominance": 0.5933,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "C",
-        "B"
-      ],
+      "native_keys": ["C", "B"],
       "source": "manual move of IM to intuitive attic chord",
       "manual_chord": true
     },
     {
       "room": "A",
-      "keys": [
-        "3",
-        "4",
-        "C"
-      ],
+      "keys": ["3", "4", "C"],
       "output": "NI",
       "count": 60407,
       "dominance": 0.1253,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "3",
-        "C"
-      ],
+      "native_keys": ["3", "C"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "3",
-        "4"
-      ],
+      "keys": ["3", "4"],
       "output": "UN",
       "count": 60023,
       "dominance": 0.8596,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "4",
-        "3"
-      ],
+      "native_keys": ["4", "3"],
       "source": "manual move of UN to intuitive attic 3+4",
       "manual_chord": true
     },
     {
       "room": "A",
-      "keys": [
-        "3",
-        "B",
-        "C"
-      ],
+      "keys": ["3", "B", "C"],
       "output": "SI",
       "count": 56864,
       "dominance": 0.2379,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "B",
-        "C"
-      ],
+      "native_keys": ["B", "C"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "4"
-      ],
+      "keys": ["4"],
       "output": "JU",
       "count": 54939,
       "dominance": 0.9982,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "4",
-        "4"
-      ],
+      "native_keys": ["4", "4"],
       "source": "manual move of JU to attic 4",
       "manual_chord": true
     },
     {
       "room": "A",
-      "keys": [
-        "B",
-        "D"
-      ],
+      "keys": ["B", "D"],
       "output": "TS",
       "count": 54369,
       "dominance": 0.212,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "D",
-        "B"
-      ],
+      "native_keys": ["D", "B"],
       "source": "manual move of TS to intuitive attic B+D",
       "manual_chord": true
     },
     {
       "room": "A",
-      "keys": [
-        "3"
-      ],
+      "keys": ["3"],
       "output": "CK",
       "count": 51403,
       "dominance": 0.9979,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "3",
-        "3"
-      ],
+      "native_keys": ["3", "3"],
       "source": "manual move of CK to attic 3",
       "manual_chord": true
     },
     {
       "room": "A",
-      "keys": [
-        "4",
-        "C",
-        "D"
-      ],
+      "keys": ["4", "C", "D"],
       "output": "TU",
       "count": 43124,
       "dominance": 0.2801,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "D",
-        "4"
-      ],
+      "native_keys": ["D", "4"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "D",
-        "2"
-      ],
+      "keys": ["D", "2"],
       "output": "RT",
       "count": 39731,
       "dominance": 0.4215,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "2",
-        "D"
-      ],
+      "native_keys": ["2", "D"],
       "source": "manual move of RT to intuitive attic chord",
       "manual_chord": true
     },
     {
       "room": "A",
-      "keys": [
-        "4",
-        "A",
-        "B"
-      ],
+      "keys": ["4", "A", "B"],
       "output": "SU",
       "count": 38017,
       "dominance": 0.2354,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "B",
-        "4"
-      ],
+      "native_keys": ["B", "4"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "2",
-        "4",
-        "C"
-      ],
+      "keys": ["2", "4", "C"],
       "output": "AH",
       "count": 28912,
       "dominance": 0.0925,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "2",
-        "4"
-      ],
+      "native_keys": ["2", "4"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "2",
-        "4"
-      ],
+      "keys": ["2", "4"],
       "output": "UA",
       "count": 25845,
       "dominance": 0.513,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "4",
-        "2"
-      ],
+      "native_keys": ["4", "2"],
       "source": "manual move of UA to intuitive attic chord",
       "manual_chord": true
     },
     {
       "room": "A",
-      "keys": [
-        "D",
-        "3"
-      ],
+      "keys": ["D", "3"],
       "output": "LC",
       "count": 21996,
       "dominance": 0.6053,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "D",
-        "3"
-      ],
+      "native_keys": ["D", "3"],
       "source": "manual move of LC to intuitive attic chord",
       "manual_chord": true
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "4",
-        "D"
-      ],
+      "keys": ["1", "4", "D"],
       "output": "OH",
       "count": 19214,
       "dominance": 0.1503,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "1",
-        "4"
-      ],
+      "native_keys": ["1", "4"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "B",
-        "4"
-      ],
+      "keys": ["B", "4"],
       "output": "UM",
       "count": 19197,
       "dominance": 0.5059,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "4",
-        "B"
-      ],
+      "native_keys": ["4", "B"],
       "source": "manual move of UM to intuitive attic chord",
       "manual_chord": true
     },
     {
       "room": "A",
-      "keys": [
-        "3",
-        "A",
-        "B"
-      ],
+      "keys": ["3", "A", "B"],
       "output": "SN",
       "count": 17786,
       "dominance": 0.2567,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
-      "native_keys": [
-        "B",
-        "3"
-      ],
+      "native_keys": ["B", "3"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "3",
-        "B",
-        "D"
-      ],
+      "keys": ["3", "B", "D"],
       "output": "SL",
       "count": 15440,
       "dominance": 0.3562,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "B",
-        "D"
-      ],
+      "native_keys": ["B", "D"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {
       "room": "A",
-      "keys": [
-        "A",
-        "D"
-      ],
+      "keys": ["A", "D"],
       "output": "GL",
       "count": 9655,
       "dominance": 0.9208,
       "attic_chord": true,
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "same-hand",
-      "native_keys": [
-        "A",
-        "D"
-      ],
+      "native_keys": ["A", "D"],
       "source": "manual move of GL to intuitive attic chord",
       "manual_chord": true
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "2",
-        "3"
-      ],
+      "keys": ["1", "2", "3"],
       "output": "OR",
       "count": 200304,
       "dominance": 0.6872,
@@ -6286,11 +4410,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "2",
-        "4"
-      ],
+      "keys": ["1", "2", "4"],
       "output": "RO",
       "count": 91175,
       "dominance": 0.3128,
@@ -6301,12 +4421,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "4",
-        "B",
-        "C"
-      ],
+      "keys": ["1", "4", "B", "C"],
       "output": "HEY",
       "count": 40870,
       "attic_chord": true,
@@ -6315,12 +4430,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "2",
-        "A",
-        "B"
-      ],
+      "keys": ["1", "2", "A", "B"],
       "output": "AME",
       "count": 35710,
       "attic_chord": true,
@@ -6329,11 +4439,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "4",
-        "C"
-      ],
+      "keys": ["1", "4", "C"],
       "output": "OUR",
       "count": 31520,
       "attic_chord": true,
@@ -6343,12 +4449,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "2",
-        "3",
-        "B"
-      ],
+      "keys": ["1", "2", "3", "B"],
       "output": "WAS",
       "count": 29546,
       "attic_chord": true,
@@ -6357,12 +4458,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "B"
-      ],
+      "keys": ["1", "2", "4", "B"],
       "output": "MOR",
       "count": 26458,
       "attic_chord": true,
@@ -6371,11 +4467,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "B",
-        "D"
-      ],
+      "keys": ["1", "B", "D"],
       "output": "EST",
       "count": 22546,
       "attic_chord": true,
@@ -6384,12 +4476,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "4",
-        "A",
-        "D"
-      ],
+      "keys": ["1", "4", "A", "D"],
       "output": "OTH",
       "count": 22233,
       "attic_chord": true,
@@ -6398,11 +4485,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "B",
-        "D",
-        "2"
-      ],
+      "keys": ["B", "D", "2"],
       "output": "STA",
       "count": 21109,
       "attic_chord": true,
@@ -6412,11 +4495,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "B",
-        "C",
-        "D"
-      ],
+      "keys": ["B", "C", "D"],
       "output": "STI",
       "count": 21069,
       "attic_chord": true,
@@ -6426,12 +4505,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "2",
-        "C",
-        "D"
-      ],
+      "keys": ["1", "2", "C", "D"],
       "output": "EIR",
       "count": 10474,
       "attic_chord": true,
@@ -6440,12 +4514,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "2",
-        "3",
-        "4",
-        "C"
-      ],
+      "keys": ["2", "3", "4", "C"],
       "output": "AIN",
       "count": 20819,
       "attic_chord": true,
@@ -6454,11 +4523,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "A",
-        "1",
-        "3"
-      ],
+      "keys": ["A", "1", "3"],
       "output": "END",
       "count": 18016,
       "attic_chord": true,
@@ -6468,11 +4533,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "B",
-        "1",
-        "4"
-      ],
+      "keys": ["B", "1", "4"],
       "output": "SHO",
       "count": 16743,
       "attic_chord": true,
@@ -6482,12 +4543,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "2",
-        "4",
-        "A"
-      ],
+      "keys": ["1", "2", "4", "A"],
       "output": "ORD",
       "count": 13082,
       "attic_chord": true,
@@ -6496,12 +4552,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "2",
-        "3",
-        "B",
-        "C"
-      ],
+      "keys": ["2", "3", "B", "C"],
       "output": "SAY",
       "count": 14621,
       "attic_chord": true,
@@ -6510,12 +4561,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "3",
-        "A",
-        "D"
-      ],
+      "keys": ["1", "3", "A", "D"],
       "output": "ONG",
       "count": 13706,
       "attic_chord": true,
@@ -6524,11 +4570,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "B",
-        "D",
-        "4"
-      ],
+      "keys": ["B", "D", "4"],
       "output": "JUST",
       "count": 52253,
       "attic_chord": true,
@@ -6538,11 +4580,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "C"
-      ],
+      "keys": ["1", "3", "C"],
       "output": "EN",
       "count": 175531,
       "manual_chord": true,
@@ -6550,11 +4588,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "1",
-        "3",
-        "B"
-      ],
+      "keys": ["1", "3", "B"],
       "output": "NE",
       "count": 140838,
       "manual_chord": true,
@@ -6562,11 +4596,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "D",
-        "1",
-        "C"
-      ],
+      "keys": ["D", "1", "C"],
       "output": "TE",
       "count": 144899,
       "manual_chord": true,
@@ -6574,11 +4604,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "D",
-        "1",
-        "B"
-      ],
+      "keys": ["D", "1", "B"],
       "output": "ET",
       "count": 93212,
       "manual_chord": true,
@@ -6586,10 +4612,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "2"
-      ],
+      "keys": ["1", "2"],
       "output": "OF",
       "count": 87204,
       "manual_chord": true,
@@ -6598,9 +4621,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "D"
-      ],
+      "keys": ["D"],
       "output": "PL",
       "count": 63895,
       "manual_chord": true,
@@ -6609,11 +4630,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "C",
-        "D",
-        "B"
-      ],
+      "keys": ["C", "D", "B"],
       "output": "IT",
       "count": 240936,
       "manual_chord": true,
@@ -6621,11 +4638,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "C",
-        "D",
-        "A"
-      ],
+      "keys": ["C", "D", "A"],
       "output": "TI",
       "count": 127204,
       "manual_chord": true,
@@ -6633,10 +4646,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "B"
-      ],
+      "keys": ["1", "B"],
       "output": "SO",
       "count": 118823,
       "manual_chord": true,
@@ -6645,10 +4655,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "2",
-        "B"
-      ],
+      "keys": ["2", "B"],
       "output": "OM",
       "count": 117584,
       "manual_chord": true,
@@ -6657,9 +4664,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1"
-      ],
+      "keys": ["1"],
       "output": "OW",
       "count": 102643,
       "manual_chord": true,
@@ -6668,10 +4673,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "3"
-      ],
+      "keys": ["1", "3"],
       "output": "NOW",
       "count": 34639,
       "manual_chord": true,
@@ -6681,10 +4683,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "4"
-      ],
+      "keys": ["1", "4"],
       "output": "HOW",
       "count": 32158,
       "manual_chord": true,
@@ -6694,10 +4693,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "4",
-        "D"
-      ],
+      "keys": ["4", "D"],
       "output": "HEL",
       "count": 14745,
       "manual_chord": true,
@@ -6707,11 +4703,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "2",
-        "4",
-        "B"
-      ],
+      "keys": ["2", "4", "B"],
       "output": "SOU",
       "count": 6127,
       "manual_chord": true,
@@ -6721,11 +4713,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "A",
-        "D"
-      ],
+      "keys": ["1", "A", "D"],
       "output": "EL",
       "count": 136165,
       "manual_chord": true,
@@ -6735,9 +4723,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "A"
-      ],
+      "keys": ["A"],
       "output": "GG",
       "count": 15537,
       "manual_chord": true,
@@ -6747,9 +4733,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "B"
-      ],
+      "keys": ["B"],
       "output": "SS",
       "count": 45801,
       "manual_chord": true,
@@ -6759,9 +4743,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "C"
-      ],
+      "keys": ["C"],
       "output": "BI",
       "count": 20043,
       "manual_chord": true,
@@ -6771,10 +4753,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "A",
-        "1"
-      ],
+      "keys": ["A", "1"],
       "output": "DO",
       "count": 105462,
       "manual_chord": true,
@@ -6783,12 +4762,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "B",
-        "D",
-        "1",
-        "3"
-      ],
+      "keys": ["B", "D", "1", "3"],
       "output": "N'T",
       "count": 44242,
       "manual_chord": true,
@@ -6797,10 +4771,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "A",
-        "B"
-      ],
+      "keys": ["A", "B"],
       "output": "IF",
       "count": 48039,
       "manual_chord": true,
@@ -6809,10 +4780,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "B",
-        "3"
-      ],
+      "keys": ["B", "3"],
       "output": "AM",
       "count": 84975,
       "manual_chord": true,
@@ -6821,10 +4789,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "2",
-        "3"
-      ],
+      "keys": ["2", "3"],
       "output": "WE",
       "count": 81475,
       "manual_chord": true,
@@ -6833,11 +4798,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "2",
-        "3",
-        "4"
-      ],
+      "keys": ["2", "3", "4"],
       "output": "OP",
       "count": 53075,
       "manual_chord": true,
@@ -6846,11 +4807,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "1",
-        "3",
-        "4"
-      ],
+      "keys": ["1", "3", "4"],
       "output": "PO",
       "count": 39960,
       "manual_chord": true,
@@ -6859,12 +4816,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "D",
-        "1",
-        "2",
-        "3"
-      ],
+      "keys": ["D", "1", "2", "3"],
       "output": "FOR",
       "count": 50552,
       "manual_chord": true,
@@ -6873,10 +4825,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "A",
-        "4"
-      ],
+      "keys": ["A", "4"],
       "output": "CAN",
       "count": 34111,
       "manual_chord": true,
@@ -6885,10 +4834,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "C",
-        "4"
-      ],
+      "keys": ["C", "4"],
       "output": "ARE",
       "count": 33379,
       "manual_chord": true,
@@ -6897,10 +4843,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "A",
-        "3"
-      ],
+      "keys": ["A", "3"],
       "output": "ALL",
       "count": 19926,
       "manual_chord": true,
@@ -6909,12 +4852,7 @@
     },
     {
       "room": "A",
-      "keys": [
-        "A",
-        "B",
-        "1",
-        "3"
-      ],
+      "keys": ["A", "B", "1", "3"],
       "output": "CE",
       "count": 68228,
       "manual_chord": true,
@@ -6923,12 +4861,7 @@
     },
     {
       "room": "H",
-      "keys": [
-        "B",
-        "D",
-        "1",
-        "4"
-      ],
+      "keys": ["B", "D", "1", "4"],
       "output": "THESE",
       "count": 2708,
       "manual_chord": true,
