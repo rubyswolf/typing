@@ -171,9 +171,8 @@
     {
       "room": "H",
       "keys": ["3", "4", "C", "D"],
-      "output": "THIN",
-      "count": 58761,
-      "dominance": 0.9874
+      "output": "THINK",
+      "count": 14886
     },
     {
       "room": "H",
@@ -4174,7 +4173,7 @@
     {
       "room": "A",
       "keys": ["B", "C"],
-      "output": "IM",
+      "output": "I'M",
       "count": 61408,
       "dominance": 0.5933,
       "attic_chord": true,
