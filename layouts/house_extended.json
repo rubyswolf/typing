@@ -4172,8 +4172,8 @@
     },
     {
       "room": "A",
-      "keys": ["B", "C"],
-      "output": "I'M",
+      "keys": ["3", "B", "C"],
+      "output": "IM",
       "count": 61408,
       "dominance": 0.5933,
       "attic_chord": true,
@@ -4210,7 +4210,7 @@
     },
     {
       "room": "A",
-      "keys": ["3", "B", "C"],
+      "keys": ["B", "C"],
       "output": "SI",
       "count": 56864,
       "dominance": 0.2379,
