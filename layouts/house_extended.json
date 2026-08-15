@@ -1461,11 +1461,11 @@
     {
       "room": "R",
       "keys": ["1", "4", "A"],
-      "output": "OUG",
+      "output": "OUGH",
       "count": 14051,
       "dominance": 0.9714,
       "house_extended_cross_room": true,
-      "source": "cross-room 3-gram candidate"
+      "source": "cross-room 3-gram candidate manual replacement with ough"
     },
     {
       "room": "L",
@@ -4173,7 +4173,7 @@
     {
       "room": "A",
       "keys": ["B", "C"],
-      "output": "I'M",
+      "output": "IM",
       "count": 61408,
       "dominance": 0.5933,
       "attic_chord": true,
