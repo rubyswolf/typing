@@ -4865,6 +4865,15 @@
       "count": 2708,
       "manual_chord": true,
       "source": "manual home chord for common word"
+    },
+    {
+      "room": "A",
+      "keys": ["A", "D", "1", "2"],
+      "output": "DER",
+      "count": 19985,
+      "manual_chord": true,
+      "attic_chord": true,
+      "source": "manual attic chord for common word chunk"
     }
   ],
   "extends": "house.json",
