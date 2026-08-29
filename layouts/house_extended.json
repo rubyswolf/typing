@@ -303,10 +303,10 @@
     {
       "room": "R",
       "keys": ["1", "3", "B", "D"],
-      "output": "WELCOME",
-      "count": 19997,
+      "output": "MENT",
+      "count": 10795,
       "dominance": 0.98,
-      "source": "replaced LCOM after corpus cost analysis"
+      "source": "replaced WELCOME after identifying Discord join-message bias"
     },
     {
       "room": "R",
