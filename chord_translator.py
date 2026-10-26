@@ -27,6 +27,7 @@ KEYEVENTF_KEYUP = 0x0002
 KEYEVENTF_UNICODE = 0x0004
 ULONG_PTR = wintypes.WPARAM
 USER32 = ctypes.WinDLL("user32", use_last_error=True)
+KERNEL32 = ctypes.WinDLL("kernel32", use_last_error=True)
 BACKSPACE_CHORD = ("1", "2", "3", "4")
 TITLE_CHORD = ("A", "B", "C", "D")
 
@@ -76,9 +77,15 @@ USER32.SendInput.argtypes = (wintypes.UINT, ctypes.POINTER(INPUT), ctypes.c_int)
 USER32.SendInput.restype = wintypes.UINT
 USER32.GetKeyState.argtypes = (ctypes.c_int,)
 USER32.GetKeyState.restype = ctypes.c_short
+KERNEL32.CreateMutexW.argtypes = (ctypes.c_void_p, wintypes.BOOL, wintypes.LPCWSTR)
+KERNEL32.CreateMutexW.restype = wintypes.HANDLE
+KERNEL32.CloseHandle.argtypes = (wintypes.HANDLE,)
+KERNEL32.CloseHandle.restype = wintypes.BOOL
 
 VK_CAPITAL = 0x14
 VK_BACK = 0x08
+ERROR_ALREADY_EXISTS = 183
+SINGLE_INSTANCE_MUTEX: int | None = None
 
 
 def normalize_physical_key(key: str) -> str:
@@ -90,6 +97,18 @@ def normalize_physical_key(key: str) -> str:
 
 def caps_lock_on() -> bool:
     return bool(USER32.GetKeyState(VK_CAPITAL) & 1)
+
+
+def acquire_single_instance() -> bool:
+    global SINGLE_INSTANCE_MUTEX
+    handle = KERNEL32.CreateMutexW(None, False, "Local\\HouseChordTranslator")
+    if not handle:
+        raise ctypes.WinError(ctypes.get_last_error())
+    if ctypes.get_last_error() == ERROR_ALREADY_EXISTS:
+        KERNEL32.CloseHandle(handle)
+        return False
+    SINGLE_INSTANCE_MUTEX = handle
+    return True
 
 
 def format_keys(keys) -> str:
@@ -137,7 +156,8 @@ class ChordTranslator:
         self.space_count = int(data.get("space_count") or data.get("spaceCount") or 0)
 
         self.lock = threading.RLock()
-        self.enabled = False
+        self.enabled = True
+        self.visualizer_enabled = visualizer
         self.down: set[str] = set()
         self.shift_down = False
         self.title_next = False
@@ -149,16 +169,24 @@ class ChordTranslator:
         self.pending_tip: tuple[str, str, str] | None = None
         self.pending_visual_flash: tuple[str, ...] = ()
         self.last_toggle_time = 0.0
+        self.last_visualizer_toggle_time = 0.0
         self.pending_windows: set[str] = set()
+        self.pending_win_shifts: set[str] = set()
+        self.visual_combo_shifts: set[str] = set()
+        self.visual_combo_v_down = False
         self.forwarded_windows: set[str] = set()
         self.passthrough_modifiers: set[str] = set()
         self.win_space_combo_active = False
+        self.win_visual_combo_active = False
         self.next_press_id = 1
         self.key_press_ids: dict[str, int] = {}
         self.thumb_press_ids: dict[str, int] = {}
         self.stop_event = threading.Event()
+        self.tray_icon = None
         self.output_queue: queue.Queue[str] = queue.Queue()
-        self.overlay_queue: queue.Queue[tuple[str, str, str, str, tuple[str, ...], tuple[str, ...]]] = queue.Queue()
+        self.overlay_queue: queue.Queue[
+            tuple[str, str, str, str, tuple[str, ...], tuple[str, ...], bool]
+        ] = queue.Queue()
         self.output_thread = threading.Thread(target=self.output_worker, daemon=True)
         self.overlay_thread = threading.Thread(
             target=run_overlay,
@@ -169,13 +197,18 @@ class ChordTranslator:
     def run(self) -> None:
         self.output_thread.start()
         self.overlay_thread.start()
+        threading.Thread(target=self.run_tray, name="tray-icon", daemon=True).start()
         keyboard.hook(self.handle_toggle_event, suppress=True)
         keyboard.hook(self.handle_passive_event, suppress=False)
         keyboard.add_hotkey("ctrl+alt+esc", self.stop, suppress=False)
+        self.enable_suppression()
+        self.update_overlay()
 
         print(f"Loaded: {self.name}")
         print(f"Layout: {self.layout_path}")
+        print("Mode: House")
         print("Toggle: Win+Space")
+        print("Visual mode: Win+Shift+V")
         print("Exit: Ctrl+Alt+Esc")
         try:
             while not self.stop_event.is_set():
@@ -184,10 +217,54 @@ class ChordTranslator:
             self.disable_suppression()
             keyboard.unhook_all()
             keyboard.unhook_all_hotkeys()
+            if self.tray_icon is not None:
+                self.tray_icon.stop()
             print("Stopped")
 
     def stop(self) -> None:
         self.stop_event.set()
+        if self.tray_icon is not None:
+            self.tray_icon.stop()
+
+    def run_tray(self) -> None:
+        try:
+            import pystray
+            from PIL import Image, ImageDraw
+        except ImportError:
+            print("Tray icon unavailable; install dependencies with: pip install -r requirements.txt")
+            return
+
+        image = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
+        draw = ImageDraw.Draw(image)
+        draw.polygon(((7, 29), (32, 7), (57, 29)), fill="#b3ff00")
+        draw.rounded_rectangle((13, 25, 51, 57), radius=5, fill="#18302a")
+        draw.rectangle((22, 31, 27, 50), fill="#b3ff00")
+        draw.rectangle((37, 31, 42, 50), fill="#b3ff00")
+        draw.rectangle((22, 39, 42, 44), fill="#b3ff00")
+
+        def toggle_house(icon, _item) -> None:
+            with self.lock:
+                self.toggle()
+            icon.update_menu()
+
+        def toggle_visualizer(icon, _item) -> None:
+            with self.lock:
+                self.toggle_visualizer()
+            icon.update_menu()
+
+        menu = pystray.Menu(
+            pystray.MenuItem("House", toggle_house, checked=lambda _item: self.enabled),
+            pystray.MenuItem(
+                "Visualizer",
+                toggle_visualizer,
+                checked=lambda _item: self.visualizer_enabled,
+            ),
+            pystray.Menu.SEPARATOR,
+            pystray.MenuItem("Exit", lambda _icon, _item: self.stop()),
+        )
+        icon = pystray.Icon("house-chord-translator", image, "House Chord Translator", menu)
+        self.tray_icon = icon
+        icon.run()
 
     def enable_suppression(self) -> None:
         self.disable_suppression()
@@ -251,15 +328,62 @@ class ChordTranslator:
                     self.replay_key_up(physical)
                     return False
                 if physical in self.pending_windows:
+                    if self.pending_win_shifts and not self.win_visual_combo_active:
+                        self.replay_key_down(physical)
+                        self.forward_pending_win_shifts()
+                        self.replay_key_up(physical)
+                        self.pending_windows.discard(physical)
+                        return False
                     self.pending_windows.discard(physical)
-                    if not self.win_space_combo_active:
+                    if not self.win_space_combo_active and not self.win_visual_combo_active:
                         self.replay_key_tap(physical)
                     elif not self.pending_windows:
                         self.win_space_combo_active = False
+                        self.win_visual_combo_active = False
                     return False
             return True
 
-        if physical == "space" and event.event_type == "down" and self.pending_windows:
+        if physical in SHIFT_KEYS:
+            if event.event_type == "down" and self.pending_windows:
+                self.pending_win_shifts.add(physical)
+                return False
+            if event.event_type == "up" and physical in self.pending_win_shifts:
+                self.pending_win_shifts.discard(physical)
+                if self.win_visual_combo_active:
+                    return False
+                self.forward_pending_windows()
+                self.replay_key_tap(physical)
+                return False
+            if event.event_type == "up" and physical in self.visual_combo_shifts:
+                self.visual_combo_shifts.discard(physical)
+                return False
+
+        if physical == "v" and event.event_type == "down" and self.visual_combo_v_down:
+            return False
+
+        if (
+            physical == "v"
+            and event.event_type == "down"
+            and self.pending_windows
+            and self.win_shift_down()
+        ):
+            self.win_visual_combo_active = True
+            self.visual_combo_v_down = True
+            self.visual_combo_shifts.update(self.pending_win_shifts)
+            self.pending_win_shifts.clear()
+            self.toggle_visualizer_hotkey()
+            return False
+
+        if physical == "v" and event.event_type == "up" and self.visual_combo_v_down:
+            self.visual_combo_v_down = False
+            return False
+
+        if (
+            physical == "space"
+            and event.event_type == "down"
+            and self.pending_windows
+            and not self.win_shift_down()
+        ):
             self.win_space_combo_active = True
             self.toggle_hotkey()
             return False
@@ -269,14 +393,25 @@ class ChordTranslator:
 
         if event.event_type == "down" and self.pending_windows and not self.win_space_combo_active:
             self.forward_pending_windows()
+            self.forward_pending_win_shifts()
 
         return True
+
+    def win_shift_down(self) -> bool:
+        return bool(self.pending_win_shifts) or self.shift_down or any(
+            keyboard.is_pressed(key) for key in SHIFT_KEYS
+        )
 
     def forward_pending_windows(self) -> None:
         for physical in sorted(self.pending_windows):
             self.replay_key_down(physical)
             self.forwarded_windows.add(physical)
         self.pending_windows.clear()
+
+    def forward_pending_win_shifts(self) -> None:
+        for physical in sorted(self.pending_win_shifts):
+            self.replay_key_down(physical)
+        self.pending_win_shifts.clear()
 
     def replay_key_down(self, physical: str) -> None:
         self.injecting = True
@@ -306,6 +441,26 @@ class ChordTranslator:
         self.last_toggle_time = now
         self.toggle()
 
+    def toggle_visualizer_hotkey(self) -> None:
+        now = time.monotonic()
+        if now - self.last_visualizer_toggle_time < 0.35:
+            return
+        self.last_visualizer_toggle_time = now
+        self.toggle_visualizer()
+
+    def toggle_visualizer(self) -> None:
+        self.visualizer_enabled = not self.visualizer_enabled
+        self.queue_overlay(
+            "visualizer",
+            "enabled" if self.visualizer_enabled else "disabled",
+            meta="enabled" if self.enabled else "disabled",
+        )
+        self.update_tray_menu()
+
+    def update_tray_menu(self) -> None:
+        if self.tray_icon is not None:
+            self.tray_icon.update_menu()
+
     def toggle(self) -> None:
         self.enabled = not self.enabled
         self.stroke = None
@@ -323,6 +478,7 @@ class ChordTranslator:
             "Win+Space",
             "enabled" if self.enabled else "disabled",
         )
+        self.update_tray_menu()
 
     def update_down(self, event: keyboard.KeyboardEvent) -> str | None:
         physical = normalize_physical_key(event.name or "")
@@ -663,7 +819,9 @@ class ChordTranslator:
     def queue_overlay(self, kind: str, main: str = "", sub: str = "", meta: str = "") -> None:
         flash_keys = self.pending_visual_flash
         self.pending_visual_flash = ()
-        self.overlay_queue.put((kind, main, sub, meta, self.held_logical_keys(), flash_keys))
+        self.overlay_queue.put(
+            (kind, main, sub, meta, self.held_logical_keys(), flash_keys, self.visualizer_enabled)
+        )
 
     def update_overlay(self) -> None:
         if not self.enabled:
@@ -746,7 +904,9 @@ class ChordTranslator:
 
 
 def run_overlay(
-    overlay_queue: queue.Queue[tuple[str, str, str, str, tuple[str, ...], tuple[str, ...]]],
+    overlay_queue: queue.Queue[
+        tuple[str, str, str, str, tuple[str, ...], tuple[str, ...], bool]
+    ],
     stop_event: threading.Event,
     visualizer: bool = False,
     no_keycaps: bool = False,
@@ -754,6 +914,7 @@ def run_overlay(
     chord_visuals: bool = False,
 ) -> None:
     fade = fade or chord_visuals
+    visualizer_enabled = visualizer
     root = tk.Tk()
     root.withdraw()
 
@@ -787,7 +948,7 @@ def run_overlay(
     tip_count = tk.Label(tip_frame, text="", bg="#4b3511", fg="#ffd166", font=("Consolas", 10))
     tip_count.pack(anchor="center")
 
-    visual = tk.Toplevel(root) if visualizer else None
+    visual = tk.Toplevel(root)
     visual_keys: dict[str, tk.Label] = {}
     visual_levels: dict[str, float] = {}
     visual_active_keys: set[str] = set()
@@ -932,9 +1093,11 @@ def run_overlay(
         flash_keys: tuple[str, ...],
     ) -> None:
         nonlocal visual_active_keys, visual_last_tick
-        if not visual:
+        if not visual or not visualizer_enabled:
+            if visual:
+                visual.withdraw()
             return
-        if kind == "hide" or (kind == "switch" and meta == "disabled"):
+        if kind == "hide" or (kind in {"switch", "visualizer"} and meta == "disabled"):
             visual.withdraw()
             visual_active_keys = set()
             return
@@ -964,9 +1127,13 @@ def run_overlay(
         meta: str,
         held_keys: tuple[str, ...],
         flash_keys: tuple[str, ...],
+        visualizer_state: bool,
     ) -> None:
-        nonlocal tip_until
+        nonlocal tip_until, visualizer_enabled
+        visualizer_enabled = visualizer_state
         update_visualizer(kind, meta, held_keys, flash_keys)
+        if kind == "visualizer":
+            return
         if kind == "idle":
             live.withdraw()
             return
@@ -1062,7 +1229,12 @@ def send_virtual_key(vk: int, count: int = 1) -> None:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="System-wide translator for the chord typing layout.")
-    parser.add_argument("-v", "--visualizer", action="store_true", help="Show a persistent top-left keypress visualizer in House mode.")
+    parser.add_argument(
+        "-v",
+        "--visualizer",
+        action="store_true",
+        help="Start with the House-mode keypress visualizer shown (toggle with Win+Shift+V).",
+    )
     parser.add_argument("-k", "--no-keycaps", action="store_true", help="Hide keycap labels in the visualizer.")
     parser.add_argument("-f", "--fade", action="store_true", help="Fade released visualizer keys back to idle instead of clearing instantly.")
     parser.add_argument(
@@ -1076,6 +1248,8 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
+    if not acquire_single_instance():
+        return
     args = parse_args()
     ChordTranslator(
         Path(args.layout),
