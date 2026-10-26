@@ -156,6 +156,14 @@
     },
     {
       "room": "H",
+      "keys": ["A", "C"],
+      "output": "AH",
+      "count": 28912,
+      "dominance": 0.0925,
+      "source": "manual mirror of home-room HA chord"
+    },
+    {
+      "room": "H",
       "keys": ["3", "A"],
       "output": "NG",
       "count": 232627,
