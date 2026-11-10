@@ -1547,21 +1547,17 @@
       "source": "additive 5-gram candidate"
     },
     {
-      "room": "R",
+      "room": "A",
       "keys": ["1", "2", "4", "C", "D"],
       "output": "ABOUT",
       "count": 20152,
       "total_same_keys": 20252,
       "dominance": 0.9951,
       "house_extended_cross_room": true,
-      "source": "additive cross-house 5-gram candidate",
-      "added_cross_room_candidate": true,
-      "replaced_cross_room_chord": {
-        "output": "THEIR",
-        "count": 7587,
-        "dominance": 0.688,
-        "source": "additive cross-house 5-gram candidate"
-      }
+      "attic_chord": true,
+      "manual_chord": true,
+      "attic_kind": "cross-room-superposition",
+      "source": "consolidated side-room duplicates into logical attic superposition"
     },
     {
       "room": "H",
@@ -1574,16 +1570,6 @@
       "source": "additive 5-gram candidate",
       "completed_fragment": "HINGS",
       "completed_word_count": 7444
-    },
-    {
-      "room": "H",
-      "keys": ["3", "4", "A", "B", "C", "D"],
-      "output": "THINGS",
-      "count": 7526,
-      "dominance": 0.9695,
-      "house_extended_cross_room": false,
-      "added_high_order_ngram": true,
-      "source": "additive 6-gram candidate"
     },
     {
       "room": "R",
@@ -1639,25 +1625,6 @@
       }
     },
     {
-      "room": "R",
-      "keys": ["1", "2", "3", "A", "B"],
-      "output": "DISCORD",
-      "count": 5637,
-      "total_same_keys": 5798,
-      "dominance": 0.9722,
-      "house_extended_cross_room": true,
-      "source": "additive cross-house 5-gram candidate",
-      "added_cross_room_candidate": true,
-      "replaced_cross_room_chord": {
-        "output": "ANDOM",
-        "count": 4464,
-        "dominance": 0.8789,
-        "source": "additive cross-house 5-gram candidate"
-      },
-      "completed_fragment": "SCORD",
-      "completed_word_count": 5498
-    },
-    {
       "room": "L",
       "keys": ["1", "2", "3", "4", "A"],
       "output": "CHANGE",
@@ -1668,18 +1635,6 @@
       "source": "additive 5-gram candidate",
       "completed_fragment": "HANGE",
       "completed_word_count": 2836
-    },
-    {
-      "room": "L",
-      "keys": ["1", "2", "3", "A", "B"],
-      "output": "UNDERSTAND",
-      "count": 4240,
-      "dominance": 0.9636,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate",
-      "completed_fragment": "NDERS",
-      "completed_word_count": 2437
     },
     {
       "room": "R",
@@ -1721,13 +1676,16 @@
       "completed_word_count": 2900
     },
     {
-      "room": "R",
+      "room": "A",
       "keys": ["1", "2", "3", "4", "D"],
       "output": "WATCH",
       "count": 5024,
       "total_same_keys": 5101,
       "dominance": 0.9849,
       "house_extended_cross_room": true,
+      "attic_chord": true,
+      "attic_kind": "cross-room-superposition",
+      "consolidated_side_room_duplicates": true,
       "source": "additive cross-house 5-gram candidate",
       "added_cross_room_candidate": true,
       "replaced_cross_room_chord": {
@@ -1847,13 +1805,16 @@
       "source": "additive cross-house 5-gram candidate"
     },
     {
-      "room": "R",
+      "room": "A",
       "keys": ["1", "2", "B", "C", "D"],
       "output": "ALWAYS",
       "count": 3482,
       "total_same_keys": 3490,
       "dominance": 0.9977,
       "house_extended_cross_room": true,
+      "attic_chord": true,
+      "attic_kind": "cross-room-superposition",
+      "consolidated_side_room_duplicates": true,
       "source": "additive cross-house 5-gram candidate",
       "added_cross_room_candidate": true,
       "replaced_cross_room_chord": {
@@ -1867,23 +1828,6 @@
     },
     {
       "room": "L",
-      "keys": ["1", "2", "4", "C", "D"],
-      "output": "ABOUT",
-      "count": 20152,
-      "dominance": 0.9951,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate",
-      "moved_from_invalid_home_cross_room": true,
-      "replaced_cross_room_chord": {
-        "output": "ERYTH",
-        "count": 2839,
-        "dominance": 0.9224,
-        "source": "additive cross-house 5-gram candidate"
-      }
-    },
-    {
-      "room": "L",
       "keys": ["1", "2", "3", "A", "C"],
       "output": "ERING",
       "count": 2444,
@@ -1891,25 +1835,6 @@
       "house_extended_cross_room": true,
       "added_high_order_ngram": true,
       "source": "additive cross-house 5-gram candidate"
-    },
-    {
-      "room": "L",
-      "keys": ["1", "2", "B", "C", "D"],
-      "output": "ALWAYS",
-      "count": 3482,
-      "dominance": 0.9977,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate",
-      "moved_from_invalid_home_cross_room": true,
-      "replaced_cross_room_chord": {
-        "output": "VERYT",
-        "count": 3100,
-        "dominance": 0.9933,
-        "source": "additive cross-house 5-gram candidate"
-      },
-      "completed_fragment": "LWAYS",
-      "completed_word_count": 3457
     },
     {
       "room": "R",
@@ -1931,12 +1856,15 @@
       "completed_word_count": 1835
     },
     {
-      "room": "R",
+      "room": "A",
       "keys": ["1", "3", "4", "C", "D"],
       "output": "WITCH",
       "count": 2311,
       "dominance": 0.9706,
       "house_extended_cross_room": true,
+      "attic_chord": true,
+      "attic_kind": "cross-room-superposition",
+      "consolidated_side_room_duplicates": true,
       "added_high_order_ngram": true,
       "source": "additive cross-house 5-gram candidate"
     },
@@ -1979,23 +1907,6 @@
       "completed_word_count": 10521
     },
     {
-      "room": "L",
-      "keys": ["1", "3", "4", "C", "D"],
-      "output": "WITCH",
-      "count": 2311,
-      "total_same_keys": 2381,
-      "dominance": 0.9706,
-      "house_extended_cross_room": true,
-      "source": "additive cross-house 5-gram candidate",
-      "added_cross_room_candidate": true,
-      "replaced_cross_room_chord": {
-        "output": "INUTE",
-        "count": 2260,
-        "dominance": 0.7286,
-        "source": "additive cross-house 5-gram candidate"
-      }
-    },
-    {
       "room": "R",
       "keys": ["2", "3", "B", "C", "D"],
       "output": "BASICALLY",
@@ -2025,13 +1936,16 @@
       "source": "additive cross-house 5-gram candidate"
     },
     {
-      "room": "R",
+      "room": "A",
       "keys": ["1", "2", "3", "4", "B", "C"],
       "output": "BECAUSE",
       "count": 12718,
       "total_same_keys": 13018,
       "dominance": 0.977,
       "house_extended_cross_room": true,
+      "attic_chord": true,
+      "attic_kind": "cross-room-superposition",
+      "consolidated_side_room_duplicates": true,
       "source": "additive cross-house 6-gram candidate",
       "added_cross_room_candidate": true,
       "replaced_cross_room_chord": {
@@ -2073,25 +1987,6 @@
       "completed_word_count": 1429
     },
     {
-      "room": "R",
-      "keys": ["1", "2", "4", "B", "D"],
-      "output": "YOURSELF",
-      "count": 2467,
-      "total_same_keys": 4281,
-      "dominance": 0.5763,
-      "house_extended_cross_room": true,
-      "source": "additive cross-house 5-gram candidate",
-      "added_cross_room_candidate": true,
-      "replaced_cross_room_chord": {
-        "output": "SUPER",
-        "count": 1958,
-        "dominance": 0.8664,
-        "source": "additive cross-house 5-gram candidate"
-      },
-      "completed_fragment": "URSEL",
-      "completed_word_count": 2264
-    },
-    {
       "room": "L",
       "keys": ["1", "2", "4", "B", "D"],
       "output": "SUPER",
@@ -2107,25 +2002,6 @@
         "dominance": 0.8606,
         "source": "additive cross-house 5-gram candidate"
       }
-    },
-    {
-      "room": "R",
-      "keys": ["1", "2", "A", "B", "D"],
-      "output": "UNDERSTAND",
-      "count": 3819,
-      "total_same_keys": 5532,
-      "dominance": 0.6903,
-      "house_extended_cross_room": true,
-      "source": "additive cross-house 5-gram candidate",
-      "added_cross_room_candidate": true,
-      "replaced_cross_room_chord": {
-        "output": "STEAD",
-        "count": 1893,
-        "dominance": 0.6258,
-        "source": "additive cross-house 5-gram candidate"
-      },
-      "completed_fragment": "DERST",
-      "completed_word_count": 2437
     },
     {
       "room": "R",
@@ -2155,66 +2031,6 @@
       },
       "completed_fragment": "UMBER",
       "completed_word_count": 1523
-    },
-    {
-      "room": "L",
-      "keys": ["1", "2", "3", "B", "D"],
-      "output": "INSTEAD",
-      "count": 1852,
-      "dominance": 0.76,
-      "house_extended_cross_room": false,
-      "added_high_order_ngram": true,
-      "source": "additive 5-gram candidate",
-      "completed_fragment": "NSTEA",
-      "completed_word_count": 1846
-    },
-    {
-      "room": "L",
-      "keys": ["1", "2", "3", "B", "C", "D"],
-      "output": "INSTEAD",
-      "count": 1851,
-      "dominance": 0.7703,
-      "house_extended_cross_room": false,
-      "added_high_order_ngram": true,
-      "source": "additive 6-gram candidate",
-      "completed_fragment": "INSTEA",
-      "completed_word_count": 1846
-    },
-    {
-      "room": "R",
-      "keys": ["1", "2", "3", "A", "B", "D"],
-      "output": "UNDERSTAND",
-      "count": 3815,
-      "total_same_keys": 3870,
-      "dominance": 0.9858,
-      "house_extended_cross_room": true,
-      "source": "additive cross-house 6-gram candidate",
-      "added_cross_room_candidate": true,
-      "replaced_cross_room_chord": {
-        "output": "NSTEAD",
-        "count": 1848,
-        "dominance": 0.9625,
-        "source": "additive cross-house 6-gram candidate"
-      },
-      "completed_fragment": "NDERST",
-      "completed_word_count": 2437
-    },
-    {
-      "room": "L",
-      "keys": ["1", "2", "3", "4", "D"],
-      "output": "WATCH",
-      "count": 5024,
-      "dominance": 0.9849,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate",
-      "moved_from_invalid_home_cross_room": true,
-      "replaced_cross_room_chord": {
-        "output": "CTURE",
-        "count": 1830,
-        "dominance": 0.8901,
-        "source": "additive cross-house 5-gram candidate"
-      }
     },
     {
       "room": "R",
@@ -2389,25 +2205,6 @@
       }
     },
     {
-      "room": "R",
-      "keys": ["1", "2", "3", "4", "B"],
-      "output": "BECAUSE",
-      "count": 15493,
-      "total_same_keys": 29190,
-      "dominance": 0.5308,
-      "house_extended_cross_room": true,
-      "source": "additive cross-house 5-gram candidate",
-      "added_cross_room_candidate": true,
-      "replaced_cross_room_chord": {
-        "output": "ONFUS",
-        "count": 1463,
-        "dominance": 0.9966,
-        "source": "additive cross-house 5-gram candidate"
-      },
-      "completed_fragment": "CAUSE",
-      "completed_word_count": 12688
-    },
-    {
       "room": "L",
       "keys": ["1", "2", "3", "B", "C"],
       "output": "ANYMORE",
@@ -2572,13 +2369,16 @@
       "completed_word_count": 1069
     },
     {
-      "room": "R",
+      "room": "A",
       "keys": ["1", "2", "3", "4", "C", "D"],
       "output": "WATCHING",
       "count": 1314,
       "total_same_keys": 1324,
       "dominance": 0.9924,
       "house_extended_cross_room": true,
+      "attic_chord": true,
+      "attic_kind": "cross-room-superposition",
+      "consolidated_side_room_duplicates": true,
       "source": "additive cross-house 6-gram candidate",
       "added_cross_room_candidate": true,
       "replaced_cross_room_chord": {
@@ -2697,15 +2497,17 @@
       "added_cross_room_candidate": true
     },
     {
-      "room": "L",
-      "keys": ["1", "4", "C"],
-      "output": "BOU",
-      "count": 21688,
-      "total_same_keys": 23142,
-      "dominance": 0.9372,
+      "room": "A",
+      "keys": ["1", "4", "A", "C"],
+      "output": "WHY",
+      "count": 16872,
+      "total_same_keys": 17574,
+      "dominance": 0.9601,
       "house_extended_cross_room": true,
-      "source": "cross-room 3-gram candidate",
-      "added_cross_room_candidate": true
+      "attic_chord": true,
+      "attic_kind": "cross-room-superposition",
+      "source": "manual attic WHY chord",
+      "manual_chord": true
     },
     {
       "room": "L",
@@ -2893,19 +2695,6 @@
       "house_extended_cross_room": true,
       "source": "cross-room 2-gram candidate",
       "added_cross_room_candidate": true
-    },
-    {
-      "room": "R",
-      "keys": ["1", "2", "3", "4", "C"],
-      "output": "BECAUSE",
-      "count": 12745,
-      "total_same_keys": 13006,
-      "dominance": 0.9799,
-      "house_extended_cross_room": true,
-      "source": "additive cross-house 5-gram candidate",
-      "added_cross_room_candidate": true,
-      "completed_fragment": "BECAU",
-      "completed_word_count": 12688
     },
     {
       "room": "R",
@@ -3678,26 +3467,16 @@
       "added_cross_room_candidate": true
     },
     {
-      "room": "R",
-      "keys": ["1", "2", "3", "4", "A", "B"],
-      "output": "UNDERSTAND",
-      "count": 3870,
-      "total_same_keys": 4050,
-      "dominance": 0.9556,
-      "house_extended_cross_room": true,
-      "source": "additive cross-house 6-gram candidate",
-      "added_cross_room_candidate": true,
-      "completed_fragment": "UNDERS",
-      "completed_word_count": 2437
-    },
-    {
-      "room": "R",
+      "room": "A",
       "keys": ["1", "2", "3", "4", "A", "B", "D"],
       "output": "UNDERSTAND",
       "count": 3811,
       "total_same_keys": 3841,
       "dominance": 0.9922,
       "house_extended_cross_room": true,
+      "attic_chord": true,
+      "attic_kind": "cross-room-superposition",
+      "manual_chord": true,
       "source": "additive cross-house 7-gram candidate",
       "added_cross_room_candidate": true,
       "completed_fragment": "UNDERST",
@@ -3741,13 +3520,16 @@
       "added_cross_room_candidate": true
     },
     {
-      "room": "R",
+      "room": "A",
       "keys": ["1", "2", "4", "B", "C", "D"],
       "output": "EVERYTHING",
       "count": 2837,
       "total_same_keys": 2852,
       "dominance": 0.9947,
       "house_extended_cross_room": true,
+      "attic_chord": true,
+      "attic_kind": "cross-room-superposition",
+      "consolidated_side_room_duplicates": true,
       "source": "additive cross-house 6-gram candidate",
       "added_cross_room_candidate": true,
       "completed_fragment": "VERYTH",
@@ -3791,36 +3573,20 @@
       "completed_word_count": 1232
     },
     {
-      "room": "R",
+      "room": "A",
       "keys": ["1", "3", "4", "B", "C"],
       "output": "NUMBER",
       "count": 2080,
       "total_same_keys": 2092,
       "dominance": 0.9943,
       "house_extended_cross_room": true,
+      "attic_chord": true,
+      "attic_kind": "cross-room-superposition",
+      "consolidated_side_room_duplicates": true,
       "source": "additive cross-house 5-gram candidate",
       "added_cross_room_candidate": true,
       "completed_fragment": "NUMBE",
       "completed_word_count": 1523
-    },
-    {
-      "room": "L",
-      "keys": ["1", "2", "3", "4", "B", "C"],
-      "output": "BECAUSE",
-      "count": 12718,
-      "dominance": 0.977,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate",
-      "moved_from_invalid_home_cross_room": true,
-      "replaced_cross_room_chord": {
-        "output": "NUMBER",
-        "count": 2079,
-        "dominance": 0.9957,
-        "source": "additive cross-house 6-gram candidate"
-      },
-      "completed_fragment": "BECAUS",
-      "completed_word_count": 12688
     },
     {
       "room": "R",
@@ -3847,13 +3613,16 @@
       "added_cross_room_candidate": true
     },
     {
-      "room": "R",
+      "room": "A",
       "keys": ["1", "3", "A", "B", "D"],
       "output": "DEPENDS",
       "count": 1114,
       "total_same_keys": 1972,
       "dominance": 0.5649,
       "house_extended_cross_room": true,
+      "attic_chord": true,
+      "attic_kind": "cross-room-superposition",
+      "consolidated_side_room_duplicates": true,
       "source": "additive cross-house 5-gram candidate",
       "added_cross_room_candidate": true,
       "completed_fragment": "PENDS",
@@ -3871,71 +3640,6 @@
       "added_cross_room_candidate": true,
       "completed_fragment": "URING",
       "completed_word_count": 705
-    },
-    {
-      "room": "L",
-      "keys": ["1", "2", "3", "4", "C"],
-      "output": "BECAUSE",
-      "count": 12745,
-      "dominance": 0.9799,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate",
-      "moved_from_invalid_home_cross_room": true,
-      "completed_fragment": "BECAU",
-      "completed_word_count": 12688
-    },
-    {
-      "room": "L",
-      "keys": ["1", "2", "4", "B", "C", "D"],
-      "output": "EVERYTHING",
-      "count": 2837,
-      "dominance": 0.9947,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate",
-      "moved_from_invalid_home_cross_room": true,
-      "completed_fragment": "VERYTH",
-      "completed_word_count": 2801
-    },
-    {
-      "room": "L",
-      "keys": ["1", "3", "4", "B", "C"],
-      "output": "NUMBER",
-      "count": 2080,
-      "dominance": 0.9943,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate",
-      "moved_from_invalid_home_cross_room": true,
-      "completed_fragment": "NUMBE",
-      "completed_word_count": 1523
-    },
-    {
-      "room": "L",
-      "keys": ["1", "2", "3", "4", "C", "D"],
-      "output": "WATCHING",
-      "count": 1314,
-      "dominance": 0.9924,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 6-gram candidate",
-      "moved_from_invalid_home_cross_room": true,
-      "completed_fragment": "WATCHI",
-      "completed_word_count": 1262
-    },
-    {
-      "room": "L",
-      "keys": ["1", "3", "A", "B", "D"],
-      "output": "DEPENDS",
-      "count": 1114,
-      "dominance": 0.5649,
-      "house_extended_cross_room": true,
-      "added_high_order_ngram": true,
-      "source": "additive cross-house 5-gram candidate",
-      "moved_from_invalid_home_cross_room": true,
-      "completed_fragment": "PENDS",
-      "completed_word_count": 1030
     },
     {
       "room": "L",
@@ -4302,18 +4006,6 @@
       "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
       "attic_kind": "cross-hand",
       "native_keys": ["B", "4"],
-      "source": "attic bigram candidate; collisions resolved by highest corpus count"
-    },
-    {
-      "room": "A",
-      "keys": ["2", "4", "C"],
-      "output": "AH",
-      "count": 28912,
-      "dominance": 0.0925,
-      "attic_chord": true,
-      "attic_rule": "same-hand mirror first key; cross-hand first-key outward cue",
-      "attic_kind": "same-hand",
-      "native_keys": ["2", "4"],
       "source": "attic bigram candidate; collisions resolved by highest corpus count"
     },
     {

@@ -49,6 +49,7 @@ if (-not $NoLaunch) {
 Write-Host "House Chord Translator installed."
 Write-Host "Installed at: $installDirectory"
 Write-Host "Startup shortcut: $shortcutPath"
+Write-Host "For future source updates, run: .\update.cmd"
 if ($NoLaunch) {
     Write-Host "It will start automatically the next time you sign in."
 } else {

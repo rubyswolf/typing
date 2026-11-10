@@ -142,11 +142,18 @@ def main():
     data = json.loads(EXTENDED.read_text(encoding='utf-8'))
     letter_lookup = lookup(data['layout'])
     existing_by_slot = {slot_key(entry): index for index, entry in enumerate(data['chords'])}
+    assigned = {
+        (str(entry['output']).upper(), tuple(sorted(map(str, entry['keys']))))
+        for entry in data['chords']
+    }
+    assigned_outputs = {str(entry['output']).upper() for entry in data['chords']}
     additions = []
     upgrades = []
     skipped_blocked = []
 
     for stat in scan_candidates():
+        if str(stat['output']).upper() in assigned_outputs:
+            continue
         if any(letter not in letter_lookup for letter in stat['output']):
             continue
         native_rooms = [letter_lookup[letter][0] for letter in stat['output']]
@@ -154,6 +161,9 @@ def main():
             continue
         keys = sorted(letter_lookup[letter][1] for letter in stat['output'])
         if len(set(keys)) != stat['size']:
+            continue
+        signature = (str(stat['output']).upper(), tuple(keys))
+        if signature in assigned:
             continue
 
         for room in target_rooms(native_rooms):
@@ -163,6 +173,8 @@ def main():
                 entry = make_entry(room, keys, stat)
                 data['chords'].append(entry)
                 existing_by_slot[skey] = len(data['chords']) - 1
+                assigned.add(signature)
+                assigned_outputs.add(str(stat['output']).upper())
                 additions.append(entry)
                 break
 
@@ -182,6 +194,8 @@ def main():
                 'source': existing.get('source'),
             }
             data['chords'][existing_index] = entry
+            assigned.add(signature)
+            assigned_outputs.add(str(stat['output']).upper())
             upgrades.append((existing, entry))
             break
 

@@ -58,10 +58,13 @@ def lookup(layout):
 def append_house(data, stats):
     layout = data['layout']
     used = {key(entry) for entry in data['chords']}
+    assigned_outputs = {str(entry['output']).upper() for entry in data['chords']}
     additions = []
     for letters, stat in sorted(stats.items(), key=lambda item: (-item[1]['count'], -item[1]['dominance'], item[1]['output'])):
         size = stat['size']
         if stat['count'] < HOUSE_MIN_COUNT or stat['dominance'] < DOMINANCE_BY_SIZE[size]:
+            continue
+        if str(stat['output']).upper() in assigned_outputs:
             continue
         rooms = []
         keys = []
@@ -97,6 +100,7 @@ def append_house(data, stats):
         }
         data['chords'].append(entry)
         used.add((room, tuple(keys)))
+        assigned_outputs.add(str(stat['output']).upper())
         additions.append(entry)
         if len(additions) >= HOUSE_LIMIT:
             break
@@ -107,15 +111,25 @@ def append_extended(data, stats):
     layout = data['layout']
     letter_lookup = lookup(layout)
     used = {key(entry) for entry in data['chords']}
+    assigned = {
+        (str(entry['output']).upper(), tuple(sorted(map(str, entry['keys']))))
+        for entry in data['chords']
+    }
+    assigned_outputs = {str(entry['output']).upper() for entry in data['chords']}
     additions = []
     for letters, stat in sorted(stats.items(), key=lambda item: (-item[1]['count'], -item[1]['dominance'], item[1]['output'])):
         size = stat['size']
         if stat['count'] < EXTENDED_MIN_COUNT or stat['dominance'] < DOMINANCE_BY_SIZE[size]:
             continue
+        if str(stat['output']).upper() in assigned_outputs:
+            continue
         if any(letter not in letter_lookup for letter in stat['output']):
             continue
         keys = [letter_lookup[letter][1] for letter in stat['output']]
         if len(set(keys)) != size:
+            continue
+        signature = (str(stat['output']).upper(), tuple(sorted(keys)))
+        if signature in assigned:
             continue
         native_rooms = [letter_lookup[letter][0] for letter in stat['output']]
         preferred_rooms = []
@@ -141,6 +155,8 @@ def append_extended(data, stats):
             }
             data['chords'].append(entry)
             used.add((room, tuple(sorted_keys)))
+            assigned.add(signature)
+            assigned_outputs.add(str(stat['output']).upper())
             additions.append(entry)
             break
         if len(additions) >= EXTENDED_LIMIT:
