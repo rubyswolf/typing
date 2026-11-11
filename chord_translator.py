@@ -13,6 +13,8 @@ from ctypes import wintypes
 
 import keyboard
 
+from translator_api import API_VERSION, EventBroker, TranslatorApiServer
+
 
 ORDER = ["A", "B", "C", "D", "1", "2", "3", "4"]
 KEY_DISPLAY_RANK = {key: index for index, key in enumerate(ORDER)}
@@ -77,6 +79,8 @@ USER32.SendInput.argtypes = (wintypes.UINT, ctypes.POINTER(INPUT), ctypes.c_int)
 USER32.SendInput.restype = wintypes.UINT
 USER32.GetKeyState.argtypes = (ctypes.c_int,)
 USER32.GetKeyState.restype = ctypes.c_short
+USER32.MessageBoxW.argtypes = (wintypes.HWND, wintypes.LPCWSTR, wintypes.LPCWSTR, wintypes.UINT)
+USER32.MessageBoxW.restype = ctypes.c_int
 KERNEL32.CreateMutexW.argtypes = (ctypes.c_void_p, wintypes.BOOL, wintypes.LPCWSTR)
 KERNEL32.CreateMutexW.restype = wintypes.HANDLE
 KERNEL32.CloseHandle.argtypes = (wintypes.HANDLE,)
@@ -85,6 +89,11 @@ KERNEL32.CloseHandle.restype = wintypes.BOOL
 VK_CAPITAL = 0x14
 VK_BACK = 0x08
 ERROR_ALREADY_EXISTS = 183
+IDYES = 6
+MB_YESNO = 0x00000004
+MB_ICONWARNING = 0x00000030
+MB_SETFOREGROUND = 0x00010000
+MB_TOPMOST = 0x00040000
 SINGLE_INSTANCE_MUTEX: int | None = None
 
 
@@ -123,8 +132,10 @@ class ChordTranslator:
         no_keycaps: bool = False,
         fade: bool = False,
         chord_visuals: bool = False,
+        api_port: int | None = 8765,
     ) -> None:
         data = json.loads(layout_path.read_text(encoding="utf-8"))
+        self.layout_data = data
         self.layout_path = layout_path
         self.name = data.get("name", layout_path.stem)
         self.layout = data["layout"]
@@ -156,9 +167,14 @@ class ChordTranslator:
         self.space_count = int(data.get("space_count") or data.get("spaceCount") or 0)
 
         self.lock = threading.RLock()
+        self.events = EventBroker()
+        self.api_server = (
+            TranslatorApiServer(self, self.events, port=api_port) if api_port is not None else None
+        )
         self.enabled = True
         self.visualizer_enabled = visualizer
         self.down: set[str] = set()
+        self.logical_sources: dict[str, set[str]] = defaultdict(set)
         self.shift_down = False
         self.title_next = False
         self.stroke: dict[str, object] | None = None
@@ -197,6 +213,9 @@ class ChordTranslator:
     def run(self) -> None:
         self.output_thread.start()
         self.overlay_thread.start()
+        if self.api_server is not None:
+            api_port = self.api_server.start()
+            self.events.publish("ready", api_version=API_VERSION, port=api_port)
         threading.Thread(target=self.run_tray, name="tray-icon", daemon=True).start()
         keyboard.hook(self.handle_toggle_event, suppress=True)
         keyboard.hook(self.handle_passive_event, suppress=False)
@@ -209,6 +228,8 @@ class ChordTranslator:
         print("Mode: House")
         print("Toggle: Win+Space")
         print("Visual mode: Win+Shift+V")
+        if self.api_server is not None:
+            print(f"API: http://127.0.0.1:{self.api_server.port}/v1")
         print("Exit: Ctrl+Alt+Esc")
         try:
             while not self.stop_event.is_set():
@@ -217,14 +238,145 @@ class ChordTranslator:
             self.disable_suppression()
             keyboard.unhook_all()
             keyboard.unhook_all_hotkeys()
+            if self.api_server is not None:
+                self.api_server.stop()
             if self.tray_icon is not None:
                 self.tray_icon.stop()
             print("Stopped")
 
     def stop(self) -> None:
         self.stop_event.set()
+        self.events.publish("stopping")
         if self.tray_icon is not None:
             self.tray_icon.stop()
+
+    def api_layout(self) -> dict[str, object]:
+        chords = []
+        for entry in self.layout_data.get("chords", self.layout_data.get("chord_map", [])):
+            output = entry.get("text") or entry.get("output")
+            if not output:
+                continue
+            chords.append(
+                {
+                    "room": str(entry["room"]),
+                    "keys": sorted(map(str, entry["keys"]), key=lambda key: KEY_DISPLAY_RANK.get(key, 99)),
+                    "output": str(output).lower(),
+                    "count": int(entry.get("count") or 0),
+                }
+            )
+        return {
+            "api_version": API_VERSION,
+            "layout": {
+                "name": self.name,
+                "logical_keys": [*ORDER, "L", "R"],
+                "finger_keys": ORDER,
+                "thumb_keys": ["L", "R"],
+                "rooms": {
+                    "H": {"thumbs": [], "keys": self.layout["H"]},
+                    "L": {"thumbs": ["L"], "keys": self.layout["L"]},
+                    "R": {"thumbs": ["R"], "keys": self.layout["R"]},
+                    "A": {"thumbs": ["L", "R"], "keys": {}},
+                },
+                "chords": chords,
+                "special_chords": {
+                    "space": {"keys": [], "thumbs": ["L", "R"]},
+                    "backspace": {"keys": list(BACKSPACE_CHORD)},
+                    "title": {"keys": list(TITLE_CHORD)},
+                },
+            },
+        }
+
+    def logical_down_keys(self) -> set[str]:
+        return {key for key, sources in self.logical_sources.items() if sources}
+
+    def current_logical_room(self) -> str:
+        thumbs = {key for key in self.logical_down_keys() if key in THUMBS}
+        if self.stroke:
+            thumbs.update(self.stroke["thumbs"])  # type: ignore[arg-type]
+        if thumbs == {"L"}:
+            return "L"
+        if thumbs == {"R"}:
+            return "R"
+        if {"L", "R"}.issubset(thumbs):
+            return "A"
+        return "H"
+
+    def api_state(self) -> dict[str, object]:
+        with self.lock:
+            held = self.logical_down_keys()
+            stroke = None
+            if self.stroke:
+                stroke = {
+                    "keys": sorted(self.stroke["keys"], key=lambda key: KEY_DISPLAY_RANK.get(key, 99)),  # type: ignore[arg-type]
+                    "order": list(self.stroke["order"]),  # type: ignore[arg-type]
+                    "thumbs": sorted(self.stroke["thumbs"]),  # type: ignore[arg-type]
+                    "room": self.current_logical_room(),
+                }
+            return {
+                "api_version": API_VERSION,
+                "enabled": self.enabled,
+                "visualizer": self.visualizer_enabled,
+                "held": sorted(held, key=lambda key: KEY_DISPLAY_RANK.get(key, 98 if key == "L" else 99)),
+                "pressed": {key: key in held for key in [*ORDER, "L", "R"]},
+                "stroke": stroke,
+            }
+
+    def api_input(
+        self, key: str, action: str, device: str, connection_id: str = ""
+    ) -> dict[str, object]:
+        logical = key.upper().strip()
+        action = action.lower().strip()
+        device = device.strip() or "api"
+        if logical not in {*ORDER, *THUMBS}:
+            raise ValueError(f"unknown logical key: {key!r}")
+        if action not in {"down", "up"}:
+            raise ValueError("action must be 'down' or 'up'")
+        if len(device) > 128:
+            raise ValueError("device must be 128 characters or fewer")
+        if not self.enabled:
+            raise RuntimeError("House mode is disabled")
+        with self.lock:
+            self.handle_logical_event(
+                logical, action, f"api:{connection_id or device}", device
+            )
+            return self.api_state()
+
+    def api_confirm_connection(self, name: str, address: str) -> bool:
+        message = (
+            "An application wants access to the House Translator API.\n\n"
+            f"Name: {name}\n"
+            f"Address: {address}\n\n"
+            "Allow it to receive live logical keystrokes and send logical input?\n\n"
+            "Only approve applications you trust."
+        )
+        result = USER32.MessageBoxW(
+            None,
+            message,
+            "House Translator API Connection",
+            MB_YESNO | MB_ICONWARNING | MB_SETFOREGROUND | MB_TOPMOST,
+        )
+        return result == IDYES
+
+    def api_connection_closed(self, connection_id: str, name: str) -> None:
+        source = f"api:{connection_id}"
+        with self.lock:
+            removed = False
+            for sources in self.logical_sources.values():
+                if source in sources:
+                    sources.discard(source)
+                    removed = True
+            if removed:
+                self.stroke = None
+                self.events.publish(
+                    "input_reset",
+                    device=name,
+                    reason="connection_closed",
+                    held=list(self.held_logical_keys()),
+                )
+                self.update_overlay()
+
+    def api_connections_changed(self) -> None:
+        self.update_tray_menu()
 
     def run_tray(self) -> None:
         try:
@@ -252,6 +404,31 @@ class ChordTranslator:
                 self.toggle_visualizer()
             icon.update_menu()
 
+        def connection_items():
+            connections = self.api_server.connections() if self.api_server is not None else []
+            if not connections:
+                return (pystray.MenuItem("No active connections", None, enabled=False),)
+
+            def disconnect(connection_id: str):
+                def action(icon, _item) -> None:
+                    if self.api_server is not None:
+                        self.api_server.kick(connection_id)
+                    icon.update_menu()
+
+                return action
+
+            return tuple(
+                pystray.MenuItem(
+                    f"{connection['name']} ({connection['address']})",
+                    disconnect(str(connection["id"])),
+                )
+                for connection in connections
+            )
+
+        def connection_menu_text(_item) -> str:
+            count = len(self.api_server.connections()) if self.api_server is not None else 0
+            return f"API Connections ({count})"
+
         menu = pystray.Menu(
             pystray.MenuItem("House", toggle_house, checked=lambda _item: self.enabled),
             pystray.MenuItem(
@@ -259,6 +436,7 @@ class ChordTranslator:
                 toggle_visualizer,
                 checked=lambda _item: self.visualizer_enabled,
             ),
+            pystray.MenuItem(connection_menu_text, pystray.Menu(connection_items)),
             pystray.Menu.SEPARATOR,
             pystray.MenuItem("Exit", lambda _icon, _item: self.stop()),
         )
@@ -288,6 +466,8 @@ class ChordTranslator:
             return
         self.stroke = None
         self.down.difference_update(self.mapped_physical)
+        for sources in self.logical_sources.values():
+            sources.difference_update(source for source in tuple(sources) if source.startswith("keyboard:"))
         self.disable_suppression()
         self.update_overlay()
 
@@ -450,6 +630,7 @@ class ChordTranslator:
 
     def toggle_visualizer(self) -> None:
         self.visualizer_enabled = not self.visualizer_enabled
+        self.events.publish("visualizer_changed", enabled=self.visualizer_enabled)
         self.queue_overlay(
             "visualizer",
             "enabled" if self.visualizer_enabled else "disabled",
@@ -467,6 +648,7 @@ class ChordTranslator:
         self.title_next = False
         self.output_lengths.clear()
         self.down.difference_update(self.mapped_physical)
+        self.logical_sources.clear()
         if self.enabled and not self.passthrough_modifiers:
             self.enable_suppression()
         else:
@@ -479,6 +661,7 @@ class ChordTranslator:
             "enabled" if self.enabled else "disabled",
         )
         self.update_tray_menu()
+        self.events.publish("mode_changed", enabled=self.enabled)
 
     def update_down(self, event: keyboard.KeyboardEvent) -> str | None:
         physical = normalize_physical_key(event.name or "")
@@ -510,31 +693,23 @@ class ChordTranslator:
         keys: set[str] = set()
         order: list[str] = []
         thumbs: set[str] = set()
-        for physical in self.down:
-            logical = self.physical_to_logical.get(physical)
+        for logical in sorted(self.logical_down_keys(), key=lambda key: KEY_DISPLAY_RANK.get(key, 99)):
             if logical in THUMBS:
                 thumbs.add(logical)
             elif logical in ORDER and logical not in keys:
                 keys.add(logical)
                 order.append(logical)
         self.stroke = {"keys": keys, "order": order, "thumbs": thumbs}
+        self.events.publish(
+            "stroke_started",
+            keys=sorted(keys, key=lambda key: KEY_DISPLAY_RANK.get(key, 99)),
+            order=list(order),
+            thumbs=sorted(thumbs),
+        )
 
     def active_room(self) -> str:
         self.reconcile_down_state()
-        thumbs = set()
-        if self.stroke:
-            thumbs.update(self.stroke["thumbs"])  # type: ignore[arg-type]
-        for physical in self.down:
-            logical = self.physical_to_logical.get(physical)
-            if logical in THUMBS:
-                thumbs.add(logical)
-        if "L" in thumbs and "R" not in thumbs:
-            return "L"
-        if "R" in thumbs and "L" not in thumbs:
-            return "R"
-        if "L" in thumbs and "R" in thumbs:
-            return "A"
-        return "H"
+        return self.current_logical_room()
 
     def reconcile_down_state(self) -> None:
         stale = {
@@ -546,9 +721,11 @@ class ChordTranslator:
             return
 
         self.down.difference_update(stale)
-        if self.stroke:
-            for physical in stale:
-                logical = self.physical_to_logical.get(physical)
+        for physical in stale:
+            logical = self.physical_to_logical.get(physical)
+            if logical:
+                self.logical_sources[logical].discard(f"keyboard:{physical}")
+            if self.stroke:
                 if logical in THUMBS:
                     self.stroke["thumbs"].discard(logical)  # type: ignore[union-attr]
                 elif logical in ORDER:
@@ -556,6 +733,65 @@ class ChordTranslator:
                     self.stroke["order"] = [  # type: ignore[index]
                         key for key in self.stroke["order"] if key != logical  # type: ignore[index]
                     ]
+
+    def publish_key_event(self, logical: str, action: str, device: str, transition: bool) -> None:
+        held = self.logical_down_keys()
+        self.events.publish(
+            "key",
+            key=logical,
+            action=action,
+            pressed=logical in held,
+            transition=transition,
+            held=sorted(held, key=lambda key: KEY_DISPLAY_RANK.get(key, 98 if key == "L" else 99)),
+            device=device,
+        )
+
+    def handle_logical_event(self, logical: str, action: str, source: str, device: str) -> None:
+        sources = self.logical_sources[logical]
+        if action == "down":
+            if source in sources:
+                return
+            was_pressed = bool(sources)
+            sources.add(source)
+            self.publish_key_event(logical, action, device, not was_pressed)
+            if was_pressed:
+                return
+            if logical in ORDER:
+                self.key_press_ids[logical] = self.next_press_id
+                self.next_press_id += 1
+            else:
+                self.thumb_press_ids[logical] = self.next_press_id
+                self.next_press_id += 1
+            self.begin_stroke()
+            if logical in THUMBS:
+                self.stroke["thumbs"].add(logical)  # type: ignore[union-attr]
+            elif logical not in self.stroke["keys"]:  # type: ignore[operator]
+                self.stroke["keys"].add(logical)  # type: ignore[union-attr]
+                self.stroke["order"].append(logical)  # type: ignore[union-attr]
+            self.update_overlay()
+            return
+
+        if source not in sources:
+            return
+        sources.discard(source)
+        still_pressed = bool(sources)
+        self.publish_key_event(logical, action, device, not still_pressed)
+        if still_pressed:
+            return
+        if self.resolve_thumb_space_if_ready(logical):
+            self.update_overlay()
+            return
+        if self.stroke and logical in THUMBS and self.stroke["keys"]:  # type: ignore[index]
+            self.resolve_stroke()
+            self.update_overlay()
+            return
+        if self.stroke and logical in ORDER and not self.any_finger_held():
+            self.resolve_stroke()
+            self.update_overlay()
+            return
+        if not self.logical_down_keys() and self.stroke:
+            self.resolve_stroke()
+        self.update_overlay()
 
     def handle_enabled_event(self, event: keyboard.KeyboardEvent) -> None:
         if self.injecting:
@@ -574,19 +810,7 @@ class ChordTranslator:
                 if physical in self.down:
                     return
                 self.down.add(physical)
-                if logical in ORDER:
-                    self.key_press_ids[logical] = self.next_press_id
-                    self.next_press_id += 1
-                elif logical in THUMBS:
-                    self.thumb_press_ids[logical] = self.next_press_id
-                    self.next_press_id += 1
-                self.begin_stroke()
-                if logical in THUMBS:
-                    self.stroke["thumbs"].add(logical)  # type: ignore[union-attr]
-                elif logical in ORDER and logical not in self.stroke["keys"]:  # type: ignore[operator]
-                    self.stroke["keys"].add(logical)  # type: ignore[union-attr]
-                    self.stroke["order"].append(logical)  # type: ignore[union-attr]
-                self.update_overlay()
+                self.handle_logical_event(logical, "down", f"keyboard:{physical}", "keyboard")
                 return
 
             if event.event_type != "up":
@@ -594,27 +818,10 @@ class ChordTranslator:
 
             self.down.discard(physical)
             self.reconcile_down_state()
-            if self.resolve_thumb_space_if_ready(logical):
-                self.update_overlay()
-                return
-            if self.stroke and logical in THUMBS and self.stroke["keys"]:  # type: ignore[index]
-                self.resolve_stroke()
-                self.update_overlay()
-                return
-            if self.stroke and logical in ORDER and not self.any_finger_held():
-                self.resolve_stroke()
-                self.update_overlay()
-                return
-            if not self.down and self.stroke:
-                self.resolve_stroke()
-            self.update_overlay()
+            self.handle_logical_event(logical, "up", f"keyboard:{physical}", "keyboard")
 
     def any_finger_held(self) -> bool:
-        for physical in self.down:
-            logical = self.physical_to_logical.get(physical)
-            if logical in ORDER:
-                return True
-        return False
+        return any(logical in ORDER for logical in self.logical_down_keys())
 
     def resolve_thumb_space_if_ready(self, logical: str) -> bool:
         if logical not in THUMBS or not self.stroke:
@@ -627,7 +834,7 @@ class ChordTranslator:
         self.pending_visual_flash = visual_keys
         self.stroke = None
         self.emit(" ")
-        self.record_stroke(" ", "H", (), (), ("L", "R"), True)
+        self.record_stroke(" ", "H", (), (), ("L", "R"), True, emitted_output=" ", special="space")
         return True
 
     def resolve_stroke(self) -> None:
@@ -646,7 +853,9 @@ class ChordTranslator:
                 self.stroke = None
                 self.title_next = not self.title_next
                 self.emit(" ")
-                self.record_stroke(" ", "A", keys, order, thumbs, True)
+                self.record_stroke(
+                    " ", "A", keys, order, thumbs, True, emitted_output=" ", special="space_title"
+                )
                 self.queue_overlay(
                     "chord",
                     "SPACE + TITLE" if self.title_next else "SPACE + TITLE OFF",
@@ -658,6 +867,9 @@ class ChordTranslator:
                 self.pending_visual_flash = visual_keys
                 self.stroke = None
                 self.title_next = not self.title_next
+                self.publish_stroke_finished(
+                    "", room, keys, order, thumbs, True, emitted_output="", special="title"
+                )
                 self.queue_overlay(
                     "chord",
                     "TITLE" if self.title_next else "TITLE OFF",
@@ -669,6 +881,9 @@ class ChordTranslator:
                 self.pending_visual_flash = visual_keys
                 self.stroke = None
                 self.emit("\b")
+                self.publish_stroke_finished(
+                    "\b", room, keys, order, thumbs, True, emitted_output="\b", special="backspace"
+                )
                 self.update_overlay()
                 return
             output = self.chords.get((room, keys), "")
@@ -684,11 +899,18 @@ class ChordTranslator:
             elif self.shift_down ^ caps_lock_on():
                 output = output.upper()
             self.emit(output)
-            self.record_stroke(raw_output, room, keys, order, thumbs, used_chord)
+            self.record_stroke(
+                raw_output, room, keys, order, thumbs, used_chord, emitted_output=output
+            )
             self.pending_visual_flash = visual_keys
+        else:
+            self.publish_stroke_finished(
+                "", room, keys, order, thumbs, False, emitted_output="", special="miss"
+            )
 
     def emit(self, text: str) -> None:
         self.output_queue.put(text)
+        self.events.publish("output", text=text)
 
     def backspace_count(self) -> int:
         if self.output_lengths:
@@ -703,6 +925,8 @@ class ChordTranslator:
         order: tuple[str, ...],
         thumbs: tuple[str, ...],
         used_chord: bool,
+        emitted_output: str | None = None,
+        special: str | None = None,
     ) -> None:
         stroke = {
             "output": output.lower(),
@@ -716,7 +940,42 @@ class ChordTranslator:
             "time": time.monotonic(),
         }
         self.recent_strokes.append(stroke)
+        self.publish_stroke_finished(
+            output,
+            room,
+            keys,
+            order,
+            thumbs,
+            used_chord,
+            emitted_output=output if emitted_output is None else emitted_output,
+            special=special,
+        )
         self.detect_inefficient_stroke(stroke)
+
+    def publish_stroke_finished(
+        self,
+        output: str,
+        room: str,
+        keys: tuple[str, ...],
+        order: tuple[str, ...],
+        thumbs: tuple[str, ...],
+        used_chord: bool,
+        emitted_output: str,
+        special: str | None = None,
+    ) -> None:
+        self.events.publish(
+            "stroke_finished",
+            room=room,
+            keys=list(keys),
+            order=list(order),
+            thumbs=list(thumbs),
+            output=output.lower(),
+            emitted=emitted_output,
+            used_chord=used_chord,
+            special=special,
+            count=self.chord_counts.get((room, keys), 0),
+            held=list(self.held_logical_keys()),
+        )
 
     def detect_inefficient_stroke(self, stroke: dict[str, object]) -> None:
         if self.detect_changed_keys():
@@ -808,12 +1067,7 @@ class ChordTranslator:
         self.pending_tip = (title, detail, meta)
 
     def held_logical_keys(self) -> tuple[str, ...]:
-        held = {
-            logical
-            for physical in self.down
-            for logical in [self.physical_to_logical.get(physical)]
-            if logical in ORDER or logical in THUMBS
-        }
+        held = self.logical_down_keys()
         return tuple(sorted(held, key=lambda key: KEY_DISPLAY_RANK.get(key, 98 if key == "L" else 99)))
 
     def queue_overlay(self, kind: str, main: str = "", sub: str = "", meta: str = "") -> None:
@@ -1243,8 +1497,18 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Flash completed chord keys instead of showing held keys. Implies --fade.",
     )
+    parser.add_argument(
+        "--api-port",
+        type=int,
+        default=8765,
+        help="Local HTTP/WebSocket API port (default: 8765).",
+    )
+    parser.add_argument("--no-api", action="store_true", help="Disable the local translator API.")
     parser.add_argument("layout", nargs="?", default="layouts/house_extended.json")
-    return parser.parse_args()
+    args = parser.parse_args()
+    if not 0 <= args.api_port <= 65535:
+        parser.error("--api-port must be between 0 and 65535")
+    return args
 
 
 def main() -> None:
@@ -1257,6 +1521,7 @@ def main() -> None:
         no_keycaps=args.no_keycaps,
         fade=args.fade,
         chord_visuals=args.chord_visuals,
+        api_port=None if args.no_api else args.api_port,
     ).run()
 
 

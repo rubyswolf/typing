@@ -16,6 +16,7 @@ New-Item -ItemType Directory -Path $installDirectory -Force | Out-Null
 New-Item -ItemType Directory -Path $layoutDirectory -Force | Out-Null
 
 Copy-Item -LiteralPath (Join-Path $sourceDirectory "chord_translator.py") -Destination $installDirectory -Force
+Copy-Item -LiteralPath (Join-Path $sourceDirectory "translator_api.py") -Destination $installDirectory -Force
 Copy-Item -LiteralPath (Join-Path $sourceDirectory "requirements.txt") -Destination $installDirectory -Force
 Copy-Item -LiteralPath (Join-Path $sourceDirectory "layouts\house_extended.json") -Destination $layoutDirectory -Force
 

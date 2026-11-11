@@ -11,6 +11,7 @@ $installedEnvironment = Join-Path $installDirectory ".venv"
 $installedPython = Join-Path $installedEnvironment "Scripts\python.exe"
 $installedPythonw = Join-Path $installedEnvironment "Scripts\pythonw.exe"
 $installedApplication = Join-Path $installDirectory "chord_translator.py"
+$installedApi = Join-Path $installDirectory "translator_api.py"
 $installedLayoutDirectory = Join-Path $installDirectory "layouts"
 $installedLayout = Join-Path $installedLayoutDirectory "house_extended.json"
 $installedRequirements = Join-Path $installDirectory "requirements.txt"
@@ -20,9 +21,10 @@ if (-not (Test-Path -LiteralPath $installedPythonw -PathType Leaf)) {
 }
 
 $sourceApplication = Join-Path $sourceDirectory "chord_translator.py"
+$sourceApi = Join-Path $sourceDirectory "translator_api.py"
 $sourceLayout = Join-Path $sourceDirectory "layouts\house_extended.json"
 $sourceRequirements = Join-Path $sourceDirectory "requirements.txt"
-foreach ($sourceFile in @($sourceApplication, $sourceLayout, $sourceRequirements)) {
+foreach ($sourceFile in @($sourceApplication, $sourceApi, $sourceLayout, $sourceRequirements)) {
     if (-not (Test-Path -LiteralPath $sourceFile -PathType Leaf)) {
         throw "Required update file is missing: $sourceFile"
     }
@@ -42,6 +44,7 @@ foreach ($process in $running) {
 
 New-Item -ItemType Directory -Path $installedLayoutDirectory -Force | Out-Null
 Copy-Item -LiteralPath $sourceApplication -Destination $installedApplication -Force
+Copy-Item -LiteralPath $sourceApi -Destination $installedApi -Force
 Copy-Item -LiteralPath $sourceLayout -Destination $installedLayout -Force
 Copy-Item -LiteralPath $sourceRequirements -Destination $installedRequirements -Force
 
