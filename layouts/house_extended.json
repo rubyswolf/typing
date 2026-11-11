@@ -3773,6 +3773,19 @@
     },
     {
       "room": "A",
+      "keys": ["1", "A", "C"],
+      "output": "DE",
+      "count": 104822,
+      "total_same_keys": 243998,
+      "dominance": 0.4296,
+      "attic_chord": true,
+      "manual_chord": true,
+      "attic_kind": "cross-hand",
+      "native_keys": ["A", "1"],
+      "source": "manual attic DE chord"
+    },
+    {
+      "room": "A",
       "keys": ["2", "3", "B"],
       "output": "AS",
       "count": 122894,
